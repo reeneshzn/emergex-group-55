@@ -1,0 +1,5 @@
+.project_runtime/
+**/.project_runtime/
+**/backups/*.sql
+*.pid
+*.log
