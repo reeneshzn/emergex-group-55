@@ -8,7 +8,7 @@ return [
     'environment' => 'development',
     'db' => [
         'host' => '127.0.0.1',
-        'port' => 3306,
+        'port' => (int) ($_SERVER['EMERGEX_DB_PORT'] ?? (getenv('EMERGEX_DB_PORT') ?: 3306)),
         'name' => 'emergex',
         'user' => 'root',
         'password' => '',
