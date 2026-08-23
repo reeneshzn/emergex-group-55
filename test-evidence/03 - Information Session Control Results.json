@@ -1,0 +1,51 @@
+{
+  "project": "EMERGEX",
+  "group": 55,
+  "execution_date": "2026-08-21",
+  "source_requirement": "IT Project 600/700 information session, 20 August 2026",
+  "overall_result": "PASS",
+  "controls": [
+    {
+      "id": "IS-01",
+      "control": "Administrator report authorization and HTML generation",
+      "result": "PASS",
+      "evidence": "Authenticated administrator request returned HTTP 200 with booking, property and audit tables; reports.php is protected by require_auth('admin')."
+    },
+    {
+      "id": "IS-02",
+      "control": "Printable / PDF-saveable report",
+      "result": "PASS",
+      "evidence": "Operational report exposes Print / Save as PDF and dedicated print CSS for browser PDF output."
+    },
+    {
+      "id": "IS-03",
+      "control": "CSV report exports",
+      "result": "PASS",
+      "evidence": "Booking, property and audit CSV endpoints returned HTTP 200 and text/csv; booking export included the expected header. Spreadsheet formula prefixes are neutralized."
+    },
+    {
+      "id": "IS-04",
+      "control": "Responsive report page",
+      "result": "PASS",
+      "evidence": "No page-wide horizontal overflow at 360 x 800 or 1440 x 900. All three wide tables use internal horizontal scrolling on mobile."
+    },
+    {
+      "id": "IS-05",
+      "control": "Database backup",
+      "result": "PASS",
+      "evidence": "BACKUP_EMERGEX.ps1 created backups/emergex-20260821-165954.sql (18,534 bytes)."
+    },
+    {
+      "id": "IS-06",
+      "control": "Guarded database restore",
+      "result": "PASS",
+      "evidence": "RESTORE_EMERGEX.ps1 required -ConfirmRestore and restored the assessment database; verification returned all 7 EMERGEX tables."
+    },
+    {
+      "id": "IS-07",
+      "control": "Post-change regression baseline",
+      "result": "PASS",
+      "evidence": "32/32 documented acceptance cases, 7/7 structural security checks and 21/21 PHP syntax checks passed."
+    }
+  ]
+}

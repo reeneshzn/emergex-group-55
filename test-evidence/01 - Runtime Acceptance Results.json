@@ -1,0 +1,217 @@
+{
+    "suite": "EMERGEX runtime acceptance tests ST-01 to ST-29",
+    "executed_at": "2026-08-18T17:58:43+02:00",
+    "base_url": "http://127.0.0.1:8080/emergex/public",
+    "php_version": "8.2.12",
+    "database_version": "10.4.32-MariaDB",
+    "summary": {
+        "passed": 29,
+        "failed": 0,
+        "total": 29
+    },
+    "results": [
+        {
+            "id": "ST-01",
+            "area": "Install",
+            "status": "PASS",
+            "evidence": "Clean installer created 7 tables and 3 seeded accounts.",
+            "duration_ms": 0
+        },
+        {
+            "id": "ST-02",
+            "area": "Register",
+            "status": "PASS",
+            "evidence": "Student 4 was created with a verifiable password hash.",
+            "duration_ms": 112
+        },
+        {
+            "id": "ST-03",
+            "area": "Register",
+            "status": "PASS",
+            "evidence": "Duplicate email was rejected and the unique account count remained 1.",
+            "duration_ms": 85
+        },
+        {
+            "id": "ST-04",
+            "area": "Login",
+            "status": "PASS",
+            "evidence": "Five generic failures were followed by HTTP 429.",
+            "duration_ms": 374
+        },
+        {
+            "id": "ST-05",
+            "area": "Search",
+            "status": "PASS",
+            "evidence": "All four verified seeded properties were rendered.",
+            "duration_ms": 4
+        },
+        {
+            "id": "ST-06",
+            "area": "Search",
+            "status": "PASS",
+            "evidence": "NSFAS plus R5,000 filter returned only Mowbray Campus Rooms.",
+            "duration_ms": 45
+        },
+        {
+            "id": "ST-07",
+            "area": "Search",
+            "status": "PASS",
+            "evidence": "SQL-style quote payload returned a safe empty result without an error.",
+            "duration_ms": 30
+        },
+        {
+            "id": "ST-08",
+            "area": "Property",
+            "status": "PASS",
+            "evidence": "Unknown property returned HTTP 404 with no detail leak.",
+            "duration_ms": 13
+        },
+        {
+            "id": "ST-09",
+            "area": "AuthZ",
+            "status": "PASS",
+            "evidence": "Unauthenticated dashboard request redirected to login.",
+            "duration_ms": 16
+        },
+        {
+            "id": "ST-10",
+            "area": "AuthZ",
+            "status": "PASS",
+            "evidence": "Student role received HTTP 403 for the administrator dashboard.",
+            "duration_ms": 15
+        },
+        {
+            "id": "ST-11",
+            "area": "CSRF",
+            "status": "PASS",
+            "evidence": "Missing token returned HTTP 419 and booking count was unchanged.",
+            "duration_ms": 3
+        },
+        {
+            "id": "ST-12",
+            "area": "Booking",
+            "status": "PASS",
+            "evidence": "Past move-in date produced validation feedback and no booking.",
+            "duration_ms": 30
+        },
+        {
+            "id": "ST-13",
+            "area": "Booking",
+            "status": "PASS",
+            "evidence": "Instant booking 2 was approved with not_paid escrow.",
+            "duration_ms": 50
+        },
+        {
+            "id": "ST-14",
+            "area": "Booking",
+            "status": "PASS",
+            "evidence": "Standard booking 3 is pending with a 720-minute deadline.",
+            "duration_ms": 59
+        },
+        {
+            "id": "ST-15",
+            "area": "Landlord",
+            "status": "PASS",
+            "evidence": "Owned pending request was approved with response time and audit event.",
+            "duration_ms": 119
+        },
+        {
+            "id": "ST-16",
+            "area": "Landlord",
+            "status": "PASS",
+            "evidence": "Cross-landlord booking action returned HTTP 400 and state was unchanged.",
+            "duration_ms": 168
+        },
+        {
+            "id": "ST-17",
+            "area": "State",
+            "status": "PASS",
+            "evidence": "Deposit hold attempt on a pending booking left it pending.",
+            "duration_ms": 52
+        },
+        {
+            "id": "ST-18",
+            "area": "State",
+            "status": "PASS",
+            "evidence": "Approved booking moved to deposit_held with held escrow and SIM reference.",
+            "duration_ms": 44
+        },
+        {
+            "id": "ST-19",
+            "area": "State",
+            "status": "PASS",
+            "evidence": "Check-in completed the booking and released simulated escrow.",
+            "duration_ms": 68
+        },
+        {
+            "id": "ST-20",
+            "area": "Atomicity",
+            "status": "PASS",
+            "evidence": "Forced second-update failure rolled back both transactional changes.",
+            "duration_ms": 1
+        },
+        {
+            "id": "ST-21",
+            "area": "Upload",
+            "status": "PASS",
+            "evidence": "Valid PDF created pending document 1 with a random stored name.",
+            "duration_ms": 54
+        },
+        {
+            "id": "ST-22",
+            "area": "Upload",
+            "status": "PASS",
+            "evidence": "File larger than 5 MB was rejected with no metadata row.",
+            "duration_ms": 1244
+        },
+        {
+            "id": "ST-23",
+            "area": "Upload",
+            "status": "PASS",
+            "evidence": "Fileinfo rejected PHP content renamed with a JPG extension.",
+            "duration_ms": 34
+        },
+        {
+            "id": "ST-24",
+            "area": "XSS",
+            "status": "PASS",
+            "evidence": "Stored script payload rendered as escaped text on the landlord dashboard.",
+            "duration_ms": 153
+        },
+        {
+            "id": "ST-25",
+            "area": "Session",
+            "status": "PASS",
+            "evidence": "Session identifier changed after authentication.",
+            "duration_ms": 76
+        },
+        {
+            "id": "ST-26",
+            "area": "Session",
+            "status": "PASS",
+            "evidence": "Logout invalidated the session and dashboard access required login.",
+            "duration_ms": 112
+        },
+        {
+            "id": "ST-27",
+            "area": "Admin",
+            "status": "PASS",
+            "evidence": "Pending landlord 7 was verified with an audit event.",
+            "duration_ms": 187
+        },
+        {
+            "id": "ST-28",
+            "area": "Admin",
+            "status": "PASS",
+            "evidence": "Pending property 6 was published, audited and became searchable.",
+            "duration_ms": 122
+        },
+        {
+            "id": "ST-29",
+            "area": "Admin",
+            "status": "PASS",
+            "evidence": "Document 1 was approved with reviewer, time and audit event.",
+            "duration_ms": 127
+        }
+    ]
+}

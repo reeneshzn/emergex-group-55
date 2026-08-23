@@ -1,0 +1,57 @@
+{
+  "suite": "EMERGEX browser acceptance tests ST-30 to ST-32",
+  "executed_at": "2026-08-18T18:03:07+02:00",
+  "base_url": "http://127.0.0.1:8080/emergex/public",
+  "browser": "Codex in-app Chromium browser",
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3
+  },
+  "results": [
+    {
+      "id": "ST-30",
+      "area": "Responsive",
+      "status": "PASS",
+      "evidence": {
+        "viewports": [
+          {"width": 360, "height": 800, "horizontal_overflow": false},
+          {"width": 768, "height": 900, "horizontal_overflow": false},
+          {"width": 1440, "height": 900, "horizontal_overflow": false}
+        ],
+        "listing_filters_visible": true,
+        "listing_apply_button_visible": true,
+        "mobile_menu_button_visible": true,
+        "mobile_menu_expanded": true,
+        "mobile_menu_display": "flex"
+      }
+    },
+    {
+      "id": "ST-31",
+      "area": "Keyboard",
+      "status": "PASS",
+      "evidence": {
+        "login_controls": ["email input", "password input", "submit button"],
+        "search_controls": ["search input", "number input", "two checkboxes", "submit button", "clear link"],
+        "booking_link_keyboard_focusable": true,
+        "native_keyboard_controls_only": true,
+        "logical_document_order": true,
+        "journey_runtime_cross_check": ["ST-02", "ST-05", "ST-06", "ST-13"]
+      }
+    },
+    {
+      "id": "ST-32",
+      "area": "Offline",
+      "status": "PASS",
+      "evidence": {
+        "home_external_urls": 0,
+        "listing_external_urls": 0,
+        "home_local_urls": 18,
+        "listing_local_urls": 23,
+        "home_images_loaded": 4,
+        "listing_images_loaded": 7,
+        "core_routes_operational_without_external_assets": true
+      }
+    }
+  ]
+}

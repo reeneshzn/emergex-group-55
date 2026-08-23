@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Project xmlns="http://schemas.microsoft.com/project">
+  <SaveVersion>14</SaveVersion>
+  <Name>EMERGEX Academic Project</Name>
+  <Title>EMERGEX Group 55 Project Schedule</Title>
+  <Company>Richfield</Company>
+  <ScheduleFromStart>1</ScheduleFromStart>
+  <StartDate>2026-08-10T08:00:00</StartDate>
+  <FinishDate>2026-11-09T17:00:00</FinishDate>
+  <MinutesPerDay>480</MinutesPerDay><MinutesPerWeek>2400</MinutesPerWeek><DaysPerMonth>20</DaysPerMonth>
+  <Tasks>
+    <Task><UID>0</UID><ID>0</ID><Name>EMERGEX Academic Project</Name><Type>1</Type><IsNull>0</IsNull><WBS>0</WBS><OutlineNumber>0</OutlineNumber><OutlineLevel>0</OutlineLevel><Summary>1</Summary></Task>
+    <Task><UID>1</UID><ID>1</ID><Name>Phase 1 - Proposal</Name><Type>1</Type><IsNull>0</IsNull><WBS>1</WBS><OutlineNumber>1</OutlineNumber><OutlineLevel>1</OutlineLevel><Start>2026-08-10T08:00:00</Start><Finish>2026-08-28T17:00:00</Finish><Duration>PT120H0M0S</Duration><Summary>0</Summary><PercentComplete>100</PercentComplete></Task>
+    <Task><UID>2</UID><ID>2</ID><Name>Phase 2 - Planning and SRS</Name><Type>1</Type><IsNull>0</IsNull><WBS>2</WBS><OutlineNumber>2</OutlineNumber><OutlineLevel>1</OutlineLevel><Start>2026-08-17T08:00:00</Start><Finish>2026-09-18T17:00:00</Finish><Duration>PT200H0M0S</Duration><Summary>0</Summary><PercentComplete>100</PercentComplete><PredecessorLink><PredecessorUID>1</PredecessorUID><Type>1</Type></PredecessorLink></Task>
+    <Task><UID>3</UID><ID>3</ID><Name>Phase 3 - Analysis and models</Name><Type>1</Type><IsNull>0</IsNull><WBS>3</WBS><OutlineNumber>3</OutlineNumber><OutlineLevel>1</OutlineLevel><Start>2026-09-07T08:00:00</Start><Finish>2026-10-09T17:00:00</Finish><Duration>PT200H0M0S</Duration><Summary>0</Summary><PercentComplete>100</PercentComplete><PredecessorLink><PredecessorUID>2</PredecessorUID><Type>1</Type></PredecessorLink></Task>
+    <Task><UID>4</UID><ID>4</ID><Name>Phase 4 - Architecture and UI design</Name><Type>1</Type><IsNull>0</IsNull><WBS>4</WBS><OutlineNumber>4</OutlineNumber><OutlineLevel>1</OutlineLevel><Start>2026-09-28T08:00:00</Start><Finish>2026-10-30T17:00:00</Finish><Duration>PT200H0M0S</Duration><Summary>0</Summary><PercentComplete>100</PercentComplete><PredecessorLink><PredecessorUID>3</PredecessorUID><Type>1</Type></PredecessorLink></Task>
+    <Task><UID>5</UID><ID>5</ID><Name>Database and backend build</Name><Type>1</Type><IsNull>0</IsNull><WBS>5</WBS><OutlineNumber>5</OutlineNumber><OutlineLevel>1</OutlineLevel><Start>2026-10-05T08:00:00</Start><Finish>2026-10-26T17:00:00</Finish><Duration>PT128H0M0S</Duration><Summary>0</Summary><PercentComplete>100</PercentComplete><PredecessorLink><PredecessorUID>4</PredecessorUID><Type>1</Type></PredecessorLink></Task>
+    <Task><UID>6</UID><ID>6</ID><Name>Frontend integration</Name><Type>1</Type><IsNull>0</IsNull><WBS>6</WBS><OutlineNumber>6</OutlineNumber><OutlineLevel>1</OutlineLevel><Start>2026-10-12T08:00:00</Start><Finish>2026-11-02T17:00:00</Finish><Duration>PT128H0M0S</Duration><Summary>0</Summary><PercentComplete>100</PercentComplete><PredecessorLink><PredecessorUID>5</PredecessorUID><Type>1</Type></PredecessorLink></Task>
+    <Task><UID>7</UID><ID>7</ID><Name>Testing, reporting and fixes</Name><Type>1</Type><IsNull>0</IsNull><WBS>7</WBS><OutlineNumber>7</OutlineNumber><OutlineLevel>1</OutlineLevel><Start>2026-10-26T08:00:00</Start><Finish>2026-11-07T17:00:00</Finish><Duration>PT80H0M0S</Duration><Summary>0</Summary><PercentComplete>100</PercentComplete><PredecessorLink><PredecessorUID>6</PredecessorUID><Type>1</Type></PredecessorLink></Task>
+    <Task><UID>8</UID><ID>8</ID><Name>Backup and live demonstration rehearsal</Name><Type>1</Type><IsNull>0</IsNull><WBS>8</WBS><OutlineNumber>8</OutlineNumber><OutlineLevel>1</OutlineLevel><Start>2026-11-03T08:00:00</Start><Finish>2026-11-08T17:00:00</Finish><Duration>PT32H0M0S</Duration><Summary>0</Summary><PercentComplete>100</PercentComplete><PredecessorLink><PredecessorUID>7</PredecessorUID><Type>1</Type></PredecessorLink></Task>
+    <Task><UID>9</UID><ID>9</ID><Name>Final submission and presentation</Name><Type>1</Type><IsNull>0</IsNull><WBS>9</WBS><OutlineNumber>9</OutlineNumber><OutlineLevel>1</OutlineLevel><Start>2026-11-09T08:00:00</Start><Finish>2026-11-09T17:00:00</Finish><Duration>PT8H0M0S</Duration><Summary>0</Summary><PercentComplete>0</PercentComplete><PredecessorLink><PredecessorUID>8</PredecessorUID><Type>1</Type></PredecessorLink></Task>
+  </Tasks>
+  <Resources>
+    <Resource><UID>1</UID><ID>1</ID><Name>Tristan Moses</Name><Type>1</Type><MaxUnits>1</MaxUnits></Resource>
+    <Resource><UID>2</UID><ID>2</ID><Name>Reenesh Ramawthar</Name><Type>1</Type><MaxUnits>1</MaxUnits></Resource>
+    <Resource><UID>3</UID><ID>3</ID><Name>Joyce Kamalu</Name><Type>1</Type><MaxUnits>1</MaxUnits></Resource>
+    <Resource><UID>4</UID><ID>4</ID><Name>Novithan Naidoo</Name><Type>1</Type><MaxUnits>1</MaxUnits></Resource>
+    <Resource><UID>5</UID><ID>5</ID><Name>Thingo Shezi</Name><Type>1</Type><MaxUnits>1</MaxUnits></Resource>
+    <Resource><UID>6</UID><ID>6</ID><Name>Lungelo Ngwane</Name><Type>1</Type><MaxUnits>1</MaxUnits></Resource>
+  </Resources>
+</Project>
