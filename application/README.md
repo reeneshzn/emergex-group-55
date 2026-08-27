@@ -25,7 +25,16 @@ EMERGEX is a complete academic LAMP prototype for Group 55. It demonstrates a se
 
 ## Installation on XAMPP
 
-For the portable runtime included beside the completed project, double-click `runtime-tools/START EMERGEX.cmd`; double-click `runtime-tools/STOP EMERGEX.cmd` when finished. No PowerShell file association is required.
+### Quick start from the GitHub working copy
+
+1. Install XAMPP in `C:\xampp`, or keep the supplied portable `.project_runtime` folder beside the completed project.
+2. In the repository, open `runtime-tools` and double-click `START EMERGEX.cmd`.
+3. The launcher detects XAMPP, links the repository's `application` folder into `htdocs`, starts the required local services and opens `http://127.0.0.1:8080/emergex/public/`.
+4. Double-click `STOP EMERGEX.cmd` when finished. It stops only services that were started by the launcher.
+
+No PowerShell file association is required. If another MySQL installation already uses port 3306, the launcher uses the project's MariaDB on port 3307.
+
+### Manual XAMPP setup
 
 1. Copy the `application` folder to `C:\xampp\htdocs\emergex`.
 2. Start Apache and MySQL from the XAMPP Control Panel.
