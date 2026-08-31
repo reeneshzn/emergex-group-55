@@ -3,3 +3,6 @@
 **/backups/*.sql
 *.pid
 *.log
+bin/
+obj/
+.vs/
