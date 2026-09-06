@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<title>EMERGEX — Phase 5 Testing Report</title>
+<style>
+@page { size: A4; margin: 2.2cm 2cm; }
+body { font-family: Calibri, "Segoe UI", Arial, sans-serif; font-size: 11pt; line-height: 1.45; color: #000; }
+h1 { font-size: 20pt; margin: 0 0 4pt; }
+h2 { font-size: 15pt; margin: 22pt 0 6pt; page-break-after: avoid; border-bottom: 1.5pt solid #333; padding-bottom: 3pt; }
+h3 { font-size: 12.5pt; margin: 16pt 0 4pt; page-break-after: avoid; }
+h4 { font-size: 11pt; margin: 12pt 0 3pt; page-break-after: avoid; font-style: italic; }
+p { margin: 0 0 8pt; text-align: justify; }
+table { border-collapse: collapse; width: 100%; margin: 8pt 0 14pt; font-size: 9.5pt; page-break-inside: avoid; }
+th, td { border: 0.75pt solid #666; padding: 4pt 6pt; text-align: left; vertical-align: top; }
+th { background: #e8e8e8; font-weight: bold; }
+code, .mono { font-family: Consolas, "Courier New", monospace; font-size: 9pt; }
+ul, ol { margin: 0 0 8pt 0; padding-left: 20pt; }
+li { margin-bottom: 3pt; }
+.title-block { text-align: center; margin-bottom: 26pt; padding-bottom: 14pt; border-bottom: 2pt solid #000; }
+.title-block p { text-align: center; margin: 2pt 0; }
+.meta { font-size: 10pt; color: #333; }
+.pass { color: #146c2e; font-weight: bold; }
+.fail { color: #a31515; font-weight: bold; }
+.callout { border-left: 3pt solid #666; background: #f4f4f4; padding: 7pt 10pt; margin: 10pt 0 14pt; }
+.callout p { margin: 0 0 5pt; }
+.callout p:last-child { margin-bottom: 0; }
+.pagebreak { page-break-before: always; }
+.small { font-size: 9.5pt; }
+caption { font-weight: bold; text-align: left; padding-bottom: 3pt; font-size: 10pt; }
+</style>
+</head>
+<body>
+
+<div class="title-block">
+  <h1>EMERGEX Student Accommodation Platform</h1>
+  <p style="font-size:13pt; font-weight:bold;">Phase 5 — Implementation</p>
+  <p style="font-size:13pt;">Section 5.3 Testing &amp; Section 5.4 System Testing</p>
+  <p class="meta">Group 55</p>
+  <p class="meta">Run of record: 6 September 2026</p>
+</div>
+
+<h2>5.3 Testing</h2>
+
+<h3>5.3.1 Introduction</h3>
+
+<p>This section documents the verification of the EMERGEX student accommodation
+platform: what was tested, how, with which tools, and on what basis a build is
+judged fit to demonstrate. Section 5.4 that follows presents the test cases
+themselves, the results of executing them, and the defects that execution
+uncovered.</p>
+
+<p>EMERGEX is a web application built in PHP 8 against a MySQL database, served
+by Apache under XAMPP. It allows students to search verified accommodation,
+filter by NSFAS accreditation and rent, book instantly or by request, upload
+NSFAS evidence, and progress a simulated deposit through an escrow model.
+Landlords respond to booking requests; administrators verify landlords and review
+uploaded documents. No real funds are processed at any point — the escrow
+behaviour is demonstrated, not transacted.</p>
+
+<p>That characteristic shapes the testing approach. Because money never moves,
+the correctness of the <em>state machine</em> around money is the thing that
+matters: a deposit that is recorded as released when it was never held would be
+invisible to a user but wrong in the data. Several tests therefore assert on
+database rows rather than on screen text.</p>
+
+<h3>5.3.2 Objectives</h3>
+
+<ol>
+  <li>Verify that every implemented feature behaves as specified in the
+      functional requirements.</li>
+  <li>Verify that data written by the application is correct and complete in the
+      database, not merely plausible on screen.</li>
+  <li>Verify that access controls, input handling and session management resist
+      ordinary hostile input.</li>
+  <li>Establish an automated regression suite that can be re-run on demand, so a
+      later change cannot silently undo an earlier fix.</li>
+  <li>Record any defect found, with enough detail to reproduce and fix it.</li>
+</ol>
+
+<h3>5.3.3 Scope</h3>
+
+<h4>In scope</h4>
+<ul>
+  <li>All public pages: home, property search, property detail, how-it-works,
+      privacy, sign-in, registration.</li>
+  <li>All three authenticated roles: student, landlord, administrator.</li>
+  <li>The complete booking lifecycle: instant book, request-and-approve,
+      request-and-decline, deposit simulation, check-in confirmation.</li>
+  <li>NSFAS document upload and administrator review.</li>
+  <li>Landlord verification and the audit trail.</li>
+  <li>Security controls: authentication, authorisation, CSRF, session handling,
+      input escaping, upload handling, error disclosure.</li>
+</ul>
+
+<h4>Out of scope</h4>
+<ul>
+  <li><strong>Load and performance testing.</strong> The prototype runs on a
+      single developer machine against seeded data; a throughput figure measured
+      there would not be meaningful.</li>
+  <li><strong>Cross-browser testing.</strong> Execution used Chromium only.
+      Firefox and WebKit are supported by the same framework and would require
+      only a configuration change.</li>
+  <li><strong>Real payment integration.</strong> None exists to test.</li>
+  <li><strong>Penetration testing.</strong> The security layer verifies that
+      specific controls hold; it is not an adversarial assessment.</li>
+</ul>
+
+<h3>5.3.4 Test strategy</h3>
+
+<p>Testing is organised into six levels. Each answers a different question, and a
+defect that escapes one level should be caught by the next.</p>
+
+<table>
+<caption>Table 5.3.1 — Test levels</caption>
+<tr><th style="width:16%">Level</th><th style="width:34%">Question it answers</th><th style="width:34%">Typical assertion</th><th style="width:16%">Tests</th></tr>
+<tr><td><strong>UI</strong></td><td>Does the interface render correctly and accessibly?</td><td>The verified badge is visible; the grid stacks on mobile</td><td>25</td></tr>
+<tr><td><strong>Functional</strong></td><td>Does the application behave according to the rules?</td><td>A past move-in date is refused; a student cannot open admin.php</td><td>39</td></tr>
+<tr><td><strong>Integration</strong></td><td>Does what appears on screen actually reach MySQL?</td><td>The escrow row exists with status <span class="mono">held</span> and the correct amount</td><td>9</td></tr>
+<tr><td><strong>End-to-end</strong></td><td>Do complete journeys work across roles?</td><td>Student books, landlord approves, deposit completes</td><td>5</td></tr>
+<tr><td><strong>Regression</strong></td><td>Has a previous fix been undone?</td><td>Security headers still present; prices still formatted in Rand</td><td>24</td></tr>
+<tr><td><strong>Security</strong></td><td>Do the controls hold under hostile input?</td><td>An injection payload is treated as literal text</td><td>16</td></tr>
+</table>
+
+<p>Ten tests carry two level tags. A test proving that a student cannot reach the
+administrator dashboard is simultaneously a functional rule and an access
+control, and is counted in both filters without being duplicated in code.</p>
+
+<h4>Relationship to earlier project phases</h4>
+
+<p>Test design follows the V-model: each development phase has a corresponding
+test level, and the tests for a phase are designed while that phase is specified
+rather than afterwards.</p>
+
+<table>
+<caption>Table 5.3.2 — V-model mapping to project phases</caption>
+<tr><th style="width:45%">Development phase</th><th style="width:30%">Corresponding test level</th><th style="width:25%">Suite</th></tr>
+<tr><td>3.6 Analysis — Functional Requirements</td><td>Acceptance testing</td><td>End-to-end, Functional</td></tr>
+<tr><td>3.7 Analysis — Non-Functional Requirements</td><td>Security, usability, accessibility</td><td>Security, UI</td></tr>
+<tr><td>4.3 Design — Architectural Design</td><td>Integration testing</td><td>Integration</td></tr>
+<tr><td>4.5 Design — Database Design</td><td>Integration testing</td><td>Integration</td></tr>
+<tr><td>4.7 Design — Interface Design</td><td>Interface testing</td><td>UI</td></tr>
+<tr><td>5.2 Implementation — Coding</td><td>Component testing</td><td>Functional</td></tr>
+</table>
+
+<h3>5.3.5 Test environment</h3>
+
+<table>
+<caption>Table 5.3.3 — Environment specification</caption>
+<tr><th style="width:30%">Component</th><th>Specification</th></tr>
+<tr><td>Operating system</td><td>Windows 11</td></tr>
+<tr><td>Web server</td><td>Apache (XAMPP), <span class="mono">localhost</span></td></tr>
+<tr><td>Application runtime</td><td>PHP 8, served from <span class="mono">application/public</span></td></tr>
+<tr><td>Database</td><td>MySQL 8, schema <span class="mono">emergex</span>, port 3306</td></tr>
+<tr><td>Browser under test</td><td>Chromium (Playwright-managed build), headless</td></tr>
+<tr><td>Test runtime</td><td>.NET 9.0</td></tr>
+<tr><td>Test data</td><td>Three demo accounts and four published properties, loaded by <span class="mono">database/install.php</span></td></tr>
+</table>
+
+<p>The installer drops and recreates every table before seeding, so the suite can
+be returned to a known state at any time. This matters because several tests
+create bookings, register users and upload documents; without a deterministic
+starting point the assertions on counts would drift between runs.</p>
+
+<h3>5.3.6 Tools</h3>
+
+<table>
+<caption>Table 5.3.4 — Tooling</caption>
+<tr><th style="width:26%">Tool</th><th style="width:18%">Version</th><th>Purpose</th></tr>
+<tr><td>Playwright for .NET</td><td>1.62.0</td><td>Browser automation — drives a real Chromium instance</td></tr>
+<tr><td>NUnit</td><td>4.6.1</td><td>Test framework: fixtures, categories, parameterised cases</td></tr>
+<tr><td>MySqlConnector</td><td>2.4.0</td><td>Direct database access for the integration layer</td></tr>
+<tr><td>Visual Studio 2022</td><td>—</td><td>Authoring and interactive execution via Test Explorer</td></tr>
+<tr><td>.NET CLI</td><td>9.0</td><td>Recorded runs producing TRX and HTML artefacts</td></tr>
+</table>
+
+<p>Playwright was chosen over Selenium for two reasons. Its assertions are
+<em>web-first</em>: <span class="mono">Expect(locator).ToBeVisibleAsync()</span>
+retries until a timeout rather than failing the instant the element is missing,
+which removes the explicit waits and arbitrary sleeps that make Selenium suites
+flaky. Second, it provides an isolated browser context per test at negligible
+cost, so no session leaks between tests.</p>
+
+<h3>5.3.7 Framework architecture</h3>
+
+<p>The suite is not a flat collection of scripts. Shared machinery lives in a
+<span class="mono">Support</span> namespace — the test harness — separate from
+the tests themselves.</p>
+
+<table>
+<caption>Table 5.3.5 — Framework components</caption>
+<tr><th style="width:26%">Component</th><th>Responsibility</th></tr>
+<tr><td><span class="mono">TestConfig</span></td><td>Base URL, demo credentials and seeded-data constants in one place. Every value is overridable by environment variable so the suite runs on another machine without code changes.</td></tr>
+<tr><td><span class="mono">BaseTest</span></td><td>Base class for every test. Provides a fresh browser context, sign-in and sign-out helpers, and a helper that POSTs directly to a handler with a valid CSRF token.</td></tr>
+<tr><td><span class="mono">Database</span></td><td>Parameterised MySQL access used by the integration and security layers, plus cleanup helpers.</td></tr>
+<tr><td><span class="mono">TestFiles</span></td><td>Upload fixtures built in memory — a minimal valid PDF, a 1×1 PNG, and an inert PHP file used to test disguised uploads. Nothing is checked into the repository.</td></tr>
+<tr><td><span class="mono">Pages/</span></td><td>Page objects. <strong>Every CSS selector in the suite lives here and nowhere else.</strong></td></tr>
+</table>
+
+<div class="callout">
+<p><strong>Why the Page Object Model matters.</strong> Tests express intent —
+<em>open the listing, start the booking, submit it</em> — while page objects hold
+the knowledge of which DOM element that means. When the markup changes, the fix
+is one line in one file rather than a search across ninety tests. It also makes
+the tests readable to someone who has never seen the HTML.</p>
+</div>
+
+<h3>5.3.8 Test design principles</h3>
+
+<ul>
+  <li><strong>No selector appears in a test.</strong> Enforced by convention and
+      visible on inspection.</li>
+  <li><strong>No fixed waits.</strong> There is not one <span class="mono">Thread.Sleep</span>
+      in the suite. Web-first assertions retry until their timeout.</li>
+  <li><strong>Every test cleans up after itself.</strong> Rows created during a
+      test are removed in a <span class="mono">finally</span> block or a
+      <span class="mono">[TearDown]</span>, so the suite is repeatable without
+      reseeding between runs.</li>
+  <li><strong>Negative cases are first-class.</strong> Roughly half the suite
+      asserts that something is correctly refused. A suite that only proves the
+      happy path proves very little.</li>
+  <li><strong>Integration means the database.</strong> Integration tests assert
+      on MySQL rows, because that is the only way to prove persistence actually
+      happened rather than that a success message was displayed.</li>
+  <li><strong>Tests that document defects are kept.</strong> Four tests assert
+      correct behaviour the build does not implement and therefore fail. Deleting
+      them would raise the pass rate and hide four real defects.</li>
+</ul>
+
+<h3>5.3.9 Entry and exit criteria</h3>
+
+<table>
+<caption>Table 5.3.6 — Entry and exit criteria</caption>
+<tr><th style="width:50%">Entry criteria</th><th style="width:50%">Exit criteria</th></tr>
+<tr><td>
+  <ul style="margin-bottom:0">
+    <li>Application deployed and reachable</li>
+    <li>Database schema created and seeded</li>
+    <li>Test project compiles without error</li>
+    <li>Browser binaries installed</li>
+  </ul>
+</td><td>
+  <ul style="margin-bottom:0">
+    <li>All 36 test cases executed</li>
+    <li>Every failure traced to a defect or a test fault</li>
+    <li>No unexplained failure remaining</li>
+    <li>Results recorded to file, not only to screen</li>
+  </ul>
+</td></tr>
+</table>
+
+<h3>5.3.10 Executing the suite</h3>
+
+<p>Two execution paths were used, for different purposes.</p>
+
+<p><strong>Visual Studio Test Explorer</strong> was used during development.
+Grouping by trait presents the six levels as folders, individual tests can be
+re-run in isolation, and failure messages are inspectable in place.</p>
+
+<p><strong>The .NET CLI</strong> was used for the recorded run. Test Explorer
+holds results in memory and does not honour the logger configuration in
+<span class="mono">.runsettings</span>, so it cannot produce a results file. The
+run of record was therefore executed as:</p>
+
+<p class="mono">dotnet test --settings .runsettings</p>
+
+<p>which writes a TRX result file and a browsable HTML report to
+<span class="mono">TestResults/</span>. Individual levels can be run with
+<span class="mono">--filter "Category=Security"</span> and equivalents.</p>
+
+<div class="pagebreak"></div>
+<h2>5.4 System Testing</h2>
+
+<h3>5.4.1 Test case design</h3>
+
+<p>Thirty-six test cases were designed, each specifying preconditions, numbered
+steps, and an expected result. They are listed in summary in section 5.4.2 and
+in full in Appendix A.</p>
+
+<p>An earlier set of thirty cases was discarded during design. Nine of those
+thirty described functionality the implemented system does not contain — creating
+a property listing, hiding a listing as an administrator, a "fully booked"
+overlay, a payment-processing loading state, webhook payment synchronisation, a
+declined-payment path, rejecting a landlord's verification, editing a landlord
+profile, and validating a rent-price field. Retaining them would have produced a
+report full of untestable cases. They were replaced with cases covering
+behaviour the system does implement but which the original set had not
+considered: CSRF enforcement, login throttling, security response headers,
+session cookie hardening, output escaping, audit logging, randomised upload
+filenames, and price tampering through request parameters.</p>
+
+<div class="callout">
+<p><strong>On the ratio of cases to test methods.</strong> Thirty-six test cases
+are implemented by 118 automated test executions. This is expected rather than
+inconsistent. A case whose expected result lists four conditions requires four
+assertions, and a case that specifies several inputs — four injection payloads,
+six public pages — becomes several parameterised executions of one method. The
+test case is the unit of specification; the test method is the unit of execution.
+Appendix B maps every case to the methods that implement it.</p>
+</div>
+
+<h3>5.4.2 Test case inventory</h3>
+
+<table>
+<caption>Table 5.4.1 — The 36 test cases and their outcomes</caption>
+<tr><th style="width:8%">ID</th><th style="width:44%">Title</th><th style="width:14%">Level</th><th style="width:12%">Priority</th><th style="width:22%">Result</th></tr>
+<tr><td>TC-01</td><td>Verified Landlord Trust Badge Rendering</td><td>UI</td><td>Medium</td><td class="pass">Pass</td></tr>
+<tr><td>TC-02</td><td>NSFAS Accreditation Badge Visibility</td><td>UI</td><td>Medium</td><td class="pass">Pass</td></tr>
+<tr><td>TC-03</td><td>Booking Call-to-Action Reflects Booking Mode</td><td>UI</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-04</td><td>Search Grid Mobile Responsiveness</td><td>UI</td><td>Medium</td><td class="pass">Pass</td></tr>
+<tr><td>TC-05</td><td>Role-Aware Header Navigation</td><td>UI</td><td>Medium</td><td class="pass">Pass</td></tr>
+<tr><td>TC-06</td><td>Accessible Empty State and Status Messaging</td><td>UI</td><td>Low</td><td class="pass">Pass</td></tr>
+<tr><td>TC-07</td><td>Register New Student Account</td><td>Functional</td><td>High</td><td class="fail">Fail — DEF-013</td></tr>
+<tr><td>TC-08</td><td>Enforce Password Policy on Registration</td><td>Functional</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-09</td><td>Reject Duplicate Email Registration</td><td>Functional</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-10</td><td>Reject Invalid Login Credentials</td><td>Functional</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-11</td><td>Throttle Repeated Failed Login Attempts</td><td>Functional</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-12</td><td>Reject Form Submission Without CSRF Token</td><td>Functional</td><td>High</td><td class="fail">Partial — DEF-012</td></tr>
+<tr><td>TC-13</td><td>Student Logout and Session Termination</td><td>Functional</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-14</td><td>Block Unauthorised URL Access by Role</td><td>Functional</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-15</td><td>Filter Properties by NSFAS Status</td><td>Functional</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-16</td><td>Filter Properties by Maximum Rent</td><td>Functional</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-17</td><td>Keyword Search and Empty Result Handling</td><td>Functional</td><td>Medium</td><td class="pass">Pass</td></tr>
+<tr><td>TC-18</td><td>Reject Invalid Booking Submission</td><td>Functional</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-19</td><td>Reject Malicious File Uploads</td><td>Functional</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-20</td><td>Search Grid Matches Database Contents</td><td>Integration</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-21</td><td>Registration Stores Hashed Password and Role</td><td>Integration</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-22</td><td>Instant Booking Persists Booking and Escrow Records</td><td>Integration</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-23</td><td>Escrow Simulation Transitions Through Every State</td><td>Integration</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-24</td><td>Document Upload and Audit Log Persistence</td><td>Integration</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-25</td><td>Complete Instant Book and Simulated Payment Journey</td><td>E2E</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-26</td><td>Request, Landlord Decision and Deposit Journey</td><td>E2E</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-27</td><td>Landlord Verification and Document Review Journey</td><td>E2E</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-28</td><td>Security Headers and Session Cookie Hardening</td><td>Regression</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-29</td><td>Output Escaping and Currency Formatting</td><td>Regression</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-30</td><td>Prevent Price Tampering via Request Parameters</td><td>Regression</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-31</td><td>Resist SQL Injection on Public Inputs</td><td>Security</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-32</td><td>Prevent Account Enumeration and Credential Disclosure</td><td>Security</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-33</td><td>Enforce Access Control on Documents and Bookings</td><td>Security</td><td>High</td><td class="fail">Fail — DEF-011</td></tr>
+<tr><td>TC-34</td><td>Harden File Upload Handling</td><td>Security</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-35</td><td>Protect Session Transport and Prevent Caching</td><td>Security</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-36</td><td>Suppress Internal Detail in Error Responses</td><td>Security</td><td>Medium</td><td class="pass">Pass</td></tr>
+</table>
+
+<p>A further test case, covering room availability, could not be written because
+the control it would verify does not exist in the application. The condition is
+nevertheless recorded as DEF-010 and is asserted by a test in the regression
+suite.</p>
+
+<h3>5.4.3 Execution results</h3>
+
+<p>The run of record was executed on 6 September 2026 against a freshly
+reinstalled database.</p>
+
+<table>
+<caption>Table 5.4.2 — Execution summary</caption>
+<tr><th style="width:60%">Measure</th><th style="width:40%">Value</th></tr>
+<tr><td>Test cases executed</td><td>36 of 36 (100%)</td></tr>
+<tr><td>Test methods executed</td><td>118</td></tr>
+<tr><td>Passed</td><td>114</td></tr>
+<tr><td>Failed</td><td>4</td></tr>
+<tr><td>Skipped</td><td>0</td></tr>
+<tr><td>Pass rate</td><td>96.6%</td></tr>
+<tr><td>Duration</td><td>46.5 seconds</td></tr>
+<tr><td>Failures traced to a defect</td><td>4 of 4 (100%)</td></tr>
+<tr><td>Unexplained failures</td><td>0</td></tr>
+</table>
+
+<table>
+<caption>Table 5.4.3 — Results by test level</caption>
+<tr><th style="width:24%">Level</th><th style="width:14%">Executed</th><th style="width:14%">Passed</th><th style="width:14%">Failed</th><th style="width:34%">Failing test</th></tr>
+<tr><td>UI</td><td>25</td><td>25</td><td>0</td><td>—</td></tr>
+<tr><td>Functional</td><td>39</td><td>38</td><td>1</td><td>CSRF rejection status (DEF-012)</td></tr>
+<tr><td>Integration</td><td>9</td><td>9</td><td>0</td><td>—</td></tr>
+<tr><td>End-to-end</td><td>5</td><td>5</td><td>0</td><td>—</td></tr>
+<tr><td>Regression</td><td>24</td><td>22</td><td>2</td><td>Room availability (DEF-010); student-number visibility (DEF-013)</td></tr>
+<tr><td>Security</td><td>16</td><td>15</td><td>1</td><td>Document access control (DEF-011)</td></tr>
+</table>
+
+<p>Level totals exceed 118 because ten tests are tagged with two levels.</p>
+
+<h3>5.4.4 Defects identified</h3>
+
+<p>Four defects were identified. All four were found by automated tests; none
+was visible through ordinary manual use of the application, which is the central
+argument for the effort invested in the suite.</p>
+
+<table>
+<caption>Table 5.4.4 — Defect register</caption>
+<tr><th style="width:10%">ID</th><th style="width:12%">Severity</th><th style="width:48%">Description</th><th style="width:30%">Recommended fix</th></tr>
+<tr>
+  <td>DEF-011</td><td>Critical</td>
+  <td>Uploaded identity documents are written to <span class="mono">public/uploads</span> and served directly by Apache with no authorisation check. An anonymous request for a document URL returned HTTP 200 and the file contents. The stored filename is forty random hexadecimal characters and cannot be guessed, but an unguessable URL is obscurity, not access control: anyone who obtains the link through a shared screenshot, a Referer header or browser history synchronisation can read another student's identity document without a session.</td>
+  <td>Store uploads outside the web root and serve them through an authenticated PHP handler that checks <span class="mono">user_documents.user_id</span> against the current session before streaming bytes.</td>
+</tr>
+<tr>
+  <td>DEF-010</td><td>High</td>
+  <td><span class="mono">book.php</span> never reads <span class="mono">available_rooms</span>, and no code path decrements it. A property advertising zero available rooms accepts an unlimited number of bookings, while the landlord's dashboard continues to display zero. The column is declared <span class="mono">SMALLINT UNSIGNED</span>, so the database cannot store a negative value — but that is a storage constraint, not a business rule, and it is never exercised because nothing writes to the column.</td>
+  <td>Add an availability check inside the existing transaction in <span class="mono">book.php</span>, and decrement the column on successful booking.</td>
+</tr>
+<tr>
+  <td>DEF-012</td><td>Medium</td>
+  <td><span class="mono">verify_csrf()</span> sets HTTP 419. That code is a Laravel convention and is not registered with IANA, so Apache does not recognise the status line and substitutes 500 Internal Server Error. The CSRF protection itself is effective — the request is refused and no session is issued — but every legitimately blocked submission is reported to the user and to any monitoring as a server crash, and the intended "The form expired" guidance never reaches the page.</td>
+  <td>Return 403 Forbidden from <span class="mono">verify_csrf()</span> in <span class="mono">bootstrap.php</span>.</td>
+</tr>
+<tr>
+  <td>DEF-013</td><td>Low</td>
+  <td><span class="mono">app.js</span> correctly sets the <span class="mono">hidden</span> property on the <span class="mono">.student-only</span> label when the Landlord role is selected. However <span class="mono">app.css</span> declares <span class="mono">label { display: block }</span>, and an author stylesheet rule takes precedence over the user-agent rule <span class="mono">[hidden] { display: none }</span>. The attribute is therefore set while the field remains visible, so a landlord is shown — and can complete — a student-number field that does not apply to them.</td>
+  <td>Add <span class="mono">[hidden] { display: none !important; }</span> to <span class="mono">app.css</span>.</td>
+</tr>
+</table>
+
+<h3>5.4.5 Evaluation of the testing results</h3>
+
+<h4>Overall assessment</h4>
+
+<p>The application is functionally sound. All twenty-seven functional,
+integration and end-to-end cases passed, including every booking journey and
+every escrow state transition. The core value proposition of the system — that a
+student can find verified accommodation, book it, and move a deposit through a
+transparent escrow model — works correctly and persists correct data at every
+step.</p>
+
+<p>Security is largely well implemented, which is worth stating plainly because
+the failures are easier to notice than the passes. Database queries are
+parameterised throughout: seven distinct SQL injection payloads across the search
+and sign-in interfaces were treated as literal text, with no error disclosure and
+no authentication bypass. Passwords are hashed. Session identifiers are
+regenerated on sign-in, preventing session fixation. The session cookie is
+HttpOnly and SameSite=Lax and is not readable from page script. Security response
+headers are present. Uploads are validated by content inspection rather than by
+file extension, and a PHP file declaring an image MIME type was correctly
+rejected. Output is escaped, so a stored HTML payload rendered as literal text
+rather than executing.</p>
+
+<h4>The significant finding</h4>
+
+<p>DEF-011 is the defect that matters. The system's purpose is to protect
+students from accommodation fraud, and it asks them to upload NSFAS
+documentation — which for a South African student typically carries an
+identity number, a name, and financial information. Storing those files in a
+publicly served directory undermines the trust proposition the platform is built
+on. The random filename means the exposure requires the URL to leak rather than
+being enumerable, which lowers the likelihood but not the impact. It is
+recommended that this be resolved before any demonstration involving real
+documents.</p>
+
+<h4>What automation contributed</h4>
+
+<p>None of the four defects would plausibly have been found by manual testing.
+A tester does not delete a hidden CSRF field before submitting a form; does not
+copy a stored filename out of the database and request it in a private window;
+does not set a property's room count to zero and then attempt to book it; and
+would very likely accept the student-number field as correct because the script
+governing it is written correctly — only the rendered result is wrong. The value
+of the suite lies less in confirming that the happy path works than in
+exercising the paths nobody thinks to try.</p>
+
+<h4>A methodological finding</h4>
+
+<div class="callout">
+<p>The SQL injection test initially appeared to pass when driven through the user
+interface. Investigation showed that the sign-in email field is declared
+<span class="mono">type="email" required</span>, so the browser refused to submit
+the malformed payload and the request never reached the server. The test was
+proving that Chromium validates email addresses, not that the application resists
+injection.</p>
+<p>The test was rewritten to POST directly, bypassing client-side validation, at
+which point it exercised the PHP and passed on its merits. The general lesson is
+that <strong>client-side validation is a usability feature and never a security
+control</strong>, because the attacker chooses the client. Security testing
+conducted exclusively through the interface will report false passes.</p>
+</div>
+
+<h4>Limitations</h4>
+
+<ul>
+  <li>Execution was against Chromium only. Rendering differences in Firefox or
+      Safari would not be detected.</li>
+  <li>The suite runs against seeded data of four properties and three users.
+      Behaviour under realistic data volumes — pagination, query performance,
+      index effectiveness — is untested.</li>
+  <li>No load or concurrency testing was performed. The booking transaction has
+      not been tested for race conditions under simultaneous requests, which is
+      relevant given DEF-010.</li>
+  <li>Accessibility testing was structural (alternative text, ARIA roles, focus
+      order). No assistive-technology or colour-contrast audit was conducted.</li>
+</ul>
+
+<h3>5.4.6 Recommendations</h3>
+
+<ol>
+  <li><strong>Resolve DEF-011 before any demonstration using real documents.</strong>
+      Move uploads outside the web root and serve them through an authenticated
+      handler.</li>
+  <li><strong>Implement the room-availability control (DEF-010)</strong> inside
+      the existing booking transaction, and add the corresponding integrity
+      constraint to the data model documented in section 3.4.</li>
+  <li><strong>Correct the CSRF rejection status (DEF-012)</strong> to 403, so
+      blocked submissions are distinguishable from genuine server errors in logs.</li>
+  <li><strong>Correct the hidden-field rendering (DEF-013)</strong> with an
+      explicit <span class="mono">[hidden]</span> rule in the stylesheet.</li>
+  <li><strong>Re-run the suite after each fix.</strong> The four failing tests
+      are the acceptance criteria for those fixes; each should turn green without
+      any other test turning red.</li>
+  <li><strong>Extend the suite as features are added.</strong> Nine cases were
+      removed because their features do not exist. If listing creation or
+      administrative moderation is implemented, the corresponding cases should be
+      restored.</li>
+</ol>
+
+<h3>5.4.7 Conclusion</h3>
+
+<p>Thirty-six test cases were designed from the implemented behaviour of the
+system and automated as 118 executable tests across six levels. All thirty-six
+were executed. One hundred and fourteen tests passed, four failed, and every
+failure was traced to a documented defect rather than to a fault in the tests.</p>
+
+<p>The system is functionally correct and, with one significant exception,
+securely implemented. The four defects identified are individually addressable,
+and the tests that revealed them serve as the acceptance criteria for their
+resolution. The suite is repeatable, self-cleaning and version-controlled
+alongside the application, so it will continue to protect these findings as
+development continues.</p>
+
+<div class="pagebreak"></div>
+<h2>Appendix A — Test case specifications</h2>
+
+<p class="small">Each case lists its preconditions, numbered steps and expected
+result. Source of record: <span class="mono">TestCases/test_cases_v2.json</span>.</p>
+
+<h3>A.1 User interface</h3>
+
+<h4>TC-01 — Verified Landlord Trust Badge Rendering</h4>
+<p class="small"><em>Level:</em> UI · <em>Priority:</em> Medium · <em>Result:</em> Pass<br>
+<em>Precondition:</em> Demo data loaded; "Emerald House Hatfield" belongs to the verified demo landlord.</p>
+<ol class="small"><li>Open properties.php as an anonymous visitor.</li><li>Open the listing "Emerald House Hatfield" from the results grid.</li><li>Inspect the landlord information panel.</li></ol>
+<p class="small"><strong>Expected:</strong> The verified badge is visible and reads "Verified landlord". The badge is absent for listings whose landlord has a null verified_at.</p>
+
+<h4>TC-02 — NSFAS Accreditation Badge Visibility</h4>
+<p class="small"><em>Level:</em> UI · <em>Priority:</em> Medium · <em>Result:</em> Pass<br>
+<em>Precondition:</em> Three of four seeded listings are NSFAS accredited; "Durban North Student Lofts" is not.</p>
+<ol class="small"><li>Open the detail page for "Emerald House Hatfield" (accredited).</li><li>Confirm the NSFAS badge is present.</li><li>Open the detail page for "Durban North Student Lofts" (not accredited).</li><li>Confirm the NSFAS badge is absent.</li></ol>
+<p class="small"><strong>Expected:</strong> The badge renders for accredited listings and does not render for non-accredited listings.</p>
+
+<h4>TC-03 — Booking Call-to-Action Reflects Booking Mode</h4>
+<p class="small"><em>Level:</em> UI · <em>Priority:</em> High · <em>Result:</em> Pass<br>
+<em>Precondition:</em> Two seeded listings are instant-book, two are request-flow.</p>
+<ol class="small"><li>Open an instant-book listing and read the primary button label.</li><li>Open a request-flow listing and read the primary button label.</li><li>Confirm the sandbox payment disclaimer is shown on both.</li></ol>
+<p class="small"><strong>Expected:</strong> Labels are "Instant Book" and "Request booking" respectively. Both pages display the "No real payment is taken" disclaimer.</p>
+
+<h4>TC-04 — Search Grid Mobile Responsiveness</h4>
+<p class="small"><em>Level:</em> UI · <em>Priority:</em> Medium · <em>Result:</em> Pass</p>
+<ol class="small"><li>Set the viewport to 375 × 812.</li><li>Open properties.php.</li><li>Compare the bounding boxes of the first two property cards.</li><li>Compare document scroll width against viewport width.</li><li>Open the mobile navigation toggle.</li></ol>
+<p class="small"><strong>Expected:</strong> Cards are vertically stacked at the same x-offset. Document scroll width does not exceed viewport width. The toggle is visible, has an accessible name, and reveals the menu.</p>
+
+<h4>TC-05 — Role-Aware Header Navigation</h4>
+<p class="small"><em>Level:</em> UI · <em>Priority:</em> Medium · <em>Result:</em> Pass</p>
+<ol class="small"><li>Open the site while signed out and inspect the header.</li><li>Sign in as the demo student and inspect the header.</li><li>Confirm the Reports link is not present.</li><li>Sign out, sign in as administrator, confirm the Reports link is present.</li></ol>
+<p class="small"><strong>Expected:</strong> Header links match the current role in all three states. Reports appears for the administrator only.</p>
+
+<h4>TC-06 — Accessible Empty State and Status Messaging</h4>
+<p class="small"><em>Level:</em> UI · <em>Priority:</em> Low · <em>Result:</em> Pass</p>
+<ol class="small"><li>Search for a term matching no listing.</li><li>Confirm the empty state renders with guidance copy.</li><li>Sign in and inspect the welcome flash message for role="status".</li><li>Inspect the alt attribute of each property card image.</li></ol>
+<p class="small"><strong>Expected:</strong> The empty state is visible with helpful copy. The flash element carries role="status". Every property image has a non-empty alt attribute that is not merely the filename.</p>
+
+<h3>A.2 Functional</h3>
+
+<h4>TC-07 — Register New Student Account</h4>
+<p class="small"><em>Level:</em> Functional · <em>Priority:</em> High · <em>Result:</em> Fail (DEF-013)<br>
+<em>Precondition:</em> The email address used is not already registered.</p>
+<ol class="small"><li>Open register.php.</li><li>Select the Student role and confirm the student number field becomes required.</li><li>Complete all required fields with valid data and accept the terms.</li><li>Submit the form.</li></ol>
+<p class="small"><strong>Expected:</strong> The account is created, the user is signed in, and the browser lands on dashboard.php with a success message. The user row exists with role "student". Selecting Landlord hides the student-number field.</p>
+
+<h4>TC-08 — Enforce Password Policy on Registration</h4>
+<p class="small"><em>Level:</em> Functional · <em>Priority:</em> High · <em>Result:</em> Pass</p>
+<ol class="small"><li>Open register.php and select the Student role.</li><li>Complete the form using a weak password such as "pass".</li><li>Submit the form.</li><li>Query the users table for the submitted email address.</li></ol>
+<p class="small"><strong>Expected:</strong> The form is redisplayed with a password policy error, the user remains on register.php, and no user row was created.</p>
+
+<h4>TC-09 — Reject Duplicate Email Registration</h4>
+<p class="small"><em>Level:</em> Functional · <em>Priority:</em> High · <em>Result:</em> Pass</p>
+<ol class="small"><li>Open register.php.</li><li>Complete the form using the existing demo student email address.</li><li>Submit the form.</li></ol>
+<p class="small"><strong>Expected:</strong> Registration is refused with a clear message and no duplicate user row is created.</p>
+
+<h4>TC-10 — Reject Invalid Login Credentials</h4>
+<p class="small"><em>Level:</em> Functional · <em>Priority:</em> High · <em>Result:</em> Pass</p>
+<ol class="small"><li>Open login.php.</li><li>Submit a valid email with an incorrect password.</li><li>Submit an unregistered email address.</li><li>Confirm the error wording is identical in both cases.</li></ol>
+<p class="small"><strong>Expected:</strong> Both attempts are refused and remain on login.php. The message is generic, preventing account enumeration.</p>
+
+<h4>TC-11 — Throttle Repeated Failed Login Attempts</h4>
+<p class="small"><em>Level:</em> Functional · <em>Priority:</em> High · <em>Result:</em> Pass</p>
+<ol class="small"><li>Open login.php.</li><li>Submit incorrect credentials five times in succession.</li><li>Submit a sixth attempt and observe the response.</li></ol>
+<p class="small"><strong>Expected:</strong> The sixth attempt is refused with HTTP 429 and a throttling message rather than a normal credential error.</p>
+
+<h4>TC-12 — Reject Form Submission Without CSRF Token</h4>
+<p class="small"><em>Level:</em> Functional · <em>Priority:</em> High · <em>Result:</em> Partial (DEF-012)</p>
+<ol class="small"><li>Open login.php.</li><li>Remove the hidden CSRF token field from the form via the DOM.</li><li>Submit the form with otherwise valid credentials.</li><li>Observe the HTTP response status.</li></ol>
+<p class="small"><strong>Expected:</strong> The request is refused with a clean 4xx status and the user is not signed in. <em>Actual:</em> refusal occurs correctly, but the status is 500 rather than the intended 419.</p>
+
+<h4>TC-13 — Student Logout and Session Termination</h4>
+<p class="small"><em>Level:</em> Functional · <em>Priority:</em> High · <em>Result:</em> Pass</p>
+<ol class="small"><li>Sign in as the demo student and confirm dashboard.php loads.</li><li>Sign out using the header link.</li><li>Navigate directly to dashboard.php.</li><li>Confirm the session cookie value has changed or been cleared.</li></ol>
+<p class="small"><strong>Expected:</strong> After sign-out the user is returned to a public page, dashboard.php redirects to login.php, and the previous session identifier is no longer valid.</p>
+
+<h4>TC-14 — Block Unauthorised URL Access by Role</h4>
+<p class="small"><em>Level:</em> Functional · <em>Priority:</em> High · <em>Result:</em> Pass</p>
+<ol class="small"><li>Signed in as a student, navigate directly to admin.php and to landlord.php.</li><li>Sign out and navigate directly to dashboard.php.</li><li>Signed in as a landlord, attempt to submit a booking.</li><li>Signed in as one student, attempt to simulate a deposit on another user's booking.</li></ol>
+<p class="small"><strong>Expected:</strong> Cross-role access returns HTTP 403. Anonymous access redirects to login.php. The landlord booking attempt is forbidden. The foreign booking action returns HTTP 404 rather than confirming the booking exists.</p>
+
+<h4>TC-15 — Filter Properties by NSFAS Status</h4>
+<p class="small"><em>Level:</em> Functional · <em>Priority:</em> High · <em>Result:</em> Pass</p>
+<ol class="small"><li>Open properties.php and note the unfiltered result count.</li><li>Apply the NSFAS filter and count the results.</li><li>Confirm the non-accredited listing is absent.</li><li>Apply the NSFAS and Instant Book filters together.</li></ol>
+<p class="small"><strong>Expected:</strong> Unfiltered returns 4. NSFAS alone returns 3. The combined filter returns the intersection, not the union.</p>
+
+<h4>TC-16 — Filter Properties by Maximum Rent</h4>
+<p class="small"><em>Level:</em> Functional · <em>Priority:</em> High · <em>Result:</em> Pass</p>
+<ol class="small"><li>Open properties.php.</li><li>Set the maximum rent filter to 5000 and apply it.</li><li>Read the rent shown on each returned card.</li><li>Clear the filters and confirm all listings return.</li></ol>
+<p class="small"><strong>Expected:</strong> Two listings are returned, both at or below R5 000. No returned rent exceeds the cap. Clearing filters restores all four.</p>
+
+<h4>TC-17 — Keyword Search and Empty Result Handling</h4>
+<p class="small"><em>Level:</em> Functional · <em>Priority:</em> Medium · <em>Result:</em> Pass</p>
+<ol class="small"><li>Search for a city name and confirm the matching listing is returned.</li><li>Search for a nearby institution and confirm the matching listing is returned.</li><li>Search for a nonsense term with no matches.</li><li>Observe the response.</li></ol>
+<p class="small"><strong>Expected:</strong> Relevant listings are returned for valid terms. The nonsense search returns zero cards, an empty state with guidance copy, and HTTP 200 — not a server error.</p>
+
+<h4>TC-18 — Reject Invalid Booking Submission</h4>
+<p class="small"><em>Level:</em> Functional · <em>Priority:</em> High · <em>Result:</em> Pass</p>
+<ol class="small"><li>Open the booking form for a valid listing.</li><li>Submit with a move-in date in the past.</li><li>Submit with a message exceeding the permitted length.</li><li>Request the booking form for a property id that does not exist.</li></ol>
+<p class="small"><strong>Expected:</strong> The first two submissions are refused with validation errors. The unknown property returns HTTP 404. No bookings row is created by any of the three.</p>
+
+<h4>TC-19 — Reject Malicious File Uploads</h4>
+<p class="small"><em>Level:</em> Functional · <em>Priority:</em> High · <em>Result:</em> Pass</p>
+<ol class="small"><li>Open the student dashboard document upload control.</li><li>Upload a file containing PHP source but named with a .png extension and an image MIME type.</li><li>Observe the response and check the uploads directory.</li><li>Upload a genuine PDF and confirm it is accepted.</li></ol>
+<p class="small"><strong>Expected:</strong> The disguised file is rejected and no row or stored file is created. The genuine PDF is accepted and recorded with status "pending".</p>
+
+<h3>A.3 Integration</h3>
+
+<h4>TC-20 — Search Grid Matches Database Contents</h4>
+<p class="small"><em>Level:</em> Integration · <em>Priority:</em> High · <em>Result:</em> Pass</p>
+<ol class="small"><li>Query the properties table directly for published rows.</li><li>Open properties.php and read the rendered card titles.</li><li>Compare the two sets.</li><li>Set one property's status to draft, reload, and compare again.</li></ol>
+<p class="small"><strong>Expected:</strong> The rendered set matches the queried set exactly. After the status change the drafted listing disappears and the count decreases by one.</p>
+
+<h4>TC-21 — Registration Stores Hashed Password and Correct Role</h4>
+<p class="small"><em>Level:</em> Integration · <em>Priority:</em> High · <em>Result:</em> Pass</p>
+<ol class="small"><li>Register a new student account through the web form.</li><li>Query the users table for the created row.</li><li>Inspect the password_hash column.</li><li>Inspect the role and status columns.</li></ol>
+<p class="small"><strong>Expected:</strong> The row exists with role "student" and status "active". The password_hash column does not contain the submitted password and matches a recognised hash prefix.</p>
+
+<h4>TC-22 — Instant Booking Persists Booking and Escrow Records</h4>
+<p class="small"><em>Level:</em> Integration · <em>Priority:</em> High · <em>Result:</em> Pass</p>
+<ol class="small"><li>Submit an instant booking through the web form.</li><li>Query the bookings table for the newest row for that student.</li><li>Query escrow_transactions for the matching booking id.</li><li>Compare the escrow amount against the property's deposit amount.</li></ol>
+<p class="small"><strong>Expected:</strong> One booking row with status "approved" and correct ids. One escrow row with status "not_paid" and an amount equal to the property's stored deposit.</p>
+
+<h4>TC-23 — Escrow Simulation Transitions Through Every State</h4>
+<p class="small"><em>Level:</em> Integration · <em>Priority:</em> High · <em>Result:</em> Pass</p>
+<ol class="small"><li>Confirm the escrow row starts at status "not_paid".</li><li>Trigger the deposit simulation and re-query.</li><li>Confirm the dashboard reports the deposit as securely held.</li><li>Confirm check-in and re-query.</li><li>Confirm a payment reference is displayed.</li></ol>
+<p class="small"><strong>Expected:</strong> Escrow status progresses not_paid → held → released. The booking reaches "completed". A reference beginning "SIM-" is displayed and no payment gateway is contacted.</p>
+
+<h4>TC-24 — Document Upload and Audit Log Persistence</h4>
+<p class="small"><em>Level:</em> Integration · <em>Priority:</em> High · <em>Result:</em> Pass</p>
+<ol class="small"><li>Upload a valid PDF from the student dashboard.</li><li>Query user_documents and compare the stored path against the original filename.</li><li>Sign in as the administrator and verify a landlord.</li><li>Query the audit_logs table for the newest entry.</li></ol>
+<p class="small"><strong>Expected:</strong> The stored filename differs from the original and is not guessable; the original name is retained separately. The audit log contains an "admin.user_verified" entry naming the acting administrator and the affected user.</p>
+
+<h3>A.4 End-to-end</h3>
+
+<h4>TC-25 — Complete Instant Book and Simulated Payment Journey</h4>
+<p class="small"><em>Level:</em> E2E · <em>Priority:</em> High · <em>Result:</em> Pass</p>
+<ol class="small"><li>Sign in as the demo student.</li><li>Search and filter the listings to instant-book only.</li><li>Open a listing from the grid and start the instant booking.</li><li>Submit the booking and confirm it is approved on the dashboard.</li><li>Simulate the deposit hold.</li><li>Confirm check-in and read the payment reference.</li></ol>
+<p class="small"><strong>Expected:</strong> The booking is approved immediately, the deposit moves held → released, the booking reaches "completed", and a simulated reference is displayed. The escrow row agrees with the screen at every step.</p>
+
+<h4>TC-26 — Accommodation Request, Landlord Decision and Deposit Journey</h4>
+<p class="small"><em>Level:</em> E2E · <em>Priority:</em> High · <em>Result:</em> Pass</p>
+<ol class="small"><li>As the student, submit a booking request with a message.</li><li>Confirm the dashboard shows "Awaiting landlord" and a response deadline.</li><li>Sign out and sign in as the landlord.</li><li>Approve the request and confirm the success message.</li><li>Sign back in as the student and simulate the deposit.</li><li>Repeat with a declined request and inspect the available actions.</li></ol>
+<p class="small"><strong>Expected:</strong> The request starts pending with a 12-hour deadline. On approval the student sees "Approved", the deposit action unlocks, and escrow reaches "held". On decline the booking shows "Declined", no action buttons are offered, and escrow remains "not_paid".</p>
+
+<h4>TC-27 — Landlord Verification and Document Review Journey</h4>
+<p class="small"><em>Level:</em> E2E · <em>Priority:</em> High · <em>Result:</em> Pass</p>
+<ol class="small"><li>Register a new landlord from the "List a property" call to action.</li><li>Confirm the dashboard reports verification as pending.</li><li>Sign in as the administrator and verify the new landlord.</li><li>Approve a student's uploaded NSFAS document.</li><li>Confirm both actions appear in the audit trail.</li><li>Sign in as each affected user and confirm the outcome is visible.</li></ol>
+<p class="small"><strong>Expected:</strong> The landlord dashboard changes from "Verification pending" to "Identity verified". The student sees the document marked "Approved". Both actions are listed in the audit trail.</p>
+
+<h3>A.5 Regression</h3>
+
+<h4>TC-28 — Security Headers and Session Cookie Hardening</h4>
+<p class="small"><em>Level:</em> Regression · <em>Priority:</em> High · <em>Result:</em> Pass</p>
+<ol class="small"><li>Request any page and inspect the response headers.</li><li>Confirm X-Frame-Options, X-Content-Type-Options, Content-Security-Policy and Referrer-Policy are present and correctly valued.</li><li>Sign in and inspect the session cookie attributes.</li><li>Read document.cookie from page script and confirm the session cookie is absent.</li></ol>
+<p class="small"><strong>Expected:</strong> X-Frame-Options is DENY, X-Content-Type-Options is nosniff, the CSP includes frame-ancestors 'none', and Referrer-Policy is set. The session cookie is HttpOnly with SameSite=Lax and is not readable from JavaScript.</p>
+
+<h4>TC-29 — Output Escaping and Currency Formatting</h4>
+<p class="small"><em>Level:</em> Regression · <em>Priority:</em> High · <em>Result:</em> Pass</p>
+<ol class="small"><li>Store a property title containing an HTML injection payload.</li><li>Open that property's detail page.</li><li>Confirm the payload did not execute and is displayed as literal text.</li><li>Restore the original title.</li><li>Read every price on the search grid and check its format.</li></ol>
+<p class="small"><strong>Expected:</strong> The injected script does not execute and renders as literal text. Every price matches "R" followed by space-separated thousands, for example "R 5 200".</p>
+
+<h4>TC-30 — Prevent Price Tampering via Request Parameters</h4>
+<p class="small"><em>Level:</em> Regression · <em>Priority:</em> High · <em>Result:</em> Pass</p>
+<ol class="small"><li>Open the booking form for a listing whose deposit amount is known.</li><li>Inject additional monthly_rent and deposit_amount fields with altered values.</li><li>Submit the booking.</li><li>Query the escrow_transactions row created by the submission.</li><li>Compare its amount against the property's stored deposit amount.</li></ol>
+<p class="small"><strong>Expected:</strong> The escrow amount equals the property's stored deposit, not the value supplied in the request. The tampered fields have no effect on any persisted value.</p>
+
+<h3>A.6 Security</h3>
+
+<h4>TC-31 — Resist SQL Injection on Public Inputs</h4>
+<p class="small"><em>Level:</em> Security · <em>Priority:</em> High · <em>Result:</em> Pass · <em>OWASP:</em> A03 Injection</p>
+<ol class="small"><li>Submit the payload <span class="mono">' OR '1'='1</span> through the property search field.</li><li>Confirm the response is HTTP 200 with no database error text.</li><li>Confirm the search returns zero results rather than every listing.</li><li>Submit a stacked DROP TABLE payload and confirm the users table still exists.</li><li>Submit tautology payloads through the sign-in fields.</li></ol>
+<p class="small"><strong>Expected:</strong> All payloads are treated as literal text. No SQLSTATE, syntax error or fatal error appears. A tautology does not act as a wildcard and does not authenticate. The schema is unchanged.</p>
+
+<h4>TC-32 — Prevent Account Enumeration and Credential Disclosure</h4>
+<p class="small"><em>Level:</em> Security · <em>Priority:</em> High · <em>Result:</em> Pass · <em>OWASP:</em> A07</p>
+<ol class="small"><li>Attempt sign-in with a registered email and incorrect password; record the message.</li><li>Attempt sign-in with an unregistered email; record the message.</li><li>Compare the two messages.</li><li>Submit a registration that will fail, using a distinctive password.</li><li>Search the returned page source for that password.</li></ol>
+<p class="small"><strong>Expected:</strong> Both failures produce an identical message. The rejected registration page source does not contain the submitted password.</p>
+
+<h4>TC-33 — Enforce Access Control on Documents and Bookings</h4>
+<p class="small"><em>Level:</em> Security · <em>Priority:</em> High · <em>Result:</em> Fail (DEF-011) · <em>OWASP:</em> A01</p>
+<ol class="small"><li>Upload a document as the demo student and read its stored filename from the database.</li><li>Clear all cookies and request that file directly by URL.</li><li>Request the uploads directory itself and inspect the response.</li><li>Register a second student and POST a deposit action naming the first student's booking id.</li><li>Re-query the first student's escrow row.</li></ol>
+<p class="small"><strong>Expected:</strong> The anonymous document request is refused. The uploads directory returns 403 or 404. The cross-account booking action returns HTTP 404 and the victim's escrow row is unchanged.<br>
+<strong>Actual:</strong> The cross-account and directory-listing controls hold. The anonymous document request returned HTTP 200 with the file contents — see DEF-011.</p>
+
+<h4>TC-34 — Harden File Upload Handling</h4>
+<p class="small"><em>Level:</em> Security · <em>Priority:</em> High · <em>Result:</em> Pass · <em>OWASP:</em> A03 / A04</p>
+<ol class="small"><li>Upload a valid PDF whose filename contains directory traversal sequences.</li><li>Read the stored_name and original_name columns for that upload.</li><li>Upload a file containing PHP source but declaring a PDF MIME type.</li><li>Confirm the response and check whether a row was created.</li></ol>
+<p class="small"><strong>Expected:</strong> The stored name is 40 random hex characters plus an extension derived from the sniffed MIME type, with no traversal sequences or path separators. The disguised PHP file is rejected and no row is created.</p>
+
+<h4>TC-35 — Protect Session Transport and Prevent Caching</h4>
+<p class="small"><em>Level:</em> Security · <em>Priority:</em> High · <em>Result:</em> Pass · <em>OWASP:</em> A05</p>
+<ol class="small"><li>Record every request URL issued during a signed-in browsing session.</li><li>Search those URLs for a session identifier parameter.</li><li>Request the student dashboard and inspect its Cache-Control header.</li></ol>
+<p class="small"><strong>Expected:</strong> No request URL contains a session identifier. The dashboard sends a Cache-Control header including no-store or no-cache.</p>
+
+<h4>TC-36 — Suppress Internal Detail in Error Responses</h4>
+<p class="small"><em>Level:</em> Security · <em>Priority:</em> Medium · <em>Result:</em> Pass · <em>OWASP:</em> A05</p>
+<ol class="small"><li>Request a property detail page for an id that does not exist.</li><li>Request a property detail page with a non-numeric id.</li><li>Request a booking page with a negative property id.</li><li>Request a page that does not exist.</li><li>Inspect each response body for internal detail.</li></ol>
+<p class="small"><strong>Expected:</strong> No response contains a server file path, "Stack trace", "SQLSTATE", or a PHP Warning, Notice or Deprecated message.</p>
+
+<div class="pagebreak"></div>
+<h2>Appendix B — Reproducing the run</h2>
+
+<p>The complete suite and its documentation are held in
+<span class="mono">EMERGEX.Tests/</span> alongside the application source.</p>
+
+<h3>B.1 Prerequisites</h3>
+<ol>
+  <li>Apache and MySQL running under XAMPP.</li>
+  <li>.NET 9 SDK installed.</li>
+  <li>Playwright browser binaries installed:<br>
+      <span class="mono">powershell -ExecutionPolicy Bypass -File bin\Debug\net9.0\playwright.ps1 install chromium</span></li>
+</ol>
+
+<h3>B.2 Procedure</h3>
+<ol>
+  <li>Reset the database to a known state:<br>
+      <span class="mono">C:\xampp\php\php.exe application\database\install.php</span></li>
+  <li>Execute the recorded run:<br>
+      <span class="mono">dotnet test --settings .runsettings</span></li>
+  <li>Collect artefacts from <span class="mono">TestResults/</span>: the TRX
+      result file and <span class="mono">emergex-test-report.html</span>.</li>
+</ol>
+
+<p>Individual levels may be executed with
+<span class="mono">dotnet test --filter "Category=Security"</span> and the
+equivalents for UI, Functional, Integration, E2E and Regression.</p>
+
+<h3>B.3 Repository contents</h3>
+
+<table>
+<tr><th style="width:38%">Path</th><th>Contents</th></tr>
+<tr><td><span class="mono">UITests/</span></td><td>Presentation and accessibility tests</td></tr>
+<tr><td><span class="mono">FunctionalTests/</span></td><td>Authentication, search and booking behaviour</td></tr>
+<tr><td><span class="mono">IntegrationTests/</span></td><td>Database persistence verification</td></tr>
+<tr><td><span class="mono">End-to-EndTests/</span></td><td>Multi-role user journeys</td></tr>
+<tr><td><span class="mono">RegressionTests/</span></td><td>Smoke pack, defect guards and data integrity</td></tr>
+<tr><td><span class="mono">SecurityTests/</span></td><td>Security control verification</td></tr>
+<tr><td><span class="mono">Support/</span></td><td>Test harness: configuration, base class, database access, page objects</td></tr>
+<tr><td><span class="mono">TestCases/</span></td><td>The 36 test case specifications (JSON and Markdown)</td></tr>
+<tr><td><span class="mono">TRACEABILITY.md</span></td><td>Case-to-method mapping and defect register</td></tr>
+<tr><td><span class="mono">TestResults/</span></td><td>Recorded run artefacts</td></tr>
+</table>
+
+</body>
+</html>

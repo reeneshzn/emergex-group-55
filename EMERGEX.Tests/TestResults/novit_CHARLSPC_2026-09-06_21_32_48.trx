@@ -1,0 +1,1068 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="168c3fb4-2501-4d4d-8d90-21555f2d62ed" name="novit@CHARLSPC 2026-09-06 21:32:48" runUser="CHARLSPC\novit" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-09-06T21:32:48.6766352+02:00" queuing="2026-09-06T21:32:48.6766357+02:00" start="2026-09-06T21:32:41.7511318+02:00" finish="2026-09-06T21:34:39.3664178+02:00" />
+  <TestSettings name="default" id="f9b24eb4-2d2f-4802-9f5b-3dd864b98fd2">
+    <Deployment runDeploymentRoot="novit_CHARLSPC_2026-09-06_21_32_48" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="a37fbbbe-09c7-4e6a-848d-02e35776bdc5" testId="c6ad9826-c723-6ddd-01b3-ed584d94bb66" testName="Pages_HaveASpecificDocumentTitle(&quot;properties.php&quot;,&quot;Find accommodation | EMERGEX&quot;)" computerName="CHARLSPC" duration="00:00:00.1676470" startTime="2026-09-06T21:34:36.8434559+02:00" endTime="2026-09-06T21:34:37.0111019+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a37fbbbe-09c7-4e6a-848d-02e35776bdc5" />
+    <UnitTestResult executionId="1926cc77-6b08-4f2b-808e-1b091ecb95b4" testId="2fa83ca6-db35-284d-1ca6-00d16cf04186" testName="Properties_FilteredByNsfas_ShowsOnlyAccreditedHomes" computerName="CHARLSPC" duration="00:00:00.3761370" startTime="2026-09-06T21:32:55.6289984+02:00" endTime="2026-09-06T21:32:56.0051340+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1926cc77-6b08-4f2b-808e-1b091ecb95b4" />
+    <UnitTestResult executionId="86a1760d-9f8b-4d69-9691-099124592f96" testId="23e11b3f-a9cb-8fb4-6d3e-b1ee09aa3e48" testName="SignIn_AfterFiveFailures_IsThrottled" computerName="CHARLSPC" duration="00:00:01.2608720" startTime="2026-09-06T21:32:56.6313837+02:00" endTime="2026-09-06T21:32:57.8922550+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="86a1760d-9f8b-4d69-9691-099124592f96" />
+    <UnitTestResult executionId="25fec503-c6ca-4eef-8f4a-7aec75043eae" testId="a84c20d0-2ca4-f176-d20d-a31898180a74" testName="SearchGrid_OnMobileViewport_StacksIntoASingleColumn" computerName="CHARLSPC" duration="00:00:00.2009100" startTime="2026-09-06T21:34:38.9112625+02:00" endTime="2026-09-06T21:34:39.1121713+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="25fec503-c6ca-4eef-8f4a-7aec75043eae" />
+    <UnitTestResult executionId="a09c5602-e972-4aa9-964d-6736befc1eb7" testId="a46889dc-74fa-9931-bfcd-4a8cbbf7185f" testName="ErrorResponses_DoNotLeakInternalDetail(&quot;nonexistent-page.php&quot;)" computerName="CHARLSPC" duration="00:00:00.1095890" startTime="2026-09-06T21:33:28.8299154+02:00" endTime="2026-09-06T21:33:28.9395033+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a09c5602-e972-4aa9-964d-6736befc1eb7" />
+    <UnitTestResult executionId="8ffe26b9-df2f-4447-95c2-899c9f77bff4" testId="9cdbdbaa-1395-caa5-4bdb-60e49e08a084" testName="AnonymousUser_IsRedirectedToLogin(&quot;dashboard.php&quot;)" computerName="CHARLSPC" duration="00:00:00.4002360" startTime="2026-09-06T21:32:53.8156128+02:00" endTime="2026-09-06T21:32:54.2158478+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8ffe26b9-df2f-4447-95c2-899c9f77bff4" />
+    <UnitTestResult executionId="0a19e3b5-6ad5-456d-8201-2cf665aa7701" testId="3f1f21ea-c478-b985-79f6-0cd97c7718a9" testName="Header_AfterSignIn_ShowsDashboardAndSignOut" computerName="CHARLSPC" duration="00:00:00.4124660" startTime="2026-09-06T21:34:34.8290127+02:00" endTime="2026-09-06T21:34:35.2414787+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0a19e3b5-6ad5-456d-8201-2cf665aa7701" />
+    <UnitTestResult executionId="8b318f05-ae10-40ea-945a-7354108a1774" testId="fefd5c11-d9d9-bbe5-6b49-0c521806a0dd" testName="UploadedDocuments_AreNotReadableWithoutASession" computerName="CHARLSPC" duration="00:00:00.9714970" startTime="2026-09-06T21:34:32.8107652+02:00" endTime="2026-09-06T21:34:33.7822621+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8b318f05-ae10-40ea-945a-7354108a1774">
+      <Output>
+        <ErrorInfo>
+          <Message>Microsoft.Playwright.PlaywrightException : Download is starting&#xD;
+Call log:&#xD;
+  - navigating to "http://localhost/emergex-group-55/application/public/uploads/d3a0d47bf78723683c2bf0193c8dab3b03403c85.pdf", waiting until "load"&#xD;
+Data:&#xD;
+  playwright.errorDetails: &lt;null&gt;&#xD;
+  playwright.log: System.String[]</Message>
+          <StackTrace>   at Microsoft.Playwright.Transport.Connection.InnerSendMessageToServerAsync[T](ChannelOwner object, String method, Dictionary`2 dictionary, Boolean keepNulls, Nullable`1 timeout) in /_/src/Playwright/Transport/Connection.cs:line 229&#xD;
+   at Microsoft.Playwright.Transport.Connection.WrapApiCallAsync[T](Func`1 action, Boolean isInternal, String title)&#xD;
+   at Microsoft.Playwright.Core.Frame.GotoAsync(String url, FrameGotoOptions options) in /_/src/Playwright/Core/Frame.cs:line 857&#xD;
+   at EMERGEX.Tests.SecurityTests.SecurityTests.UploadedDocuments_AreNotReadableWithoutASession() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\SecurityTests\SecurityTests.cs:line 182&#xD;
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()&#xD;
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)&#xD;
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)&#xD;
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()&#xD;
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+1)    at Microsoft.Playwright.Transport.Connection.InnerSendMessageToServerAsync[T](ChannelOwner object, String method, Dictionary`2 dictionary, Boolean keepNulls, Nullable`1 timeout) in /_/src/Playwright/Transport/Connection.cs:line 229&#xD;
+   at Microsoft.Playwright.Transport.Connection.WrapApiCallAsync[T](Func`1 action, Boolean isInternal, String title)&#xD;
+   at Microsoft.Playwright.Core.Frame.GotoAsync(String url, FrameGotoOptions options) in /_/src/Playwright/Core/Frame.cs:line 857&#xD;
+   at EMERGEX.Tests.SecurityTests.SecurityTests.UploadedDocuments_AreNotReadableWithoutASession() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\SecurityTests\SecurityTests.cs:line 182&#xD;
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()&#xD;
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)&#xD;
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)&#xD;
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()&#xD;
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9b851c58-96d4-45e7-ac08-ea4ef66e0108" testId="ea6bb114-ff37-c5f4-3bba-ec8ecd3e483c" testName="Register_WithExistingEmail_IsRejected" computerName="CHARLSPC" duration="00:00:00.6228750" startTime="2026-09-06T21:32:55.1061064+02:00" endTime="2026-09-06T21:32:55.7289809+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9b851c58-96d4-45e7-ac08-ea4ef66e0108" />
+    <UnitTestResult executionId="ed350285-c408-4b5d-baac-6a3b796b8ccd" testId="c5939831-d130-5f15-17aa-a17901abde2d" testName="DepositSimulation_OnSomeoneElsesBooking_Returns404" computerName="CHARLSPC" duration="00:00:00.4203580" startTime="2026-09-06T21:33:04.1718927+02:00" endTime="2026-09-06T21:33:04.5922503+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ed350285-c408-4b5d-baac-6a3b796b8ccd" />
+    <UnitTestResult executionId="eff626ab-2926-43c0-a8e2-98827e03c372" testId="51cadd80-9fc0-73e1-526b-de493f2e5656" testName="Pages_HaveASpecificDocumentTitle(&quot;login.php&quot;,&quot;Sign in | EMERGEX&quot;)" computerName="CHARLSPC" duration="00:00:00.1265070" startTime="2026-09-06T21:34:37.0111386+02:00" endTime="2026-09-06T21:34:37.1376447+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="eff626ab-2926-43c0-a8e2-98827e03c372" />
+    <UnitTestResult executionId="282228f8-1eba-4f0b-b61a-1341e11e247f" testId="57d0fbd9-058b-411d-6319-d7f5f725e6c4" testName="PropertyGrid_ImagesHaveDescriptiveAltText" computerName="CHARLSPC" duration="00:00:00.2039490" startTime="2026-09-06T21:34:38.7072615+02:00" endTime="2026-09-06T21:34:38.9112098+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="282228f8-1eba-4f0b-b61a-1341e11e247f" />
+    <UnitTestResult executionId="7ff8ad6c-9800-4daa-a691-46375d350685" testId="2bdd187d-2e98-9ce1-93a6-3e0315f694bb" testName="RoleDashboards_LoadForTheirOwnRole" computerName="CHARLSPC" duration="00:00:00.9219650" startTime="2026-09-06T21:33:23.3023737+02:00" endTime="2026-09-06T21:33:24.2243384+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7ff8ad6c-9800-4daa-a691-46375d350685" />
+    <UnitTestResult executionId="f6bb7efd-0c21-4cee-8dbb-38306d96f151" testId="e90e5066-aca8-9003-11eb-85bc1ff4db98" testName="Properties_FilteredByInstantBook_ShowsOnlyInstantHomes" computerName="CHARLSPC" duration="00:00:00.2077710" startTime="2026-09-06T21:32:54.1853725+02:00" endTime="2026-09-06T21:32:54.3931425+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f6bb7efd-0c21-4cee-8dbb-38306d96f151" />
+    <UnitTestResult executionId="feb8e28e-c83e-4984-90db-a14634b102f0" testId="5a3b789c-c8a7-c5a6-0010-734e10322a8a" testName="Properties_WithNoFilters_ListsAllVerifiedHomes" computerName="CHARLSPC" duration="00:00:00.2029690" startTime="2026-09-06T21:32:57.0211039+02:00" endTime="2026-09-06T21:32:57.2240722+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="feb8e28e-c83e-4984-90db-a14634b102f0" />
+    <UnitTestResult executionId="00d2f973-0e88-43ec-a311-009960ffe301" testId="9597586c-6a4c-4685-8335-fd3d4c582b16" testName="Booking_WithOverlongMessage_IsRejected" computerName="CHARLSPC" duration="00:00:00.5276900" startTime="2026-09-06T21:33:00.6163171+02:00" endTime="2026-09-06T21:33:01.1440071+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="00d2f973-0e88-43ec-a311-009960ffe301" />
+    <UnitTestResult executionId="a6b39fa5-487b-438b-8a61-b2c8deb57e4d" testId="bdb5331f-1bad-243f-d4ef-f147b4308d32" testName="SessionCookie_RemainsHttpOnlyAndSameSiteLax" computerName="CHARLSPC" duration="00:00:00.3209380" startTime="2026-09-06T21:33:25.0277894+02:00" endTime="2026-09-06T21:33:25.3487275+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a6b39fa5-487b-438b-8a61-b2c8deb57e4d" />
+    <UnitTestResult executionId="62d1f416-6564-4926-927f-1efd20dde272" testId="144acdd7-9efc-1de2-d6c9-3d16e2ae410e" testName="RejectedRegistration_DoesNotEchoThePasswordIntoTheHtml" computerName="CHARLSPC" duration="00:00:00.3372700" startTime="2026-09-06T21:33:28.9395991+02:00" endTime="2026-09-06T21:33:29.2768687+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="62d1f416-6564-4926-927f-1efd20dde272" />
+    <UnitTestResult executionId="666bf21a-5649-436a-bd17-6fd9e9e71cdb" testId="2a731343-67c7-06b2-385a-cbe5a7988a91" testName="SignedInUser_IsBouncedAwayFromLoginAndRegister" computerName="CHARLSPC" duration="00:00:00.3888680" startTime="2026-09-06T21:33:25.6972825+02:00" endTime="2026-09-06T21:33:26.0861502+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="666bf21a-5649-436a-bd17-6fd9e9e71cdb" />
+    <UnitTestResult executionId="66ce1567-8435-4688-9cbf-834d5e944082" testId="28e7c60b-2707-a952-59c9-97d699a708f4" testName="Dashboard_BookingStatusChip_UsesTheMatchingStateClass" computerName="CHARLSPC" duration="00:00:00.3490770" startTime="2026-09-06T21:34:33.9973157+02:00" endTime="2026-09-06T21:34:34.3463918+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="66ce1567-8435-4688-9cbf-834d5e944082" />
+    <UnitTestResult executionId="a7fe2c1d-ab14-4c86-9eb5-dc78b1a556bc" testId="2028efa3-5eb4-f595-a455-e36e53fafafd" testName="UploadsDirectory_DoesNotRenderAnIndexListing" computerName="CHARLSPC" duration="00:00:00.2145160" startTime="2026-09-06T21:34:33.7822861+02:00" endTime="2026-09-06T21:34:33.9968014+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a7fe2c1d-ab14-4c86-9eb5-dc78b1a556bc" />
+    <UnitTestResult executionId="6ec8c112-dfb1-49d7-8b6e-f97b188bb68e" testId="81e25c0b-25a3-03e8-317b-342d4906621f" testName="ErrorResponses_DoNotLeakInternalDetail(&quot;property.php?id=notanumber&quot;)" computerName="CHARLSPC" duration="00:00:00.0858630" startTime="2026-09-06T21:33:28.6094859+02:00" endTime="2026-09-06T21:33:28.6953487+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6ec8c112-dfb1-49d7-8b6e-f97b188bb68e" />
+    <UnitTestResult executionId="14c67513-e165-4456-ac4e-7dffe60b1ca5" testId="9f9ad2d5-7726-857a-6962-ed015f9dff6d" testName="Properties_WithNoMatches_ShowsHelpfulEmptyState" computerName="CHARLSPC" duration="00:00:00.2152410" startTime="2026-09-06T21:32:57.2241440+02:00" endTime="2026-09-06T21:32:57.4393837+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="14c67513-e165-4456-ac4e-7dffe60b1ca5" />
+    <UnitTestResult executionId="67d204f1-8619-4f55-b4a0-dff55440d69a" testId="03890646-5075-9f71-6f89-a16681f3a680" testName="Properties_SearchedByKeyword_ReturnsTheMatchingHome(&quot;Hatfield&quot;,&quot;Emerald House Hatfield&quot;)" computerName="CHARLSPC" duration="00:00:00.3234990" startTime="2026-09-06T21:32:56.0055907+02:00" endTime="2026-09-06T21:32:56.3290889+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="67d204f1-8619-4f55-b4a0-dff55440d69a" />
+    <UnitTestResult executionId="d060cde3-d416-4a26-b879-35dad9b91075" testId="ea978c68-974e-a6c4-9a7b-f7060be59dd1" testName="RegistrationForm_HidesStudentNumberForLandlords" computerName="CHARLSPC" duration="00:00:10.2388710" startTime="2026-09-06T21:33:13.0634695+02:00" endTime="2026-09-06T21:33:23.3023405+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d060cde3-d416-4a26-b879-35dad9b91075">
+      <Output>
+        <ErrorInfo>
+          <Message>Microsoft.Playwright.PlaywrightException : Locator expected to be hidden &#xD;
+Call log:&#xD;
+  - Expect "ToBeHiddenAsync" with timeout 10000ms&#xD;
+  - waiting for Locator(".student-only")&#xD;
+    23 × locator resolved to &lt;label hidden="" class="student-only"&gt;…&lt;/label&gt;&#xD;
+       - unexpected value "visible"&#xD;
+Aria snapshot:&#xD;
+- text: Student number&#xD;
+- textbox "Student number"</Message>
+          <StackTrace>   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, FrameExpectOptions expectOptions, Object expected, String message, String title) in /_/src/Playwright/Core/AssertionsBase.cs:line 95&#xD;
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue[] expectedText, Object expected, String message, String title, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 69&#xD;
+   at EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests.RegistrationForm_HidesStudentNumberForLandlords() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\RegressionTests\CriticalPathRegressionTests.cs:line 222&#xD;
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()&#xD;
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)&#xD;
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)&#xD;
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()&#xD;
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+1)    at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, FrameExpectOptions expectOptions, Object expected, String message, String title) in /_/src/Playwright/Core/AssertionsBase.cs:line 95&#xD;
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue[] expectedText, Object expected, String message, String title, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 69&#xD;
+   at EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests.RegistrationForm_HidesStudentNumberForLandlords() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\RegressionTests\CriticalPathRegressionTests.cs:line 222&#xD;
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()&#xD;
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)&#xD;
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)&#xD;
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()&#xD;
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="3933f4a5-30ff-4c0a-a96b-3f366893639d" testId="748f0820-9758-29f8-c6d4-1749cabc5070" testName="FlashMessage_HasStatusRoleForScreenReaders" computerName="CHARLSPC" duration="00:00:00.2993140" startTime="2026-09-06T21:34:34.5296704+02:00" endTime="2026-09-06T21:34:34.8289842+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3933f4a5-30ff-4c0a-a96b-3f366893639d" />
+    <UnitTestResult executionId="456f3aff-f7a4-4dad-99ce-e2e00667147f" testId="c9db528c-636d-5522-4692-4248e1ce2d55" testName="EmptyState_IsRenderedWithGuidanceCopy" computerName="CHARLSPC" duration="00:00:00.1832050" startTime="2026-09-06T21:34:34.3464342+02:00" endTime="2026-09-06T21:34:34.5296386+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="456f3aff-f7a4-4dad-99ce-e2e00667147f" />
+    <UnitTestResult executionId="375e60b5-7f75-4d45-9044-c442f6468eba" testId="7abdabdf-98b6-40e2-80ee-4d83cab67ebd" testName="Search_WithSqlInjectionPayload_IsTreatedAsPlainText(&quot;\&quot; OR 1=1 --&quot;)" computerName="CHARLSPC" duration="00:00:00.1607889" startTime="2026-09-06T21:33:29.6372279+02:00" endTime="2026-09-06T21:33:29.7980166+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="375e60b5-7f75-4d45-9044-c442f6468eba" />
+    <UnitTestResult executionId="b3802c2d-49c2-421a-8aa0-1fdc0b8228a3" testId="23abbaf8-2d8e-c630-7f35-2f4ed61b777c" testName="SignOut_TerminatesSessionAndBlocksProtectedPages" computerName="CHARLSPC" duration="00:00:00.4863500" startTime="2026-09-06T21:32:59.2937746+02:00" endTime="2026-09-06T21:32:59.7801239+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b3802c2d-49c2-421a-8aa0-1fdc0b8228a3" />
+    <UnitTestResult executionId="a84478b5-add2-4cca-8a55-69700c51458e" testId="24478b79-4a17-1f1d-0fb5-62bad5beb704" testName="Pages_DoNotRenderPhpErrors(&quot;privacy.php&quot;)" computerName="CHARLSPC" duration="00:00:00.1215600" startTime="2026-09-06T21:34:36.5682908+02:00" endTime="2026-09-06T21:34:36.6898506+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a84478b5-add2-4cca-8a55-69700c51458e" />
+    <UnitTestResult executionId="e06a53ee-d40a-4d9f-b166-d8143e3cc653" testId="0594c8f8-5039-f5a1-e2be-369969c7e9b2" testName="NsfasDocument_UploadedByStudent_IsReviewedAndReflectedBack" computerName="CHARLSPC" duration="00:00:01.2662000" startTime="2026-09-06T21:32:49.9224399+02:00" endTime="2026-09-06T21:32:51.1886390+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e06a53ee-d40a-4d9f-b166-d8143e3cc653" />
+    <UnitTestResult executionId="19f66fee-bd0f-4a24-9869-48dd66c39523" testId="1145470c-7ce4-b423-94e8-b96c6399f979" testName="Pages_OnMobileViewport_DoNotScrollHorizontally(&quot;index.php&quot;)" computerName="CHARLSPC" duration="00:00:00.1789220" startTime="2026-09-06T21:34:37.2857740+02:00" endTime="2026-09-06T21:34:37.4646955+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="19f66fee-bd0f-4a24-9869-48dd66c39523" />
+    <UnitTestResult executionId="81313a72-7fd6-4f66-ab56-23a760d8b508" testId="468c00f0-5964-e40b-57f0-0266862e599a" testName="Student_CannotOpenAdminOrLandlordPages" computerName="CHARLSPC" duration="00:00:00.4517440" startTime="2026-09-06T21:32:59.7802121+02:00" endTime="2026-09-06T21:33:00.2319554+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="81313a72-7fd6-4f66-ab56-23a760d8b508" />
+    <UnitTestResult executionId="74d2576c-54f8-4fa0-8ff0-be065e7d0596" testId="42fdc151-ac23-a8a7-5ed3-1e0a50ec0cd0" testName="Properties_SearchedByKeyword_ReturnsTheMatchingHome(&quot;Wits&quot;,&quot;Braamfontein Studio Living&quot;)" computerName="CHARLSPC" duration="00:00:00.3547840" startTime="2026-09-06T21:32:56.6661858+02:00" endTime="2026-09-06T21:32:57.0209693+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="74d2576c-54f8-4fa0-8ff0-be065e7d0596" />
+    <UnitTestResult executionId="96748ce8-9fb2-4e19-a2b4-b2ef2ffbf2b3" testId="0e77817c-3598-8b97-2b5a-6582aecfd8ca" testName="SearchGrid_ExcludesUnpublishedProperties" computerName="CHARLSPC" duration="00:00:00.1845620" startTime="2026-09-06T21:33:07.3996799+02:00" endTime="2026-09-06T21:33:07.5842426+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="96748ce8-9fb2-4e19-a2b4-b2ef2ffbf2b3" />
+    <UnitTestResult executionId="9bf0deba-f652-434e-bedb-920e137bf9dc" testId="2d0ae7d0-3377-ba65-db01-054dbda8c357" testName="Pages_DoNotRenderPhpErrors(&quot;index.php&quot;)" computerName="CHARLSPC" duration="00:00:00.1608050" startTime="2026-09-06T21:34:36.0839763+02:00" endTime="2026-09-06T21:34:36.2447805+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9bf0deba-f652-434e-bedb-920e137bf9dc" />
+    <UnitTestResult executionId="78e9b58d-0ba3-4d25-8470-9287919e070d" testId="14869311-8071-977f-20ea-62ca70ed051a" testName="PublicPages_LoadSuccessfully(&quot;privacy.php&quot;)" computerName="CHARLSPC" duration="00:00:00.1274420" startTime="2026-09-06T21:33:12.9359099+02:00" endTime="2026-09-06T21:33:13.0633503+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="78e9b58d-0ba3-4d25-8470-9287919e070d" />
+    <UnitTestResult executionId="23f8024f-480a-4f9d-b715-7922a40f054f" testId="dfed45ea-9f3c-e79c-fc2d-50f0b589b0cc" testName="PropertyDetail_BookingCta_MatchesTheBookingMode(&quot;Emerald House Hatfield&quot;,&quot;Instant Book&quot;)" computerName="CHARLSPC" duration="00:00:00.1532520" startTime="2026-09-06T21:34:37.8429996+02:00" endTime="2026-09-06T21:34:37.9962497+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="23f8024f-480a-4f9d-b715-7922a40f054f" />
+    <UnitTestResult executionId="74b29b70-b0bb-48b6-a93e-12c459cc8b2a" testId="e1e8d44c-abf9-ce0c-d356-7a0e6a43644a" testName="InstantBooking_CreatesApprovedBookingWithUnpaidEscrow" computerName="CHARLSPC" duration="00:00:00.5581700" startTime="2026-09-06T21:33:05.8770549+02:00" endTime="2026-09-06T21:33:06.4352243+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="74b29b70-b0bb-48b6-a93e-12c459cc8b2a" />
+    <UnitTestResult executionId="50b17c07-5435-4da6-99d1-8db4a9764b31" testId="a426f518-6e73-cbc0-bce3-bc9e9aedfcd1" testName="Pages_LoadEveryStaticAsset(&quot;properties.php&quot;)" computerName="CHARLSPC" duration="00:00:00.6432770" startTime="2026-09-06T21:33:09.2165440+02:00" endTime="2026-09-06T21:33:09.8598211+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="50b17c07-5435-4da6-99d1-8db4a9764b31" />
+    <UnitTestResult executionId="0b154c63-ac34-4733-9d35-b72468f0336c" testId="8a7842fb-aaa5-de97-fcb1-69b7a9cd2567" testName="PublicPages_LoadSuccessfully(&quot;login.php&quot;)" computerName="CHARLSPC" duration="00:00:00.1429600" startTime="2026-09-06T21:33:12.6358087+02:00" endTime="2026-09-06T21:33:12.7787689+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0b154c63-ac34-4733-9d35-b72468f0336c" />
+    <UnitTestResult executionId="268eebca-e8a9-446a-8822-989f8f4f35fe" testId="d9fe9b09-0f81-27ce-3a76-c764bb650372" testName="RequestBooking_StartsPendingWithATwelveHourDeadline" computerName="CHARLSPC" duration="00:00:00.5240120" startTime="2026-09-06T21:33:06.8737476+02:00" endTime="2026-09-06T21:33:07.3977582+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="268eebca-e8a9-446a-8822-989f8f4f35fe" />
+    <UnitTestResult executionId="f5a6876b-805e-4518-bd79-57cac78f743a" testId="541b0bb4-54cf-6f3f-9188-05f0ad549be1" testName="Search_WithSqlInjectionPayload_IsTreatedAsPlainText(&quot;'; DROP TABLE users; --&quot;)" computerName="CHARLSPC" duration="00:00:00.1548450" startTime="2026-09-06T21:33:29.4823431+02:00" endTime="2026-09-06T21:33:29.6371865+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f5a6876b-805e-4518-bd79-57cac78f743a" />
+    <UnitTestResult executionId="d7cf2a78-2705-407c-a135-dc608e58b22c" testId="7bc7d35f-a09f-50d9-41b6-265d2c4478d2" testName="Properties_WithNsfasAndInstantFilters_ReturnsTheIntersection" computerName="CHARLSPC" duration="00:00:00.1872430" startTime="2026-09-06T21:32:57.4394411+02:00" endTime="2026-09-06T21:32:57.6266829+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d7cf2a78-2705-407c-a135-dc608e58b22c" />
+    <UnitTestResult executionId="55688d9e-f9e6-4159-b776-48b462a79210" testId="4d901ec5-e22f-6976-e1ab-21292c91d358" testName="Booking_WithUnknownProperty_Returns404" computerName="CHARLSPC" duration="00:00:00.3664529" startTime="2026-09-06T21:33:01.6033017+02:00" endTime="2026-09-06T21:33:01.9697543+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="55688d9e-f9e6-4159-b776-48b462a79210" />
+    <UnitTestResult executionId="46f5e867-165c-4180-b066-57484d90767a" testId="d0520f04-73c3-6495-5513-56d1ae6b3ea0" testName="Booking_WithPastMoveInDate_IsRejected" computerName="CHARLSPC" duration="00:00:00.4591610" startTime="2026-09-06T21:33:01.1440795+02:00" endTime="2026-09-06T21:33:01.6032399+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="46f5e867-165c-4180-b066-57484d90767a" />
+    <UnitTestResult executionId="a899e5b9-43c6-455d-ad3b-c7df6eace3ef" testId="8d8a2c3b-6260-a1a5-ad5d-269cf4a3d95e" testName="AnonymousUser_IsRedirectedToLogin(&quot;reports.php&quot;)" computerName="CHARLSPC" duration="00:00:00.1586110" startTime="2026-09-06T21:32:54.5737403+02:00" endTime="2026-09-06T21:32:54.7323502+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a899e5b9-43c6-455d-ad3b-c7df6eace3ef" />
+    <UnitTestResult executionId="d2ecca3c-e9a5-4f03-b48d-f352a7d30612" testId="d46f840b-383d-3056-336a-e94b5690c9be" testName="SecurityHeaders_ArePresentOnEveryResponse" computerName="CHARLSPC" duration="00:00:00.1207190" startTime="2026-09-06T21:33:24.9068012+02:00" endTime="2026-09-06T21:33:25.0275199+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d2ecca3c-e9a5-4f03-b48d-f352a7d30612" />
+    <UnitTestResult executionId="c4915dbc-4240-4f66-91f2-6c5a7c7be468" testId="ade841df-93e4-eb4e-5f1e-09434b7d7455" testName="LandlordDecline_ClosesTheRequestWithoutAnyPaymentStep" computerName="CHARLSPC" duration="00:00:06.1902650" startTime="2026-09-06T21:32:42.4270080+02:00" endTime="2026-09-06T21:32:48.6172135+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c4915dbc-4240-4f66-91f2-6c5a7c7be468" />
+    <UnitTestResult executionId="c843e588-2d1b-49d1-9527-782b05582b81" testId="c5b91d2a-a4da-a7be-5410-f50be11aa78a" testName="SignIn_WithSqlInjectionPayload_DoesNotAuthenticate(&quot;' OR '1'='1&quot;,&quot;' OR '1'='1&quot;)" computerName="CHARLSPC" duration="00:00:10.4236470" startTime="2026-09-06T21:34:00.7142447+02:00" endTime="2026-09-06T21:34:11.1378913+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c843e588-2d1b-49d1-9527-782b05582b81">
+      <Output>
+        <ErrorInfo>
+          <Message>Microsoft.Playwright.PlaywrightException : Locator expected to contain text&#xD;
+Error: element(s) not found 'credentials'&#xD;
+But was: 'null' &#xD;
+Call log:&#xD;
+  - Expect "ToContainTextAsync" with timeout 10000ms&#xD;
+  - waiting for Locator(".flash.flash-success")&#xD;
+Aria snapshot:&#xD;
+- banner:&#xD;
+  - link "EMERGEX home":&#xD;
+    - /url: /emergex-group-55/application/public/index.php&#xD;
+    - text: EMERGEX&#xD;
+  - navigation "Main navigation":&#xD;
+    - link "Find a home":&#xD;
+      - /url: /emergex-group-55/application/public/properties.php&#xD;
+    - link "How it works":&#xD;
+      - /url: /emergex-group-55/application/public/how-it-works.php&#xD;
+    - link "Sign in":&#xD;
+      - /url: /emergex-group-55/application/public/login.php&#xD;
+    - link "Get started":&#xD;
+      - /url: /emergex-group-55/application/public/register.php&#xD;
+- main:&#xD;
+  - paragraph: Welcome back&#xD;
+  - heading "Your next move starts here." [level=1]&#xD;
+  - paragraph: Track applications, deposits and check-in milestones from one place.&#xD;
+  - heading "Sign in" [level=2]&#xD;
+  - text: Email address&#xD;
+  - textbox "Email address": "' OR '1'='1"&#xD;
+  - text: Password&#xD;
+  - textbox "Password": "' OR '1'='1"&#xD;
+  - button "Sign in securely"&#xD;
+  - paragraph:&#xD;
+    - text: New to EMERGEX?&#xD;
+    - link "Create an account":&#xD;
+      - /url: /emergex-group-55/application/public/register.php&#xD;
+    - text: .&#xD;
+- contentinfo:&#xD;
+  - strong: EMERGEX&#xD;
+  - paragraph: Secure student accommodation, from search to check-in.&#xD;
+  - link "Safety process":&#xD;
+    - /url: /emergex-group-55/application/public/how-it-works.php&#xD;
+  - link "Privacy":&#xD;
+    - /url: /emergex-group-55/application/public/privacy.php&#xD;
+  - text: Academic prototype - no real funds processed</Message>
+          <StackTrace>   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, FrameExpectOptions expectOptions, Object expected, String message, String title) in /_/src/Playwright/Core/AssertionsBase.cs:line 97&#xD;
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue[] expectedText, Object expected, String message, String title, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 69&#xD;
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue textValue, Object expected, String message, String title, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 61&#xD;
+   at EMERGEX.Tests.SecurityTests.SecurityTests.SignIn_WithSqlInjectionPayload_DoesNotAuthenticate(String email, String password) in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\SecurityTests\SecurityTests.cs:line 81&#xD;
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()&#xD;
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)&#xD;
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)&#xD;
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()&#xD;
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+1)    at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, FrameExpectOptions expectOptions, Object expected, String message, String title) in /_/src/Playwright/Core/AssertionsBase.cs:line 97&#xD;
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue[] expectedText, Object expected, String message, String title, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 69&#xD;
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue textValue, Object expected, String message, String title, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 61&#xD;
+   at EMERGEX.Tests.SecurityTests.SecurityTests.SignIn_WithSqlInjectionPayload_DoesNotAuthenticate(String email, String password) in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\SecurityTests\SecurityTests.cs:line 81&#xD;
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()&#xD;
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)&#xD;
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)&#xD;
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()&#xD;
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e6c3af07-cb00-42ff-98c5-e00d2417b74a" testId="b3f8eb01-0cc5-3da8-d6f8-1e76804a1dc0" testName="DocumentUpload_StoresARandomisedFilenameAndTheOriginalName" computerName="CHARLSPC" duration="00:00:00.5268190" startTime="2026-09-06T21:33:04.5923327+02:00" endTime="2026-09-06T21:33:05.1191509+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e6c3af07-cb00-42ff-98c5-e00d2417b74a" />
+    <UnitTestResult executionId="55cb7f16-2de3-46ac-8ae1-f9f8d80c8cf9" testId="cda3d9aa-71e0-fd67-a256-6c278ebf5bf7" testName="AnonymousUser_IsRedirectedToLogin(&quot;landlord.php&quot;)" computerName="CHARLSPC" duration="00:00:00.1701030" startTime="2026-09-06T21:32:54.2159124+02:00" endTime="2026-09-06T21:32:54.3860148+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="55cb7f16-2de3-46ac-8ae1-f9f8d80c8cf9" />
+    <UnitTestResult executionId="0bf51770-2c8a-4adc-b312-bc01940e3662" testId="2b09207a-6721-bff5-89ce-17bcc1b3ce19" testName="Properties_FilteredByMaxPrice_ExcludesHomesAboveTheCap" computerName="CHARLSPC" duration="00:00:01.2354630" startTime="2026-09-06T21:32:54.3933946+02:00" endTime="2026-09-06T21:32:55.6288569+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0bf51770-2c8a-4adc-b312-bc01940e3662" />
+    <UnitTestResult executionId="c5b07a86-2ea3-4dc8-a720-3c043d18c400" testId="1669801e-7d92-5088-59f4-ab69ea09dd5d" testName="Booking_AsLandlord_IsForbidden" computerName="CHARLSPC" duration="00:00:00.3835010" startTime="2026-09-06T21:33:00.2327508+02:00" endTime="2026-09-06T21:33:00.6162507+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c5b07a86-2ea3-4dc8-a720-3c043d18c400" />
+    <UnitTestResult executionId="3fea6e6e-3ef0-43aa-86cc-74a83df774e4" testId="ad82213c-e07f-7481-0e71-bfdf5cb26053" testName="RoleRouting_KeepsRolesOnTheirOwnDashboard" computerName="CHARLSPC" duration="00:00:00.6823540" startTime="2026-09-06T21:33:24.2243733+02:00" endTime="2026-09-06T21:33:24.9067266+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3fea6e6e-3ef0-43aa-86cc-74a83df774e4" />
+    <UnitTestResult executionId="5da6a78c-6fa3-488d-a352-c0cd489f76e0" testId="474e50d8-70d8-5b67-713f-0c72d9e71130" testName="PropertyDetail_NsfasBadge_AppearsOnlyWhenAccredited" computerName="CHARLSPC" duration="00:00:00.2136040" startTime="2026-09-06T21:34:38.3334313+02:00" endTime="2026-09-06T21:34:38.5470350+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5da6a78c-6fa3-488d-a352-c0cd489f76e0" />
+    <UnitTestResult executionId="69ae9db7-f896-4a91-af15-2d27b6d483a0" testId="9a916a72-03b0-5eed-7ab6-541e4937a14c" testName="PropertyDetail_ShowsTheNoRealPaymentDisclaimer" computerName="CHARLSPC" duration="00:00:00.1598130" startTime="2026-09-06T21:34:38.5474223+02:00" endTime="2026-09-06T21:34:38.7072354+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="69ae9db7-f896-4a91-af15-2d27b6d483a0" />
+    <UnitTestResult executionId="af089de7-2548-4fa0-bc80-12ba2a632a6e" testId="ca78b91f-e7a8-0072-2ab2-141e9d5db406" testName="ErrorResponses_DoNotLeakInternalDetail(&quot;book.php?property_id=-1&quot;)" computerName="CHARLSPC" duration="00:00:00.1344920" startTime="2026-09-06T21:33:28.6953723+02:00" endTime="2026-09-06T21:33:28.8298631+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="af089de7-2548-4fa0-bc80-12ba2a632a6e" />
+    <UnitTestResult executionId="3d83b816-927e-4cca-97ef-3d489712891c" testId="2f9570cf-6f4e-d9c4-9940-3ffd3105a8de" testName="Pages_OnMobileViewport_DoNotScrollHorizontally(&quot;login.php&quot;)" computerName="CHARLSPC" duration="00:00:00.1097870" startTime="2026-09-06T21:34:37.6155075+02:00" endTime="2026-09-06T21:34:37.7252940+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3d83b816-927e-4cca-97ef-3d489712891c" />
+    <UnitTestResult executionId="c8b677b3-aabb-4e35-bd5f-5e15a281a103" testId="783e4ee6-35e6-7280-c5d0-dc966fbf5657" testName="Student_CanSearchInstantBookAndCompleteTheSimulatedPayment" computerName="CHARLSPC" duration="00:00:01.1972970" startTime="2026-09-06T21:32:51.1886995+02:00" endTime="2026-09-06T21:32:52.3859946+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c8b677b3-aabb-4e35-bd5f-5e15a281a103" />
+    <UnitTestResult executionId="d8d82f75-8bcb-40fa-a23e-90443ba026f2" testId="3b32cf98-4743-5299-b3b1-ad022739ad80" testName="SessionIdentifier_NeverAppearsInAUrl" computerName="CHARLSPC" duration="00:00:00.3837070" startTime="2026-09-06T21:33:29.9724406+02:00" endTime="2026-09-06T21:33:30.3561470+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d8d82f75-8bcb-40fa-a23e-90443ba026f2" />
+    <UnitTestResult executionId="aee27db2-05a4-41d0-b0a3-70445292311e" testId="fcfca2cf-b787-7fa3-07a6-081cf06e503e" testName="PublicPages_LoadSuccessfully(&quot;properties.php&quot;)" computerName="CHARLSPC" duration="00:00:00.1813470" startTime="2026-09-06T21:33:12.3096416+02:00" endTime="2026-09-06T21:33:12.4909875+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="aee27db2-05a4-41d0-b0a3-70445292311e" />
+    <UnitTestResult executionId="08d46870-a99c-4a18-b777-e83c1ee875eb" testId="a47a2b3f-bd3e-0278-629b-f1d3ba7da652" testName="Upload_WithTraversalSequenceInFilename_StoresARandomisedSafeName" computerName="CHARLSPC" duration="00:00:00.6232029" startTime="2026-09-06T21:34:32.1875258+02:00" endTime="2026-09-06T21:34:32.8107280+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="08d46870-a99c-4a18-b777-e83c1ee875eb" />
+    <UnitTestResult executionId="f3ee1ca0-1f46-4339-b299-17a0dd4018f6" testId="53d06aa5-b13a-995b-131d-a2621c35ce49" testName="SignIn_WithValidCredentials_RedirectsToRoleDashboard(&quot;student@emergex.test&quot;,&quot;Student@55&quot;,&quot;dashboard.php&quot;)" computerName="CHARLSPC" duration="00:00:00.3970600" startTime="2026-09-06T21:32:57.8930598+02:00" endTime="2026-09-06T21:32:58.2901198+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f3ee1ca0-1f46-4339-b299-17a0dd4018f6" />
+    <UnitTestResult executionId="ba627af1-5a58-4702-b871-410b01df4066" testId="95cb5d2d-8dd1-0a9f-b5c5-f729d818bed0" testName="Search_WithSqlInjectionPayload_IsTreatedAsPlainText(&quot;' OR '1'='1&quot;)" computerName="CHARLSPC" duration="00:00:00.2053150" startTime="2026-09-06T21:33:29.2769586+02:00" endTime="2026-09-06T21:33:29.4822730+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ba627af1-5a58-4702-b871-410b01df4066" />
+    <UnitTestResult executionId="9d3bf70e-1697-4f66-8be3-55fad7099272" testId="e78bb73e-ea90-40d7-0b28-509d1b09280f" testName="AnonymousUser_IsRedirectedToLogin(&quot;admin.php&quot;)" computerName="CHARLSPC" duration="00:00:00.1875699" startTime="2026-09-06T21:32:54.3860950+02:00" endTime="2026-09-06T21:32:54.5736644+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9d3bf70e-1697-4f66-8be3-55fad7099272" />
+    <UnitTestResult executionId="5008da63-2134-4742-bec2-6d04ba270132" testId="fbc89fdf-b8e8-11cf-f321-5e1c87a3addf" testName="PropertyTitles_AreHtmlEscapedOnRender" computerName="CHARLSPC" duration="00:00:00.1654280" startTime="2026-09-06T21:33:11.9552882+02:00" endTime="2026-09-06T21:33:12.1207155+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5008da63-2134-4742-bec2-6d04ba270132" />
+    <UnitTestResult executionId="22a8f1c7-d1e9-480c-8cea-78db02ee5b74" testId="26ca6982-7285-11f7-ef2e-293fb0c65ec5" testName="Register_WithValidStudentDetails_CreatesAccountAndSignsIn" computerName="CHARLSPC" duration="00:00:00.4987110" startTime="2026-09-06T21:32:55.7292098+02:00" endTime="2026-09-06T21:32:56.2279202+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="22a8f1c7-d1e9-480c-8cea-78db02ee5b74" />
+    <UnitTestResult executionId="8355e7e5-1de3-4a6c-b8e5-bb12ff8146a7" testId="61f4e301-4ce5-4d74-3868-a5e448142a07" testName="SignIn_DoesNotRevealWhetherAnAccountExists" computerName="CHARLSPC" duration="00:00:30.3579300" startTime="2026-09-06T21:33:30.3561836+02:00" endTime="2026-09-06T21:34:00.7141132+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8355e7e5-1de3-4a6c-b8e5-bb12ff8146a7">
+      <Output>
+        <ErrorInfo>
+          <Message>System.TimeoutException : Timeout 30000ms exceeded.&#xD;
+Call log:&#xD;
+  - waiting for Locator(".flash.flash-success")&#xD;
+Data:&#xD;
+  playwright.errorDetails: &lt;null&gt;&#xD;
+  playwright.log: System.String[]</Message>
+          <StackTrace>   at Microsoft.Playwright.Transport.Connection.InnerSendMessageToServerAsync[T](ChannelOwner object, String method, Dictionary`2 dictionary, Boolean keepNulls, Nullable`1 timeout) in /_/src/Playwright/Transport/Connection.cs:line 229&#xD;
+   at Microsoft.Playwright.Transport.Connection.WrapApiCallAsync[T](Func`1 action, Boolean isInternal, String title) in /_/src/Playwright/Transport/Connection.cs:line 535&#xD;
+   at Microsoft.Playwright.Core.Frame.InnerTextAsync(String selector, FrameInnerTextOptions options) in /_/src/Playwright/Core/Frame.cs:line 435&#xD;
+   at EMERGEX.Tests.SecurityTests.SecurityTests.FailedSignInMessage(String email, String password) in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\SecurityTests\SecurityTests.cs:line 115&#xD;
+   at EMERGEX.Tests.SecurityTests.SecurityTests.SignIn_DoesNotRevealWhetherAnAccountExists() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\SecurityTests\SecurityTests.cs:line 101&#xD;
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()&#xD;
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)&#xD;
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)&#xD;
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()&#xD;
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+1)    at Microsoft.Playwright.Transport.Connection.InnerSendMessageToServerAsync[T](ChannelOwner object, String method, Dictionary`2 dictionary, Boolean keepNulls, Nullable`1 timeout) in /_/src/Playwright/Transport/Connection.cs:line 229&#xD;
+   at Microsoft.Playwright.Transport.Connection.WrapApiCallAsync[T](Func`1 action, Boolean isInternal, String title) in /_/src/Playwright/Transport/Connection.cs:line 535&#xD;
+   at Microsoft.Playwright.Core.Frame.InnerTextAsync(String selector, FrameInnerTextOptions options) in /_/src/Playwright/Core/Frame.cs:line 435&#xD;
+   at EMERGEX.Tests.SecurityTests.SecurityTests.FailedSignInMessage(String email, String password) in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\SecurityTests\SecurityTests.cs:line 115&#xD;
+   at EMERGEX.Tests.SecurityTests.SecurityTests.SignIn_DoesNotRevealWhetherAnAccountExists() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\SecurityTests\SecurityTests.cs:line 101&#xD;
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()&#xD;
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)&#xD;
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)&#xD;
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()&#xD;
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c9badd52-88ab-42f0-a1c8-e66a0ebcb2f9" testId="1c602ee3-dd9e-9d6e-4aa1-4587f3771e42" testName="DepositAction_OnAnotherStudentsBooking_IsRefusedWithoutDisclosure" computerName="CHARLSPC" duration="00:00:00.8435170" startTime="2026-09-06T21:33:27.6475475+02:00" endTime="2026-09-06T21:33:28.4910643+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c9badd52-88ab-42f0-a1c8-e66a0ebcb2f9" />
+    <UnitTestResult executionId="85e02f6e-2087-4ae7-b148-c4035d86270d" testId="b43aa63a-1067-3483-d138-84dd4214e2f7" testName="Pages_OnMobileViewport_DoNotScrollHorizontally(&quot;register.php&quot;)" computerName="CHARLSPC" duration="00:00:00.1173630" startTime="2026-09-06T21:34:37.7253377+02:00" endTime="2026-09-06T21:34:37.8427003+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="85e02f6e-2087-4ae7-b148-c4035d86270d" />
+    <UnitTestResult executionId="c9f15194-b63c-489f-960b-61faea23947d" testId="2a7611ae-e896-550c-6c85-eb77533004d0" testName="PropertyDetail_BookingCta_MatchesTheBookingMode(&quot;Braamfontein Studio Living&quot;,&quot;Request booking&quot;)" computerName="CHARLSPC" duration="00:00:00.1847640" startTime="2026-09-06T21:34:37.9962994+02:00" endTime="2026-09-06T21:34:38.1810633+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c9f15194-b63c-489f-960b-61faea23947d" />
+    <UnitTestResult executionId="12d2ce97-97f5-4957-8b8f-62c6863c566c" testId="e6258e8a-0308-e3d8-a0e5-017dc9a9d297" testName="Header_ReportsLink_IsAdminOnly" computerName="CHARLSPC" duration="00:00:00.6296750" startTime="2026-09-06T21:34:35.2415628+02:00" endTime="2026-09-06T21:34:35.8712373+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="12d2ce97-97f5-4957-8b8f-62c6863c566c" />
+    <UnitTestResult executionId="c9dd79f4-5191-4158-a12b-95b538436a66" testId="94b8a086-aa39-9682-1dbc-cce5b4132256" testName="NsfasUpload_WithValidPdf_IsAcceptedAsPending" computerName="CHARLSPC" duration="00:00:00.4871050" startTime="2026-09-06T21:33:02.8713986+02:00" endTime="2026-09-06T21:33:03.3585031+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c9dd79f4-5191-4158-a12b-95b538436a66" />
+    <UnitTestResult executionId="d2c28a40-a110-4caf-82cf-99c05dc7a3f1" testId="81166082-d66a-427c-bf17-ab898f51d266" testName="Register_WithWeakPassword_ShowsPolicyError" computerName="CHARLSPC" duration="00:00:00.4031290" startTime="2026-09-06T21:32:56.2280750+02:00" endTime="2026-09-06T21:32:56.6312026+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d2c28a40-a110-4caf-82cf-99c05dc7a3f1" />
+    <UnitTestResult executionId="d9c716b6-71c2-4345-823e-1afa9a715228" testId="f644ad97-22fb-b3b4-c66f-adbd0860cc8e" testName="CoreSearchPath_StillReachesAListing" computerName="CHARLSPC" duration="00:00:00.4125070" startTime="2026-09-06T21:33:07.7707821+02:00" endTime="2026-09-06T21:33:08.1832878+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d9c716b6-71c2-4345-823e-1afa9a715228" />
+    <UnitTestResult executionId="55d0cd47-4ae9-4365-9b1a-28a9f5a085a5" testId="1611dcea-4f51-9aca-e14e-8115ebd3ae71" testName="SessionId_IsRegeneratedOnSignIn" computerName="CHARLSPC" duration="00:00:00.3484800" startTime="2026-09-06T21:33:25.3487643+02:00" endTime="2026-09-06T21:33:25.6972441+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="55d0cd47-4ae9-4365-9b1a-28a9f5a085a5" />
+    <UnitTestResult executionId="2b943014-d5b2-4722-8c7c-e9a2d9981403" testId="e1960caa-0825-98be-debe-bd8c52a31f05" testName="AdminVerification_IsRecordedInTheAuditLog" computerName="CHARLSPC" duration="00:00:00.8112270" startTime="2026-09-06T21:33:03.3605869+02:00" endTime="2026-09-06T21:33:04.1718134+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2b943014-d5b2-4722-8c7c-e9a2d9981403" />
+    <UnitTestResult executionId="2724a58b-a73e-415d-8de5-3bc81ed9179d" testId="e6d113fa-a1d6-084d-d240-5c0cb74f1025" testName="Pages_LoadEveryStaticAsset(&quot;index.php&quot;)" computerName="CHARLSPC" duration="00:00:00.6503490" startTime="2026-09-06T21:33:08.5660940+02:00" endTime="2026-09-06T21:33:09.2164400+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2724a58b-a73e-415d-8de5-3bc81ed9179d" />
+    <UnitTestResult executionId="547a6dfe-284d-49c7-b2c3-1eb8910d9a73" testId="e19d73e9-c0dd-455f-c585-6739073511ec" testName="AuthenticatedPages_AreNotCacheable" computerName="CHARLSPC" duration="00:00:00.3407580" startTime="2026-09-06T21:33:27.3067388+02:00" endTime="2026-09-06T21:33:27.6474960+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="547a6dfe-284d-49c7-b2c3-1eb8910d9a73" />
+    <UnitTestResult executionId="b758786c-2368-4245-b08f-b49a6dce680d" testId="de1f300a-5a21-6e77-4bf4-a484ad687655" testName="Pages_LogNoConsoleErrors(&quot;properties.php&quot;)" computerName="CHARLSPC" duration="00:00:00.6381140" startTime="2026-09-06T21:33:10.5301183+02:00" endTime="2026-09-06T21:33:11.1682320+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b758786c-2368-4245-b08f-b49a6dce680d" />
+    <UnitTestResult executionId="a7402311-0ded-489e-835b-97386b13f5af" testId="f441453b-7cbd-2e07-1477-93802bacfa2f" testName="PublicPages_LoadSuccessfully(&quot;index.php&quot;)" computerName="CHARLSPC" duration="00:00:00.1888010" startTime="2026-09-06T21:33:12.1208047+02:00" endTime="2026-09-06T21:33:12.3096046+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a7402311-0ded-489e-835b-97386b13f5af" />
+    <UnitTestResult executionId="2aa3d859-6e4c-4d84-beae-d5b90406c5fb" testId="1dfae252-a6e1-b47b-6d91-1117b485f7e5" testName="Pages_HaveASpecificDocumentTitle(&quot;register.php&quot;,&quot;Create account | EMERGEX&quot;)" computerName="CHARLSPC" duration="00:00:00.1460360" startTime="2026-09-06T21:34:37.1376903+02:00" endTime="2026-09-06T21:34:37.2837258+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2aa3d859-6e4c-4d84-beae-d5b90406c5fb" />
+    <UnitTestResult executionId="fdbb31d9-4aeb-4ab4-9ab9-f3e4d0f8c488" testId="97772cee-29b3-72da-18b1-79d7188b175a" testName="Pages_OnMobileViewport_DoNotScrollHorizontally(&quot;properties.php&quot;)" computerName="CHARLSPC" duration="00:00:00.1506290" startTime="2026-09-06T21:34:37.4647727+02:00" endTime="2026-09-06T21:34:37.6154004+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fdbb31d9-4aeb-4ab4-9ab9-f3e4d0f8c488" />
+    <UnitTestResult executionId="02d8b0d6-e2d9-4105-bcf8-55037fc6a4a2" testId="470bbde2-84f0-c337-6c96-366685ce406f" testName="Prices_RenderInRandWithThousandSeparators" computerName="CHARLSPC" duration="00:00:00.1925030" startTime="2026-09-06T21:33:11.7627427+02:00" endTime="2026-09-06T21:33:11.9552448+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="02d8b0d6-e2d9-4105-bcf8-55037fc6a4a2" />
+    <UnitTestResult executionId="f2c9a82b-46b9-4ced-8783-155ec83d3060" testId="2ce0458f-53aa-82df-ef94-7e3a14a4f5be" testName="SignIn_WithValidCredentials_RedirectsToRoleDashboard(&quot;admin@emergex.test&quot;,&quot;Admin@55Secure&quot;,&quot;admin.php&quot;)" computerName="CHARLSPC" duration="00:00:00.3286460" startTime="2026-09-06T21:32:58.6625347+02:00" endTime="2026-09-06T21:32:58.9911811+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f2c9a82b-46b9-4ced-8783-155ec83d3060" />
+    <UnitTestResult executionId="9e891ce6-2b7b-4f1e-b5c6-57a1c30064f5" testId="8fa908a7-06f7-d32d-56d9-1badb31c8246" testName="EscrowSimulation_MovesThroughEveryStateInOrder" computerName="CHARLSPC" duration="00:00:00.7577800" startTime="2026-09-06T21:33:05.1191968+02:00" endTime="2026-09-06T21:33:05.8769765+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9e891ce6-2b7b-4f1e-b5c6-57a1c30064f5" />
+    <UnitTestResult executionId="b0051945-edbe-4c98-80fa-9c08d7c6b0da" testId="dab9ac17-4e4a-82d5-03d1-29d45668aa3a" testName="NewLandlord_IsVerifiedByAdminAndTheBadgeReachesStudents" computerName="CHARLSPC" duration="00:00:01.3035650" startTime="2026-09-06T21:32:48.6186855+02:00" endTime="2026-09-06T21:32:49.9222493+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b0051945-edbe-4c98-80fa-9c08d7c6b0da" />
+    <UnitTestResult executionId="61745aa0-8975-4472-b349-ff604c7387d3" testId="cb4bc4e6-8d1d-1969-5994-0baa006ccee6" testName="SignIn_WithSqlInjectionPayload_DoesNotAuthenticate(&quot;admin@emergex.test' --&quot;,&quot;anything&quot;)" computerName="CHARLSPC" duration="00:00:10.3977430" startTime="2026-09-06T21:34:11.1379165+02:00" endTime="2026-09-06T21:34:21.5356588+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="61745aa0-8975-4472-b349-ff604c7387d3">
+      <Output>
+        <ErrorInfo>
+          <Message>Microsoft.Playwright.PlaywrightException : Locator expected to contain text&#xD;
+Error: element(s) not found 'credentials'&#xD;
+But was: 'null' &#xD;
+Call log:&#xD;
+  - Expect "ToContainTextAsync" with timeout 10000ms&#xD;
+  - waiting for Locator(".flash.flash-success")&#xD;
+Aria snapshot:&#xD;
+- banner:&#xD;
+  - link "EMERGEX home":&#xD;
+    - /url: /emergex-group-55/application/public/index.php&#xD;
+    - text: EMERGEX&#xD;
+  - navigation "Main navigation":&#xD;
+    - link "Find a home":&#xD;
+      - /url: /emergex-group-55/application/public/properties.php&#xD;
+    - link "How it works":&#xD;
+      - /url: /emergex-group-55/application/public/how-it-works.php&#xD;
+    - link "Sign in":&#xD;
+      - /url: /emergex-group-55/application/public/login.php&#xD;
+    - link "Get started":&#xD;
+      - /url: /emergex-group-55/application/public/register.php&#xD;
+- main:&#xD;
+  - paragraph: Welcome back&#xD;
+  - heading "Your next move starts here." [level=1]&#xD;
+  - paragraph: Track applications, deposits and check-in milestones from one place.&#xD;
+  - heading "Sign in" [level=2]&#xD;
+  - text: Email address&#xD;
+  - textbox "Email address": admin@emergex.test' --&#xD;
+  - text: Password&#xD;
+  - textbox "Password": anything&#xD;
+  - button "Sign in securely"&#xD;
+  - paragraph:&#xD;
+    - text: New to EMERGEX?&#xD;
+    - link "Create an account":&#xD;
+      - /url: /emergex-group-55/application/public/register.php&#xD;
+    - text: .&#xD;
+- contentinfo:&#xD;
+  - strong: EMERGEX&#xD;
+  - paragraph: Secure student accommodation, from search to check-in.&#xD;
+  - link "Safety process":&#xD;
+    - /url: /emergex-group-55/application/public/how-it-works.php&#xD;
+  - link "Privacy":&#xD;
+    - /url: /emergex-group-55/application/public/privacy.php&#xD;
+  - text: Academic prototype - no real funds processed</Message>
+          <StackTrace>   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, FrameExpectOptions expectOptions, Object expected, String message, String title) in /_/src/Playwright/Core/AssertionsBase.cs:line 97&#xD;
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue[] expectedText, Object expected, String message, String title, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 69&#xD;
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue textValue, Object expected, String message, String title, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 61&#xD;
+   at EMERGEX.Tests.SecurityTests.SecurityTests.SignIn_WithSqlInjectionPayload_DoesNotAuthenticate(String email, String password) in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\SecurityTests\SecurityTests.cs:line 81&#xD;
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()&#xD;
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)&#xD;
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)&#xD;
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()&#xD;
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+1)    at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, FrameExpectOptions expectOptions, Object expected, String message, String title) in /_/src/Playwright/Core/AssertionsBase.cs:line 97&#xD;
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue[] expectedText, Object expected, String message, String title, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 69&#xD;
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue textValue, Object expected, String message, String title, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 61&#xD;
+   at EMERGEX.Tests.SecurityTests.SecurityTests.SignIn_WithSqlInjectionPayload_DoesNotAuthenticate(String email, String password) in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\SecurityTests\SecurityTests.cs:line 81&#xD;
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()&#xD;
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)&#xD;
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)&#xD;
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()&#xD;
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="6ce8d48b-4118-48b3-8060-d0e4359b89f4" testId="d9a8fcdc-de26-6b30-fa89-c3694d28ba44" testName="Pages_HaveASpecificDocumentTitle(&quot;index.php&quot;,&quot;Secure student accommodation | EMERGEX&quot;)" computerName="CHARLSPC" duration="00:00:00.1534360" startTime="2026-09-06T21:34:36.6899860+02:00" endTime="2026-09-06T21:34:36.8434219+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6ce8d48b-4118-48b3-8060-d0e4359b89f4" />
+    <UnitTestResult executionId="348a8940-43aa-4755-a125-94f3048fe4c6" testId="b3023154-1f7b-e994-4b49-5cc08fe0140a" testName="PropertyDetail_WithUnknownId_Returns404" computerName="CHARLSPC" duration="00:00:00.1311650" startTime="2026-09-06T21:32:57.9919101+02:00" endTime="2026-09-06T21:32:58.1230752+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="348a8940-43aa-4755-a125-94f3048fe4c6" />
+    <UnitTestResult executionId="947febb0-a27a-4600-978b-fd5f1e3b7b21" testId="a0821642-2b19-5747-35c1-9123df8c5c0a" testName="FlashMessage_IsShownOnceThenCleared" computerName="CHARLSPC" duration="00:00:00.3824710" startTime="2026-09-06T21:33:08.1834960+02:00" endTime="2026-09-06T21:33:08.5659674+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="947febb0-a27a-4600-978b-fd5f1e3b7b21" />
+    <UnitTestResult executionId="fcbd269a-127f-4e3b-9fdf-4f09a5e08eb4" testId="ea932585-1086-5583-2ad5-c1a0e09e70d3" testName="Booking_WithTamperedPriceFields_PersistsTheDatabaseValues" computerName="CHARLSPC" duration="00:00:00.6507790" startTime="2026-09-06T21:33:26.6555012+02:00" endTime="2026-09-06T21:33:27.3062801+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fcbd269a-127f-4e3b-9fdf-4f09a5e08eb4" />
+    <UnitTestResult executionId="2266a809-343a-427d-91ac-e0b34b634a98" testId="4d820c34-9bef-0bfe-0d65-7499a4bb49e2" testName="Properties_AfterClearingFilters_ShowsEveryHomeAgain" computerName="CHARLSPC" duration="00:00:00.3697240" startTime="2026-09-06T21:32:53.8155743+02:00" endTime="2026-09-06T21:32:54.1852980+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2266a809-343a-427d-91ac-e0b34b634a98" />
+    <UnitTestResult executionId="8cac7eb2-c7aa-4825-8259-557d9fc15090" testId="45a73eb5-ddea-09e9-2ab5-2fdc1594e149" testName="Registration_StoresAHashedPasswordAndTheCorrectRole" computerName="CHARLSPC" duration="00:00:00.4383160" startTime="2026-09-06T21:33:06.4353614+02:00" endTime="2026-09-06T21:33:06.8736774+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8cac7eb2-c7aa-4825-8259-557d9fc15090" />
+    <UnitTestResult executionId="6dc25b39-d7d4-4e24-9573-a71f460d004b" testId="89cd7880-e8db-f56f-3b94-8baf398dc2b3" testName="MobileNavigation_ToggleIsAccessible" computerName="CHARLSPC" duration="00:00:00.2112120" startTime="2026-09-06T21:34:35.8725360+02:00" endTime="2026-09-06T21:34:36.0837472+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6dc25b39-d7d4-4e24-9573-a71f460d004b" />
+    <UnitTestResult executionId="4fa08deb-4ff3-43e7-8506-77d515ac6abc" testId="67f03396-f525-9588-b282-7f840b1a27d2" testName="ErrorResponses_DoNotLeakInternalDetail(&quot;property.php?id=999999&quot;)" computerName="CHARLSPC" duration="00:00:00.1182950" startTime="2026-09-06T21:33:28.4911691+02:00" endTime="2026-09-06T21:33:28.6094637+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4fa08deb-4ff3-43e7-8506-77d515ac6abc" />
+    <UnitTestResult executionId="1ac571e3-dfaf-4015-87e5-0dee077171fc" testId="7cb67f43-2d6d-8fb7-761c-8f785accfc07" testName="Booking_OnAPropertyWithNoRoomsAvailable_IsRefused" computerName="CHARLSPC" duration="00:00:00.5684439" startTime="2026-09-06T21:33:26.0870347+02:00" endTime="2026-09-06T21:33:26.6554792+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1ac571e3-dfaf-4015-87e5-0dee077171fc">
+      <Output>
+        <ErrorInfo>
+          <Message>  DEF-010: a booking was accepted on a property advertising zero available rooms. book.php never reads available_rooms, and no code path decrements it, so the platform will over-book any listing without limit. Add an availability check inside the existing transaction in book.php and decrement the column there.&#xD;
+Assert.That(created, Is.False)&#xD;
+  Expected: False&#xD;
+  But was:  True&#xD;
+</Message>
+          <StackTrace>   at EMERGEX.Tests.RegressionTests.DataIntegrityTests.Booking_OnAPropertyWithNoRoomsAvailable_IsRefused() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\RegressionTests\DataIntegrityTests.cs:line 145&#xD;
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()&#xD;
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)&#xD;
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)&#xD;
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()&#xD;
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)&#xD;
+
+1)    at EMERGEX.Tests.RegressionTests.DataIntegrityTests.Booking_OnAPropertyWithNoRoomsAvailable_IsRefused() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\RegressionTests\DataIntegrityTests.cs:line 145&#xD;
+
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="3473d70d-fe1c-4e20-912f-7a1eaf0b915e" testId="03efe107-6a92-8bfd-848c-85bf6c910c9a" testName="PublicPages_LoadSuccessfully(&quot;how-it-works.php&quot;)" computerName="CHARLSPC" duration="00:00:00.1446760" startTime="2026-09-06T21:33:12.4910235+02:00" endTime="2026-09-06T21:33:12.6356987+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3473d70d-fe1c-4e20-912f-7a1eaf0b915e" />
+    <UnitTestResult executionId="fe29652b-e38d-45e4-a189-d5b53e15aad3" testId="e379a7f1-a37a-d21f-7ccf-387a3b3aa76c" testName="NsfasUpload_WithDisguisedPhpFile_IsRejected" computerName="CHARLSPC" duration="00:00:00.5290780" startTime="2026-09-06T21:33:02.3422620+02:00" endTime="2026-09-06T21:33:02.8713401+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fe29652b-e38d-45e4-a189-d5b53e15aad3" />
+    <UnitTestResult executionId="e8ad639f-a9e7-4446-84bc-3ccc3f68e787" testId="62e071ae-dd8a-d03f-75d7-1276f7da3b55" testName="SignIn_WithWrongPassword_IsRejectedWithGenericMessage" computerName="CHARLSPC" duration="00:00:00.3020800" startTime="2026-09-06T21:32:58.9915404+02:00" endTime="2026-09-06T21:32:59.2936189+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e8ad639f-a9e7-4446-84bc-3ccc3f68e787" />
+    <UnitTestResult executionId="9cb87875-73fb-4a5e-8747-edbbdf3f8305" testId="bf796705-67e8-6aab-835c-915ff7894e85" testName="Upload_TrustsFileContentRatherThanTheDeclaredMimeType" computerName="CHARLSPC" duration="00:00:10.6517920" startTime="2026-09-06T21:34:21.5357121+02:00" endTime="2026-09-06T21:34:32.1875041+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9cb87875-73fb-4a5e-8747-edbbdf3f8305">
+      <Output>
+        <ErrorInfo>
+          <Message>Microsoft.Playwright.PlaywrightException : Locator expected to contain text&#xD;
+Error: element(s) not found 'Only PDF, JPG and PNG files are accepted'&#xD;
+But was: 'null' &#xD;
+Call log:&#xD;
+  - Expect "ToContainTextAsync" with timeout 10000ms&#xD;
+  - waiting for Locator(".flash.flash-success")&#xD;
+Aria snapshot:&#xD;
+- banner:&#xD;
+  - link "EMERGEX home":&#xD;
+    - /url: /emergex-group-55/application/public/index.php&#xD;
+    - text: EMERGEX&#xD;
+  - navigation "Main navigation":&#xD;
+    - link "Find a home":&#xD;
+      - /url: /emergex-group-55/application/public/properties.php&#xD;
+    - link "How it works":&#xD;
+      - /url: /emergex-group-55/application/public/how-it-works.php&#xD;
+    - link "Dashboard":&#xD;
+      - /url: /emergex-group-55/application/public/dashboard.php&#xD;
+    - link "Sign out":&#xD;
+      - /url: /emergex-group-55/application/public/logout.php&#xD;
+- main:&#xD;
+  - status: Only PDF, JPG and PNG files are accepted.&#xD;
+  - paragraph: Student dashboard&#xD;
+  - heading "Hi, Demo." [level=1]&#xD;
+  - paragraph: Follow every booking from request to check-in.&#xD;
+  - link "Find another home":&#xD;
+    - /url: /emergex-group-55/application/public/properties.php&#xD;
+  - heading "Your bookings" [level=2]&#xD;
+  - article:&#xD;
+    - heading "Braamfontein Studio Living" [level=3]&#xD;
+    - paragraph: Braamfontein, Johannesburg&#xD;
+    - text: Awaiting landlord Move-in&#xD;
+    - strong: 06 Oct 2026&#xD;
+    - text: Rent&#xD;
+    - strong: R 6 100&#xD;
+    - text: Deposit&#xD;
+    - strong: R 6 100&#xD;
+    - paragraph: Response requested by 07 Sep 2026, 09:32&#xD;
+  - complementary:&#xD;
+    - heading "NSFAS evidence" [level=2]&#xD;
+    - paragraph: Upload proof for administrator review. Use demo files only.&#xD;
+    - text: PDF, JPG or PNG up to 5 MB&#xD;
+    - button "PDF, JPG or PNG up to 5 MB"&#xD;
+    - button "Upload securely"&#xD;
+    - heading "Safety reminder" [level=2]&#xD;
+    - paragraph: Never pay a landlord outside the demonstrated process. Inspect the property and lease details first.&#xD;
+- contentinfo:&#xD;
+  - strong: EMERGEX&#xD;
+  - paragraph: Secure student accommodation, from search to check-in.&#xD;
+  - link "Safety process":&#xD;
+    - /url: /emergex-group-55/application/public/how-it-works.php&#xD;
+  - link "Privacy":&#xD;
+    - /url: /emergex-group-55/application/public/privacy.php&#xD;
+  - text: Academic prototype - no real funds processed</Message>
+          <StackTrace>   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, FrameExpectOptions expectOptions, Object expected, String message, String title) in /_/src/Playwright/Core/AssertionsBase.cs:line 97&#xD;
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue[] expectedText, Object expected, String message, String title, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 69&#xD;
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue textValue, Object expected, String message, String title, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 61&#xD;
+   at EMERGEX.Tests.SecurityTests.SecurityTests.Upload_TrustsFileContentRatherThanTheDeclaredMimeType() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\SecurityTests\SecurityTests.cs:line 345&#xD;
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()&#xD;
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)&#xD;
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)&#xD;
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()&#xD;
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+1)    at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, FrameExpectOptions expectOptions, Object expected, String message, String title) in /_/src/Playwright/Core/AssertionsBase.cs:line 97&#xD;
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue[] expectedText, Object expected, String message, String title, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 69&#xD;
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue textValue, Object expected, String message, String title, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 61&#xD;
+   at EMERGEX.Tests.SecurityTests.SecurityTests.Upload_TrustsFileContentRatherThanTheDeclaredMimeType() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\SecurityTests\SecurityTests.cs:line 345&#xD;
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()&#xD;
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)&#xD;
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)&#xD;
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()&#xD;
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c55cb367-7ebe-4cc4-b511-13f555a9d26d" testId="c26db5aa-133e-4b41-e64e-60cefdabed8e" testName="Properties_SearchedByKeyword_ReturnsTheMatchingHome(&quot;Cape Town&quot;,&quot;Mowbray Campus Rooms&quot;)" computerName="CHARLSPC" duration="00:00:00.3369210" startTime="2026-09-06T21:32:56.3292141+02:00" endTime="2026-09-06T21:32:56.6661340+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c55cb367-7ebe-4cc4-b511-13f555a9d26d" />
+    <UnitTestResult executionId="5fcf2b85-d63e-4740-acb9-87969bc3e9c4" testId="bd179073-d4cc-a3a4-7e28-43cb37072c36" testName="Search_WithSqlInjectionPayload_IsTreatedAsPlainText(&quot;1' UNION SELECT null,null,null --&quot;)" computerName="CHARLSPC" duration="00:00:00.1742680" startTime="2026-09-06T21:33:29.7980512+02:00" endTime="2026-09-06T21:33:29.9723179+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5fcf2b85-d63e-4740-acb9-87969bc3e9c4" />
+    <UnitTestResult executionId="6b05c5d6-e81b-4766-b701-2a9bd27a6490" testId="6e473f3c-4c12-1262-6591-61374d538742" testName="SignIn_WithValidCredentials_RedirectsToRoleDashboard(&quot;landlord@emergex.test&quot;,&quot;Landlord@55&quot;,&quot;landlord.php&quot;)" computerName="CHARLSPC" duration="00:00:00.3721550" startTime="2026-09-06T21:32:58.2902528+02:00" endTime="2026-09-06T21:32:58.6624078+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6b05c5d6-e81b-4766-b701-2a9bd27a6490" />
+    <UnitTestResult executionId="70859213-ec3f-429d-83eb-38f9e60a414a" testId="2ffc0af9-7228-3a0b-e2a9-710069276879" testName="SearchGrid_RendersExactlyWhatTheDatabaseReturns" computerName="CHARLSPC" duration="00:00:00.1856820" startTime="2026-09-06T21:33:07.5843627+02:00" endTime="2026-09-06T21:33:07.7700443+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="70859213-ec3f-429d-83eb-38f9e60a414a" />
+    <UnitTestResult executionId="d5a17954-eaba-4a0d-8152-ff6f07c6060e" testId="81a0ab2f-17d0-0a8a-af26-ae5bbccd3085" testName="Properties_WithScriptInSearchTerm_EscapesTheInput" computerName="CHARLSPC" duration="00:00:00.3649420" startTime="2026-09-06T21:32:57.6268026+02:00" endTime="2026-09-06T21:32:57.9917440+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d5a17954-eaba-4a0d-8152-ff6f07c6060e" />
+    <UnitTestResult executionId="bad1acd0-2960-4a35-84d1-29e65ba61968" testId="63c3e65e-4e9c-7c35-b825-18f3312407a9" testName="PropertyDetail_ForVerifiedLandlord_RendersTheTrustBadge" computerName="CHARLSPC" duration="00:00:00.1522139" startTime="2026-09-06T21:34:38.1811656+02:00" endTime="2026-09-06T21:34:38.3333790+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bad1acd0-2960-4a35-84d1-29e65ba61968" />
+    <UnitTestResult executionId="1d8bf230-7c61-43c9-b619-2479216a13cd" testId="6694543c-9802-5159-8905-bac1f8a6a8b2" testName="StudentRequestAndLandlordApproval_CompletesTheBookingJourney" computerName="CHARLSPC" duration="00:00:01.4213849" startTime="2026-09-06T21:32:52.3867861+02:00" endTime="2026-09-06T21:32:53.8081712+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1d8bf230-7c61-43c9-b619-2479216a13cd" />
+    <UnitTestResult executionId="760b8be4-2a0f-45c7-a78e-0719bce98063" testId="3add1056-a645-baee-4012-a1d52a16f03f" testName="Dashboard_WithUnknownAction_ReturnsBadRequest" computerName="CHARLSPC" duration="00:00:00.3722890" startTime="2026-09-06T21:33:01.9698928+02:00" endTime="2026-09-06T21:33:02.3421816+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="760b8be4-2a0f-45c7-a78e-0719bce98063" />
+    <UnitTestResult executionId="1a45469b-46b5-41c9-8f22-7318bb474f5b" testId="91044985-bd26-8a84-9f44-f60e82e68672" testName="LoginForm_WithoutCsrfToken_IsRejectedWith419" computerName="CHARLSPC" duration="00:00:00.3733980" startTime="2026-09-06T21:32:54.7324594+02:00" endTime="2026-09-06T21:32:55.1058564+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1a45469b-46b5-41c9-8f22-7318bb474f5b">
+      <Output>
+        <ErrorInfo>
+          <Message>  Assert.That(response.Status, Is.EqualTo(419))&#xD;
+  Expected: 419&#xD;
+  But was:  500&#xD;
+</Message>
+          <StackTrace>   at EMERGEX.Tests.FunctionalTests.AuthenticationTests.LoginForm_WithoutCsrfToken_IsRejectedWith419() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\FunctionalTests\AuthenticationTests.cs:line 191&#xD;
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()&#xD;
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)&#xD;
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)&#xD;
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)&#xD;
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()&#xD;
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)&#xD;
+
+1)    at EMERGEX.Tests.FunctionalTests.AuthenticationTests.LoginForm_WithoutCsrfToken_IsRejectedWith419() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\FunctionalTests\AuthenticationTests.cs:line 191&#xD;
+
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5ed14bd8-1964-4e1d-8e2a-ce09d0e5c49b" testId="a85d8c7e-9193-45ce-87af-59d943cfb8d0" testName="Pages_LogNoConsoleErrors(&quot;register.php&quot;)" computerName="CHARLSPC" duration="00:00:00.5942360" startTime="2026-09-06T21:33:11.1683382+02:00" endTime="2026-09-06T21:33:11.7625741+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5ed14bd8-1964-4e1d-8e2a-ce09d0e5c49b" />
+    <UnitTestResult executionId="c0e00685-5f3e-4680-af33-25dc29014b58" testId="8c90aa85-037c-c4cb-6070-3f925c9ba5e1" testName="Pages_DoNotRenderPhpErrors(&quot;how-it-works.php&quot;)" computerName="CHARLSPC" duration="00:00:00.1407509" startTime="2026-09-06T21:34:36.4275065+02:00" endTime="2026-09-06T21:34:36.5682571+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c0e00685-5f3e-4680-af33-25dc29014b58" />
+    <UnitTestResult executionId="225a7488-09a3-420d-a5e9-15ff0f0e35de" testId="443c3bc8-2522-b0e2-97c0-b383f69af904" testName="PublicPages_LoadSuccessfully(&quot;register.php&quot;)" computerName="CHARLSPC" duration="00:00:00.1570710" startTime="2026-09-06T21:33:12.7787987+02:00" endTime="2026-09-06T21:33:12.9358692+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="225a7488-09a3-420d-a5e9-15ff0f0e35de" />
+    <UnitTestResult executionId="d3c481b6-64dd-4c79-ae27-bb8d2a537196" testId="d421444b-7be9-57bd-37ac-e8bd66c1b115" testName="Pages_DoNotRenderPhpErrors(&quot;properties.php&quot;)" computerName="CHARLSPC" duration="00:00:00.1826510" startTime="2026-09-06T21:34:36.2448150+02:00" endTime="2026-09-06T21:34:36.4274653+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d3c481b6-64dd-4c79-ae27-bb8d2a537196" />
+    <UnitTestResult executionId="c6a99537-bc80-4f9b-bca1-b8f1c6c813f5" testId="0345a6d2-59f9-a067-38d3-13bc2e85f198" testName="Pages_LogNoConsoleErrors(&quot;index.php&quot;)" computerName="CHARLSPC" duration="00:00:00.6699590" startTime="2026-09-06T21:33:09.8600552+02:00" endTime="2026-09-06T21:33:10.5300154+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c6a99537-bc80-4f9b-bca1-b8f1c6c813f5" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Booking_WithUnknownProperty_Returns404" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="4d901ec5-e22f-6976-e1ab-21292c91d358">
+      <Execution id="55688d9e-f9e6-4159-b776-48b462a79210" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.BookingAndUploadTests" name="Booking_WithUnknownProperty_Returns404" />
+    </UnitTest>
+    <UnitTest name="InstantBooking_CreatesApprovedBookingWithUnpaidEscrow" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="e1e8d44c-abf9-ce0c-d356-7a0e6a43644a">
+      <Execution id="74b29b70-b0bb-48b6-a93e-12c459cc8b2a" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.IntegrationTests.PersistenceTests" name="InstantBooking_CreatesApprovedBookingWithUnpaidEscrow" />
+    </UnitTest>
+    <UnitTest name="Prices_RenderInRandWithThousandSeparators" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="470bbde2-84f0-c337-6c96-366685ce406f">
+      <Execution id="02d8b0d6-e2d9-4105-bcf8-55037fc6a4a2" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests" name="Prices_RenderInRandWithThousandSeparators" />
+    </UnitTest>
+    <UnitTest name="Pages_LogNoConsoleErrors(&quot;index.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="0345a6d2-59f9-a067-38d3-13bc2e85f198">
+      <Execution id="c6a99537-bc80-4f9b-bca1-b8f1c6c813f5" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests" name="Pages_LogNoConsoleErrors(&quot;index.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="NsfasUpload_WithDisguisedPhpFile_IsRejected" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="e379a7f1-a37a-d21f-7ccf-387a3b3aa76c">
+      <Execution id="fe29652b-e38d-45e4-a189-d5b53e15aad3" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.BookingAndUploadTests" name="NsfasUpload_WithDisguisedPhpFile_IsRejected" />
+    </UnitTest>
+    <UnitTest name="DepositSimulation_OnSomeoneElsesBooking_Returns404" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="c5939831-d130-5f15-17aa-a17901abde2d">
+      <Execution id="ed350285-c408-4b5d-baac-6a3b796b8ccd" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.IntegrationTests.PersistenceTests" name="DepositSimulation_OnSomeoneElsesBooking_Returns404" />
+    </UnitTest>
+    <UnitTest name="PropertyTitles_AreHtmlEscapedOnRender" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="fbc89fdf-b8e8-11cf-f321-5e1c87a3addf">
+      <Execution id="5008da63-2134-4742-bec2-6d04ba270132" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests" name="PropertyTitles_AreHtmlEscapedOnRender" />
+    </UnitTest>
+    <UnitTest name="StudentRequestAndLandlordApproval_CompletesTheBookingJourney" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="6694543c-9802-5159-8905-bac1f8a6a8b2">
+      <Execution id="1d8bf230-7c61-43c9-b619-2479216a13cd" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.EndToEndTests.JourneyTests" name="StudentRequestAndLandlordApproval_CompletesTheBookingJourney" />
+    </UnitTest>
+    <UnitTest name="SignedInUser_IsBouncedAwayFromLoginAndRegister" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="2a731343-67c7-06b2-385a-cbe5a7988a91">
+      <Execution id="666bf21a-5649-436a-bd17-6fd9e9e71cdb" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests" name="SignedInUser_IsBouncedAwayFromLoginAndRegister" />
+    </UnitTest>
+    <UnitTest name="Pages_OnMobileViewport_DoNotScrollHorizontally(&quot;properties.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="97772cee-29b3-72da-18b1-79d7188b175a">
+      <Execution id="fdbb31d9-4aeb-4ab4-9ab9-f3e4d0f8c488" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="Pages_OnMobileViewport_DoNotScrollHorizontally(&quot;properties.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="UploadedDocuments_AreNotReadableWithoutASession" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="fefd5c11-d9d9-bbe5-6b49-0c521806a0dd">
+      <Execution id="8b318f05-ae10-40ea-945a-7354108a1774" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.SecurityTests.SecurityTests" name="UploadedDocuments_AreNotReadableWithoutASession" />
+    </UnitTest>
+    <UnitTest name="UploadsDirectory_DoesNotRenderAnIndexListing" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="2028efa3-5eb4-f595-a455-e36e53fafafd">
+      <Execution id="a7fe2c1d-ab14-4c86-9eb5-dc78b1a556bc" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.SecurityTests.SecurityTests" name="UploadsDirectory_DoesNotRenderAnIndexListing" />
+    </UnitTest>
+    <UnitTest name="SearchGrid_OnMobileViewport_StacksIntoASingleColumn" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="a84c20d0-2ca4-f176-d20d-a31898180a74">
+      <Execution id="25fec503-c6ca-4eef-8f4a-7aec75043eae" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="SearchGrid_OnMobileViewport_StacksIntoASingleColumn" />
+    </UnitTest>
+    <UnitTest name="Properties_FilteredByMaxPrice_ExcludesHomesAboveTheCap" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="2b09207a-6721-bff5-89ce-17bcc1b3ce19">
+      <Execution id="0bf51770-2c8a-4adc-b312-bc01940e3662" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.PropertySearchTests" name="Properties_FilteredByMaxPrice_ExcludesHomesAboveTheCap" />
+    </UnitTest>
+    <UnitTest name="Properties_WithNoFilters_ListsAllVerifiedHomes" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="5a3b789c-c8a7-c5a6-0010-734e10322a8a">
+      <Execution id="feb8e28e-c83e-4984-90db-a14634b102f0" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.PropertySearchTests" name="Properties_WithNoFilters_ListsAllVerifiedHomes" />
+    </UnitTest>
+    <UnitTest name="SessionId_IsRegeneratedOnSignIn" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="1611dcea-4f51-9aca-e14e-8115ebd3ae71">
+      <Execution id="55d0cd47-4ae9-4365-9b1a-28a9f5a085a5" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests" name="SessionId_IsRegeneratedOnSignIn" />
+    </UnitTest>
+    <UnitTest name="Pages_DoNotRenderPhpErrors(&quot;privacy.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="24478b79-4a17-1f1d-0fb5-62bad5beb704">
+      <Execution id="a84478b5-add2-4cca-8a55-69700c51458e" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="Pages_DoNotRenderPhpErrors(&quot;privacy.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="Register_WithValidStudentDetails_CreatesAccountAndSignsIn" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="26ca6982-7285-11f7-ef2e-293fb0c65ec5">
+      <Execution id="22a8f1c7-d1e9-480c-8cea-78db02ee5b74" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.AuthenticationTests" name="Register_WithValidStudentDetails_CreatesAccountAndSignsIn" />
+    </UnitTest>
+    <UnitTest name="SessionIdentifier_NeverAppearsInAUrl" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="3b32cf98-4743-5299-b3b1-ad022739ad80">
+      <Execution id="d8d82f75-8bcb-40fa-a23e-90443ba026f2" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.SecurityTests.SecurityTests" name="SessionIdentifier_NeverAppearsInAUrl" />
+    </UnitTest>
+    <UnitTest name="AnonymousUser_IsRedirectedToLogin(&quot;admin.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="e78bb73e-ea90-40d7-0b28-509d1b09280f">
+      <Execution id="9d3bf70e-1697-4f66-8be3-55fad7099272" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.AuthenticationTests" name="AnonymousUser_IsRedirectedToLogin(&quot;admin.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="SignIn_WithValidCredentials_RedirectsToRoleDashboard(&quot;student@emergex.test&quot;,&quot;Student@55&quot;,&quot;dashboard.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="53d06aa5-b13a-995b-131d-a2621c35ce49">
+      <Execution id="f3ee1ca0-1f46-4339-b299-17a0dd4018f6" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.AuthenticationTests" name="SignIn_WithValidCredentials_RedirectsToRoleDashboard(&quot;student@emergex.test&quot;,&quot;Student@55&quot;,&quot;dashboard.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="EscrowSimulation_MovesThroughEveryStateInOrder" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="8fa908a7-06f7-d32d-56d9-1badb31c8246">
+      <Execution id="9e891ce6-2b7b-4f1e-b5c6-57a1c30064f5" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.IntegrationTests.PersistenceTests" name="EscrowSimulation_MovesThroughEveryStateInOrder" />
+    </UnitTest>
+    <UnitTest name="PublicPages_LoadSuccessfully(&quot;login.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="8a7842fb-aaa5-de97-fcb1-69b7a9cd2567">
+      <Execution id="0b154c63-ac34-4733-9d35-b72468f0336c" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests" name="PublicPages_LoadSuccessfully(&quot;login.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="Properties_WithScriptInSearchTerm_EscapesTheInput" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="81a0ab2f-17d0-0a8a-af26-ae5bbccd3085">
+      <Execution id="d5a17954-eaba-4a0d-8152-ff6f07c6060e" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.PropertySearchTests" name="Properties_WithScriptInSearchTerm_EscapesTheInput" />
+    </UnitTest>
+    <UnitTest name="Booking_AsLandlord_IsForbidden" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="1669801e-7d92-5088-59f4-ab69ea09dd5d">
+      <Execution id="c5b07a86-2ea3-4dc8-a720-3c043d18c400" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.BookingAndUploadTests" name="Booking_AsLandlord_IsForbidden" />
+    </UnitTest>
+    <UnitTest name="SignIn_WithWrongPassword_IsRejectedWithGenericMessage" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="62e071ae-dd8a-d03f-75d7-1276f7da3b55">
+      <Execution id="e8ad639f-a9e7-4446-84bc-3ccc3f68e787" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.AuthenticationTests" name="SignIn_WithWrongPassword_IsRejectedWithGenericMessage" />
+    </UnitTest>
+    <UnitTest name="PublicPages_LoadSuccessfully(&quot;how-it-works.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="03efe107-6a92-8bfd-848c-85bf6c910c9a">
+      <Execution id="3473d70d-fe1c-4e20-912f-7a1eaf0b915e" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests" name="PublicPages_LoadSuccessfully(&quot;how-it-works.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="AnonymousUser_IsRedirectedToLogin(&quot;dashboard.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="9cdbdbaa-1395-caa5-4bdb-60e49e08a084">
+      <Execution id="8ffe26b9-df2f-4447-95c2-899c9f77bff4" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.AuthenticationTests" name="AnonymousUser_IsRedirectedToLogin(&quot;dashboard.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="Pages_LoadEveryStaticAsset(&quot;index.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="e6d113fa-a1d6-084d-d240-5c0cb74f1025">
+      <Execution id="2724a58b-a73e-415d-8de5-3bc81ed9179d" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests" name="Pages_LoadEveryStaticAsset(&quot;index.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="FlashMessage_IsShownOnceThenCleared" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="a0821642-2b19-5747-35c1-9123df8c5c0a">
+      <Execution id="947febb0-a27a-4600-978b-fd5f1e3b7b21" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests" name="FlashMessage_IsShownOnceThenCleared" />
+    </UnitTest>
+    <UnitTest name="SignIn_AfterFiveFailures_IsThrottled" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="23e11b3f-a9cb-8fb4-6d3e-b1ee09aa3e48">
+      <Execution id="86a1760d-9f8b-4d69-9691-099124592f96" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.AuthenticationTests" name="SignIn_AfterFiveFailures_IsThrottled" />
+    </UnitTest>
+    <UnitTest name="PublicPages_LoadSuccessfully(&quot;register.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="443c3bc8-2522-b0e2-97c0-b383f69af904">
+      <Execution id="225a7488-09a3-420d-a5e9-15ff0f0e35de" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests" name="PublicPages_LoadSuccessfully(&quot;register.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="SearchGrid_RendersExactlyWhatTheDatabaseReturns" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="2ffc0af9-7228-3a0b-e2a9-710069276879">
+      <Execution id="70859213-ec3f-429d-83eb-38f9e60a414a" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.IntegrationTests.PersistenceTests" name="SearchGrid_RendersExactlyWhatTheDatabaseReturns" />
+    </UnitTest>
+    <UnitTest name="PropertyDetail_ForVerifiedLandlord_RendersTheTrustBadge" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="63c3e65e-4e9c-7c35-b825-18f3312407a9">
+      <Execution id="bad1acd0-2960-4a35-84d1-29e65ba61968" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="PropertyDetail_ForVerifiedLandlord_RendersTheTrustBadge" />
+    </UnitTest>
+    <UnitTest name="Pages_OnMobileViewport_DoNotScrollHorizontally(&quot;index.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="1145470c-7ce4-b423-94e8-b96c6399f979">
+      <Execution id="19f66fee-bd0f-4a24-9869-48dd66c39523" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="Pages_OnMobileViewport_DoNotScrollHorizontally(&quot;index.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="PropertyDetail_BookingCta_MatchesTheBookingMode(&quot;Emerald House Hatfield&quot;,&quot;Instant Book&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="dfed45ea-9f3c-e79c-fc2d-50f0b589b0cc">
+      <Execution id="23f8024f-480a-4f9d-b715-7922a40f054f" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="PropertyDetail_BookingCta_MatchesTheBookingMode(&quot;Emerald House Hatfield&quot;,&quot;Instant Book&quot;)" />
+    </UnitTest>
+    <UnitTest name="Search_WithSqlInjectionPayload_IsTreatedAsPlainText(&quot;\&quot; OR 1=1 --&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="7abdabdf-98b6-40e2-80ee-4d83cab67ebd">
+      <Execution id="375e60b5-7f75-4d45-9044-c442f6468eba" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.SecurityTests.SecurityTests" name="Search_WithSqlInjectionPayload_IsTreatedAsPlainText(&quot;\&quot; OR 1=1 --&quot;)" />
+    </UnitTest>
+    <UnitTest name="SignIn_WithSqlInjectionPayload_DoesNotAuthenticate(&quot;admin@emergex.test' --&quot;,&quot;anything&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="cb4bc4e6-8d1d-1969-5994-0baa006ccee6">
+      <Execution id="61745aa0-8975-4472-b349-ff604c7387d3" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.SecurityTests.SecurityTests" name="SignIn_WithSqlInjectionPayload_DoesNotAuthenticate(&quot;admin@emergex.test' --&quot;,&quot;anything&quot;)" />
+    </UnitTest>
+    <UnitTest name="Pages_DoNotRenderPhpErrors(&quot;properties.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="d421444b-7be9-57bd-37ac-e8bd66c1b115">
+      <Execution id="d3c481b6-64dd-4c79-ae27-bb8d2a537196" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="Pages_DoNotRenderPhpErrors(&quot;properties.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="Student_CanSearchInstantBookAndCompleteTheSimulatedPayment" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="783e4ee6-35e6-7280-c5d0-dc966fbf5657">
+      <Execution id="c8b677b3-aabb-4e35-bd5f-5e15a281a103" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.EndToEndTests.JourneyTests" name="Student_CanSearchInstantBookAndCompleteTheSimulatedPayment" />
+    </UnitTest>
+    <UnitTest name="NsfasDocument_UploadedByStudent_IsReviewedAndReflectedBack" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="0594c8f8-5039-f5a1-e2be-369969c7e9b2">
+      <Execution id="e06a53ee-d40a-4d9f-b166-d8143e3cc653" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.EndToEndTests.JourneyTests" name="NsfasDocument_UploadedByStudent_IsReviewedAndReflectedBack" />
+    </UnitTest>
+    <UnitTest name="AnonymousUser_IsRedirectedToLogin(&quot;landlord.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="cda3d9aa-71e0-fd67-a256-6c278ebf5bf7">
+      <Execution id="55cb7f16-2de3-46ac-8ae1-f9f8d80c8cf9" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.AuthenticationTests" name="AnonymousUser_IsRedirectedToLogin(&quot;landlord.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="AuthenticatedPages_AreNotCacheable" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="e19d73e9-c0dd-455f-c585-6739073511ec">
+      <Execution id="547a6dfe-284d-49c7-b2c3-1eb8910d9a73" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.SecurityTests.SecurityTests" name="AuthenticatedPages_AreNotCacheable" />
+    </UnitTest>
+    <UnitTest name="ErrorResponses_DoNotLeakInternalDetail(&quot;book.php?property_id=-1&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="ca78b91f-e7a8-0072-2ab2-141e9d5db406">
+      <Execution id="af089de7-2548-4fa0-bc80-12ba2a632a6e" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.SecurityTests.SecurityTests" name="ErrorResponses_DoNotLeakInternalDetail(&quot;book.php?property_id=-1&quot;)" />
+    </UnitTest>
+    <UnitTest name="PropertyDetail_BookingCta_MatchesTheBookingMode(&quot;Braamfontein Studio Living&quot;,&quot;Request booking&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="2a7611ae-e896-550c-6c85-eb77533004d0">
+      <Execution id="c9f15194-b63c-489f-960b-61faea23947d" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="PropertyDetail_BookingCta_MatchesTheBookingMode(&quot;Braamfontein Studio Living&quot;,&quot;Request booking&quot;)" />
+    </UnitTest>
+    <UnitTest name="Pages_DoNotRenderPhpErrors(&quot;index.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="2d0ae7d0-3377-ba65-db01-054dbda8c357">
+      <Execution id="9bf0deba-f652-434e-bedb-920e137bf9dc" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="Pages_DoNotRenderPhpErrors(&quot;index.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="SignOut_TerminatesSessionAndBlocksProtectedPages" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="23abbaf8-2d8e-c630-7f35-2f4ed61b777c">
+      <Execution id="b3802c2d-49c2-421a-8aa0-1fdc0b8228a3" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.AuthenticationTests" name="SignOut_TerminatesSessionAndBlocksProtectedPages" />
+    </UnitTest>
+    <UnitTest name="Search_WithSqlInjectionPayload_IsTreatedAsPlainText(&quot;'; DROP TABLE users; --&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="541b0bb4-54cf-6f3f-9188-05f0ad549be1">
+      <Execution id="f5a6876b-805e-4518-bd79-57cac78f743a" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.SecurityTests.SecurityTests" name="Search_WithSqlInjectionPayload_IsTreatedAsPlainText(&quot;'; DROP TABLE users; --&quot;)" />
+    </UnitTest>
+    <UnitTest name="ErrorResponses_DoNotLeakInternalDetail(&quot;nonexistent-page.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="a46889dc-74fa-9931-bfcd-4a8cbbf7185f">
+      <Execution id="a09c5602-e972-4aa9-964d-6736befc1eb7" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.SecurityTests.SecurityTests" name="ErrorResponses_DoNotLeakInternalDetail(&quot;nonexistent-page.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="Student_CannotOpenAdminOrLandlordPages" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="468c00f0-5964-e40b-57f0-0266862e599a">
+      <Execution id="81313a72-7fd6-4f66-ab56-23a760d8b508" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.AuthenticationTests" name="Student_CannotOpenAdminOrLandlordPages" />
+    </UnitTest>
+    <UnitTest name="NewLandlord_IsVerifiedByAdminAndTheBadgeReachesStudents" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="dab9ac17-4e4a-82d5-03d1-29d45668aa3a">
+      <Execution id="b0051945-edbe-4c98-80fa-9c08d7c6b0da" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.EndToEndTests.JourneyTests" name="NewLandlord_IsVerifiedByAdminAndTheBadgeReachesStudents" />
+    </UnitTest>
+    <UnitTest name="Booking_OnAPropertyWithNoRoomsAvailable_IsRefused" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="7cb67f43-2d6d-8fb7-761c-8f785accfc07">
+      <Execution id="1ac571e3-dfaf-4015-87e5-0dee077171fc" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.DataIntegrityTests" name="Booking_OnAPropertyWithNoRoomsAvailable_IsRefused" />
+    </UnitTest>
+    <UnitTest name="Properties_FilteredByInstantBook_ShowsOnlyInstantHomes" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="e90e5066-aca8-9003-11eb-85bc1ff4db98">
+      <Execution id="f6bb7efd-0c21-4cee-8dbb-38306d96f151" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.PropertySearchTests" name="Properties_FilteredByInstantBook_ShowsOnlyInstantHomes" />
+    </UnitTest>
+    <UnitTest name="Search_WithSqlInjectionPayload_IsTreatedAsPlainText(&quot;' OR '1'='1&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="95cb5d2d-8dd1-0a9f-b5c5-f729d818bed0">
+      <Execution id="ba627af1-5a58-4702-b871-410b01df4066" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.SecurityTests.SecurityTests" name="Search_WithSqlInjectionPayload_IsTreatedAsPlainText(&quot;' OR '1'='1&quot;)" />
+    </UnitTest>
+    <UnitTest name="SecurityHeaders_ArePresentOnEveryResponse" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="d46f840b-383d-3056-336a-e94b5690c9be">
+      <Execution id="d2ecca3c-e9a5-4f03-b48d-f352a7d30612" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests" name="SecurityHeaders_ArePresentOnEveryResponse" />
+    </UnitTest>
+    <UnitTest name="DepositAction_OnAnotherStudentsBooking_IsRefusedWithoutDisclosure" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="1c602ee3-dd9e-9d6e-4aa1-4587f3771e42">
+      <Execution id="c9badd52-88ab-42f0-a1c8-e66a0ebcb2f9" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.SecurityTests.SecurityTests" name="DepositAction_OnAnotherStudentsBooking_IsRefusedWithoutDisclosure" />
+    </UnitTest>
+    <UnitTest name="Header_AfterSignIn_ShowsDashboardAndSignOut" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="3f1f21ea-c478-b985-79f6-0cd97c7718a9">
+      <Execution id="0a19e3b5-6ad5-456d-8201-2cf665aa7701" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="Header_AfterSignIn_ShowsDashboardAndSignOut" />
+    </UnitTest>
+    <UnitTest name="AdminVerification_IsRecordedInTheAuditLog" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="e1960caa-0825-98be-debe-bd8c52a31f05">
+      <Execution id="2b943014-d5b2-4722-8c7c-e9a2d9981403" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.IntegrationTests.PersistenceTests" name="AdminVerification_IsRecordedInTheAuditLog" />
+    </UnitTest>
+    <UnitTest name="SessionCookie_RemainsHttpOnlyAndSameSiteLax" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="bdb5331f-1bad-243f-d4ef-f147b4308d32">
+      <Execution id="a6b39fa5-487b-438b-8a61-b2c8deb57e4d" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests" name="SessionCookie_RemainsHttpOnlyAndSameSiteLax" />
+    </UnitTest>
+    <UnitTest name="Pages_HaveASpecificDocumentTitle(&quot;index.php&quot;,&quot;Secure student accommodation | EMERGEX&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="d9a8fcdc-de26-6b30-fa89-c3694d28ba44">
+      <Execution id="6ce8d48b-4118-48b3-8060-d0e4359b89f4" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="Pages_HaveASpecificDocumentTitle(&quot;index.php&quot;,&quot;Secure student accommodation | EMERGEX&quot;)" />
+    </UnitTest>
+    <UnitTest name="Booking_WithPastMoveInDate_IsRejected" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="d0520f04-73c3-6495-5513-56d1ae6b3ea0">
+      <Execution id="46f5e867-165c-4180-b066-57484d90767a" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.BookingAndUploadTests" name="Booking_WithPastMoveInDate_IsRejected" />
+    </UnitTest>
+    <UnitTest name="Properties_WithNsfasAndInstantFilters_ReturnsTheIntersection" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="7bc7d35f-a09f-50d9-41b6-265d2c4478d2">
+      <Execution id="d7cf2a78-2705-407c-a135-dc608e58b22c" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.PropertySearchTests" name="Properties_WithNsfasAndInstantFilters_ReturnsTheIntersection" />
+    </UnitTest>
+    <UnitTest name="EmptyState_IsRenderedWithGuidanceCopy" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="c9db528c-636d-5522-4692-4248e1ce2d55">
+      <Execution id="456f3aff-f7a4-4dad-99ce-e2e00667147f" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="EmptyState_IsRenderedWithGuidanceCopy" />
+    </UnitTest>
+    <UnitTest name="PublicPages_LoadSuccessfully(&quot;properties.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="fcfca2cf-b787-7fa3-07a6-081cf06e503e">
+      <Execution id="aee27db2-05a4-41d0-b0a3-70445292311e" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests" name="PublicPages_LoadSuccessfully(&quot;properties.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="AnonymousUser_IsRedirectedToLogin(&quot;reports.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="8d8a2c3b-6260-a1a5-ad5d-269cf4a3d95e">
+      <Execution id="a899e5b9-43c6-455d-ad3b-c7df6eace3ef" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.AuthenticationTests" name="AnonymousUser_IsRedirectedToLogin(&quot;reports.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="Pages_LogNoConsoleErrors(&quot;register.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="a85d8c7e-9193-45ce-87af-59d943cfb8d0">
+      <Execution id="5ed14bd8-1964-4e1d-8e2a-ce09d0e5c49b" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests" name="Pages_LogNoConsoleErrors(&quot;register.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="LandlordDecline_ClosesTheRequestWithoutAnyPaymentStep" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="ade841df-93e4-eb4e-5f1e-09434b7d7455">
+      <Execution id="c4915dbc-4240-4f66-91f2-6c5a7c7be468" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.EndToEndTests.JourneyTests" name="LandlordDecline_ClosesTheRequestWithoutAnyPaymentStep" />
+    </UnitTest>
+    <UnitTest name="Properties_AfterClearingFilters_ShowsEveryHomeAgain" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="4d820c34-9bef-0bfe-0d65-7499a4bb49e2">
+      <Execution id="2266a809-343a-427d-91ac-e0b34b634a98" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.PropertySearchTests" name="Properties_AfterClearingFilters_ShowsEveryHomeAgain" />
+    </UnitTest>
+    <UnitTest name="RoleDashboards_LoadForTheirOwnRole" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="2bdd187d-2e98-9ce1-93a6-3e0315f694bb">
+      <Execution id="7ff8ad6c-9800-4daa-a691-46375d350685" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests" name="RoleDashboards_LoadForTheirOwnRole" />
+    </UnitTest>
+    <UnitTest name="Properties_FilteredByNsfas_ShowsOnlyAccreditedHomes" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="2fa83ca6-db35-284d-1ca6-00d16cf04186">
+      <Execution id="1926cc77-6b08-4f2b-808e-1b091ecb95b4" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.PropertySearchTests" name="Properties_FilteredByNsfas_ShowsOnlyAccreditedHomes" />
+    </UnitTest>
+    <UnitTest name="Pages_HaveASpecificDocumentTitle(&quot;properties.php&quot;,&quot;Find accommodation | EMERGEX&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="c6ad9826-c723-6ddd-01b3-ed584d94bb66">
+      <Execution id="a37fbbbe-09c7-4e6a-848d-02e35776bdc5" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="Pages_HaveASpecificDocumentTitle(&quot;properties.php&quot;,&quot;Find accommodation | EMERGEX&quot;)" />
+    </UnitTest>
+    <UnitTest name="PropertyDetail_NsfasBadge_AppearsOnlyWhenAccredited" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="474e50d8-70d8-5b67-713f-0c72d9e71130">
+      <Execution id="5da6a78c-6fa3-488d-a352-c0cd489f76e0" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="PropertyDetail_NsfasBadge_AppearsOnlyWhenAccredited" />
+    </UnitTest>
+    <UnitTest name="Properties_SearchedByKeyword_ReturnsTheMatchingHome(&quot;Cape Town&quot;,&quot;Mowbray Campus Rooms&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="c26db5aa-133e-4b41-e64e-60cefdabed8e">
+      <Execution id="c55cb367-7ebe-4cc4-b511-13f555a9d26d" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.PropertySearchTests" name="Properties_SearchedByKeyword_ReturnsTheMatchingHome(&quot;Cape Town&quot;,&quot;Mowbray Campus Rooms&quot;)" />
+    </UnitTest>
+    <UnitTest name="ErrorResponses_DoNotLeakInternalDetail(&quot;property.php?id=999999&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="67f03396-f525-9588-b282-7f840b1a27d2">
+      <Execution id="4fa08deb-4ff3-43e7-8506-77d515ac6abc" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.SecurityTests.SecurityTests" name="ErrorResponses_DoNotLeakInternalDetail(&quot;property.php?id=999999&quot;)" />
+    </UnitTest>
+    <UnitTest name="SignIn_WithSqlInjectionPayload_DoesNotAuthenticate(&quot;' OR '1'='1&quot;,&quot;' OR '1'='1&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="c5b91d2a-a4da-a7be-5410-f50be11aa78a">
+      <Execution id="c843e588-2d1b-49d1-9527-782b05582b81" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.SecurityTests.SecurityTests" name="SignIn_WithSqlInjectionPayload_DoesNotAuthenticate(&quot;' OR '1'='1&quot;,&quot;' OR '1'='1&quot;)" />
+    </UnitTest>
+    <UnitTest name="PublicPages_LoadSuccessfully(&quot;privacy.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="14869311-8071-977f-20ea-62ca70ed051a">
+      <Execution id="78e9b58d-0ba3-4d25-8470-9287919e070d" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests" name="PublicPages_LoadSuccessfully(&quot;privacy.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="SearchGrid_ExcludesUnpublishedProperties" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="0e77817c-3598-8b97-2b5a-6582aecfd8ca">
+      <Execution id="96748ce8-9fb2-4e19-a2b4-b2ef2ffbf2b3" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.IntegrationTests.PersistenceTests" name="SearchGrid_ExcludesUnpublishedProperties" />
+    </UnitTest>
+    <UnitTest name="MobileNavigation_ToggleIsAccessible" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="89cd7880-e8db-f56f-3b94-8baf398dc2b3">
+      <Execution id="6dc25b39-d7d4-4e24-9573-a71f460d004b" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="MobileNavigation_ToggleIsAccessible" />
+    </UnitTest>
+    <UnitTest name="Dashboard_BookingStatusChip_UsesTheMatchingStateClass" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="28e7c60b-2707-a952-59c9-97d699a708f4">
+      <Execution id="66ce1567-8435-4688-9cbf-834d5e944082" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="Dashboard_BookingStatusChip_UsesTheMatchingStateClass" />
+    </UnitTest>
+    <UnitTest name="PropertyDetail_WithUnknownId_Returns404" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="b3023154-1f7b-e994-4b49-5cc08fe0140a">
+      <Execution id="348a8940-43aa-4755-a125-94f3048fe4c6" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.PropertySearchTests" name="PropertyDetail_WithUnknownId_Returns404" />
+    </UnitTest>
+    <UnitTest name="Properties_WithNoMatches_ShowsHelpfulEmptyState" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="9f9ad2d5-7726-857a-6962-ed015f9dff6d">
+      <Execution id="14c67513-e165-4456-ac4e-7dffe60b1ca5" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.PropertySearchTests" name="Properties_WithNoMatches_ShowsHelpfulEmptyState" />
+    </UnitTest>
+    <UnitTest name="FlashMessage_HasStatusRoleForScreenReaders" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="748f0820-9758-29f8-c6d4-1749cabc5070">
+      <Execution id="3933f4a5-30ff-4c0a-a96b-3f366893639d" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="FlashMessage_HasStatusRoleForScreenReaders" />
+    </UnitTest>
+    <UnitTest name="RequestBooking_StartsPendingWithATwelveHourDeadline" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="d9fe9b09-0f81-27ce-3a76-c764bb650372">
+      <Execution id="268eebca-e8a9-446a-8822-989f8f4f35fe" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.IntegrationTests.PersistenceTests" name="RequestBooking_StartsPendingWithATwelveHourDeadline" />
+    </UnitTest>
+    <UnitTest name="Pages_HaveASpecificDocumentTitle(&quot;login.php&quot;,&quot;Sign in | EMERGEX&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="51cadd80-9fc0-73e1-526b-de493f2e5656">
+      <Execution id="eff626ab-2926-43c0-a8e2-98827e03c372" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="Pages_HaveASpecificDocumentTitle(&quot;login.php&quot;,&quot;Sign in | EMERGEX&quot;)" />
+    </UnitTest>
+    <UnitTest name="PublicPages_LoadSuccessfully(&quot;index.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="f441453b-7cbd-2e07-1477-93802bacfa2f">
+      <Execution id="a7402311-0ded-489e-835b-97386b13f5af" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests" name="PublicPages_LoadSuccessfully(&quot;index.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="Register_WithWeakPassword_ShowsPolicyError" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="81166082-d66a-427c-bf17-ab898f51d266">
+      <Execution id="d2c28a40-a110-4caf-82cf-99c05dc7a3f1" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.AuthenticationTests" name="Register_WithWeakPassword_ShowsPolicyError" />
+    </UnitTest>
+    <UnitTest name="Register_WithExistingEmail_IsRejected" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="ea6bb114-ff37-c5f4-3bba-ec8ecd3e483c">
+      <Execution id="9b851c58-96d4-45e7-ac08-ea4ef66e0108" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.AuthenticationTests" name="Register_WithExistingEmail_IsRejected" />
+    </UnitTest>
+    <UnitTest name="LoginForm_WithoutCsrfToken_IsRejectedWith419" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="91044985-bd26-8a84-9f44-f60e82e68672">
+      <Execution id="1a45469b-46b5-41c9-8f22-7318bb474f5b" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.AuthenticationTests" name="LoginForm_WithoutCsrfToken_IsRejectedWith419" />
+    </UnitTest>
+    <UnitTest name="SignIn_WithValidCredentials_RedirectsToRoleDashboard(&quot;landlord@emergex.test&quot;,&quot;Landlord@55&quot;,&quot;landlord.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="6e473f3c-4c12-1262-6591-61374d538742">
+      <Execution id="6b05c5d6-e81b-4766-b701-2a9bd27a6490" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.AuthenticationTests" name="SignIn_WithValidCredentials_RedirectsToRoleDashboard(&quot;landlord@emergex.test&quot;,&quot;Landlord@55&quot;,&quot;landlord.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="Pages_LoadEveryStaticAsset(&quot;properties.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="a426f518-6e73-cbc0-bce3-bc9e9aedfcd1">
+      <Execution id="50b17c07-5435-4da6-99d1-8db4a9764b31" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests" name="Pages_LoadEveryStaticAsset(&quot;properties.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="Properties_SearchedByKeyword_ReturnsTheMatchingHome(&quot;Hatfield&quot;,&quot;Emerald House Hatfield&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="03890646-5075-9f71-6f89-a16681f3a680">
+      <Execution id="67d204f1-8619-4f55-b4a0-dff55440d69a" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.PropertySearchTests" name="Properties_SearchedByKeyword_ReturnsTheMatchingHome(&quot;Hatfield&quot;,&quot;Emerald House Hatfield&quot;)" />
+    </UnitTest>
+    <UnitTest name="Pages_LogNoConsoleErrors(&quot;properties.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="de1f300a-5a21-6e77-4bf4-a484ad687655">
+      <Execution id="b758786c-2368-4245-b08f-b49a6dce680d" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests" name="Pages_LogNoConsoleErrors(&quot;properties.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="Upload_TrustsFileContentRatherThanTheDeclaredMimeType" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="bf796705-67e8-6aab-835c-915ff7894e85">
+      <Execution id="9cb87875-73fb-4a5e-8747-edbbdf3f8305" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.SecurityTests.SecurityTests" name="Upload_TrustsFileContentRatherThanTheDeclaredMimeType" />
+    </UnitTest>
+    <UnitTest name="Dashboard_WithUnknownAction_ReturnsBadRequest" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="3add1056-a645-baee-4012-a1d52a16f03f">
+      <Execution id="760b8be4-2a0f-45c7-a78e-0719bce98063" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.BookingAndUploadTests" name="Dashboard_WithUnknownAction_ReturnsBadRequest" />
+    </UnitTest>
+    <UnitTest name="Registration_StoresAHashedPasswordAndTheCorrectRole" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="45a73eb5-ddea-09e9-2ab5-2fdc1594e149">
+      <Execution id="8cac7eb2-c7aa-4825-8259-557d9fc15090" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.IntegrationTests.PersistenceTests" name="Registration_StoresAHashedPasswordAndTheCorrectRole" />
+    </UnitTest>
+    <UnitTest name="Pages_DoNotRenderPhpErrors(&quot;how-it-works.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="8c90aa85-037c-c4cb-6070-3f925c9ba5e1">
+      <Execution id="c0e00685-5f3e-4680-af33-25dc29014b58" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="Pages_DoNotRenderPhpErrors(&quot;how-it-works.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="SignIn_DoesNotRevealWhetherAnAccountExists" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="61f4e301-4ce5-4d74-3868-a5e448142a07">
+      <Execution id="8355e7e5-1de3-4a6c-b8e5-bb12ff8146a7" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.SecurityTests.SecurityTests" name="SignIn_DoesNotRevealWhetherAnAccountExists" />
+    </UnitTest>
+    <UnitTest name="Pages_HaveASpecificDocumentTitle(&quot;register.php&quot;,&quot;Create account | EMERGEX&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="1dfae252-a6e1-b47b-6d91-1117b485f7e5">
+      <Execution id="2aa3d859-6e4c-4d84-beae-d5b90406c5fb" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="Pages_HaveASpecificDocumentTitle(&quot;register.php&quot;,&quot;Create account | EMERGEX&quot;)" />
+    </UnitTest>
+    <UnitTest name="Pages_OnMobileViewport_DoNotScrollHorizontally(&quot;login.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="2f9570cf-6f4e-d9c4-9940-3ffd3105a8de">
+      <Execution id="3d83b816-927e-4cca-97ef-3d489712891c" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="Pages_OnMobileViewport_DoNotScrollHorizontally(&quot;login.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="DocumentUpload_StoresARandomisedFilenameAndTheOriginalName" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="b3f8eb01-0cc5-3da8-d6f8-1e76804a1dc0">
+      <Execution id="e6c3af07-cb00-42ff-98c5-e00d2417b74a" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.IntegrationTests.PersistenceTests" name="DocumentUpload_StoresARandomisedFilenameAndTheOriginalName" />
+    </UnitTest>
+    <UnitTest name="RejectedRegistration_DoesNotEchoThePasswordIntoTheHtml" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="144acdd7-9efc-1de2-d6c9-3d16e2ae410e">
+      <Execution id="62d1f416-6564-4926-927f-1efd20dde272" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.SecurityTests.SecurityTests" name="RejectedRegistration_DoesNotEchoThePasswordIntoTheHtml" />
+    </UnitTest>
+    <UnitTest name="PropertyDetail_ShowsTheNoRealPaymentDisclaimer" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="9a916a72-03b0-5eed-7ab6-541e4937a14c">
+      <Execution id="69ae9db7-f896-4a91-af15-2d27b6d483a0" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="PropertyDetail_ShowsTheNoRealPaymentDisclaimer" />
+    </UnitTest>
+    <UnitTest name="RoleRouting_KeepsRolesOnTheirOwnDashboard" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="ad82213c-e07f-7481-0e71-bfdf5cb26053">
+      <Execution id="3fea6e6e-3ef0-43aa-86cc-74a83df774e4" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests" name="RoleRouting_KeepsRolesOnTheirOwnDashboard" />
+    </UnitTest>
+    <UnitTest name="SignIn_WithValidCredentials_RedirectsToRoleDashboard(&quot;admin@emergex.test&quot;,&quot;Admin@55Secure&quot;,&quot;admin.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="2ce0458f-53aa-82df-ef94-7e3a14a4f5be">
+      <Execution id="f2c9a82b-46b9-4ced-8783-155ec83d3060" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.AuthenticationTests" name="SignIn_WithValidCredentials_RedirectsToRoleDashboard(&quot;admin@emergex.test&quot;,&quot;Admin@55Secure&quot;,&quot;admin.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="ErrorResponses_DoNotLeakInternalDetail(&quot;property.php?id=notanumber&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="81e25c0b-25a3-03e8-317b-342d4906621f">
+      <Execution id="6ec8c112-dfb1-49d7-8b6e-f97b188bb68e" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.SecurityTests.SecurityTests" name="ErrorResponses_DoNotLeakInternalDetail(&quot;property.php?id=notanumber&quot;)" />
+    </UnitTest>
+    <UnitTest name="Pages_OnMobileViewport_DoNotScrollHorizontally(&quot;register.php&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="b43aa63a-1067-3483-d138-84dd4214e2f7">
+      <Execution id="85e02f6e-2087-4ae7-b148-c4035d86270d" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="Pages_OnMobileViewport_DoNotScrollHorizontally(&quot;register.php&quot;)" />
+    </UnitTest>
+    <UnitTest name="Header_ReportsLink_IsAdminOnly" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="e6258e8a-0308-e3d8-a0e5-017dc9a9d297">
+      <Execution id="12d2ce97-97f5-4957-8b8f-62c6863c566c" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="Header_ReportsLink_IsAdminOnly" />
+    </UnitTest>
+    <UnitTest name="PropertyGrid_ImagesHaveDescriptiveAltText" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="57d0fbd9-058b-411d-6319-d7f5f725e6c4">
+      <Execution id="282228f8-1eba-4f0b-b61a-1341e11e247f" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.UITests.PresentationTests" name="PropertyGrid_ImagesHaveDescriptiveAltText" />
+    </UnitTest>
+    <UnitTest name="Search_WithSqlInjectionPayload_IsTreatedAsPlainText(&quot;1' UNION SELECT null,null,null --&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="bd179073-d4cc-a3a4-7e28-43cb37072c36">
+      <Execution id="5fcf2b85-d63e-4740-acb9-87969bc3e9c4" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.SecurityTests.SecurityTests" name="Search_WithSqlInjectionPayload_IsTreatedAsPlainText(&quot;1' UNION SELECT null,null,null --&quot;)" />
+    </UnitTest>
+    <UnitTest name="Booking_WithTamperedPriceFields_PersistsTheDatabaseValues" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="ea932585-1086-5583-2ad5-c1a0e09e70d3">
+      <Execution id="fcbd269a-127f-4e3b-9fdf-4f09a5e08eb4" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.DataIntegrityTests" name="Booking_WithTamperedPriceFields_PersistsTheDatabaseValues" />
+    </UnitTest>
+    <UnitTest name="Upload_WithTraversalSequenceInFilename_StoresARandomisedSafeName" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="a47a2b3f-bd3e-0278-629b-f1d3ba7da652">
+      <Execution id="08d46870-a99c-4a18-b777-e83c1ee875eb" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.SecurityTests.SecurityTests" name="Upload_WithTraversalSequenceInFilename_StoresARandomisedSafeName" />
+    </UnitTest>
+    <UnitTest name="NsfasUpload_WithValidPdf_IsAcceptedAsPending" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="94b8a086-aa39-9682-1dbc-cce5b4132256">
+      <Execution id="c9dd79f4-5191-4158-a12b-95b538436a66" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.BookingAndUploadTests" name="NsfasUpload_WithValidPdf_IsAcceptedAsPending" />
+    </UnitTest>
+    <UnitTest name="CoreSearchPath_StillReachesAListing" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="f644ad97-22fb-b3b4-c66f-adbd0860cc8e">
+      <Execution id="d9c716b6-71c2-4345-823e-1afa9a715228" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests" name="CoreSearchPath_StillReachesAListing" />
+    </UnitTest>
+    <UnitTest name="RegistrationForm_HidesStudentNumberForLandlords" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="ea978c68-974e-a6c4-9a7b-f7060be59dd1">
+      <Execution id="d060cde3-d416-4a26-b879-35dad9b91075" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests" name="RegistrationForm_HidesStudentNumberForLandlords" />
+    </UnitTest>
+    <UnitTest name="Properties_SearchedByKeyword_ReturnsTheMatchingHome(&quot;Wits&quot;,&quot;Braamfontein Studio Living&quot;)" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="42fdc151-ac23-a8a7-5ed3-1e0a50ec0cd0">
+      <Execution id="74d2576c-54f8-4fa0-8ff0-be065e7d0596" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.PropertySearchTests" name="Properties_SearchedByKeyword_ReturnsTheMatchingHome(&quot;Wits&quot;,&quot;Braamfontein Studio Living&quot;)" />
+    </UnitTest>
+    <UnitTest name="Booking_WithOverlongMessage_IsRejected" storage="c:\xampp\htdocs\emergex-group-55\emergex.tests\bin\debug\net9.0\emergex.tests.dll" id="9597586c-6a4c-4685-8335-fd3d4c582b16">
+      <Execution id="00d2f973-0e88-43ec-a311-009960ffe301" />
+      <TestMethod codeBase="C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="EMERGEX.Tests.FunctionalTests.BookingAndUploadTests" name="Booking_WithOverlongMessage_IsRejected" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="c6ad9826-c723-6ddd-01b3-ed584d94bb66" executionId="a37fbbbe-09c7-4e6a-848d-02e35776bdc5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2fa83ca6-db35-284d-1ca6-00d16cf04186" executionId="1926cc77-6b08-4f2b-808e-1b091ecb95b4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="23e11b3f-a9cb-8fb4-6d3e-b1ee09aa3e48" executionId="86a1760d-9f8b-4d69-9691-099124592f96" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a84c20d0-2ca4-f176-d20d-a31898180a74" executionId="25fec503-c6ca-4eef-8f4a-7aec75043eae" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a46889dc-74fa-9931-bfcd-4a8cbbf7185f" executionId="a09c5602-e972-4aa9-964d-6736befc1eb7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9cdbdbaa-1395-caa5-4bdb-60e49e08a084" executionId="8ffe26b9-df2f-4447-95c2-899c9f77bff4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3f1f21ea-c478-b985-79f6-0cd97c7718a9" executionId="0a19e3b5-6ad5-456d-8201-2cf665aa7701" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fefd5c11-d9d9-bbe5-6b49-0c521806a0dd" executionId="8b318f05-ae10-40ea-945a-7354108a1774" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ea6bb114-ff37-c5f4-3bba-ec8ecd3e483c" executionId="9b851c58-96d4-45e7-ac08-ea4ef66e0108" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c5939831-d130-5f15-17aa-a17901abde2d" executionId="ed350285-c408-4b5d-baac-6a3b796b8ccd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="51cadd80-9fc0-73e1-526b-de493f2e5656" executionId="eff626ab-2926-43c0-a8e2-98827e03c372" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="57d0fbd9-058b-411d-6319-d7f5f725e6c4" executionId="282228f8-1eba-4f0b-b61a-1341e11e247f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2bdd187d-2e98-9ce1-93a6-3e0315f694bb" executionId="7ff8ad6c-9800-4daa-a691-46375d350685" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e90e5066-aca8-9003-11eb-85bc1ff4db98" executionId="f6bb7efd-0c21-4cee-8dbb-38306d96f151" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5a3b789c-c8a7-c5a6-0010-734e10322a8a" executionId="feb8e28e-c83e-4984-90db-a14634b102f0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9597586c-6a4c-4685-8335-fd3d4c582b16" executionId="00d2f973-0e88-43ec-a311-009960ffe301" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bdb5331f-1bad-243f-d4ef-f147b4308d32" executionId="a6b39fa5-487b-438b-8a61-b2c8deb57e4d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="144acdd7-9efc-1de2-d6c9-3d16e2ae410e" executionId="62d1f416-6564-4926-927f-1efd20dde272" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2a731343-67c7-06b2-385a-cbe5a7988a91" executionId="666bf21a-5649-436a-bd17-6fd9e9e71cdb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="28e7c60b-2707-a952-59c9-97d699a708f4" executionId="66ce1567-8435-4688-9cbf-834d5e944082" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2028efa3-5eb4-f595-a455-e36e53fafafd" executionId="a7fe2c1d-ab14-4c86-9eb5-dc78b1a556bc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="81e25c0b-25a3-03e8-317b-342d4906621f" executionId="6ec8c112-dfb1-49d7-8b6e-f97b188bb68e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9f9ad2d5-7726-857a-6962-ed015f9dff6d" executionId="14c67513-e165-4456-ac4e-7dffe60b1ca5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="03890646-5075-9f71-6f89-a16681f3a680" executionId="67d204f1-8619-4f55-b4a0-dff55440d69a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ea978c68-974e-a6c4-9a7b-f7060be59dd1" executionId="d060cde3-d416-4a26-b879-35dad9b91075" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="748f0820-9758-29f8-c6d4-1749cabc5070" executionId="3933f4a5-30ff-4c0a-a96b-3f366893639d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c9db528c-636d-5522-4692-4248e1ce2d55" executionId="456f3aff-f7a4-4dad-99ce-e2e00667147f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7abdabdf-98b6-40e2-80ee-4d83cab67ebd" executionId="375e60b5-7f75-4d45-9044-c442f6468eba" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="23abbaf8-2d8e-c630-7f35-2f4ed61b777c" executionId="b3802c2d-49c2-421a-8aa0-1fdc0b8228a3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="24478b79-4a17-1f1d-0fb5-62bad5beb704" executionId="a84478b5-add2-4cca-8a55-69700c51458e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0594c8f8-5039-f5a1-e2be-369969c7e9b2" executionId="e06a53ee-d40a-4d9f-b166-d8143e3cc653" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1145470c-7ce4-b423-94e8-b96c6399f979" executionId="19f66fee-bd0f-4a24-9869-48dd66c39523" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="468c00f0-5964-e40b-57f0-0266862e599a" executionId="81313a72-7fd6-4f66-ab56-23a760d8b508" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="42fdc151-ac23-a8a7-5ed3-1e0a50ec0cd0" executionId="74d2576c-54f8-4fa0-8ff0-be065e7d0596" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0e77817c-3598-8b97-2b5a-6582aecfd8ca" executionId="96748ce8-9fb2-4e19-a2b4-b2ef2ffbf2b3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2d0ae7d0-3377-ba65-db01-054dbda8c357" executionId="9bf0deba-f652-434e-bedb-920e137bf9dc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="14869311-8071-977f-20ea-62ca70ed051a" executionId="78e9b58d-0ba3-4d25-8470-9287919e070d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dfed45ea-9f3c-e79c-fc2d-50f0b589b0cc" executionId="23f8024f-480a-4f9d-b715-7922a40f054f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e1e8d44c-abf9-ce0c-d356-7a0e6a43644a" executionId="74b29b70-b0bb-48b6-a93e-12c459cc8b2a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a426f518-6e73-cbc0-bce3-bc9e9aedfcd1" executionId="50b17c07-5435-4da6-99d1-8db4a9764b31" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8a7842fb-aaa5-de97-fcb1-69b7a9cd2567" executionId="0b154c63-ac34-4733-9d35-b72468f0336c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d9fe9b09-0f81-27ce-3a76-c764bb650372" executionId="268eebca-e8a9-446a-8822-989f8f4f35fe" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="541b0bb4-54cf-6f3f-9188-05f0ad549be1" executionId="f5a6876b-805e-4518-bd79-57cac78f743a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7bc7d35f-a09f-50d9-41b6-265d2c4478d2" executionId="d7cf2a78-2705-407c-a135-dc608e58b22c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4d901ec5-e22f-6976-e1ab-21292c91d358" executionId="55688d9e-f9e6-4159-b776-48b462a79210" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d0520f04-73c3-6495-5513-56d1ae6b3ea0" executionId="46f5e867-165c-4180-b066-57484d90767a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8d8a2c3b-6260-a1a5-ad5d-269cf4a3d95e" executionId="a899e5b9-43c6-455d-ad3b-c7df6eace3ef" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d46f840b-383d-3056-336a-e94b5690c9be" executionId="d2ecca3c-e9a5-4f03-b48d-f352a7d30612" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ade841df-93e4-eb4e-5f1e-09434b7d7455" executionId="c4915dbc-4240-4f66-91f2-6c5a7c7be468" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c5b91d2a-a4da-a7be-5410-f50be11aa78a" executionId="c843e588-2d1b-49d1-9527-782b05582b81" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b3f8eb01-0cc5-3da8-d6f8-1e76804a1dc0" executionId="e6c3af07-cb00-42ff-98c5-e00d2417b74a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cda3d9aa-71e0-fd67-a256-6c278ebf5bf7" executionId="55cb7f16-2de3-46ac-8ae1-f9f8d80c8cf9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2b09207a-6721-bff5-89ce-17bcc1b3ce19" executionId="0bf51770-2c8a-4adc-b312-bc01940e3662" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1669801e-7d92-5088-59f4-ab69ea09dd5d" executionId="c5b07a86-2ea3-4dc8-a720-3c043d18c400" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ad82213c-e07f-7481-0e71-bfdf5cb26053" executionId="3fea6e6e-3ef0-43aa-86cc-74a83df774e4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="474e50d8-70d8-5b67-713f-0c72d9e71130" executionId="5da6a78c-6fa3-488d-a352-c0cd489f76e0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9a916a72-03b0-5eed-7ab6-541e4937a14c" executionId="69ae9db7-f896-4a91-af15-2d27b6d483a0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ca78b91f-e7a8-0072-2ab2-141e9d5db406" executionId="af089de7-2548-4fa0-bc80-12ba2a632a6e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2f9570cf-6f4e-d9c4-9940-3ffd3105a8de" executionId="3d83b816-927e-4cca-97ef-3d489712891c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="783e4ee6-35e6-7280-c5d0-dc966fbf5657" executionId="c8b677b3-aabb-4e35-bd5f-5e15a281a103" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3b32cf98-4743-5299-b3b1-ad022739ad80" executionId="d8d82f75-8bcb-40fa-a23e-90443ba026f2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fcfca2cf-b787-7fa3-07a6-081cf06e503e" executionId="aee27db2-05a4-41d0-b0a3-70445292311e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a47a2b3f-bd3e-0278-629b-f1d3ba7da652" executionId="08d46870-a99c-4a18-b777-e83c1ee875eb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="53d06aa5-b13a-995b-131d-a2621c35ce49" executionId="f3ee1ca0-1f46-4339-b299-17a0dd4018f6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="95cb5d2d-8dd1-0a9f-b5c5-f729d818bed0" executionId="ba627af1-5a58-4702-b871-410b01df4066" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e78bb73e-ea90-40d7-0b28-509d1b09280f" executionId="9d3bf70e-1697-4f66-8be3-55fad7099272" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fbc89fdf-b8e8-11cf-f321-5e1c87a3addf" executionId="5008da63-2134-4742-bec2-6d04ba270132" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="26ca6982-7285-11f7-ef2e-293fb0c65ec5" executionId="22a8f1c7-d1e9-480c-8cea-78db02ee5b74" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="61f4e301-4ce5-4d74-3868-a5e448142a07" executionId="8355e7e5-1de3-4a6c-b8e5-bb12ff8146a7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1c602ee3-dd9e-9d6e-4aa1-4587f3771e42" executionId="c9badd52-88ab-42f0-a1c8-e66a0ebcb2f9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b43aa63a-1067-3483-d138-84dd4214e2f7" executionId="85e02f6e-2087-4ae7-b148-c4035d86270d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2a7611ae-e896-550c-6c85-eb77533004d0" executionId="c9f15194-b63c-489f-960b-61faea23947d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e6258e8a-0308-e3d8-a0e5-017dc9a9d297" executionId="12d2ce97-97f5-4957-8b8f-62c6863c566c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="94b8a086-aa39-9682-1dbc-cce5b4132256" executionId="c9dd79f4-5191-4158-a12b-95b538436a66" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="81166082-d66a-427c-bf17-ab898f51d266" executionId="d2c28a40-a110-4caf-82cf-99c05dc7a3f1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f644ad97-22fb-b3b4-c66f-adbd0860cc8e" executionId="d9c716b6-71c2-4345-823e-1afa9a715228" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1611dcea-4f51-9aca-e14e-8115ebd3ae71" executionId="55d0cd47-4ae9-4365-9b1a-28a9f5a085a5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e1960caa-0825-98be-debe-bd8c52a31f05" executionId="2b943014-d5b2-4722-8c7c-e9a2d9981403" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e6d113fa-a1d6-084d-d240-5c0cb74f1025" executionId="2724a58b-a73e-415d-8de5-3bc81ed9179d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e19d73e9-c0dd-455f-c585-6739073511ec" executionId="547a6dfe-284d-49c7-b2c3-1eb8910d9a73" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="de1f300a-5a21-6e77-4bf4-a484ad687655" executionId="b758786c-2368-4245-b08f-b49a6dce680d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f441453b-7cbd-2e07-1477-93802bacfa2f" executionId="a7402311-0ded-489e-835b-97386b13f5af" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1dfae252-a6e1-b47b-6d91-1117b485f7e5" executionId="2aa3d859-6e4c-4d84-beae-d5b90406c5fb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="97772cee-29b3-72da-18b1-79d7188b175a" executionId="fdbb31d9-4aeb-4ab4-9ab9-f3e4d0f8c488" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="470bbde2-84f0-c337-6c96-366685ce406f" executionId="02d8b0d6-e2d9-4105-bcf8-55037fc6a4a2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2ce0458f-53aa-82df-ef94-7e3a14a4f5be" executionId="f2c9a82b-46b9-4ced-8783-155ec83d3060" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8fa908a7-06f7-d32d-56d9-1badb31c8246" executionId="9e891ce6-2b7b-4f1e-b5c6-57a1c30064f5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dab9ac17-4e4a-82d5-03d1-29d45668aa3a" executionId="b0051945-edbe-4c98-80fa-9c08d7c6b0da" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cb4bc4e6-8d1d-1969-5994-0baa006ccee6" executionId="61745aa0-8975-4472-b349-ff604c7387d3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d9a8fcdc-de26-6b30-fa89-c3694d28ba44" executionId="6ce8d48b-4118-48b3-8060-d0e4359b89f4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b3023154-1f7b-e994-4b49-5cc08fe0140a" executionId="348a8940-43aa-4755-a125-94f3048fe4c6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a0821642-2b19-5747-35c1-9123df8c5c0a" executionId="947febb0-a27a-4600-978b-fd5f1e3b7b21" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ea932585-1086-5583-2ad5-c1a0e09e70d3" executionId="fcbd269a-127f-4e3b-9fdf-4f09a5e08eb4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4d820c34-9bef-0bfe-0d65-7499a4bb49e2" executionId="2266a809-343a-427d-91ac-e0b34b634a98" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="45a73eb5-ddea-09e9-2ab5-2fdc1594e149" executionId="8cac7eb2-c7aa-4825-8259-557d9fc15090" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="89cd7880-e8db-f56f-3b94-8baf398dc2b3" executionId="6dc25b39-d7d4-4e24-9573-a71f460d004b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="67f03396-f525-9588-b282-7f840b1a27d2" executionId="4fa08deb-4ff3-43e7-8506-77d515ac6abc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7cb67f43-2d6d-8fb7-761c-8f785accfc07" executionId="1ac571e3-dfaf-4015-87e5-0dee077171fc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="03efe107-6a92-8bfd-848c-85bf6c910c9a" executionId="3473d70d-fe1c-4e20-912f-7a1eaf0b915e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e379a7f1-a37a-d21f-7ccf-387a3b3aa76c" executionId="fe29652b-e38d-45e4-a189-d5b53e15aad3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="62e071ae-dd8a-d03f-75d7-1276f7da3b55" executionId="e8ad639f-a9e7-4446-84bc-3ccc3f68e787" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bf796705-67e8-6aab-835c-915ff7894e85" executionId="9cb87875-73fb-4a5e-8747-edbbdf3f8305" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c26db5aa-133e-4b41-e64e-60cefdabed8e" executionId="c55cb367-7ebe-4cc4-b511-13f555a9d26d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bd179073-d4cc-a3a4-7e28-43cb37072c36" executionId="5fcf2b85-d63e-4740-acb9-87969bc3e9c4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6e473f3c-4c12-1262-6591-61374d538742" executionId="6b05c5d6-e81b-4766-b701-2a9bd27a6490" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2ffc0af9-7228-3a0b-e2a9-710069276879" executionId="70859213-ec3f-429d-83eb-38f9e60a414a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="81a0ab2f-17d0-0a8a-af26-ae5bbccd3085" executionId="d5a17954-eaba-4a0d-8152-ff6f07c6060e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="63c3e65e-4e9c-7c35-b825-18f3312407a9" executionId="bad1acd0-2960-4a35-84d1-29e65ba61968" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6694543c-9802-5159-8905-bac1f8a6a8b2" executionId="1d8bf230-7c61-43c9-b619-2479216a13cd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3add1056-a645-baee-4012-a1d52a16f03f" executionId="760b8be4-2a0f-45c7-a78e-0719bce98063" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="91044985-bd26-8a84-9f44-f60e82e68672" executionId="1a45469b-46b5-41c9-8f22-7318bb474f5b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a85d8c7e-9193-45ce-87af-59d943cfb8d0" executionId="5ed14bd8-1964-4e1d-8e2a-ce09d0e5c49b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8c90aa85-037c-c4cb-6070-3f925c9ba5e1" executionId="c0e00685-5f3e-4680-af33-25dc29014b58" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="443c3bc8-2522-b0e2-97c0-b383f69af904" executionId="225a7488-09a3-420d-a5e9-15ff0f0e35de" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d421444b-7be9-57bd-37ac-e8bd66c1b115" executionId="d3c481b6-64dd-4c79-ae27-bb8d2a537196" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0345a6d2-59f9-a067-38d3-13bc2e85f198" executionId="c6a99537-bc80-4f9b-bca1-b8f1c6c813f5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="116" executed="116" passed="108" failed="8" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>NUnit Adapter 4.6.0.0: Test execution started&#xD;
+Running all tests in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll&#xD;
+   NUnit3TestExecutor discovered 116 of 116 NUnit test cases using Current Discovery mode, Non-Explicit run&#xD;
+NUnit Adapter 4.6.0.0: Test execution complete&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>
