@@ -4,7 +4,7 @@
     "title": "Verified Landlord Trust Badge Rendering",
     "layer": "ui",
     "priority": "medium",
-    "status": "ready",
+    "status": "approved",
     "description": "A listing owned by a landlord whose identity has been verified must display the verified trust badge on its detail page, so students can distinguish vetted landlords from unvetted ones.",
     "preconditions": "Demo data loaded. 'Emerald House Hatfield' belongs to the verified demo landlord.",
     "steps": [
@@ -21,7 +21,7 @@
     "title": "NSFAS Accreditation Badge Visibility",
     "layer": "ui",
     "priority": "medium",
-    "status": "ready",
+    "status": "approved",
     "description": "The NSFAS accreditation badge must appear on accredited listings only. A false positive here would mislead a funded student into applying for accommodation their bursary will not cover.",
     "preconditions": "Demo data loaded. Three of four seeded listings are NSFAS accredited; 'Durban North Student Lofts' is not.",
     "steps": [
@@ -39,7 +39,7 @@
     "title": "Booking Call-to-Action Reflects Booking Mode",
     "layer": "ui",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "The primary button on a listing must read 'Instant Book' for instant-book properties and 'Request booking' for request-flow properties, so a student knows before clicking whether confirmation is immediate.",
     "preconditions": "Demo data loaded. Two seeded listings are instant-book, two are request-flow.",
     "steps": [
@@ -56,7 +56,7 @@
     "title": "Search Grid Mobile Responsiveness",
     "layer": "ui",
     "priority": "medium",
-    "status": "ready",
+    "status": "approved",
     "description": "On a phone-sized viewport the property grid must collapse to a single column, the page must not scroll horizontally, and the navigation toggle must remain operable.",
     "preconditions": "Demo data loaded.",
     "steps": [
@@ -75,7 +75,7 @@
     "title": "Role-Aware Header Navigation",
     "layer": "ui",
     "priority": "medium",
-    "status": "ready",
+    "status": "approved",
     "description": "The site header must reflect authentication state and role: signed-out visitors see sign-in and register links; signed-in users see dashboard and sign-out; the Reports link is visible to administrators only.",
     "preconditions": "Demo accounts exist for all three roles.",
     "steps": [
@@ -93,7 +93,7 @@
     "title": "Accessible Empty State and Status Messaging",
     "layer": "ui",
     "priority": "low",
-    "status": "ready",
+    "status": "approved",
     "description": "A search returning no results must show guidance rather than a blank page, flash messages must be announced to screen readers, and property images must carry descriptive alternative text.",
     "preconditions": "Demo data loaded.",
     "steps": [
@@ -111,7 +111,7 @@
     "title": "Register New Student Account",
     "layer": "functional",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "A prospective student must be able to create an account with valid details and be signed in and routed to the student dashboard on success.",
     "preconditions": "The email address used is not already registered.",
     "steps": [
@@ -129,7 +129,7 @@
     "title": "Enforce Password Policy on Registration",
     "layer": "functional",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "Registration must reject passwords that fail the strength policy, and must not create a partial account when it does so.",
     "preconditions": "None.",
     "steps": [
@@ -147,7 +147,7 @@
     "title": "Reject Duplicate Email Registration",
     "layer": "functional",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "An email address already in use must not be able to register a second account, preventing account collision and confused sign-in.",
     "preconditions": "The demo student account exists.",
     "steps": [
@@ -164,7 +164,7 @@
     "title": "Reject Invalid Login Credentials",
     "layer": "functional",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "Sign-in must fail for a wrong password, an unknown email address, and empty input, and the error message must not reveal which of the two fields was wrong.",
     "preconditions": "The demo student account exists.",
     "steps": [
@@ -182,7 +182,7 @@
     "title": "Throttle Repeated Failed Login Attempts",
     "layer": "functional",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "Repeated failed sign-in attempts must be rate limited, so that credential-stuffing and brute-force attacks are not viable against the login form.",
     "preconditions": "No recent failed attempts recorded for the test client.",
     "steps": [
@@ -199,7 +199,7 @@
     "title": "Reject Form Submission Without CSRF Token",
     "layer": "functional",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "State-changing POST requests must carry a valid CSRF token, so a third-party site cannot submit actions on a signed-in user's behalf.",
     "preconditions": "None.",
     "steps": [
@@ -217,7 +217,7 @@
     "title": "Student Logout and Session Termination",
     "layer": "functional",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "Signing out must destroy the session so that protected pages are no longer reachable, including via the browser back button or a direct URL.",
     "preconditions": "Signed in as the demo student.",
     "steps": [
@@ -235,7 +235,7 @@
     "title": "Block Unauthorised URL Access by Role",
     "layer": "functional",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "Typing another role's URL directly must be refused. A student must not reach the administrator or landlord dashboards, an anonymous visitor must not reach any dashboard, and no user may act on another user's booking.",
     "preconditions": "Demo accounts for all three roles exist.",
     "steps": [
@@ -253,7 +253,7 @@
     "title": "Filter Properties by NSFAS Status",
     "layer": "functional",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "The NSFAS filter must return exactly the accredited listings, and must combine correctly with other filters rather than replacing them.",
     "preconditions": "Demo data loaded: 4 published listings, 3 NSFAS accredited, 2 instant-book.",
     "steps": [
@@ -271,7 +271,7 @@
     "title": "Filter Properties by Maximum Rent",
     "layer": "functional",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "The maximum rent filter must exclude every listing priced above the cap, and the boundary value itself must be included.",
     "preconditions": "Demo data loaded, with rents of R4 550, R4 800, R5 200 and R6 100.",
     "steps": [
@@ -289,7 +289,7 @@
     "title": "Keyword Search and Empty Result Handling",
     "layer": "functional",
     "priority": "medium",
-    "status": "ready",
+    "status": "approved",
     "description": "Keyword search must match on city, suburb and institution, and a search with no matches must return a guided empty state rather than an error or a blank grid.",
     "preconditions": "Demo data loaded.",
     "steps": [
@@ -307,7 +307,7 @@
     "title": "Reject Invalid Booking Submission",
     "layer": "functional",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "The booking form must reject a move-in date in the past, an over-long message, and a reference to a property that does not exist, without creating a booking row in any case.",
     "preconditions": "Signed in as the demo student.",
     "steps": [
@@ -325,7 +325,7 @@
     "title": "Reject Malicious File Uploads",
     "layer": "functional",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "The NSFAS document upload must reject executable content disguised with an image or document file name, judging the file on its contents rather than its extension.",
     "preconditions": "Signed in as the demo student.",
     "steps": [
@@ -343,7 +343,7 @@
     "title": "Search Grid Matches Database Contents",
     "layer": "integration",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "The listings shown on the search page must correspond exactly to the published rows in the properties table — no stale cache, no unpublished listing leaking through.",
     "preconditions": "Demo data loaded.",
     "steps": [
@@ -361,7 +361,7 @@
     "title": "Registration Stores Hashed Password and Correct Role",
     "layer": "integration",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "A successful registration must persist the correct role and must never store the password in plain text.",
     "preconditions": "None.",
     "steps": [
@@ -379,7 +379,7 @@
     "title": "Instant Booking Persists Booking and Escrow Records",
     "layer": "integration",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "Completing an instant booking must write a booking row in the approved state and a matching escrow row in the unpaid state, with the amount taken from the property, not the request.",
     "preconditions": "Signed in as the demo student. An instant-book listing exists.",
     "steps": [
@@ -397,7 +397,7 @@
     "title": "Escrow Simulation Transitions Through Every State",
     "layer": "integration",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "The simulated deposit must move through its states in order — not paid, held, released — and each transition must be reflected in both the database and the dashboard.",
     "preconditions": "An approved booking exists for the demo student.",
     "steps": [
@@ -416,7 +416,7 @@
     "title": "Document Upload and Audit Log Persistence",
     "layer": "integration",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "An uploaded document must be stored under a randomised filename while retaining its original name for display, and every administrator verification action must be written to the audit log.",
     "preconditions": "Signed in as the demo student, then as the administrator.",
     "steps": [
@@ -434,7 +434,7 @@
     "title": "Complete Instant Book and Simulated Payment Journey",
     "layer": "end-to-end (e2e)",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "A student searches for accommodation, filters to instant-book listings, books one, simulates the deposit hold, confirms check-in, and sees the completed booking with a payment reference — the full happy path in one continuous session.",
     "preconditions": "Demo data loaded. Signed out at the start.",
     "steps": [
@@ -454,7 +454,7 @@
     "title": "Accommodation Request, Landlord Decision and Deposit Journey",
     "layer": "end-to-end (e2e)",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "A student submits a booking request on a non-instant listing, the landlord approves or declines it in a separate session, and the outcome is reflected back to the student — including the fact that a declined request offers no payment action.",
     "preconditions": "Demo data loaded. A request-flow listing exists.",
     "steps": [
@@ -474,7 +474,7 @@
     "title": "Landlord Verification and Document Review Journey",
     "layer": "end-to-end (e2e)",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "A new landlord registers and is unverified; an administrator verifies them and reviews a student's NSFAS document; both outcomes become visible to the affected users and are recorded in the audit trail.",
     "preconditions": "Demo data loaded.",
     "steps": [
@@ -494,7 +494,7 @@
     "title": "Security Headers and Session Cookie Hardening",
     "layer": "regression",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "Baseline protections must not regress: security response headers must be present on every response, and the session cookie must remain inaccessible to page scripts.",
     "preconditions": "None.",
     "steps": [
@@ -512,7 +512,7 @@
     "title": "Output Escaping and Currency Formatting",
     "layer": "regression",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "Database-sourced content must be HTML-escaped on render so that stored markup cannot execute, and all monetary values must render in South African Rand format.",
     "preconditions": "Demo data loaded. Test restores any modified data afterwards.",
     "steps": [
@@ -531,7 +531,7 @@
     "title": "Prevent Price Tampering via Request Parameters",
     "layer": "regression",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "Monetary values must be read from the database on the server, never from the request. A tampered deposit or rent field submitted with a booking must be ignored.",
     "preconditions": "Signed in as the demo student. An instant-book listing with a known deposit amount exists.",
     "steps": [
@@ -550,7 +550,7 @@
     "title": "Resist SQL Injection on Public Inputs",
     "layer": "security",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "Every input that reaches a database query must be parameterised. Tautology and stacked-statement payloads submitted through the search field and the sign-in form must be treated as ordinary text.",
     "preconditions": "Demo data loaded.",
     "steps": [
@@ -569,7 +569,7 @@
     "title": "Prevent Account Enumeration and Credential Disclosure",
     "layer": "security",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "The application must not reveal which email addresses are registered, and must never write a submitted password back into a rendered page where it would reach browser cache, history or proxy logs.",
     "preconditions": "The demo student account exists.",
     "steps": [
@@ -588,7 +588,7 @@
     "title": "Enforce Access Control on Documents and Bookings",
     "layer": "security",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "Authorisation must be checked on the server for every object, not inferred from an unguessable URL. Uploaded identity documents must require a session, the uploads directory must not be browsable, and no user may act on another user's booking.",
     "preconditions": "A student has uploaded a document and holds a booking.",
     "steps": [
@@ -607,7 +607,7 @@
     "title": "Harden File Upload Handling",
     "layer": "security",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "Uploads must be judged on their contents, and a client-supplied filename must never influence the write location. On a PHP host an executable upload is remote code execution.",
     "preconditions": "Signed in as the demo student.",
     "steps": [
@@ -625,7 +625,7 @@
     "title": "Protect Session Transport and Prevent Caching",
     "layer": "security",
     "priority": "high",
-    "status": "ready",
+    "status": "approved",
     "description": "The session identifier must never travel in a URL, and authenticated pages must not be storable by a browser or shared cache — otherwise a back-button press on a shared computer redisplays the previous user's dashboard.",
     "preconditions": "Signed in as the demo student.",
     "steps": [
@@ -642,7 +642,7 @@
     "title": "Suppress Internal Detail in Error Responses",
     "layer": "security",
     "priority": "medium",
-    "status": "ready",
+    "status": "approved",
     "description": "Error responses must not disclose server file paths, stack traces, SQL fragments or PHP diagnostics, which together reveal the directory layout and framework versions to an attacker.",
     "preconditions": "None.",
     "steps": [

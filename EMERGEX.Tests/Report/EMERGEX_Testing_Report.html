@@ -302,8 +302,8 @@ Appendix B maps every case to the methods that implement it.</p>
 <h3>5.4.2 Test case inventory</h3>
 
 <table>
-<caption>Table 5.4.1 — The 36 test cases and their outcomes</caption>
-<tr><th style="width:8%">ID</th><th style="width:44%">Title</th><th style="width:14%">Level</th><th style="width:12%">Priority</th><th style="width:22%">Result</th></tr>
+<caption>Table 5.4.1 — The 36 test cases and their outcomes (all cases approved)</caption>
+<tr><th style="width:8%">ID</th><th style="width:44%">Title</th><th style="width:14%">Level</th><th style="width:12%">Priority</th><th style="width:22%">Result (TR-001)</th></tr>
 <tr><td>TC-01</td><td>Verified Landlord Trust Badge Rendering</td><td>UI</td><td>Medium</td><td class="pass">Pass</td></tr>
 <tr><td>TC-02</td><td>NSFAS Accreditation Badge Visibility</td><td>UI</td><td>Medium</td><td class="pass">Pass</td></tr>
 <tr><td>TC-03</td><td>Booking Call-to-Action Reflects Booking Mode</td><td>UI</td><td>High</td><td class="pass">Pass</td></tr>
@@ -347,15 +347,68 @@ the control it would verify does not exist in the application. The condition is
 nevertheless recorded as DEF-010 and is asserted by a test in the regression
 suite.</p>
 
-<h3>5.4.3 Execution results</h3>
+<h3>5.4.3 Test case status and execution results</h3>
+
+<p>Two distinct pieces of state are tracked for every test case, and conflating
+them is a common source of confusion.</p>
+
+<table>
+<caption>Table 5.4.2 — Case status versus execution result</caption>
+<tr><th style="width:26%">Concept</th><th style="width:34%">What it records</th><th style="width:40%">Values used</th></tr>
+<tr>
+  <td><strong>Case status</strong></td>
+  <td>The lifecycle of the specification itself — has this case been written, reviewed and agreed?</td>
+  <td><span class="mono">draft</span> → <span class="mono">ready</span> → <span class="mono">approved</span></td>
+</tr>
+<tr>
+  <td><strong>Execution result</strong></td>
+  <td>What happened the last time the case was actually run</td>
+  <td><span class="mono">passed</span>, <span class="mono">failed</span>, <span class="mono">blocked</span>, <span class="mono">not run</span></td>
+</tr>
+</table>
+
+<p>A case can be <span class="mono">approved</span> and still fail: approval means
+the specification is correct, not that the application satisfies it. Keeping the
+two separate also preserves history — the result belongs to a particular test
+run, so a case that passes today and fails after tomorrow's change has two
+results, not one overwritten value.</p>
+
+<p>All 36 cases now carry the status <span class="mono">approved</span>: each has
+been written, reviewed, executed and confirmed to specify the right behaviour.</p>
+
+<h3>5.4.4 Test run record</h3>
+
+<table>
+<caption>Table 5.4.3 — Test run TR-001</caption>
+<tr><th style="width:30%">Field</th><th>Value</th></tr>
+<tr><td>Run identifier</td><td>TR-001</td></tr>
+<tr><td>Date executed</td><td>6 September 2026</td></tr>
+<tr><td>Executed by</td><td>Mfundo (Group 55)</td></tr>
+<tr><td>Build under test</td><td>EMERGEX prototype, local XAMPP deployment</td></tr>
+<tr><td>Environment</td><td>Windows 11 · Apache · PHP 8 · MySQL 8 · Chromium (headless)</td></tr>
+<tr><td>Preconditions</td><td>Database dropped and reseeded via <span class="mono">install.php</span> immediately before execution</td></tr>
+<tr><td>Scope</td><td>All 36 test cases, all six layers</td></tr>
+<tr><td>Command</td><td><span class="mono">dotnet test --settings .runsettings</span></td></tr>
+<tr><td>Evidence</td><td><span class="mono">TestResults/*.trx</span> and <span class="mono">TestResults/emergex-test-report.html</span></td></tr>
+</table>
+
+<p>A <strong>test run</strong> is a single, dated execution of a defined set of
+test cases against one build in one environment. It is the unit that carries
+results: the cases are reusable, the run is the record of what they proved on a
+given day. Re-running the suite after a fix produces TR-002, leaving TR-001
+intact as evidence of the state before.</p>
+
+<h3>5.4.5 Execution results</h3>
 
 <p>The run of record was executed on 6 September 2026 against a freshly
 reinstalled database.</p>
 
 <table>
-<caption>Table 5.4.2 — Execution summary</caption>
+<caption>Table 5.4.4 — Execution summary</caption>
 <tr><th style="width:60%">Measure</th><th style="width:40%">Value</th></tr>
 <tr><td>Test cases executed</td><td>36 of 36 (100%)</td></tr>
+<tr><td>Test cases passed</td><td>33</td></tr>
+<tr><td>Test cases not passed</td><td>3 (TC-07, TC-12, TC-33)</td></tr>
 <tr><td>Test methods executed</td><td>118</td></tr>
 <tr><td>Passed</td><td>114</td></tr>
 <tr><td>Failed</td><td>4</td></tr>
@@ -367,7 +420,7 @@ reinstalled database.</p>
 </table>
 
 <table>
-<caption>Table 5.4.3 — Results by test level</caption>
+<caption>Table 5.4.5 — Results by test level</caption>
 <tr><th style="width:24%">Level</th><th style="width:14%">Executed</th><th style="width:14%">Passed</th><th style="width:14%">Failed</th><th style="width:34%">Failing test</th></tr>
 <tr><td>UI</td><td>25</td><td>25</td><td>0</td><td>—</td></tr>
 <tr><td>Functional</td><td>39</td><td>38</td><td>1</td><td>CSRF rejection status (DEF-012)</td></tr>
@@ -379,14 +432,21 @@ reinstalled database.</p>
 
 <p>Level totals exceed 118 because ten tests are tagged with two levels.</p>
 
-<h3>5.4.4 Defects identified</h3>
+<p>Note that four test <em>methods</em> failed but only three test <em>cases</em>
+did. The fourth failure belongs to DEF-010, the missing room-availability check,
+which has no corresponding test case: the control it would verify does not exist
+in the application, so there was nothing to specify. It is asserted by a test in
+the regression suite and recorded in the defect register, but it is not counted
+against any case.</p>
+
+<h3>5.4.6 Defects identified</h3>
 
 <p>Four defects were identified. All four were found by automated tests; none
 was visible through ordinary manual use of the application, which is the central
 argument for the effort invested in the suite.</p>
 
 <table>
-<caption>Table 5.4.4 — Defect register</caption>
+<caption>Table 5.4.6 — Defect register</caption>
 <tr><th style="width:10%">ID</th><th style="width:12%">Severity</th><th style="width:48%">Description</th><th style="width:30%">Recommended fix</th></tr>
 <tr>
   <td>DEF-011</td><td>Critical</td>
@@ -410,7 +470,7 @@ argument for the effort invested in the suite.</p>
 </tr>
 </table>
 
-<h3>5.4.5 Evaluation of the testing results</h3>
+<h3>5.4.7 Evaluation of the testing results</h3>
 
 <h4>Overall assessment</h4>
 
@@ -487,7 +547,7 @@ conducted exclusively through the interface will report false passes.</p>
       order). No assistive-technology or colour-contrast audit was conducted.</li>
 </ul>
 
-<h3>5.4.6 Recommendations</h3>
+<h3>5.4.8 Recommendations</h3>
 
 <ol>
   <li><strong>Resolve DEF-011 before any demonstration using real documents.</strong>
@@ -509,7 +569,7 @@ conducted exclusively through the interface will report false passes.</p>
       restored.</li>
 </ol>
 
-<h3>5.4.7 Conclusion</h3>
+<h3>5.4.9 Conclusion</h3>
 
 <p>Thirty-six test cases were designed from the implemented behaviour of the
 system and automated as 118 executable tests across six levels. All thirty-six

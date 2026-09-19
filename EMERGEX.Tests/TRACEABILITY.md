@@ -10,6 +10,13 @@ Database reset with `application/database/install.php` immediately beforehand.
 Every one of the four failures is a documented defect, not a broken test.
 
 **Coverage: 36 of 36 cases automated (100%).**
+**Case status: all 36 approved.** Approval means the specification is agreed —
+it is separate from the execution result, and a case can be approved and still
+fail. Results below belong to test run **TR-001**.
+
+**33 cases passed, 3 did not** (TC-07, TC-12, TC-33). Four test *methods* failed;
+the fourth belongs to DEF-010, which has no case because the control it would
+verify does not exist in the application.
 
 To find a method in Visual Studio, paste its name into the Test Explorer search
 box. Ratio note: 36 cases are implemented by 118 test executions, because a case
