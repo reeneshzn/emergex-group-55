@@ -4,7 +4,7 @@ declare(strict_types=1);
 // XAMPP defaults are used for the academic demo. Change these values when needed.
 return [
     'app_name' => 'EMERGEX',
-    'base_url' => '/emergex/public',
+    'base_url' => '/emergex-group-55/application/public',
     'environment' => 'development',
     'db' => [
         'host' => '127.0.0.1',

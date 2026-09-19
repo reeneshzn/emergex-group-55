@@ -7,6 +7,13 @@
 # conflict on almost every pull.
 # ═══════════════════════════════════════════════════════════════════
 
+# ── Original project rules (do not remove) ─────────────────────────
+.project_runtime/
+**/.project_runtime/
+**/backups/*.sql
+*.pid
+*.log
+
 # ── .NET build output ──────────────────────────────────────────────
 bin/
 obj/
@@ -15,9 +22,12 @@ obj/
 *.exe
 
 # ── Visual Studio ──────────────────────────────────────────────────
+# Note: .gitignore does not support trailing comments on a pattern
+# line — the whole line is treated as the pattern — so any explanation
+# goes on its own line above.
 .vs/
-*.suo            # solution user options — local window layout, breakpoints
-*.user           # per-user project settings
+*.suo
+*.user
 *.userosscache
 *.sln.docstates
 *.vsidx
@@ -26,7 +36,7 @@ obj/
 SemanticSymbols.db
 
 # ── Test output ────────────────────────────────────────────────────
-# Results are regenerated on every run. The specific run used in the
+# Regenerated on every run. The specific run quoted in the Phase 5
 # report is preserved separately as evidence, not tracked here.
 TestResults/
 [Tt]est[Rr]esult*/

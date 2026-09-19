@@ -1,0 +1,810 @@
+﻿<html xmlns:tp="http://schemas.datacontract.org/2004/07/Microsoft.VisualStudio.TestPlatform.Extensions.HtmlLogger.ObjectModel" xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+  <body>
+    <h1>Test run details</h1>
+    <div class="summary">
+      <div class="block"><span>Total tests</span><div class="total-tests">118</div><br></div>
+      <div class="block"><span>Passed  : </span><span class="passedTests">114</span><br><span>Failed  : </span><span class="failedTests">4</span><br><span>Skipped : </span><span class="skippedTests">0</span><br></div>
+      <div class="block"><span>Pass percentage</span><div class="pass-percentage">96 %</div><br></div>
+      <div class="block"><span>Run duration</span><div class="test-run-time">45s 907ms</div><br></div><br></div>
+    <h2>Failed Results</h2><details open=""><summary>C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll</summary><div class="inner-row" Id="-418374136-failedResult">
+        <div class="leaf-division">
+          <div><span class="fail">✘</span><span> LoginForm_WithoutCsrfToken_ReturnsACleanRejectionStatus​</span><div class="duration"><span>369ms</span><br></div>
+          </div>
+          <div class="error-info">
+    Error: <span class="error-message"><pre>  DEF-012: verify_csrf() in bootstrap.php sets HTTP 419, which Apache does not recognise and rewrites to 500 Internal Server Error. The CSRF block itself works, but it surfaces as a server error and the 'The form expired' message is lost. Use 403 Forbidden instead.
+Assert.That(response.Status, Is.Not.EqualTo(500))
+  Expected: not equal to 500
+  But was:  500
+</pre></span><br>
+    Stack trace: <span class="error-stack-trace"><pre>   at EMERGEX.Tests.FunctionalTests.AuthenticationTests.LoginForm_WithoutCsrfToken_ReturnsACleanRejectionStatus() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\FunctionalTests\AuthenticationTests.cs:line 211
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+
+1)    at EMERGEX.Tests.FunctionalTests.AuthenticationTests.LoginForm_WithoutCsrfToken_ReturnsACleanRejectionStatus() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\FunctionalTests\AuthenticationTests.cs:line 211
+
+</pre></span><br></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="fail">✘</span><span> RegistrationForm_HidesStudentNumberForLandlords​</span><div class="duration"><span>3s 245ms</span><br></div>
+          </div>
+          <div class="error-info">
+    Error: <span class="error-message"><pre>Microsoft.Playwright.PlaywrightException : Locator expected to be hidden 
+Call log:
+  - Expect "ToBeHiddenAsync" with timeout 3000ms
+  - waiting for Locator(".student-only")
+    10 × locator resolved to &lt;label hidden="" class="student-only"&gt;…&lt;/label&gt;
+       - unexpected value "visible"
+Aria snapshot:
+- text: Student number
+- textbox "Student number"</pre></span><br>
+    Stack trace: <span class="error-stack-trace"><pre>   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, FrameExpectOptions expectOptions, Object expected, String message, String title) in /_/src/Playwright/Core/AssertionsBase.cs:line 95
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue[] expectedText, Object expected, String message, String title, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 69
+   at EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests.RegistrationForm_HidesStudentNumberForLandlords() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\RegressionTests\CriticalPathRegressionTests.cs:line 238
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+1)    at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, FrameExpectOptions expectOptions, Object expected, String message, String title) in /_/src/Playwright/Core/AssertionsBase.cs:line 95
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue[] expectedText, Object expected, String message, String title, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 69
+   at EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests.RegistrationForm_HidesStudentNumberForLandlords() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\RegressionTests\CriticalPathRegressionTests.cs:line 238
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+</pre></span><br></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="fail">✘</span><span> Booking_OnAPropertyWithNoRoomsAvailable_IsRefused​</span><div class="duration"><span>588ms</span><br></div>
+          </div>
+          <div class="error-info">
+    Error: <span class="error-message"><pre>  DEF-010: a booking was accepted on a property advertising zero available rooms. book.php never reads available_rooms, and no code path decrements it, so the platform will over-book any listing without limit. Add an availability check inside the existing transaction in book.php and decrement the column there.
+Assert.That(created, Is.False)
+  Expected: False
+  But was:  True
+</pre></span><br>
+    Stack trace: <span class="error-stack-trace"><pre>   at EMERGEX.Tests.RegressionTests.DataIntegrityTests.Booking_OnAPropertyWithNoRoomsAvailable_IsRefused() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\RegressionTests\DataIntegrityTests.cs:line 145
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+
+1)    at EMERGEX.Tests.RegressionTests.DataIntegrityTests.Booking_OnAPropertyWithNoRoomsAvailable_IsRefused() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\RegressionTests\DataIntegrityTests.cs:line 145
+
+</pre></span><br></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="fail">✘</span><span> UploadedDocuments_AreNotReadableWithoutASession​</span><div class="duration"><span>537ms</span><br></div>
+          </div>
+          <div class="error-info">
+    Error: <span class="error-message"><pre>  DEF-011: a student's uploaded identity document is served to anonymous visitors straight from public/uploads. The random filename is obscurity, not authorisation. Documents should be stored outside the web root and streamed by an authenticated PHP handler that checks ownership.
+Assert.That(response.Status, Is.Not.EqualTo(200))
+  Expected: not equal to 200
+  But was:  200
+</pre></span><br>
+    Stack trace: <span class="error-stack-trace"><pre>   at EMERGEX.Tests.SecurityTests.SecurityTests.UploadedDocuments_AreNotReadableWithoutASession() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\SecurityTests\SecurityTests.cs:line 210
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+
+1)    at EMERGEX.Tests.SecurityTests.SecurityTests.UploadedDocuments_AreNotReadableWithoutASession() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\SecurityTests\SecurityTests.cs:line 210
+
+</pre></span><br></div>
+        </div>
+      </div></details><h2>All Results</h2><details><summary>C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll</summary><div class="inner-row" Id="-418374136">
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> LandlordDecline_ClosesTheRequestWithoutAnyPaymentStep​</span><div class="duration"><span>2s 724ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> NewLandlord_IsVerifiedByAdminAndTheBadgeReachesStudents​</span><div class="duration"><span>1s 305ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> NsfasDocument_UploadedByStudent_IsReviewedAndReflectedBack​</span><div class="duration"><span>1s 288ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Student_CanSearchInstantBookAndCompleteTheSimulatedPayment​</span><div class="duration"><span>1s 195ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> StudentRequestAndLandlordApproval_CompletesTheBookingJourney​</span><div class="duration"><span>1s 516ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> AnonymousUser_IsRedirectedToLogin("dashboard.php")​</span><div class="duration"><span>362ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Properties_AfterClearingFilters_ShowsEveryHomeAgain​</span><div class="duration"><span>397ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> AnonymousUser_IsRedirectedToLogin("landlord.php")​</span><div class="duration"><span>177ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Properties_FilteredByInstantBook_ShowsOnlyInstantHomes​</span><div class="duration"><span>219ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> AnonymousUser_IsRedirectedToLogin("admin.php")​</span><div class="duration"><span>170ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> AnonymousUser_IsRedirectedToLogin("reports.php")​</span><div class="duration"><span>157ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> LoginForm_WithoutCsrfToken_DoesNotAuthenticate​</span><div class="duration"><span>357ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Properties_FilteredByMaxPrice_ExcludesHomesAboveTheCap​</span><div class="duration"><span>708ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="fail">✘</span><span> LoginForm_WithoutCsrfToken_ReturnsACleanRejectionStatus​</span><div class="duration"><span>369ms</span><br></div>
+          </div>
+          <div class="error-info">
+    Error: <span class="error-message"><pre>  DEF-012: verify_csrf() in bootstrap.php sets HTTP 419, which Apache does not recognise and rewrites to 500 Internal Server Error. The CSRF block itself works, but it surfaces as a server error and the 'The form expired' message is lost. Use 403 Forbidden instead.
+Assert.That(response.Status, Is.Not.EqualTo(500))
+  Expected: not equal to 500
+  But was:  500
+</pre></span><br>
+    Stack trace: <span class="error-stack-trace"><pre>   at EMERGEX.Tests.FunctionalTests.AuthenticationTests.LoginForm_WithoutCsrfToken_ReturnsACleanRejectionStatus() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\FunctionalTests\AuthenticationTests.cs:line 211
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+
+1)    at EMERGEX.Tests.FunctionalTests.AuthenticationTests.LoginForm_WithoutCsrfToken_ReturnsACleanRejectionStatus() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\FunctionalTests\AuthenticationTests.cs:line 211
+
+</pre></span><br></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Properties_FilteredByNsfas_ShowsOnlyAccreditedHomes​</span><div class="duration"><span>404ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Properties_SearchedByKeyword_ReturnsTheMatchingHome("Hatfield","Emerald House Hatfield")​</span><div class="duration"><span>340ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Register_WithExistingEmail_IsRejected​</span><div class="duration"><span>602ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Properties_SearchedByKeyword_ReturnsTheMatchingHome("Cape Town","Mowbray Campus Rooms")​</span><div class="duration"><span>370ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Register_WithValidStudentDetails_CreatesAccountAndSignsIn​</span><div class="duration"><span>526ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Properties_SearchedByKeyword_ReturnsTheMatchingHome("Wits","Braamfontein Studio Living")​</span><div class="duration"><span>328ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Properties_WithNoFilters_ListsAllVerifiedHomes​</span><div class="duration"><span>246ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Register_WithWeakPassword_ShowsPolicyError​</span><div class="duration"><span>362ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Properties_WithNoMatches_ShowsHelpfulEmptyState​</span><div class="duration"><span>258ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Properties_WithNsfasAndInstantFilters_ReturnsTheIntersection​</span><div class="duration"><span>206ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Properties_WithScriptInSearchTerm_EscapesTheInput​</span><div class="duration"><span>314ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> PropertyDetail_WithUnknownId_Returns404​</span><div class="duration"><span>136ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> SignIn_AfterFiveFailures_IsThrottled​</span><div class="duration"><span>1s 238ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> SignIn_WithValidCredentials_RedirectsToRoleDashboard("student@emergex.test","Student@55","dashboard.php")​</span><div class="duration"><span>332ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> SignIn_WithValidCredentials_RedirectsToRoleDashboard("landlord@emergex.test","Landlord@55","landlord.php")​</span><div class="duration"><span>311ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> SignIn_WithValidCredentials_RedirectsToRoleDashboard("admin@emergex.test","Admin@55Secure","admin.php")​</span><div class="duration"><span>351ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> SignIn_WithWrongPassword_IsRejectedWithGenericMessage​</span><div class="duration"><span>294ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> SignOut_TerminatesSessionAndBlocksProtectedPages​</span><div class="duration"><span>475ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Student_CannotOpenAdminOrLandlordPages​</span><div class="duration"><span>374ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Booking_AsLandlord_IsForbidden​</span><div class="duration"><span>314ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Booking_WithOverlongMessage_IsRejected​</span><div class="duration"><span>486ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Booking_WithPastMoveInDate_IsRejected​</span><div class="duration"><span>478ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Booking_WithUnknownProperty_Returns404​</span><div class="duration"><span>339ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Dashboard_WithUnknownAction_ReturnsBadRequest​</span><div class="duration"><span>398ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> NsfasUpload_WithDisguisedPhpFile_IsRejected​</span><div class="duration"><span>496ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> NsfasUpload_WithValidPdf_IsAcceptedAsPending​</span><div class="duration"><span>522ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> AdminVerification_IsRecordedInTheAuditLog​</span><div class="duration"><span>880ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> DepositSimulation_OnSomeoneElsesBooking_Returns404​</span><div class="duration"><span>418ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> DocumentUpload_StoresARandomisedFilenameAndTheOriginalName​</span><div class="duration"><span>516ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> EscrowSimulation_MovesThroughEveryStateInOrder​</span><div class="duration"><span>789ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> InstantBooking_CreatesApprovedBookingWithUnpaidEscrow​</span><div class="duration"><span>510ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Registration_StoresAHashedPasswordAndTheCorrectRole​</span><div class="duration"><span>438ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> RequestBooking_StartsPendingWithATwelveHourDeadline​</span><div class="duration"><span>508ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> SearchGrid_ExcludesUnpublishedProperties​</span><div class="duration"><span>163ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> SearchGrid_RendersExactlyWhatTheDatabaseReturns​</span><div class="duration"><span>178ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> CoreSearchPath_StillReachesAListing​</span><div class="duration"><span>398ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> FlashMessage_IsShownOnceThenCleared​</span><div class="duration"><span>380ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Pages_LoadEveryStaticAsset("index.php")​</span><div class="duration"><span>628ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Pages_LoadEveryStaticAsset("properties.php")​</span><div class="duration"><span>641ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Pages_LogNoConsoleErrors("index.php")​</span><div class="duration"><span>637ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Pages_LogNoConsoleErrors("properties.php")​</span><div class="duration"><span>624ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Pages_LogNoConsoleErrors("register.php")​</span><div class="duration"><span>624ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Prices_RenderInRandWithThousandSeparators​</span><div class="duration"><span>187ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> PropertyTitles_AreHtmlEscapedOnRender​</span><div class="duration"><span>175ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> PublicPages_LoadSuccessfully("index.php")​</span><div class="duration"><span>178ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> PublicPages_LoadSuccessfully("properties.php")​</span><div class="duration"><span>160ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> PublicPages_LoadSuccessfully("how-it-works.php")​</span><div class="duration"><span>145ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> PublicPages_LoadSuccessfully("login.php")​</span><div class="duration"><span>157ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> PublicPages_LoadSuccessfully("register.php")​</span><div class="duration"><span>131ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> PublicPages_LoadSuccessfully("privacy.php")​</span><div class="duration"><span>133ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="fail">✘</span><span> RegistrationForm_HidesStudentNumberForLandlords​</span><div class="duration"><span>3s 245ms</span><br></div>
+          </div>
+          <div class="error-info">
+    Error: <span class="error-message"><pre>Microsoft.Playwright.PlaywrightException : Locator expected to be hidden 
+Call log:
+  - Expect "ToBeHiddenAsync" with timeout 3000ms
+  - waiting for Locator(".student-only")
+    10 × locator resolved to &lt;label hidden="" class="student-only"&gt;…&lt;/label&gt;
+       - unexpected value "visible"
+Aria snapshot:
+- text: Student number
+- textbox "Student number"</pre></span><br>
+    Stack trace: <span class="error-stack-trace"><pre>   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, FrameExpectOptions expectOptions, Object expected, String message, String title) in /_/src/Playwright/Core/AssertionsBase.cs:line 95
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue[] expectedText, Object expected, String message, String title, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 69
+   at EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests.RegistrationForm_HidesStudentNumberForLandlords() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\RegressionTests\CriticalPathRegressionTests.cs:line 238
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+1)    at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, FrameExpectOptions expectOptions, Object expected, String message, String title) in /_/src/Playwright/Core/AssertionsBase.cs:line 95
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue[] expectedText, Object expected, String message, String title, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 69
+   at EMERGEX.Tests.RegressionTests.CriticalPathRegressionTests.RegistrationForm_HidesStudentNumberForLandlords() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\RegressionTests\CriticalPathRegressionTests.cs:line 238
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+</pre></span><br></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> RoleDashboards_LoadForTheirOwnRole​</span><div class="duration"><span>944ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> RoleRouting_KeepsRolesOnTheirOwnDashboard​</span><div class="duration"><span>629ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> SecurityHeaders_ArePresentOnEveryResponse​</span><div class="duration"><span>113ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> SessionCookie_RemainsHttpOnlyAndSameSiteLax​</span><div class="duration"><span>348ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> SessionId_IsRegeneratedOnSignIn​</span><div class="duration"><span>311ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> SignedInUser_IsBouncedAwayFromLoginAndRegister​</span><div class="duration"><span>443ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="fail">✘</span><span> Booking_OnAPropertyWithNoRoomsAvailable_IsRefused​</span><div class="duration"><span>588ms</span><br></div>
+          </div>
+          <div class="error-info">
+    Error: <span class="error-message"><pre>  DEF-010: a booking was accepted on a property advertising zero available rooms. book.php never reads available_rooms, and no code path decrements it, so the platform will over-book any listing without limit. Add an availability check inside the existing transaction in book.php and decrement the column there.
+Assert.That(created, Is.False)
+  Expected: False
+  But was:  True
+</pre></span><br>
+    Stack trace: <span class="error-stack-trace"><pre>   at EMERGEX.Tests.RegressionTests.DataIntegrityTests.Booking_OnAPropertyWithNoRoomsAvailable_IsRefused() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\RegressionTests\DataIntegrityTests.cs:line 145
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+
+1)    at EMERGEX.Tests.RegressionTests.DataIntegrityTests.Booking_OnAPropertyWithNoRoomsAvailable_IsRefused() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\RegressionTests\DataIntegrityTests.cs:line 145
+
+</pre></span><br></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Booking_WithTamperedPriceFields_PersistsTheDatabaseValues​</span><div class="duration"><span>595ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> AuthenticatedPages_AreNotCacheable​</span><div class="duration"><span>315ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> DepositAction_OnAnotherStudentsBooking_IsRefusedWithoutDisclosure​</span><div class="duration"><span>872ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> ErrorResponses_DoNotLeakInternalDetail("property.php?id=999999")​</span><div class="duration"><span>84ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> ErrorResponses_DoNotLeakInternalDetail("property.php?id=notanumber")​</span><div class="duration"><span>87ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> ErrorResponses_DoNotLeakInternalDetail("book.php?property_id=-1")​</span><div class="duration"><span>141ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> ErrorResponses_DoNotLeakInternalDetail("nonexistent-page.php")​</span><div class="duration"><span>91ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> RejectedRegistration_DoesNotEchoThePasswordIntoTheHtml​</span><div class="duration"><span>354ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Search_WithSqlInjectionPayload_IsTreatedAsPlainText("' OR '1'='1")​</span><div class="duration"><span>168ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Search_WithSqlInjectionPayload_IsTreatedAsPlainText("'; DROP TABLE users; --")​</span><div class="duration"><span>176ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Search_WithSqlInjectionPayload_IsTreatedAsPlainText("\" OR 1=1 --")​</span><div class="duration"><span>157ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Search_WithSqlInjectionPayload_IsTreatedAsPlainText("1' UNION SELECT null,null,null --")​</span><div class="duration"><span>169ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> SessionIdentifier_NeverAppearsInAUrl​</span><div class="duration"><span>374ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> SignIn_DoesNotRevealWhetherAnAccountExists​</span><div class="duration"><span>438ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> SignIn_WithSqlInjectionPayload_DoesNotAuthenticate("' OR '1'='1","' OR '1'='1")​</span><div class="duration"><span>203ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> SignIn_WithSqlInjectionPayload_DoesNotAuthenticate("admin@emergex.test' --","anything")​</span><div class="duration"><span>190ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> SignIn_WithSqlInjectionPayload_DoesNotAuthenticate("admin@emergex.test","' OR '1'='1")​</span><div class="duration"><span>247ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Upload_TrustsFileContentRatherThanTheDeclaredMimeType​</span><div class="duration"><span>458ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Upload_WithTraversalSequenceInFilename_StoresARandomisedSafeName​</span><div class="duration"><span>474ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="fail">✘</span><span> UploadedDocuments_AreNotReadableWithoutASession​</span><div class="duration"><span>537ms</span><br></div>
+          </div>
+          <div class="error-info">
+    Error: <span class="error-message"><pre>  DEF-011: a student's uploaded identity document is served to anonymous visitors straight from public/uploads. The random filename is obscurity, not authorisation. Documents should be stored outside the web root and streamed by an authenticated PHP handler that checks ownership.
+Assert.That(response.Status, Is.Not.EqualTo(200))
+  Expected: not equal to 200
+  But was:  200
+</pre></span><br>
+    Stack trace: <span class="error-stack-trace"><pre>   at EMERGEX.Tests.SecurityTests.SecurityTests.UploadedDocuments_AreNotReadableWithoutASession() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\SecurityTests\SecurityTests.cs:line 210
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](TestExecutionContext context, Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+
+1)    at EMERGEX.Tests.SecurityTests.SecurityTests.UploadedDocuments_AreNotReadableWithoutASession() in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\SecurityTests\SecurityTests.cs:line 210
+
+</pre></span><br></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> UploadsDirectory_DoesNotRenderAnIndexListing​</span><div class="duration"><span>237ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Dashboard_BookingStatusChip_UsesTheMatchingStateClass​</span><div class="duration"><span>334ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> EmptyState_IsRenderedWithGuidanceCopy​</span><div class="duration"><span>156ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> FlashMessage_HasStatusRoleForScreenReaders​</span><div class="duration"><span>309ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Header_AfterSignIn_ShowsDashboardAndSignOut​</span><div class="duration"><span>419ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Header_ReportsLink_IsAdminOnly​</span><div class="duration"><span>641ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> MobileNavigation_ToggleIsAccessible​</span><div class="duration"><span>230ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Pages_DoNotRenderPhpErrors("index.php")​</span><div class="duration"><span>181ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Pages_DoNotRenderPhpErrors("properties.php")​</span><div class="duration"><span>156ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Pages_DoNotRenderPhpErrors("how-it-works.php")​</span><div class="duration"><span>123ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Pages_DoNotRenderPhpErrors("privacy.php")​</span><div class="duration"><span>120ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Pages_HaveASpecificDocumentTitle("index.php","Secure student accommodation | EMERGEX")​</span><div class="duration"><span>175ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Pages_HaveASpecificDocumentTitle("properties.php","Find accommodation | EMERGEX")​</span><div class="duration"><span>154ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Pages_HaveASpecificDocumentTitle("login.php","Sign in | EMERGEX")​</span><div class="duration"><span>128ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Pages_HaveASpecificDocumentTitle("register.php","Create account | EMERGEX")​</span><div class="duration"><span>133ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Pages_OnMobileViewport_DoNotScrollHorizontally("index.php")​</span><div class="duration"><span>149ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Pages_OnMobileViewport_DoNotScrollHorizontally("properties.php")​</span><div class="duration"><span>160ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Pages_OnMobileViewport_DoNotScrollHorizontally("login.php")​</span><div class="duration"><span>117ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> Pages_OnMobileViewport_DoNotScrollHorizontally("register.php")​</span><div class="duration"><span>112ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> PropertyDetail_BookingCta_MatchesTheBookingMode("Emerald House Hatfield","Instant Book")​</span><div class="duration"><span>158ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> PropertyDetail_BookingCta_MatchesTheBookingMode("Braamfontein Studio Living","Request booking")​</span><div class="duration"><span>168ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> PropertyDetail_ForVerifiedLandlord_RendersTheTrustBadge​</span><div class="duration"><span>156ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> PropertyDetail_NsfasBadge_AppearsOnlyWhenAccredited​</span><div class="duration"><span>175ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> PropertyDetail_ShowsTheNoRealPaymentDisclaimer​</span><div class="duration"><span>150ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> PropertyGrid_ImagesHaveDescriptiveAltText​</span><div class="duration"><span>198ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+        <div class="leaf-division">
+          <div><span class="pass">✔</span><span> SearchGrid_OnMobileViewport_StacksIntoASingleColumn​</span><div class="duration"><span>189ms</span><br></div>
+          </div>
+          <div class="error-info"></div>
+        </div>
+      </div></details><div>
+      <h2>Informational messages</h2><span>NUnit Adapter 4.6.0.0: Test execution started</span><br><span>Running all tests in C:\xampp\htdocs\emergex-group-55\EMERGEX.Tests\bin\Debug\net9.0\EMERGEX.Tests.dll</span><br><span>   NUnit3TestExecutor discovered 118 of 118 NUnit test cases using Current Discovery mode, Non-Explicit run</span><br><span>NUnit Adapter 4.6.0.0: Test execution complete</span><br></div>
+  </body>
+  <style>
+        body { font-family: Calibri, Verdana, Arial, sans-serif; background-color: White; color: Black; }
+        h2 {
+        margin-top: 15px;
+        margin-bottom:10px;
+        }
+        pre {
+        white-space: pre-wrap;
+        }
+        .summary {font-family:monospace;
+        display: -webkit-flex; /* Safari */
+        -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+        display: flex;
+        flex-wrap: wrap;
+        }
+        .row {
+        border: 2px solid #ffffff;
+        width:100%;
+        cursor:pointer;
+        background-color:#d7e9fa;
+        }
+        .list-row {
+        border: 2px solid #ffffff;
+        width:100%;
+        cursor:pointer;
+        background-color:#ffffff;
+        }
+        .inner-row{
+        border: 2px solid #ffffff;
+        padding-left:1%;
+        margin-left:1%;
+        background-color:#ffffff;
+        }
+        .block{
+        width : 150px;
+        }
+        .leaf-division{
+        border: 2px solid #ffffff;
+        background-color:#e6eff7;
+        }
+        .pass { color: #0c0; }
+        .fail { color: #c00; }
+        .error-message { color : brown; }
+        .error-stack-trace { color: brown; }
+        .duration {float:right;padding-right:1%;}
+        .total-tests { font-size : 30px}
+        .test-run-time { font-size : 30px}
+        .pass-percentage { font-size : 30px}
+        .error-info{
+        margin-left:16px;
+        }
+      </style>
+</html>
