@@ -1,0 +1,32 @@
+# ═══════════════════════════════════════════════════════════════════
+# Line endings
+#
+# Windows ends lines with CRLF, Linux and macOS with LF. Without a rule,
+# Git warns on every file and members on different systems can end up
+# with diffs showing every line changed when nothing actually did.
+#
+# "text=auto eol=lf" means: store everything as LF in the repository,
+# and let each machine check it out however it likes. This is the
+# standard arrangement and silences the CRLF warning.
+# ═══════════════════════════════════════════════════════════════════
+
+* text=auto eol=lf
+
+# Binary files must never be converted — doing so corrupts them.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.webp binary
+*.ico  binary
+*.pdf  binary
+*.docx binary
+*.xlsx binary
+*.pptx binary
+*.zip  binary
+*.dll  binary
+*.exe  binary
+
+# Batch files genuinely need CRLF to run correctly on Windows.
+*.bat text eol=crlf
+*.cmd text eol=crlf
