@@ -1,7 +1,7 @@
 # EMERGEX testing — session handover
 
 Paste this into a new chat to resume with full context.
-Last updated: 15 September 2026.
+Last updated: 19 September 2026.
 
 ---
 
@@ -72,6 +72,46 @@ tests assert on MySQL rows, not screen text.
 
 ---
 
+## 3a. Git — branch state (IMPORTANT)
+
+The repository is **`emergex-group-55`**, shared by all six members.
+
+**All testing work lives on the branch `testing`. `main` does not have it.**
+Switching to `main` removes the entire `EMERGEX.Tests` source tree from disk —
+that is normal Git behaviour, not data loss. Switch back to `testing` and it
+returns.
+
+State as of 19 September 2026:
+
+| Branch | Contains |
+|---|---|
+| `main` | Application code from other members (last push 13 days ago), plus a `.gitignore` / `.gitattributes` commit |
+| `testing` | Everything in `EMERGEX.Tests/`, plus the `config.php` base_url fix |
+
+**The merge has not been done yet.** It is low risk — the testing work is in a
+folder nobody else touches, and nobody has pushed to `main` in 13 days.
+
+Before merging:
+
+1. Tell the team that `application/app/config/config.php` changed —
+   `base_url` was `/emergex/public`, which does not exist; it is now
+   `/emergex-group-55/application/public`. The old value was broken, but
+   teammates will pull the change.
+2. Fetch origin first.
+3. Merge `testing` into `main`, check History, then push.
+4. Leave the `testing` branch in place for a week before deleting it.
+
+**Known conflict:** `.gitignore` was modified on both branches. The version on
+`testing` is the combined one — it keeps the original project rules
+(`.project_runtime/`, `**/backups/*.sql`, `*.pid`, `*.log`) and adds build,
+IDE, test-output and uploads rules. Resolve the conflict by taking the
+`testing` version.
+
+Also added at repo root: `.gitattributes`, which normalises line endings to LF
+and silences the CRLF warnings.
+
+---
+
 ## 4. Test cases
 
 `TestCases/test_cases_v2.json` — 36 cases, TC-01 to TC-36, all automatable.
@@ -84,6 +124,19 @@ tests assert on MySQL rows, not screen text.
 | End-to-end | 3 | TC-25 – TC-27 |
 | Regression | 3 | TC-28 – TC-30 |
 | Security | 6 | TC-31 – TC-36 |
+
+**Case status: all 36 are `approved`.** That is the specification lifecycle
+(draft → ready → approved), not the execution result — a case can be approved
+and still fail, because approval means the specification is right, not that the
+application satisfies it.
+
+**Execution results belong to a test run,** not to the case. The run of record
+is **TR-001** (6 September 2026). Results: **33 cases passed, 3 did not** —
+TC-07, TC-12, TC-33. Four test *methods* failed; the fourth is DEF-010, which
+has no case because the control it would verify does not exist in the build.
+
+The report documents TR-001 formally in section 5.4.4 with environment,
+preconditions, command and evidence.
 
 JSON keeps the user's tool fields (`title`, `description`, `tags`, `date`) and
 adds `id`, `layer`, `priority`, `status`, `preconditions`, `steps`,
@@ -207,6 +260,26 @@ implementation. Page objects would need rewriting if markup changes, but that's
 two files, not 118 tests. Strongest recommendation: add `data-testid` attributes
 to markup during development so tests target attributes that exist purely for
 testing rather than CSS classes that change with a redesign.
+
+---
+
+## 10a. Separate project — BeyondTheBugs portfolio
+
+Unrelated to EMERGEX, but worked on in the same sessions. Lives at
+`C:\xampp\htdocs\BeyondTheBugs\BeyondTheBugs-main`, deployed to Netlify from
+the GitHub repo `NovithanNaidoo/BeyondTheBugs` (downloaded as a ZIP, so the
+local folder is **not** a git repo — files are uploaded through the GitHub web
+interface).
+
+Work done: Supabase cloud sync for the BYB Testing Tool (replacing
+localStorage), mobile responsive layout, terminal-style page headings, flying
+bug logo, WebGL fluid cursor trail, matrix rain background, a live test-run
+terminal replacing the old bug-hunt game, defect showcase cards, and a compact
+footer.
+
+Outstanding on that project: the Trello API key and token are still hardcoded
+in `BYB_TestingTool/index.html` around line 820 and deployed publicly — anyone
+viewing source gets write access to the board. Revoke or move server-side.
 
 ---
 
