@@ -7,10 +7,26 @@ Last updated: 19 September 2026.
 
 ## 1. Who and what
 
-**User:** Mfundo, Group 55 (six members).
-**Their responsibility:** Phase 5 sections **5.3 Testing** and **5.4 System
-Testing** only. Phase 2 is owned by another member.
-**Status: complete.** Both sections written, converted to .docx and .pdf.
+**User:** Novithan Naidoo, Group 55 (six members).
+
+**Their responsibility:** **the whole of Phase 5** — sections 5.1 to 5.5. This
+widened from 5.3 and 5.4 alone on 19 September 2026. Phase 2 is owned by another
+member.
+
+| Section | Status |
+|---|---|
+| 5.1 Introduction | Not started |
+| 5.2 Coding | Not started |
+| 5.3 Testing | **Done** — written, .docx and .pdf |
+| 5.4 System Testing | **Done** — written, .docx and .pdf |
+| 5.5 Installation | Not started |
+
+Due **9 November 2026**. No urgency as of the last session — the user chose to
+come back to 5.1, 5.2 and 5.5 later.
+
+When picking those up: 5.2 and 5.5 should be written from the actual codebase
+rather than invented. Much of 5.5 already exists in `EMERGEX.Tests/README.md`
+(XAMPP setup, `install.php`, base URL configuration).
 
 **Project:** EMERGEX — a student accommodation platform addressing accommodation
 fraud, with landlord verification, NSFAS accreditation filtering, and a simulated
@@ -30,12 +46,12 @@ deposit escrow. Plain PHP 8 + MySQL 8 under XAMPP.
 | 2 Planning | 18 Sept 2026 | 25% | Another member |
 | 3 Analysis | 9 Oct 2026 | 20% | — |
 | 4 System Design | 30 Oct 2026 | 20% | — |
-| 5 Implementation | 9 Nov 2026 | 25% | **5.3 + 5.4 = Mfundo (done)** |
+| 5 Implementation | 9 Nov 2026 | 25% | **All of Phase 5 = Novithan Naidoo** |
 
 \* inferred; unconfirmed.
 
 Phase 5 also contains 5.1 Introduction, 5.2 Coding and 5.5 Installation. **Not
-written, owner unknown** — Mfundo was going to check whether these are his.
+written** — Novithan now owns these as part of taking on the whole of Phase 5.
 
 ---
 
@@ -285,7 +301,7 @@ viewing source gets write access to the board. Revoke or move server-side.
 
 ## 11. When the real application is built
 
-The current EMERGEX build is a demo. Mfundo will re-test the final application
+The current EMERGEX build is a demo. Novithan will re-test the final application
 and has asked for **everything below to be updated at that point** — not
 rewritten from scratch.
 
