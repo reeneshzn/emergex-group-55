@@ -1,0 +1,25 @@
+# Python virtual environment - thousands of files, rebuilt from
+# requirements.txt by anyone who needs it. Never commit this.
+.venv/
+venv/
+env/
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Generated test output. Regenerated on every run - copy a report
+# elsewhere if you need to keep a dated record of a particular run.
+reports/
+test-results/
+playwright-report/
+
+# Playwright failure artefacts
+*.webm
+trace.zip
+
+# Editor
+.vscode/
+.idea/
