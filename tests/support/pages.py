@@ -97,39 +97,47 @@ class SearchPage(BasePage):
 
     # --- filters ---
 
+    # Filter state lives in the URL, so a filtered view is a shareable link.
+    # That also means filters can be applied by navigation instead of by
+    # clicking, which is faster and less brittle — see open_filtered().
+
     @property
     def campus_select(self):
-        return self.page.locator("select[name='campus']").first
+        return self.page.locator("#f-campus")
 
     @property
     def max_rent_input(self):
-        return self.page.locator(
-            "input[name='max'], input[name='max_rent'], input[name='rent']"
-        ).first
+        """A range slider, clamped server-side to 2000-9000."""
+        return self.page.locator("#f-max")
 
     def room_type_checkbox(self, room_type: str):
-        return self.page.locator(f"input[name='types[]'][value='{room_type}']")
+        return self.page.locator(f"input[name='type[]'][value='{room_type}']")
 
     def amenity_checkbox(self, amenity_id: str):
-        return self.page.locator(f"input[name='amenities[]'][value='{amenity_id}']")
+        return self.page.locator(f"input[name='amenity[]'][value='{amenity_id}']")
 
     @property
     def apply_filters_button(self):
-        return self.page.get_by_role(
-            "button", name=re.compile("filter|search|apply", re.I)
-        ).first
+        return self.page.get_by_role("button", name=re.compile("apply filters", re.I))
+
+    @property
+    def clear_all_link(self):
+        return self.page.get_by_role("link", name=re.compile("clear all", re.I))
 
     # --- results ---
 
     @property
     def result_cards(self):
-        return self.page.locator(".listing-card, article.card")
+        return self.page.locator("ul.listing-grid > li")
+
+    @property
+    def results_count_text(self):
+        """The live region reading '<n> rooms near Richfield <campus>'."""
+        return self.page.locator(".results-count")
 
     @property
     def empty_state(self):
-        return self.page.get_by_text(
-            re.compile("no rooms|nothing match|no results", re.I)
-        ).first
+        return self.page.locator(".empty-state")
 
     def result_count(self) -> int:
         return self.result_cards.count()
@@ -150,18 +158,50 @@ class SearchPage(BasePage):
     def map_container(self):
         return self.page.locator("#map, .map").first
 
-    def search(
+    def open_filtered(
         self,
         campus: str | None = None,
         max_rent: int | None = None,
+        room_types: list[str] | None = None,
+        amenities: list[str] | None = None,
     ) -> "SearchPage":
-        """Apply filters through the interface and wait for the results."""
+        """
+        Load a filtered view directly by URL.
+
+        search.php reads every filter from the query string, so this is
+        equivalent to using the controls but avoids dragging a range
+        slider, which Playwright can only do by simulated mouse movement.
+        """
+        from urllib.parse import urlencode
+
+        params: list[tuple[str, str]] = []
+        if campus is not None:
+            params.append(("campus", campus))
+        if max_rent is not None:
+            params.append(("max", str(max_rent)))
+        for t in room_types or []:
+            params.append(("type[]", t))
+        for a in amenities or []:
+            params.append(("amenity[]", a))
+
+        query = ("?" + urlencode(params)) if params else ""
+        self.page.goto(config.url(self.path) + query)
+        return self
+
+    def search_via_controls(self, campus: str | None = None) -> "SearchPage":
+        """
+        Apply filters by operating the form, rather than by URL.
+
+        Slower, but it is what a student actually does — so at least one
+        test must exercise this path rather than the URL shortcut.
+        """
         if campus is not None:
             self.campus_select.select_option(campus)
-        if max_rent is not None and self.max_rent_input.count():
-            self.max_rent_input.fill(str(max_rent))
-        self.apply_filters_button.click()
-        self.page.wait_for_load_state("networkidle")
+            # The campus select submits its own form on change.
+            self.page.wait_for_load_state("networkidle")
+        else:
+            self.apply_filters_button.click()
+            self.page.wait_for_load_state("networkidle")
         return self
 
 

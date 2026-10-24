@@ -1,0 +1,4 @@
+# Microsoft Office lock files. Created while a document is open and
+# deleted when it closes - never something to commit.
+~$*
+*.tmp

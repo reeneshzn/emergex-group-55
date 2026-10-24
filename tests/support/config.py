@@ -60,7 +60,8 @@ CONFIRMED_CAMPUS = _env("RF_CONFIRMED_CAMPUS", "bryanston")
 UNCONFIRMED_CAMPUS = _env("RF_UNCONFIRMED_CAMPUS", "polokwane")
 
 #: A listing slug that exists, used for detail-page and booking tests.
-KNOWN_LISTING = _env("RF_KNOWN_LISTING", "acacia-court-bryanston")
+#: Confirmed present in the running application.
+KNOWN_LISTING = _env("RF_KNOWN_LISTING", "glen-ashley-house")
 
 #: A slug that must never exist, used to assert a 404.
 MISSING_LISTING = "no-such-room-anywhere-xyz"
@@ -81,6 +82,12 @@ MONTHS_PER_TERM = 3
 
 #: BR-05 - a student may shortlist at most this many listings.
 SHORTLIST_LIMIT = 4
+
+#: search.php clamps the max-rent filter to this range. A value outside
+#: it is silently pulled back to the nearest bound, which is itself
+#: testable behaviour.
+RENT_FILTER_MIN = 2000
+RENT_FILTER_MAX = 9000
 
 #: BR-10 - RF-YYMMDD-XXXX
 REFERENCE_PATTERN = r"^RF-\d{6}-[0-9A-F]{4}$"
