@@ -150,6 +150,49 @@ def apply_page(page: Page) -> ApplyPage:
 
 
 @pytest.fixture
+def busiest_slug(db_available) -> str:
+    """
+    One listing slug, chosen the same way on every run.
+
+    Tests that click a control on a result card need a room they can be
+    sure is rendered. The campus is picked by listing count, but several
+    campuses hold the same number - so the tie is broken on campus_id
+    and the slug on its own name.
+
+    Without those tie-breaks the query returned a different campus from
+    one run to the next, and any test opening the default search page
+    passed or failed depending on which campus came back. A test that
+    changes its own answer is worse than one that fails: it teaches you
+    to ignore the result.
+
+    Callers must still open the search for THIS room's campus - see
+    save_from_search in the shortlist suite - rather than assuming it
+    appears on whichever page happens to load first.
+    """
+    if not db_available:
+        return config.KNOWN_LISTING
+
+    row = database.one(
+        """
+        SELECT slug
+          FROM listings
+         WHERE is_active = 1
+           AND campus_id = (
+               SELECT campus_id
+                 FROM listings
+                WHERE is_active = 1
+             GROUP BY campus_id
+             ORDER BY COUNT(*) DESC, campus_id ASC
+                LIMIT 1
+           )
+      ORDER BY slug ASC
+         LIMIT 1
+        """
+    )
+    return row["slug"] if row else config.KNOWN_LISTING
+
+
+@pytest.fixture
 def future_date() -> str:
     """A valid preferred viewing date, one week out."""
     return (date.today() + timedelta(days=7)).isoformat()

@@ -130,6 +130,19 @@ NOTES_MAX = 500
 #: How long a web-first assertion retries before failing, milliseconds.
 TIMEOUT_MS = int(_env("RF_TIMEOUT_MS", "7000"))
 
+#: The application's own folder, used by the fallback tests, which move
+#: the configuration aside to prove the site works without a database.
+#: Set RF_APP_DIR if the application lives somewhere else.
+APP_DIR = _env(
+    "RF_APP_DIR",
+    r"C:\xampp\htdocs\emergex-group-55\Richfield accommodation interface",
+)
+
+#: Set RF_RUN_FALLBACK=1 to allow the tests that temporarily rename the
+#: configuration file. They restore it afterwards, but an interrupted
+#: run would leave the site on sample data, so they are opt-in.
+RUN_FALLBACK_TESTS = _env("RF_RUN_FALLBACK", "") not in ("", "0", "false")
+
 #: Viewport widths the responsive tests check. Taken from the project
 #: README, which claims zero horizontal overflow at each.
 RESPONSIVE_WIDTHS = [360, 390, 414, 768, 1024, 1280, 1920]

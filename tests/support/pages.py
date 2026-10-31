@@ -484,13 +484,29 @@ class ListingPage(BasePage):
     def amenity_chips(self):
         return self.page.locator(".chip")
 
+    # Travel times are a definition list - <dt>Walk</dt><dd>12 min</dd> -
+    # so the label and the value are separate elements and the phrase
+    # "12 min walk" never exists as one string. Each value is found via
+    # its own label.
+
+    def _stat_by_label(self, label: str):
+        return self.page.locator(f"div:has(> dt:text-is('{label}')) > dd").first
+
     @property
     def walk_time(self):
-        return self.page.get_by_text(re.compile(r"\d+\s*min.*walk", re.I)).first
+        return self._stat_by_label("Walk")
 
     @property
     def drive_time(self):
-        return self.page.get_by_text(re.compile(r"\d+\s*min.*driv", re.I)).first
+        return self._stat_by_label("Drive")
+
+    def walk_minutes(self) -> int:
+        match = re.search(r"\d+", self.walk_time.inner_text())
+        return int(match.group()) if match else 0
+
+    def drive_minutes(self) -> int:
+        match = re.search(r"\d+", self.drive_time.inner_text())
+        return int(match.group()) if match else 0
 
     @property
     def book_viewing_link(self):

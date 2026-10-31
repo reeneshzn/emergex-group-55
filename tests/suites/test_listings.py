@@ -122,14 +122,19 @@ def test_every_stored_amenity_appears_as_a_chip(db, listing):
     listing.open_slug(config.KNOWN_LISTING)
     chips = [t.strip().lower() for t in listing.amenity_chips.all_text_contents()]
 
-    labels = {
-        r["id"]: r["short"].lower()
-        for r in db.query("SELECT id, short FROM amenities")
+    # The amenities table holds two forms: a short one for the compact
+    # chips on result cards ("Uncapped Wi-Fi") and a full label for the
+    # detail page ("Uncapped fibre Wi-Fi"). Accept either, so the test
+    # describes the requirement - the amenity is shown - rather than
+    # which wording a particular page happens to use.
+    names = {
+        r["id"]: (r["short"].lower(), r["label"].lower())
+        for r in db.query("SELECT id, short, label FROM amenities")
     }
 
     for amenity_id in stored:
-        label = labels.get(amenity_id, amenity_id)
-        assert any(label in chip for chip in chips), (
+        short, label = names.get(amenity_id, (amenity_id, amenity_id))
+        assert any(short in chip or label in chip for chip in chips), (
             f"{label!r} is recorded against this listing but no chip shows it. "
             f"Chips present: {chips}"
         )
@@ -253,8 +258,6 @@ def test_travel_times_match_an_independent_calculation(db, listing):
     can be checked against the same arithmetic done here. Allowing one
     minute of difference for rounding.
     """
-    import re
-
     row = db.listing(config.KNOWN_LISTING)
     campus = db.campus(row["campus_id"])
 
@@ -264,8 +267,8 @@ def test_travel_times_match_an_independent_calculation(db, listing):
 
     listing.open_slug(config.KNOWN_LISTING)
 
-    shown_walk = int(re.search(r"\d+", listing.walk_time.inner_text()).group())
-    shown_drive = int(re.search(r"\d+", listing.drive_time.inner_text()).group())
+    shown_walk = listing.walk_minutes()
+    shown_drive = listing.drive_minutes()
 
     assert abs(shown_walk - expected_walk) <= 1, (
         f"Walk shown as {shown_walk} min, calculated {expected_walk} min "
@@ -285,15 +288,13 @@ def test_driving_is_never_slower_than_walking(db, listing):
     mistake that produces entirely plausible-looking numbers and would
     pass unnoticed by eye.
     """
-    import re
-
     for slug in [
         r["slug"]
         for r in db.query("SELECT slug FROM listings WHERE is_active = 1 LIMIT 5")
     ]:
         listing.open_slug(slug)
-        walk = int(re.search(r"\d+", listing.walk_time.inner_text()).group())
-        drive = int(re.search(r"\d+", listing.drive_time.inner_text()).group())
+        walk = listing.walk_minutes()
+        drive = listing.drive_minutes()
 
         assert drive <= walk, (
             f"{slug}: driving reported as {drive} min, walking {walk} min. "
