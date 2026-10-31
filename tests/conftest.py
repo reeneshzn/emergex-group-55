@@ -200,5 +200,13 @@ def pytest_runtest_makereport(item, call):
     report.levels = ", ".join(sorted(levels)) if levels else ""
 
 
-def pytest_configure(config_):
-    Path(config_.rootpath / "reports").mkdir(exist_ok=True)
+def pytest_configure(config):  # noqa: F811 - pytest requires this exact name
+    """
+    Make sure the reports directory exists before the run starts.
+
+    The parameter MUST be called `config` - pytest matches hook arguments
+    by name and rejects the plugin otherwise. It shadows the `config`
+    module imported above, which is harmless here because this function
+    does not use it.
+    """
+    (config.rootpath / "reports").mkdir(exist_ok=True)

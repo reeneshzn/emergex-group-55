@@ -1,0 +1,958 @@
+{
+  "project": "Richfield Student Accommodation (EMERGEX)",
+  "phase": "Phase 5 — Implementation",
+  "group": "Group 55",
+  "author": "Novithan Naidoo (402412304)",
+  "created": "2026-10-31",
+  "source_of_requirements": "Phase 3 Analysis (FR1-FR10, NFR1-NFR8, BR-01 to BR-14) and Phase 4 System Design (4.5.4, 4.6.1, 4.7.2)",
+  "notes": "Every case carries the requirement or business rule it verifies. Cases marked expected_result_note 'defect expected' assert correct behaviour the current build does not implement; they are kept deliberately so the defect is recorded rather than hidden.",
+  "total": 60,
+  "cases": [
+
+    {
+      "id": "TC-01",
+      "title": "Display every campus with its location and bed count",
+      "level": "UI",
+      "priority": "High",
+      "traces": ["FR1"],
+      "status": "approved",
+      "precondition": "Database seeded, or sample data active.",
+      "steps": [
+        "Open the landing page.",
+        "Scroll to the campuses section.",
+        "Read each campus card."
+      ],
+      "expected": "Eight campus cards are shown. Each card displays the campus name, its city, its province and a bed count."
+    },
+    {
+      "id": "TC-02",
+      "title": "Unconfirmed campus locations are labelled as such",
+      "level": "UI",
+      "priority": "High",
+      "traces": ["FR1", "BR-03", "NFR5"],
+      "status": "approved",
+      "precondition": "At least one campus row has confirmed = 0 and one has confirmed = 1.",
+      "steps": [
+        "Query the campuses table for rows where confirmed = 0.",
+        "Open the landing page.",
+        "Compare the campuses carrying a 'Location to confirm' badge against that list."
+      ],
+      "expected": "The badge appears on exactly those campuses whose confirmed flag is 0, and on no others."
+    },
+    {
+      "id": "TC-03",
+      "title": "Home page statistics are computed from the data, not hardcoded",
+      "level": "Integration",
+      "priority": "High",
+      "traces": ["FR1", "NFR5"],
+      "status": "approved",
+      "precondition": "Database connected and seeded.",
+      "steps": [
+        "Read the beds, campuses and inspected figures from the home page.",
+        "Query SUM(beds) from campuses, COUNT(*) from campuses, and COUNT(*) from listings where verified = 1 and is_active = 1.",
+        "Compare each pair.",
+        "Change one campus bed count in the database, reload, and read the figure again."
+      ],
+      "expected": "Each displayed figure equals its queried value. After the data change the displayed total changes to match, proving the figure is derived rather than written into the page."
+    },
+    {
+      "id": "TC-04",
+      "title": "Sample-data banner and non-affiliation notice appear on every page",
+      "level": "UI",
+      "priority": "High",
+      "traces": ["NFR5"],
+      "status": "approved",
+      "precondition": "SAMPLE_DATA is true.",
+      "steps": [
+        "Open each of the four pages in turn: landing, search, listing detail, viewing request.",
+        "Check the banner at the top of each.",
+        "Check the footer of each."
+      ],
+      "expected": "Every page shows the demonstration-prototype banner and a footer notice stating the site is not affiliated with, endorsed by or approved by Richfield."
+    },
+
+    {
+      "id": "TC-05",
+      "title": "Campus list on the page matches the campus table",
+      "level": "Integration",
+      "priority": "Medium",
+      "traces": ["FR1"],
+      "status": "approved",
+      "precondition": "Database connected.",
+      "steps": [
+        "Query all campus names from the campuses table in sort order.",
+        "Read the campus names rendered on the landing page.",
+        "Compare the two sequences."
+      ],
+      "expected": "The rendered list matches the queried list exactly, including order."
+    },
+    {
+      "id": "TC-06",
+      "title": "Campus filter options match the campus table",
+      "level": "Integration",
+      "priority": "Medium",
+      "traces": ["FR1", "FR2"],
+      "status": "approved",
+      "precondition": "Database connected.",
+      "steps": [
+        "Open the search page.",
+        "Read every option value in the campus select.",
+        "Query the id column from the campuses table.",
+        "Compare."
+      ],
+      "expected": "Every campus in the database appears as a filter option, and no option exists that is not a campus."
+    },
+    {
+      "id": "TC-07",
+      "title": "Footer campus links resolve to a filtered search",
+      "level": "Functional",
+      "priority": "Low",
+      "traces": ["FR1", "FR2"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Open any page and scroll to the footer.",
+        "Click the first campus link.",
+        "Read the campus shown in the search filter panel."
+      ],
+      "expected": "The search page opens with that campus already selected, and results are limited to it."
+    },
+
+    {
+      "id": "TC-08",
+      "title": "Search by campus returns only that campus's listings",
+      "level": "Functional",
+      "priority": "High",
+      "traces": ["FR2", "BR-04"],
+      "status": "approved",
+      "precondition": "Listings exist for at least two campuses.",
+      "steps": [
+        "Open the search page and select a campus.",
+        "Apply filters.",
+        "For each result, query its campus_id from the listings table."
+      ],
+      "expected": "Every returned listing belongs to the selected campus. No listing from another campus appears."
+    },
+    {
+      "id": "TC-09",
+      "title": "Maximum rent filter excludes listings above the cap",
+      "level": "Functional",
+      "priority": "High",
+      "traces": ["FR2"],
+      "status": "approved",
+      "precondition": "The chosen campus has listings both above and below the cap.",
+      "steps": [
+        "Open the search page for a campus with several listings.",
+        "Set the maximum rent to a value between the cheapest and dearest listing.",
+        "Apply filters.",
+        "Read the rent shown on every result card."
+      ],
+      "expected": "Every result is at or below the cap. Listings above it are absent."
+    },
+    {
+      "id": "TC-10",
+      "title": "Rent filter is clamped to its permitted range",
+      "level": "Security",
+      "priority": "Medium",
+      "traces": ["FR2", "FR7"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Request the search page with max=50 in the query string.",
+        "Read the rent value shown in the filter panel.",
+        "Repeat with max=999999.",
+        "Repeat with max=abc."
+      ],
+      "expected": "Values below 2000 are raised to 2000, values above 9000 are lowered to 9000, and a non-numeric value is treated as a number rather than causing an error. The page returns HTTP 200 in all three cases."
+    },
+    {
+      "id": "TC-11",
+      "title": "Room type filter returns only the selected types",
+      "level": "Functional",
+      "priority": "High",
+      "traces": ["FR2"],
+      "status": "approved",
+      "precondition": "The chosen campus has listings of more than one room type.",
+      "steps": [
+        "Open the search page for that campus.",
+        "Tick one room type.",
+        "Apply filters.",
+        "Query the room_type of each result."
+      ],
+      "expected": "Every result is of the selected room type. Ticking a second type widens the results to include both."
+    },
+    {
+      "id": "TC-12",
+      "title": "Amenity filter requires every selected amenity, not any",
+      "level": "Functional",
+      "priority": "High",
+      "traces": ["FR2"],
+      "status": "approved",
+      "precondition": "A campus with listings holding differing amenity sets.",
+      "steps": [
+        "Open the search page for that campus and note the unfiltered count.",
+        "Tick one amenity and apply. Note the count.",
+        "Tick a second amenity and apply. Note the count.",
+        "For each remaining result, query its amenity rows from listing_amenities."
+      ],
+      "expected": "Each result holds every selected amenity. The count with two amenities is less than or equal to the count with one, proving the filter is AND rather than OR."
+    },
+    {
+      "id": "TC-13",
+      "title": "A search matching nothing shows guidance, not a blank area",
+      "level": "UI",
+      "priority": "High",
+      "traces": ["FR2", "NFR4"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Open the search page and choose a campus with few listings.",
+        "Set maximum rent to its lowest value and tick several amenities.",
+        "Apply filters.",
+        "Read the results area."
+      ],
+      "expected": "The page returns HTTP 200 and shows the empty state: a heading, guidance copy, and a control that clears the filters. The result count reads zero. No PHP warning or error appears."
+    },
+
+    {
+      "id": "TC-14",
+      "title": "Listing detail shows structured accommodation information",
+      "level": "UI",
+      "priority": "High",
+      "traces": ["FR3"],
+      "status": "approved",
+      "precondition": "A known listing slug exists.",
+      "steps": [
+        "Open the detail page for that slug.",
+        "Read the heading, rent, room type, suburb and amenity chips."
+      ],
+      "expected": "All five are present. The rent is formatted in rand with a space thousands separator. The area is a suburb, never a street address."
+    },
+    {
+      "id": "TC-15",
+      "title": "Inspected badge is drawn from the stored verification flag only",
+      "level": "Functional",
+      "priority": "High",
+      "traces": ["FR3", "BR-02", "NFR5"],
+      "status": "approved",
+      "precondition": "One listing has verified = 1 and another verified = 0.",
+      "steps": [
+        "Open the detail page of the verified listing and check for the Inspected badge.",
+        "Open the detail page of the unverified listing and check again.",
+        "Set the verified flag of the second listing to 1 in the database, reload, and check again.",
+        "Restore the original value."
+      ],
+      "expected": "The badge appears only where verified is 1, and follows the stored value when it changes. The badge is never inferred from anything else."
+    },
+    {
+      "id": "TC-16",
+      "title": "Walking and driving times are shown and are plausible",
+      "level": "Functional",
+      "priority": "High",
+      "traces": ["FR3"],
+      "status": "approved",
+      "precondition": "Listing and campus coordinates are populated.",
+      "steps": [
+        "Open a listing detail page.",
+        "Read the walking and driving times.",
+        "Compute the haversine distance between the listing and its campus independently.",
+        "Compare against 5 km/h walking and 30 km/h driving."
+      ],
+      "expected": "Both times are displayed, both are at least one minute, and each is within rounding of the independently calculated value. The driving time is less than or equal to the walking time."
+    },
+    {
+      "id": "TC-17",
+      "title": "An unknown listing slug returns HTTP 404",
+      "level": "Functional",
+      "priority": "High",
+      "traces": ["FR3", "NFR8"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Request listing.php with a slug that does not exist.",
+        "Observe the HTTP status code.",
+        "Inspect the response body."
+      ],
+      "expected": "HTTP 404 is returned, not 200 with an empty page. The body contains no file path, stack trace or SQL error."
+    },
+    {
+      "id": "TC-18",
+      "title": "A deactivated listing disappears from search and detail",
+      "level": "Integration",
+      "priority": "High",
+      "traces": ["FR2", "BR-01"],
+      "status": "approved",
+      "precondition": "Database connected. A known active listing exists.",
+      "steps": [
+        "Note the listing appears in search results and its detail page loads.",
+        "Set is_active = 0 for that listing in the database.",
+        "Reload the search results.",
+        "Request its detail page.",
+        "Restore is_active = 1."
+      ],
+      "expected": "After deactivation the listing is absent from search and its detail page returns 404. The row still exists in the database — this is a soft delete, not a removal."
+    },
+
+    {
+      "id": "TC-19",
+      "title": "A room can be added to the shortlist",
+      "level": "Functional",
+      "priority": "Medium",
+      "traces": ["FR5"],
+      "status": "approved",
+      "precondition": "Shortlist empty.",
+      "steps": [
+        "Open a listing detail page.",
+        "Note the shortlist count in the header.",
+        "Activate the shortlist control.",
+        "Read the count again and open the shortlist drawer."
+      ],
+      "expected": "The count increases by one and the room appears in the drawer."
+    },
+    {
+      "id": "TC-20",
+      "title": "The shortlist is capped at four rooms",
+      "level": "Functional",
+      "priority": "High",
+      "traces": ["FR5", "BR-05"],
+      "status": "approved",
+      "precondition": "Shortlist empty. At least five listings exist.",
+      "steps": [
+        "Add four different rooms to the shortlist.",
+        "Confirm the count reads four.",
+        "Attempt to add a fifth.",
+        "Read the count and the drawer contents."
+      ],
+      "expected": "The count remains four. The fifth room is not added, and the interface explains why rather than failing silently."
+    },
+    {
+      "id": "TC-21",
+      "title": "The shortlist survives a page reload",
+      "level": "Functional",
+      "priority": "Medium",
+      "traces": ["FR5"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Add two rooms to the shortlist.",
+        "Reload the page.",
+        "Read the shortlist count and drawer.",
+        "Navigate to a different page and read the count again."
+      ],
+      "expected": "Both rooms are still shortlisted after the reload and on the other page, because the shortlist is stored in the browser rather than in the page."
+    },
+    {
+      "id": "TC-22",
+      "title": "Shortlisted rooms are pre-selected on the viewing request form",
+      "level": "End-to-end",
+      "priority": "High",
+      "traces": ["FR5", "FR6"],
+      "status": "approved",
+      "precondition": "Shortlist empty.",
+      "steps": [
+        "Add two rooms to the shortlist.",
+        "Open the shortlist drawer and proceed to the viewing request form.",
+        "Inspect the Rooms to view checkboxes.",
+        "Inspect the panel showing the shortlist."
+      ],
+      "expected": "Both rooms arrive already ticked, and no other room is ticked. The student does not have to select them again."
+    },
+
+    {
+      "id": "TC-23",
+      "title": "Monthly plan cost calculation",
+      "level": "Logic",
+      "priority": "High",
+      "traces": ["FR8", "BR-13"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Open the cost estimator.",
+        "Set rent R4 500, lease 12 months, deposit 1 month, plan Monthly.",
+        "Read the amount due now, the instalment, the number of instalments and the total."
+      ],
+      "expected": "No discount. Rent total R54 000, deposit R4 500, admin fee R950, total R59 450. Twelve instalments of R4 500 and R9 950 due now."
+    },
+    {
+      "id": "TC-24",
+      "title": "Upfront plan applies a five per cent discount to rent only",
+      "level": "Logic",
+      "priority": "High",
+      "traces": ["FR8", "BR-13"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Set rent R4 500, lease 12 months, deposit 1 month, plan Upfront.",
+        "Read the discount, deposit, admin fee and total.",
+        "Compare the deposit against the monthly plan's deposit."
+      ],
+      "expected": "Discount R2 700 (5% of R54 000). Rent total R51 300. Deposit remains R4 500 and the admin fee remains R950 — neither is discounted. Total R56 750, all of it due now, as a single instalment."
+    },
+    {
+      "id": "TC-25",
+      "title": "Termly plan discounts two per cent and splits into terms",
+      "level": "Logic",
+      "priority": "High",
+      "traces": ["FR8", "BR-13"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Set rent R4 500, lease 12 months, deposit 1 month, plan Termly.",
+        "Read the discount, the number of instalments and the instalment amount.",
+        "Repeat with a lease of 10 months."
+      ],
+      "expected": "Discount R1 080 (2% of R54 000) and four instalments for a 12-month lease. A 10-month lease gives four instalments, because the count rounds up rather than down."
+    },
+    {
+      "id": "TC-26",
+      "title": "The deposit is never discounted",
+      "level": "Logic",
+      "priority": "High",
+      "traces": ["FR8", "BR-13"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Record the deposit figure under the Monthly plan.",
+        "Switch to Termly and record it again.",
+        "Switch to Upfront and record it again.",
+        "Vary the deposit months and repeat."
+      ],
+      "expected": "The deposit equals rent multiplied by deposit months in every case, unaffected by the payment plan. A deposit is refundable, so discounting it would misrepresent what is held."
+    },
+    {
+      "id": "TC-27",
+      "title": "The administration fee is fixed and always added",
+      "level": "Logic",
+      "priority": "Medium",
+      "traces": ["FR8", "BR-13"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Record the admin fee under each of the three plans.",
+        "Vary the rent and the lease length and record it again."
+      ],
+      "expected": "The fee is R950 in every combination, is never discounted, and is included in both the total and the amount due now."
+    },
+    {
+      "id": "TC-28",
+      "title": "A zero-month lease does not divide by zero",
+      "level": "Logic",
+      "priority": "Medium",
+      "traces": ["FR8", "BR-13"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Set the lease length to zero months.",
+        "Read every figure returned.",
+        "Repeat for each of the three plans."
+      ],
+      "expected": "Rent total zero, instalments zero and instalment zero. No division-by-zero error and no blank or NaN value. The deposit and admin fee are still reported."
+    },
+    {
+      "id": "TC-29",
+      "title": "Every monetary figure is whole rand in the house format",
+      "level": "UI",
+      "priority": "Medium",
+      "traces": ["FR8", "BR-13"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Read every monetary value on the cost estimator.",
+        "Read every rent on the search results.",
+        "Read the rent on a listing detail page."
+      ],
+      "expected": "Every figure matches 'R' followed by a space and digits grouped in threes by spaces, with no decimal point and no cents."
+    },
+
+    {
+      "id": "TC-30",
+      "title": "A name shorter than two characters is rejected",
+      "level": "Functional",
+      "priority": "High",
+      "traces": ["FR7"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Open the viewing request form.",
+        "Enter a single character as the full name and complete every other field validly.",
+        "Submit.",
+        "Query the viewing_requests table for the submitted email."
+      ],
+      "expected": "The form redisplays with an error beside the name field, the other entries are preserved, and no row was created."
+    },
+    {
+      "id": "TC-31",
+      "title": "A name longer than the stored column is rejected",
+      "level": "Functional",
+      "priority": "Medium",
+      "traces": ["FR7"],
+      "status": "approved",
+      "expected_result_note": "defect expected — Phase 3 finding 6, specified in Phase 4 section 4.6.1",
+      "precondition": "None.",
+      "steps": [
+        "Open the viewing request form.",
+        "Enter a name of 200 characters and complete every other field validly.",
+        "Submit.",
+        "Query the stored row and measure the stored name."
+      ],
+      "expected": "The form is refused with a length error and no row is created. The full_name column holds 160 characters, so a longer value must be rejected before it reaches the database rather than being truncated."
+    },
+    {
+      "id": "TC-32",
+      "title": "An invalid email address is rejected",
+      "level": "Functional",
+      "priority": "High",
+      "traces": ["FR7"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Submit the form with 'not-an-email' in the email field.",
+        "Submit again with 'missing@domain'.",
+        "Submit again with a valid address."
+      ],
+      "expected": "The first two are refused with an error beside the email field and create no row. The third is accepted."
+    },
+    {
+      "id": "TC-33",
+      "title": "Phone numbers are validated against the South African mobile format",
+      "level": "Functional",
+      "priority": "High",
+      "traces": ["FR7", "BR-08"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Submit the form with each of: 0821234567, +27821234567, 082 123 4567, 0123456789, 12345, 082123456789.",
+        "Record which are accepted.",
+        "For an accepted spaced number, read the stored value."
+      ],
+      "expected": "The first three are accepted — spaces are stripped before the check. The last three are refused: 012 is a landline prefix, 12345 is too short and the final number is too long."
+    },
+    {
+      "id": "TC-34",
+      "title": "The guardian email is optional but validated when supplied",
+      "level": "Functional",
+      "priority": "Medium",
+      "traces": ["FR7", "FR6"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Submit a valid form leaving the guardian email blank.",
+        "Query the stored row and read guardian_email.",
+        "Submit another valid form with an invalid guardian email.",
+        "Submit a third with a valid guardian email and read the stored value."
+      ],
+      "expected": "A blank guardian email is accepted and stored as NULL, not as an empty string. An invalid one is refused with an error beside that field. A valid one is stored as entered."
+    },
+    {
+      "id": "TC-35",
+      "title": "A preferred date in the past is rejected",
+      "level": "Functional",
+      "priority": "High",
+      "traces": ["FR7", "BR-09"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Submit the form with yesterday's date as the preferred date.",
+        "Submit with today's date.",
+        "Submit with tomorrow's date."
+      ],
+      "expected": "Yesterday is refused with an error beside the date field. Today and tomorrow are both accepted — the rule excludes the past, not the present."
+    },
+    {
+      "id": "TC-36",
+      "title": "Notes longer than five hundred characters are rejected",
+      "level": "Functional",
+      "priority": "Medium",
+      "traces": ["FR7"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Submit the form with 499 characters in the notes field.",
+        "Submit with exactly 500.",
+        "Submit with 501.",
+        "Query each stored row."
+      ],
+      "expected": "499 and 500 are accepted and stored in full. 501 is refused with an error beside the notes field and creates no row."
+    },
+    {
+      "id": "TC-37",
+      "title": "A request naming no rooms is rejected",
+      "level": "Functional",
+      "priority": "High",
+      "traces": ["FR6", "FR7", "BR-06"],
+      "status": "approved",
+      "expected_result_note": "defect expected — Phase 3 finding 1, specified in Phase 4 section 4.6.1, evidenced by Phase 4 Figure 4.15",
+      "precondition": "None.",
+      "steps": [
+        "Open the viewing request form.",
+        "Complete every field validly but tick no rooms.",
+        "Submit.",
+        "Query viewing_requests for the submitted reference and count its linked rooms."
+      ],
+      "expected": "The form is refused with an error beside the Rooms to view section and no row is created. A request naming no rooms is one the campus cannot act on."
+    },
+    {
+      "id": "TC-38",
+      "title": "Selected rooms must belong to the selected campus",
+      "level": "Functional",
+      "priority": "High",
+      "traces": ["FR6", "FR7", "BR-07"],
+      "status": "approved",
+      "expected_result_note": "defect expected — Phase 3 finding 2, specified in Phase 4 section 4.6.1",
+      "precondition": "Listings exist at two different campuses.",
+      "steps": [
+        "Open the viewing request form and select campus A.",
+        "Tick a room that belongs to campus B.",
+        "Complete every other field validly and submit.",
+        "Query the stored request and the campus of its linked room."
+      ],
+      "expected": "The form is refused with an error explaining that the rooms must be at the chosen campus, and no row is created."
+    },
+
+    {
+      "id": "TC-39",
+      "title": "A valid submission produces a reference in the specified format",
+      "level": "Functional",
+      "priority": "High",
+      "traces": ["FR6", "BR-10"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Complete the viewing request form validly and submit.",
+        "Read the reference from the confirmation panel.",
+        "Check it against the pattern RF-YYMMDD-XXXX.",
+        "Compare the date portion against today's date."
+      ],
+      "expected": "A reference is displayed, it matches the pattern with four uppercase hexadecimal characters, and its date portion is today."
+    },
+    {
+      "id": "TC-40",
+      "title": "A request and its rooms are stored together",
+      "level": "Integration",
+      "priority": "High",
+      "traces": ["FR6", "BR-11"],
+      "status": "approved",
+      "precondition": "Database connected.",
+      "steps": [
+        "Submit a valid request naming two rooms.",
+        "Query viewing_requests for that reference.",
+        "Query viewing_request_rooms for the matching request id.",
+        "Compare the stored field values against what was submitted."
+      ],
+      "expected": "One request row exists with every field as submitted, and exactly two room rows reference it. Both tables are written, or neither is."
+    },
+    {
+      "id": "TC-41",
+      "title": "References are unique across requests",
+      "level": "Integration",
+      "priority": "Medium",
+      "traces": ["BR-10"],
+      "status": "approved",
+      "precondition": "Database connected.",
+      "steps": [
+        "Submit three valid requests in succession.",
+        "Record each reference.",
+        "Query the unique constraint on the reference column.",
+        "Attempt to insert a duplicate reference directly."
+      ],
+      "expected": "All three references differ. The database refuses a duplicate, so uniqueness is enforced by the schema and not only by the application."
+    },
+    {
+      "id": "TC-42",
+      "title": "A new request is stored with the correct default status",
+      "level": "Integration",
+      "priority": "Medium",
+      "traces": ["FR6"],
+      "status": "approved",
+      "precondition": "Database connected.",
+      "steps": [
+        "Submit a valid request.",
+        "Query the stored row and read the status and created_at columns."
+      ],
+      "expected": "Status reads 'new' and created_at holds a server-set timestamp of the current time."
+    },
+    {
+      "id": "TC-43",
+      "title": "The confirmation states truthfully whether the request was stored",
+      "level": "Functional",
+      "priority": "High",
+      "traces": ["FR10", "NFR5"],
+      "status": "approved",
+      "precondition": "Able to run the site both with and without a database.",
+      "steps": [
+        "With the database connected, submit a valid request and read the fine print on the confirmation.",
+        "Confirm a row exists.",
+        "Disconnect the database, submit again, and read the fine print.",
+        "Confirm no row was created."
+      ],
+      "expected": "With a database the page says the request has been saved, and it has. Without one the page says no database is connected and the request was not saved, and no row exists. The wording always matches what actually happened."
+    },
+
+    {
+      "id": "TC-44",
+      "title": "A submission without a valid token is refused",
+      "level": "Security",
+      "priority": "High",
+      "traces": ["FR9"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Open the viewing request form and note the hidden token field.",
+        "Remove the token from the form and submit otherwise valid data.",
+        "Record the response and check for a stored row.",
+        "Repeat with an altered token value."
+      ],
+      "expected": "Both submissions are refused with a message about the session expiring, and neither creates a row."
+    },
+    {
+      "id": "TC-45",
+      "title": "Search parameters resist SQL injection",
+      "level": "Security",
+      "priority": "High",
+      "traces": ["NFR2"],
+      "status": "approved",
+      "precondition": "Database connected.",
+      "steps": [
+        "Request the search page with campus set to: ' OR '1'='1",
+        "Repeat with a stacked statement attempting to drop the listings table.",
+        "Repeat injecting into the max, type[] and amenity[] parameters.",
+        "After each, confirm the tables still exist and count their rows."
+      ],
+      "expected": "Every request returns HTTP 200 with no SQL error text. No payload acts as a wildcard, the schema is unchanged and row counts are unchanged."
+    },
+    {
+      "id": "TC-46",
+      "title": "The listing slug parameter resists SQL injection",
+      "level": "Security",
+      "priority": "High",
+      "traces": ["NFR2"],
+      "status": "approved",
+      "precondition": "Database connected.",
+      "steps": [
+        "Request listing.php with a slug containing a tautology payload.",
+        "Request it with a UNION SELECT payload.",
+        "Inspect each response body and status."
+      ],
+      "expected": "Each returns HTTP 404 — the payload is treated as a slug that does not exist. No SQLSTATE, syntax error or database content appears in the response."
+    },
+    {
+      "id": "TC-47",
+      "title": "Stored and submitted content is escaped on output",
+      "level": "Security",
+      "priority": "High",
+      "traces": ["NFR8"],
+      "status": "approved",
+      "precondition": "Database connected.",
+      "steps": [
+        "Submit the viewing request form with a script tag in the full name field so validation redisplays it.",
+        "Inspect whether the script executes or is shown as text.",
+        "Store a script payload in a listing name, open that listing, and inspect again.",
+        "Restore the original listing name."
+      ],
+      "expected": "In both cases the payload renders as literal text. No script executes and no dialog appears."
+    },
+    {
+      "id": "TC-48",
+      "title": "Error responses disclose no internal detail",
+      "level": "Security",
+      "priority": "Medium",
+      "traces": ["NFR8"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Request a listing page with a non-existent slug.",
+        "Request a page that does not exist.",
+        "Stop MySQL, submit a valid viewing request, and read the response.",
+        "Restart MySQL."
+      ],
+      "expected": "No response contains a server file path, a stack trace, an SQLSTATE code, or a PHP warning, notice or deprecation message. The database failure produces a plain message asking the student to try again."
+    },
+    {
+      "id": "TC-49",
+      "title": "Every page instructs search engines not to index it",
+      "level": "Regression",
+      "priority": "Medium",
+      "traces": ["NFR5"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Request each of the four pages.",
+        "Read the robots meta tag in each."
+      ],
+      "expected": "Every page carries a robots directive including noindex. The site uses Richfield's identity without approval, so it must not appear in search results."
+    },
+
+    {
+      "id": "TC-50",
+      "title": "No horizontal overflow at any supported width",
+      "level": "UI",
+      "priority": "High",
+      "traces": ["NFR6"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "For each width of 360, 390, 414, 768, 1024, 1280 and 1920 pixels, load each of the four pages.",
+        "Compare the document scroll width against the viewport width."
+      ],
+      "expected": "At every width on every page the document is no wider than the viewport. Nothing requires sideways scrolling."
+    },
+    {
+      "id": "TC-51",
+      "title": "A skip-to-content link is the first focusable element",
+      "level": "UI",
+      "priority": "Medium",
+      "traces": ["NFR4"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Open the landing page and press Tab once.",
+        "Read the focused element.",
+        "Activate it and read where focus moves."
+      ],
+      "expected": "The first tab stop is a skip link, it becomes visible when focused, and activating it moves focus past the navigation to the main content."
+    },
+    {
+      "id": "TC-52",
+      "title": "Every form field has a programmatically bound label",
+      "level": "UI",
+      "priority": "High",
+      "traces": ["NFR4"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Open the viewing request form.",
+        "For each input, select and textarea, find the label whose for attribute matches its id.",
+        "Check that each label has visible text."
+      ],
+      "expected": "Every field has a matching visible label. No field relies on placeholder text alone, which disappears on focus and is announced inconsistently."
+    },
+    {
+      "id": "TC-53",
+      "title": "Validation errors are associated with their fields",
+      "level": "UI",
+      "priority": "Medium",
+      "traces": ["NFR4", "FR7"],
+      "status": "approved",
+      "precondition": "None.",
+      "steps": [
+        "Submit the viewing request form with every field empty.",
+        "For each field in error, check it carries aria-invalid.",
+        "Check each error message sits within the same field group as its input."
+      ],
+      "expected": "Each failing field is marked invalid and its message appears beside it, so the error is discoverable without sight of the page layout."
+    },
+
+    {
+      "id": "TC-54",
+      "title": "The site works with no database connected",
+      "level": "Functional",
+      "priority": "High",
+      "traces": ["FR10"],
+      "status": "approved",
+      "precondition": "Able to remove or rename the configuration file.",
+      "steps": [
+        "Remove the database configuration.",
+        "Open each of the four pages.",
+        "Perform a search and open a listing.",
+        "Restore the configuration."
+      ],
+      "expected": "Every page returns HTTP 200 and renders with sample content. Search and listing detail both work. No error is shown to the visitor."
+    },
+    {
+      "id": "TC-55",
+      "title": "The site falls back when connected to an empty schema",
+      "level": "Integration",
+      "priority": "Medium",
+      "traces": ["FR10"],
+      "status": "approved",
+      "precondition": "Database connected with the schema imported.",
+      "steps": [
+        "Record the listings currently shown.",
+        "Empty the listings table.",
+        "Reload the search page.",
+        "Restore the data by running the seed script."
+      ],
+      "expected": "The page still renders content rather than an empty catalogue, because a connected but empty database falls back to the sample data."
+    },
+    {
+      "id": "TC-56",
+      "title": "The privacy notice matches what the system actually does",
+      "level": "Functional",
+      "priority": "Medium",
+      "traces": ["NFR5", "NFR7", "BR-12"],
+      "status": "approved",
+      "precondition": "Able to run the site both with and without a database.",
+      "steps": [
+        "With a database connected, read the notice above the submit button.",
+        "Remove the configuration and read it again.",
+        "Restore the configuration."
+      ],
+      "expected": "With a database the notice says details are stored and shared only with the accommodation provider. Without one it says nothing is transmitted, stored or shared. The wording tracks the behaviour."
+    },
+
+    {
+      "id": "TC-57",
+      "title": "The move-in month is validated against the permitted range",
+      "level": "Security",
+      "priority": "Medium",
+      "traces": ["FR7"],
+      "status": "approved",
+      "expected_result_note": "defect expected — Phase 3 finding 3, specified in Phase 4 section 4.6.1",
+      "precondition": "Database connected.",
+      "steps": [
+        "Submit the viewing request form directly, with move_in_month set to a value outside the next twelve months.",
+        "Repeat with a value that is not a month at all.",
+        "Query the stored row and read move_in_month."
+      ],
+      "expected": "Both submissions are refused with an error beside the Moving in field, and no row is created with an out-of-range value."
+    },
+    {
+      "id": "TC-58",
+      "title": "The campus is validated against the campus table",
+      "level": "Security",
+      "priority": "High",
+      "traces": ["FR7", "BR-04"],
+      "status": "approved",
+      "expected_result_note": "defect expected — Phase 3 finding 3, specified in Phase 4 section 4.6.1",
+      "precondition": "Database connected.",
+      "steps": [
+        "Submit the viewing request form directly, with campus set to a value that is not a campus id.",
+        "Record the response.",
+        "Query viewing_requests for a row carrying that campus value."
+      ],
+      "expected": "The submission is refused with an error beside the campus field and no row is created. The foreign key would reject the write in any case, but the student must see a validation message rather than a database failure."
+    },
+    {
+      "id": "TC-59",
+      "title": "The status column accepts only its defined values",
+      "level": "Integration",
+      "priority": "Low",
+      "traces": ["FR6"],
+      "status": "approved",
+      "expected_result_note": "defect expected — Phase 3 finding 4, specified in Phase 4 section 4.5.3",
+      "precondition": "Database connected.",
+      "steps": [
+        "Inspect the definition of the status column on viewing_requests.",
+        "Attempt to update a request's status to a value outside new, contacted, viewed and closed."
+      ],
+      "expected": "The column is constrained to the four permitted values and the database refuses anything else, so statuses cannot drift once an administrative view is added."
+    },
+    {
+      "id": "TC-60",
+      "title": "The guardian email hint does not promise an email that is never sent",
+      "level": "Functional",
+      "priority": "Medium",
+      "traces": ["NFR5"],
+      "status": "approved",
+      "expected_result_note": "defect expected — Phase 3 section 3.6.1, corrected wording specified in Phase 4 section 4.7.2",
+      "precondition": "None.",
+      "steps": [
+        "Open the viewing request form and read the hint beneath the guardian email field.",
+        "Submit a valid request naming a guardian email.",
+        "Check whether any message is sent to that address.",
+        "Inspect the code for any mail-sending call."
+      ],
+      "expected": "The hint describes only what the system does — recording the address so the provider can include them — and does not state that the guardian receives a confirmation, because no email is sent."
+    }
+  ]
+}

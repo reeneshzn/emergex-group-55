@@ -69,6 +69,35 @@ MISSING_LISTING = "no-such-room-anywhere-xyz"
 #: Total listings loaded by the seed. Asserted by the integration layer.
 EXPECTED_LISTING_COUNT = int(_env("RF_LISTING_COUNT", "18"))
 
+#: Number of Richfield campuses in the data.
+EXPECTED_CAMPUS_COUNT = int(_env("RF_CAMPUS_COUNT", "8"))
+
+#: Room type ids, from includes/data.php.
+ROOM_TYPES = ["single", "sharing-2", "sharing-3", "studio", "en-suite"]
+
+#: Amenity ids, from includes/data.php.
+AMENITIES = [
+    "uncapped-wifi",
+    "backup-power",
+    "biometric-access",
+    "24h-security",
+    "laundry",
+    "study-room",
+    "shuttle",
+    "prepaid-electricity",
+    "furnished",
+    "cleaning",
+]
+
+#: A combination that returns nothing, used for the empty-state case.
+#: Polokwane has few listings; requiring three amenities at the lowest
+#: rent excludes all of them.
+IMPOSSIBLE_FILTER = {
+    "campus": "polokwane",
+    "max_rent": 2000,
+    "amenities": ["biometric-access", "laundry", "prepaid-electricity"],
+}
+
 
 # --- Business rule constants -------------------------------------------
 # Mirrored from includes/functions.php. The logic tests assert the
