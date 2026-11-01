@@ -4,7 +4,19 @@
 <meta charset="utf-8">
 <title>EMERGEX — Phase 5 Implementation</title>
 <style>
-@page { size: A4; margin: 2.2cm 2cm; }
+@page {
+  size: A4;
+  margin: 2.2cm 2cm 2.4cm;
+  /* Honoured by print engines that implement CSS paged media (Prince,
+     Paged.js, Word's own pagination after conversion). Chrome ignores
+     margin boxes — there, tick "Headers and footers" in the print dialog. */
+  @bottom-center {
+    content: counter(page);
+    font-family: "Times New Roman", Times, serif;
+    font-size: 10.5pt;
+    color: #000;
+  }
+}
 body {
   font-family: "Times New Roman", Times, serif;
   font-size: 12pt;
@@ -43,10 +55,11 @@ caption { font-weight: bold; text-align: left; padding-bottom: 4pt; font-size: 1
 .pass { color: #146c2e; font-weight: bold; }
 .fail { color: #a31515; font-weight: bold; }
 .blocked { color: #8a6d1f; font-weight: bold; }
-.toc { font-size: 12pt; }
+.toc { font-size: 12pt; margin-top: 6pt; }
 .toc td { border: none; padding: 3pt 0; }
 .toc .lvl2 { font-weight: bold; padding-top: 8pt; }
 .toc .lvl3 { padding-left: 18pt; }
+.toc-note { font-size: 10.5pt; color: #333; font-style: italic; margin-top: 18pt; }
 </style>
 </head>
 <body>
@@ -80,7 +93,7 @@ caption { font-weight: bold; text-align: left; padding-bottom: 4pt; font-size: 1
 </table>
 
 <div class="pagebreak"></div>
-<h2 style="margin-top:0">Contents</h2>
+<h2 style="margin-top:0">Table of Contents</h2>
 
 <table class="toc">
 <tr><td class="lvl2">5.1 Introduction</td></tr>
@@ -132,6 +145,18 @@ caption { font-weight: bold; text-align: left; padding-bottom: 4pt; font-size: 1
 <tr><td class="lvl2">Appendix B — Reproducing the test run</td></tr>
 <tr><td class="lvl2">References</td></tr>
 </table>
+
+<table class="toc" style="margin-top:20pt">
+<tr><td class="lvl2">Tables</td></tr>
+<tr><td class="lvl3">5.1.1 – 5.1.3 · Delivered functionality, technologies, outcomes at a glance</td></tr>
+<tr><td class="lvl3">5.2.1 – 5.2.2 · Security controls; defects found and their present state</td></tr>
+<tr><td class="lvl3">5.3.1 – 5.3.7 · Test levels, V-model, environment, tooling, framework, criteria</td></tr>
+<tr><td class="lvl3">5.4.1 – 5.4.10 · Case status, both runs, results, traceability, defects, corrections</td></tr>
+<tr><td class="lvl3">5.5.1 – 5.5.4 · Prerequisites, verification, variations, common problems</td></tr>
+<tr><td class="lvl3">A.1 · Test case inventory</td></tr>
+</table>
+
+<div class="pagebreak"></div>
 
 <div class="pagebreak"></div>
 <h2>5.1 Introduction</h2>
@@ -791,7 +816,7 @@ integration</span> returns all 37, wherever they are filed, and each folder's
 README names the other levels its tests also cover.</p>
 
 <table>
-<caption>Table 5.3.5 — Framework components</caption>
+<caption>Table 5.3.6 — Framework components</caption>
 <tr><th style="width:24%">Component</th><th>Responsibility</th></tr>
 <tr><td><span class="mono">config.py</span></td><td>Base URL, credentials, seeded constants and business-rule values in one place. Every value is overridable by environment variable, so the suite runs on another machine without code changes.</td></tr>
 <tr><td><span class="mono">database.py</span></td><td>Parameterised MySQL access for the integration layer, plus cleanup helpers. Every statement is parameterised — the suite must not model bad practice while testing for it.</td></tr>
@@ -835,7 +860,7 @@ in a way that failed five tests at once; correcting a single method in
 <h3>5.3.8 Entry and exit criteria</h3>
 
 <table>
-<caption>Table 5.3.6 — Entry and exit criteria</caption>
+<caption>Table 5.3.7 — Entry and exit criteria</caption>
 <tr><th style="width:50%">Entry criteria</th><th style="width:50%">Exit criteria</th></tr>
 <tr><td>
   <ul style="margin-bottom:0">
@@ -1465,8 +1490,9 @@ below concern what should happen next rather than what this phase left undone.</
       deliberate run, on a copy of the data, with the configuration restored
       afterwards.</li>
   <li><strong>Keep one copy of the application.</strong> The duplicate outside the
-      repository should be removed. While two copies exist, "it passed" is
-      ambiguous about which one passed.</li>
+      repository has been deleted, and the smoke suite was re-run afterwards to
+      confirm nothing depended on it. The practice is worth keeping: while two
+      copies exist, "it passed" is ambiguous about which one passed.</li>
   <li><strong>Run the suite before every submission, not after every change.</strong>
       Eight minutes is short enough to be habitual and long enough that it will be
       skipped if it is only remembered when something feels wrong.</li>
