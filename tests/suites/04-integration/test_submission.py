@@ -161,16 +161,37 @@ def test_every_named_room_is_linked_to_the_request(
     them is the BR-06 defect; a request stored with only some of them
     would be worse, because it looks complete.
     """
+    # The rooms must share a campus. BR-07 requires every room on a
+    # request to be at the chosen campus, so a selection spread across
+    # the catalogue is not a request a student could submit.
+    campus = db.one(
+        """
+        SELECT campus_id, COUNT(*) AS n
+          FROM listings
+         WHERE is_active = 1
+      GROUP BY campus_id
+      ORDER BY n DESC, campus_id ASC
+         LIMIT 1
+        """
+    )["campus_id"]
+
     rooms = [
         r["slug"]
         for r in db.query(
-            "SELECT slug FROM listings WHERE is_active = 1 ORDER BY slug LIMIT 3"
+            """SELECT slug FROM listings
+                WHERE is_active = 1 AND campus_id = %s
+             ORDER BY slug LIMIT 3""",
+            (campus,),
         )
     ]
+    if len(rooms) < 2:
+        pytest.skip("Need at least two rooms at one campus")
+
     email = unique_email()
 
     apply_page.open()
     apply_page.fill_valid(email=email, rooms=rooms)
+    apply_page.campus.select_option(campus)
     assert sorted(apply_page.checked_rooms()) == sorted(rooms)
     apply_page.submit_form()
 

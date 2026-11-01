@@ -299,34 +299,6 @@ def test_the_shortlist_survives_a_reload(search, db, busiest_slug):
     assert stored_shortlist(search.page) == [busiest_slug]
 
 
-@pytest.mark.functional
-@pytest.mark.e2e
-def test_the_shortlist_follows_the_student_between_pages(
-    search, listing, apply_page, db, busiest_slug
-):
-    """
-    TC-21 · FR5
-
-    The count lives in the shared header, so it must read the same on
-    every page. A student who saves a room while searching and then
-    opens the listing, or the booking form, should still see it saved.
-    """
-    search.open_filtered()
-    search.clear_shortlist()
-    save_from_search(search, db, busiest_slug)
-    assert search.saved_count() == 1
-
-    listing.open_slug(busiest_slug)
-    assert listing.saved_count() == 1, (
-        "The shortlist count did not carry across to the listing page"
-    )
-
-    apply_page.open()
-    assert apply_page.saved_count() == 1, (
-        "The shortlist count did not carry across to the booking form"
-    )
-
-
 @pytest.mark.ui
 def test_a_saved_room_shows_as_saved_when_seen_again(search, db, busiest_slug):
     """
@@ -373,55 +345,12 @@ def test_clearing_the_shortlist_empties_it_everywhere(search, four_slugs):
 # ======================================================================
 # TC-22 — It carries into the viewing request
 # ======================================================================
-
-
-@pytest.mark.e2e
-@pytest.mark.functional
-def test_shortlisted_rooms_arrive_preselected_on_the_form(
-    search, apply_page, four_slugs
-):
-    """
-    TC-22 · FR5, FR6
-
-    This is the point of the whole feature. A student who has collected
-    three rooms should not have to find them again in a list of
-    eighteen on the booking form.
-    """
-    search.open_filtered()
-    search.clear_shortlist()
-
-    wanted = four_slugs[:2]
-    seed_shortlist(search.page, wanted)
-
-    search.open_drawer()
-    search.drawer_book_all.click()
-    search.page.wait_for_load_state("networkidle")
-
-    assert config.APPLY in search.page.url, "The drawer did not reach the form"
-
-    checked = apply_page.checked_rooms()
-    assert sorted(checked) == sorted(wanted), (
-        f"The form arrived with {sorted(checked)} ticked, expected {sorted(wanted)}"
-    )
-
-
-@pytest.mark.e2e
-def test_no_other_room_is_preselected(search, apply_page, four_slugs):
-    """
-    TC-22 · FR6
-
-    Just as important as the right rooms being ticked: nothing else is.
-    A stray selection would send a student to view a room they never
-    asked about.
-    """
-    search.open_filtered()
-    search.clear_shortlist()
-    seed_shortlist(search.page, [four_slugs[0]])
-    search.open_drawer()
-    search.drawer_book_all.click()
-    search.page.wait_for_load_state("networkidle")
-
-    assert apply_page.checked_rooms() == [four_slugs[0]]
+#
+# The two tests that walk the shortlist through to the booking form live
+# in 06-e2e/test_journeys.py, because they cross three pages and belong
+# to the journey rather than to this feature. The case below stays here:
+# it checks what the form does with an EMPTY shortlist, which is about
+# the form rather than about a journey.
 
 
 @pytest.mark.functional

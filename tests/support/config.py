@@ -19,9 +19,15 @@ def _env(name: str, default: str) -> str:
 # --- The application under test ---------------------------------------
 
 #: Root of the deployed site. No trailing slash.
+#:
+#: This points at the copy INSIDE THE REPOSITORY, which is the copy that
+#: gets submitted. An identical copy sat directly under htdocs and was
+#: what the suite originally tested - so the application being verified
+#: and the application being delivered were two different files, with
+#: nothing keeping them in step. Test what you ship.
 BASE_URL = _env(
     "RF_BASE_URL",
-    "http://localhost/Richfield%20accommodation%20interface",
+    "http://localhost/emergex-group-55/Richfield%20accommodation%20interface",
 ).rstrip("/")
 
 
@@ -60,8 +66,16 @@ CONFIRMED_CAMPUS = _env("RF_CONFIRMED_CAMPUS", "bryanston")
 UNCONFIRMED_CAMPUS = _env("RF_UNCONFIRMED_CAMPUS", "polokwane")
 
 #: A listing slug that exists, used for detail-page and booking tests.
-#: Confirmed present in the running application.
-KNOWN_LISTING = _env("RF_KNOWN_LISTING", "glen-ashley-house")
+#:
+#: It MUST be a room at CONFIRMED_CAMPUS, which is also the campus the
+#: viewing form defaults to. Once BR-07 is enforced - the rooms on a
+#: request must be at the chosen campus - a room from anywhere else
+#: makes every otherwise-valid submission invalid.
+#:
+#: This previously named a room at Umhlanga while the form defaulted to
+#: Bryanston. The mismatch went unnoticed because the build accepted it;
+#: that acceptance was defect DEF-03.
+KNOWN_LISTING = _env("RF_KNOWN_LISTING", "acacia-court-bryanston")
 
 #: A slug that must never exist, used to assert a 404.
 MISSING_LISTING = "no-such-room-anywhere-xyz"
@@ -137,6 +151,8 @@ APP_DIR = _env(
     "RF_APP_DIR",
     r"C:\xampp\htdocs\emergex-group-55\Richfield accommodation interface",
 )
+# Must be the same copy BASE_URL points at, or the fallback tests would
+# move a configuration file the served site is not reading.
 
 #: Set RF_RUN_FALLBACK=1 to allow the tests that temporarily rename the
 #: configuration file. They restore it afterwards, but an interrupted

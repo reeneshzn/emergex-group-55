@@ -136,8 +136,12 @@ CREATE TABLE IF NOT EXISTS `viewing_requests` (
   `preferred_date` DATE         NOT NULL,
   `move_in_month`  CHAR(7)      NOT NULL COMMENT 'YYYY-MM',
   `notes`          VARCHAR(500) DEFAULT NULL,
-  `status`         VARCHAR(20)  NOT NULL DEFAULT 'new'
-                   COMMENT 'new | contacted | viewed | closed',
+  -- DEF-06: this was VARCHAR(20) and accepted anything at all. Nothing
+  -- reads the column yet, but the day an administrative view exists a
+  -- request whose status reads 'New' rather than 'new' would vanish from
+  -- a filtered list, and nobody notices a request nobody can see.
+  `status`         ENUM('new','contacted','viewed','closed')
+                   NOT NULL DEFAULT 'new',
   `created_at`     TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uq_reference` (`reference`),

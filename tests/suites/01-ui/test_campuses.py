@@ -362,27 +362,10 @@ def test_search_filter_offers_exactly_the_stored_campuses(db, search):
 # ======================================================================
 
 
-@pytest.mark.functional
-@pytest.mark.e2e
-def test_a_campus_card_opens_the_search_already_filtered(home, search):
-    """
-    TC-07 · FR1, FR2
-
-    Clicking a campus must land on the search with that campus already
-    selected. Landing on an unfiltered search would make the card
-    pointless - the student would have to choose the campus again.
-    """
-    home.open()
-    target = home.campus_ids_shown()[0]
-
-    home.campus_card(target).click()
-    home.page.wait_for_load_state("networkidle")
-
-    assert config.SEARCH in home.page.url
-    assert search.campus_select.input_value() == target, (
-        f"Opened the search for {search.campus_select.input_value()!r}, "
-        f"expected {target!r}"
-    )
+# The test that clicks a campus card and checks the search opens
+# filtered lives in 06-e2e/test_journeys.py - it crosses two pages and
+# is the first step of every journey. The case below stays here: it
+# checks what the filtered search SAYS, which is a presentation concern.
 
 
 @pytest.mark.functional

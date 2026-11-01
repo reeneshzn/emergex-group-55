@@ -303,7 +303,9 @@ def test_the_status_column_only_accepts_its_defined_values(db):
         "SELECT status FROM viewing_requests WHERE id = %s", (row["id"],)
     )["status"]
 
-    rejected = False
+    threw = False
+    stored_after = None
+
     try:
         db.execute(
             "UPDATE viewing_requests SET status = %s WHERE id = %s",
@@ -311,18 +313,39 @@ def test_the_status_column_only_accepts_its_defined_values(db):
         )
     except (pymysql.err.DataError, pymysql.err.IntegrityError,
             pymysql.err.OperationalError):
-        rejected = True
+        threw = True
+    else:
+        stored_after = db.one(
+            "SELECT status FROM viewing_requests WHERE id = %s", (row["id"],)
+        )["status"]
     finally:
         db.execute(
             "UPDATE viewing_requests SET status = %s WHERE id = %s",
             (original, row["id"]),
         )
 
-    assert rejected, (
-        "The status column accepted 'not-a-real-status'. It should hold only "
-        "new, contacted, viewed or closed. Phase 3 finding 4; the fix is "
-        "specified in Phase 4 section 4.5.3."
+    # What matters is whether the invalid value can be STORED, not whether
+    # the write throws. A server running in strict mode rejects it with an
+    # error; a non-strict one coerces it to an empty string and only warns.
+    # Both enforce the constraint. An unconstrained VARCHAR does neither -
+    # it stores the value exactly as given, which is the defect.
+    accepted_as_given = (not threw) and stored_after == "not-a-real-status"
+
+    assert not accepted_as_given, (
+        "The status column stored 'not-a-real-status' unchanged. It should "
+        "hold only new, contacted, viewed or closed. Phase 3 finding 4; the "
+        "fix is specified in Phase 4 section 4.5.3."
     )
+
+    if not threw:
+        # Worth knowing, though not a failure: this server is not in strict
+        # mode, so the value was coerced rather than refused. The constraint
+        # holds either way, but a strict server would have said so loudly.
+        assert stored_after != original or threw, (
+            f"The column coerced the value to {stored_after!r} rather than "
+            "refusing it. The constraint holds, but this server is not "
+            "running in strict mode."
+        )
 
 
 # ======================================================================

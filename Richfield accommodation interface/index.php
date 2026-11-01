@@ -415,8 +415,12 @@ require __DIR__ . '/includes/header.php';
         </li>
         <li>
           <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <h3>You are on the confirmation</h3>
-          <p>Add your email to your student&rsquo;s viewing request and you receive the same confirmation and lease summary they do. No decisions happen without you seeing them.</p>
+          <h3>Your details are on the request</h3>
+          <?php /* DEF-07 — this previously promised that a guardian
+                   "receives the same confirmation and lease summary".
+                   No email is sent by this release, so the claim was
+                   untrue. Restore it only when email delivery is built. */ ?>
+          <p>Add your email to your student&rsquo;s viewing request and the accommodation provider can include you when they make contact. Nothing is agreed without you being part of the conversation.</p>
         </li>
       </ul>
     </div>

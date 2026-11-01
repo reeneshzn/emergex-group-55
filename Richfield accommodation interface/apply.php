@@ -79,8 +79,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['form'] = 'Your session expired. Please try again.';
     }
 
+    /* DEF-01 — full_name is VARCHAR(160). Without an upper bound a longer
+       name was accepted and the database silently truncated it, so the
+       provider called using a name that was not the student's. Refuse it
+       here rather than losing part of it without saying so. */
     if (str_len($values['fullName']) < 2) {
         $errors['fullName'] = 'Enter your full name';
+    } elseif (str_len($values['fullName']) > 160) {
+        $errors['fullName'] = 'Keep your name under 160 characters';
     }
     if (!filter_var($values['email'], FILTER_VALIDATE_EMAIL)) {
         $errors['email'] = 'Enter a valid email address';
@@ -99,6 +105,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if (str_len($values['notes']) > 500) {
         $errors['notes'] = 'Keep it under 500 characters';
+    }
+
+    /* DEF-05 — the campus arrives from a <select>, and was trusted for that
+       reason. A dropdown constrains the browser, not the request: anything
+       posted directly reached the INSERT, where the foreign key refused it
+       and the student was told only that the request "could not be saved".
+       Check it here so the message names the field. */
+    if (!array_key_exists($values['campus'], all_campuses())) {
+        $errors['campus'] = 'Choose a campus from the list';
+    }
+
+    /* DEF-04 — same reasoning for the move-in month. The form offers the
+       next twelve months; a value posted directly was stored unchanged,
+       including dates in the past. */
+    if (!array_key_exists($values['moveIn'], $months)) {
+        $errors['moveIn'] = 'Choose a month from the list';
+    }
+
+    /* DEF-02 — BR-06: a request must name at least one room. Without this
+       a student could submit a request naming nothing, receive a reference,
+       and wait for a call the provider has no way to make usefully. */
+    if (!$preselected) {
+        $errors['listings'] = 'Select at least one room to view';
+    }
+
+    /* DEF-03 — BR-07: the rooms must be at the campus the student chose.
+       $preselected is already intersected against known slugs above, so
+       each one resolves; what was missing is the check on where it is. */
+    if ($preselected && !isset($errors['campus'])) {
+        foreach ($preselected as $slug) {
+            $room = get_listing($slug);
+            if ($room && $room['campus'] !== $values['campus']) {
+                $errors['listings'] =
+                    'All the rooms you select must be at your chosen campus';
+                break;
+            }
+        }
     }
 
     if (!$errors) {
@@ -217,7 +260,12 @@ require __DIR__ . '/includes/header.php';
 
             <div class="form-row">
               <label for="guardianEmail">Parent or guardian email</label>
-              <p class="form-hint">Optional. They receive the same confirmation and lease summary you do.</p>
+              <?php /* DEF-07 — this previously read "They receive the same
+                       confirmation and lease summary you do." No email is
+                       sent by this release, so the claim was untrue. The
+                       wording now describes what actually happens; restore
+                       the original only when email delivery is built. */ ?>
+              <p class="form-hint">Optional. We record it so the accommodation provider can include them when they get in touch.</p>
               <input type="email" id="guardianEmail" name="guardianEmail"
                      value="<?= e($values['guardianEmail']) ?>"
                      <?= isset($errors['guardianEmail']) ? 'aria-invalid="true"' : '' ?>>
@@ -230,13 +278,15 @@ require __DIR__ . '/includes/header.php';
 
             <div class="form-row">
               <label for="campus">Your campus</label>
-              <select id="campus" name="campus">
+              <select id="campus" name="campus"
+                      <?= isset($errors['campus']) ? 'aria-invalid="true"' : '' ?>>
                 <?php foreach (all_campuses() as $id => $c): ?>
                   <option value="<?= e($id) ?>"<?= $id === $values['campus'] ? ' selected' : '' ?>>
                     <?= e($c['name']) ?> · <?= e($c['city']) ?>
                   </option>
                 <?php endforeach; ?>
               </select>
+              <p class="form-error"><?= e($errors['campus'] ?? '') ?></p>
             </div>
 
             <div class="form-row">
@@ -249,18 +299,24 @@ require __DIR__ . '/includes/header.php';
 
             <div class="form-row">
               <label for="moveIn">Moving in</label>
-              <select id="moveIn" name="moveIn">
+              <select id="moveIn" name="moveIn"
+                      <?= isset($errors['moveIn']) ? 'aria-invalid="true"' : '' ?>>
                 <?php foreach ($months as $value => $label): ?>
                   <option value="<?= e($value) ?>"<?= $value === $values['moveIn'] ? ' selected' : '' ?>>
                     <?= e($label) ?>
                   </option>
                 <?php endforeach; ?>
               </select>
+              <p class="form-error"><?= e($errors['moveIn'] ?? '') ?></p>
             </div>
 
             <div class="form-row">
               <label>Rooms to view</label>
-              <p class="form-hint">Pick as many as you like — the provider arranges them together.</p>
+              <p class="form-hint">Pick at least one — the provider arranges them together.</p>
+              <?php /* DEF-02, DEF-03 — this section previously had no error
+                       element at all, which is why a request naming no rooms
+                       was accepted silently. */ ?>
+              <p class="form-error"><?= e($errors['listings'] ?? '') ?></p>
               <div class="picklist">
                 <?php foreach (all_listings() as $s => $l): ?>
                   <label>

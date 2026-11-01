@@ -1,0 +1,1888 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<title>EMERGEX — Phase 5 Implementation</title>
+<style>
+@page { size: A4; margin: 2.2cm 2cm; }
+body {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 12pt;
+  line-height: 1.5;
+  color: #000;
+}
+h1 { font-size: 20pt; margin: 0 0 4pt; line-height: 1.2; }
+h2 { font-size: 16pt; margin: 24pt 0 8pt; page-break-after: avoid; border-bottom: 1.5pt solid #333; padding-bottom: 3pt; line-height: 1.25; }
+h3 { font-size: 13.5pt; margin: 18pt 0 5pt; page-break-after: avoid; line-height: 1.3; }
+h4 { font-size: 12pt; margin: 13pt 0 4pt; page-break-after: avoid; font-style: italic; }
+p { margin: 0 0 10pt; text-align: justify; }
+table { border-collapse: collapse; width: 100%; margin: 10pt 0 16pt; font-size: 10.5pt; line-height: 1.3; page-break-inside: avoid; }
+th, td { border: 0.75pt solid #666; padding: 5pt 6pt; text-align: left; vertical-align: top; }
+th { background: #e8e8e8; font-weight: bold; }
+code, .mono { font-family: Consolas, "Courier New", monospace; font-size: 10.5pt; }
+pre {
+  background: #f6f8fa; border: 0.75pt solid #ccc; border-left: 3pt solid #666;
+  padding: 9pt 12pt; font-family: Consolas, "Courier New", monospace;
+  font-size: 9pt; line-height: 1.45; white-space: pre-wrap;
+  page-break-inside: avoid; margin: 8pt 0 14pt;
+}
+ul, ol { margin: 0 0 10pt 0; padding-left: 22pt; }
+li { margin-bottom: 4pt; }
+.title-block { text-align: center; margin-bottom: 24pt; padding-bottom: 14pt; border-bottom: 2pt solid #000; }
+.title-block p { text-align: center; margin: 2pt 0; }
+.meta { font-size: 11pt; color: #333; }
+.members-title { text-align: center; font-size: 13pt; font-weight: bold; text-decoration: underline; margin: 0 0 12pt; }
+.members { font-size: 10.5pt; }
+.members th { background: #d9d9d9; }
+.callout { border-left: 3pt solid #666; background: #f4f4f4; padding: 9pt 12pt; margin: 12pt 0 16pt; }
+.callout p { margin: 0 0 7pt; }
+.callout p:last-child { margin-bottom: 0; }
+.pagebreak { page-break-before: always; }
+.small { font-size: 10.5pt; }
+caption { font-weight: bold; text-align: left; padding-bottom: 4pt; font-size: 11pt; }
+.pass { color: #146c2e; font-weight: bold; }
+.fail { color: #a31515; font-weight: bold; }
+.blocked { color: #8a6d1f; font-weight: bold; }
+.toc { font-size: 12pt; }
+.toc td { border: none; padding: 3pt 0; }
+.toc .lvl2 { font-weight: bold; padding-top: 8pt; }
+.toc .lvl3 { padding-left: 18pt; }
+</style>
+</head>
+<body>
+
+<div class="title-block">
+  <h1>EMERGEX</h1>
+  <p style="font-size:12.5pt;">Campus-Linked Student Accommodation Search and Viewing-Request System</p>
+  <p style="font-size:14pt; font-weight:bold; margin-top:12pt;">Phase 5 — Implementation</p>
+  <p class="meta" style="margin-top:10pt;">IT Project 700 · Semester 2, 2026</p>
+  <p class="meta">Richfield Graduate Institute of Technology · Faculty of Information Technology</p>
+  <p class="meta">Group 55 · Supervisor: Thabiso (ThabisoA@richfield.ac.za)</p>
+  <p class="meta">Due 9 November 2026</p>
+</div>
+
+<p class="members-title">Group members</p>
+
+<table class="members">
+<tr>
+  <th style="width:17%">Student no.</th>
+  <th style="width:14%">Name</th>
+  <th style="width:17%">Surname</th>
+  <th style="width:34%">Email</th>
+  <th style="width:18%">Contact no.</th>
+</tr>
+<tr><td>402308936</td><td>Tristan</td><td>Moses</td><td>402308936@my.richfield.ac.za</td><td>082 801 5082</td></tr>
+<tr><td>402411668</td><td>Reenesh</td><td>Ramawthar</td><td>402411668@my.richfield.ac.za</td><td>084 604 1521</td></tr>
+<tr><td>402411227</td><td>Joyce</td><td>Kamalu</td><td>402411227@my.richfield.ac.za</td><td>067 107 5365</td></tr>
+<tr><td>402412304</td><td>Novithan</td><td>Naidoo</td><td>402412304@my.richfield.ac.za</td><td>062 082 9186</td></tr>
+<tr><td>402413409</td><td>Thingo</td><td>Shezi</td><td>402413409@my.richfield.ac.za</td><td>071 429 9251</td></tr>
+<tr><td>402111846</td><td>Lungelo</td><td>Ngwane</td><td>402111846@my.richfield.ac.za</td><td>064 253 4563</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+<h2 style="margin-top:0">Contents</h2>
+
+<table class="toc">
+<tr><td class="lvl2">5.1 Introduction</td></tr>
+<tr><td class="lvl3">5.1.1 Purpose of this phase</td></tr>
+<tr><td class="lvl3">5.1.2 What was delivered</td></tr>
+<tr><td class="lvl3">5.1.3 Technology</td></tr>
+<tr><td class="lvl3">5.1.4 Summary of outcomes</td></tr>
+
+<tr><td class="lvl2">5.2 Coding</td></tr>
+<tr><td class="lvl3">5.2.1 Architecture as built</td></tr>
+<tr><td class="lvl3">5.2.2 Coding conventions</td></tr>
+<tr><td class="lvl3">5.2.3 Representative modules</td></tr>
+<tr><td class="lvl3">5.2.4 Security as implemented</td></tr>
+<tr><td class="lvl3">5.2.5 Known limitations in the delivered code</td></tr>
+
+<tr><td class="lvl2">5.3 Testing</td></tr>
+<tr><td class="lvl3">5.3.1 Objectives</td></tr>
+<tr><td class="lvl3">5.3.2 Scope</td></tr>
+<tr><td class="lvl3">5.3.3 Test strategy — the six levels</td></tr>
+<tr><td class="lvl3">5.3.4 Test environment</td></tr>
+<tr><td class="lvl3">5.3.5 Tools, and why they changed</td></tr>
+<tr><td class="lvl3">5.3.6 Framework architecture</td></tr>
+<tr><td class="lvl3">5.3.7 Test design principles</td></tr>
+<tr><td class="lvl3">5.3.8 Entry and exit criteria</td></tr>
+<tr><td class="lvl3">5.3.9 Executing the suite</td></tr>
+
+<tr><td class="lvl2">5.4 System Testing</td></tr>
+<tr><td class="lvl3">5.4.1 Test case design</td></tr>
+<tr><td class="lvl3">5.4.2 Case status and execution result</td></tr>
+<tr><td class="lvl3">5.4.3 The test run of record</td></tr>
+<tr><td class="lvl3">5.4.4 Results</td></tr>
+<tr><td class="lvl3">5.4.5 Traceability</td></tr>
+<tr><td class="lvl3">5.4.6 Defects identified</td></tr>
+<tr><td class="lvl3">5.4.7 Corrections, and verifying them (TR-002)</td></tr>
+<tr><td class="lvl3">5.4.8 Evaluation of the testing results</td></tr>
+<tr><td class="lvl3">5.4.9 Limitations</td></tr>
+<tr><td class="lvl3">5.4.10 Recommendations</td></tr>
+
+<tr><td class="lvl2">5.5 Installation</td></tr>
+<tr><td class="lvl3">5.5.1 Requirements</td></tr>
+<tr><td class="lvl3">5.5.2 Installing the application</td></tr>
+<tr><td class="lvl3">5.5.3 Verifying the installation</td></tr>
+<tr><td class="lvl3">5.5.4 Installing and running the test suite</td></tr>
+<tr><td class="lvl3">5.5.5 Troubleshooting</td></tr>
+<tr><td class="lvl3">5.5.6 Backup and recovery</td></tr>
+
+<tr><td class="lvl2">Conclusion</td></tr>
+<tr><td class="lvl2">Appendix A — Test case specifications</td></tr>
+<tr><td class="lvl2">Appendix B — Reproducing the test run</td></tr>
+<tr><td class="lvl2">References</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+<h2>5.1 Introduction</h2>
+
+<h3>5.1.1 Purpose of this phase</h3>
+
+<p>The Implementation phase turns the design produced in Phase 4 into a working,
+verified system. Where Phase 3 established what EMERGEX must do and Phase 4
+established how it would be built, this phase documents what was actually built,
+how it was proven to work, what the proving found, and how the system is
+installed and run.</p>
+
+<p>The phase has five parts. Section 5.1 states what was delivered. Section 5.2
+describes the application's code. Sections 5.3 and 5.4 cover testing — the
+strategy, and then the test cases, their execution against a dated run, and the
+defects that execution uncovered. Section 5.5 is the installation procedure.</p>
+
+<p>The outcome that matters most is in 5.4.6. Seven defects were found, and every
+one of them was predicted by the group's own Phase 3 analysis before any test was
+written. That chain — a weakness identified during analysis, a correction
+specified during design, and a failing test that proves the correction is still
+needed — is the substance of this phase.</p>
+
+<h3>5.1.2 What was delivered</h3>
+
+<p>EMERGEX is a campus-linked accommodation search and viewing-request system for
+Richfield students. Richfield operates eight campuses across four provinces and
+owns no student residences, so students are referred informally to off-campus
+housing and must assemble a search from classified sites, social media groups and
+word of mouth. Phase 3 found eight weaknesses in that process, all traceable to
+one cause: there is no single, campus-linked source of structured and verified
+accommodation information.</p>
+
+<table>
+<caption>Table 5.1.1 — Delivered functionality</caption>
+<tr><th style="width:12%">Req.</th><th style="width:46%">Capability</th><th style="width:42%">Where it is implemented</th></tr>
+<tr><td>FR1</td><td>Every campus shown with city, province, confirmed status and bed count</td><td><span class="mono">index.php</span></td></tr>
+<tr><td>FR2</td><td>Search by campus, maximum rent, room type and amenities</td><td><span class="mono">search.php</span>, <span class="mono">repository.php</span></td></tr>
+<tr><td>FR3</td><td>Rent, room type, inspected status, amenities and travel times per listing</td><td><span class="mono">listing.php</span>, <span class="mono">listing-card.php</span></td></tr>
+<tr><td>FR4</td><td>Listings and their campus plotted on an interactive map</td><td><span class="mono">app.js</span> with Leaflet and OpenStreetMap</td></tr>
+<tr><td>FR5</td><td>Shortlist of up to four rooms, kept across pages and reloads</td><td><span class="mono">app.js</span>, browser storage</td></tr>
+<tr><td>FR6</td><td>Viewing request captured, referenced and stored</td><td><span class="mono">apply.php</span>, <span class="mono">repository.php</span></td></tr>
+<tr><td>FR7</td><td>All input validated on the server</td><td><span class="mono">apply.php</span></td></tr>
+<tr><td>FR8</td><td>Move-in cost estimated for a chosen lease and payment plan</td><td><span class="mono">functions.php</span>, mirrored in <span class="mono">app.js</span></td></tr>
+<tr><td>FR9</td><td>Form protected against cross-site request forgery</td><td><span class="mono">apply.php</span></td></tr>
+<tr><td>FR10</td><td>Site keeps working with no database connected</td><td>The seam in <span class="mono">functions.php</span></td></tr>
+</table>
+
+<p>Alongside the application, an automated test suite of 229 tests was built to
+verify it. That suite is a deliverable of this phase in its own right and is
+described in sections 5.3 and 5.4.</p>
+
+<h3>5.1.3 Technology</h3>
+
+<table>
+<caption>Table 5.1.2 — Implementation technologies</caption>
+<tr><th style="width:24%">Layer</th><th style="width:30%">Technology</th><th style="width:46%">Reason</th></tr>
+<tr><td>Web server</td><td>Apache (XAMPP)</td><td>Prescribed for the module; matches the assessment environment</td></tr>
+<tr><td>Application</td><td>PHP 8, no framework</td><td>A framework would hide the mechanisms being assessed — routing, sessions, escaping and prepared statements are all visible in the source</td></tr>
+<tr><td>Database</td><td>MySQL 8 / MariaDB, InnoDB</td><td>Foreign keys and transactions are required: a request and its rooms must both be written or neither</td></tr>
+<tr><td>Database access</td><td>PDO, native prepared statements</td><td><span class="mono">ATTR_EMULATE_PREPARES =&gt; false</span> sends parameters separately from the statement, which is what actually prevents injection</td></tr>
+<tr><td>Front end</td><td>Hand-written HTML, CSS, JavaScript</td><td>No build step and no dependencies to install or break (NFR1)</td></tr>
+<tr><td>Test automation</td><td>Python 3.13 · pytest 8.3 · Playwright 0.6</td><td>See section 5.3.5</td></tr>
+<tr><td>Test case management</td><td>BeyondTheBugs, built by the group</td><td>See section 5.3.5</td></tr>
+</table>
+
+<h3>5.1.4 Summary of outcomes</h3>
+
+<table>
+<caption>Table 5.1.3 — Phase 5 at a glance</caption>
+<tr><th style="width:58%">Measure</th><th style="width:42%">Result</th></tr>
+<tr><td>Test cases designed</td><td>60, every one traced to a requirement</td></tr>
+<tr><td>Automated tests implemented</td><td>149 test functions, 230 executions, across ten suite files</td></tr>
+<tr><td>Test runs of record</td><td>TR-001 and TR-002, both 1 November 2026</td></tr>
+<tr><td>Tests executed, each run</td><td>224</td></tr>
+<tr><td>TR-001 — before correction</td><td>217 passed, 7 failed · pass rate 96.9%</td></tr>
+<tr><td>TR-002 — after correction</td><td><strong>224 passed, 0 failed · pass rate 100%</strong></td></tr>
+<tr><td>Defects identified</td><td>7</td></tr>
+<tr><td>Defects corrected and verified</td><td>7 of 7</td></tr>
+<tr><td>Defects predicted by the Phase 3 analysis</td><td>7 of 7</td></tr>
+<tr><td>Unexplained failures</td><td>0</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+<h2>5.2 Coding</h2>
+
+<h3>5.2.1 Architecture as built</h3>
+
+<p>The application follows the four-layer design specified in Phase 4 §4.3.1, with
+one PHP file per user-facing address. Two rules make the layering real rather than
+aspirational, and both can be checked by inspection: <strong>no page contains
+SQL</strong>, and <strong>only one file opens a database connection</strong>.</p>
+
+<pre>Richfield accommodation interface/
+├── index.php          Landing page — campuses, statistics, cost estimator, FAQ
+├── search.php         Search, filters and map
+├── listing.php        Room detail
+├── apply.php          Viewing-request form, validation and save
+│
+├── includes/
+│   ├── db.php             [DB-CONNECTOR] the only `new PDO`
+│   ├── repository.php     [DB-QUERIES] every SQL statement
+│   ├── functions.php      Distance, money, formatting, the data-source seam
+│   ├── data.php           Sample data: fallback source and seed source
+│   ├── config.php         Credentials — git-ignored
+│   ├── header.php / footer.php / listing-card.php
+│
+├── database/
+│   ├── schema.mysql.sql   Nine tables for MySQL / MariaDB
+│   ├── schema.sqlite.sql  The same for SQLite
+│   └── seed.php           Creates the tables and loads reference data
+│
+└── assets/
+    ├── css/style.css      The entire design system
+    └── js/app.js          Shortlist, calculator, map</pre>
+
+<p>Nineteen files in total. The convention markers in square brackets are
+searchable: a single search for <span class="mono">[DB-</span> lists every point
+at which the application touches data, which is the review path a maintainer or
+an assessor would follow.</p>
+
+<h3>5.2.2 Coding conventions</h3>
+
+<ul>
+  <li><strong>Every database query is a prepared statement.</strong> There is no
+      concatenation of user input into SQL anywhere in the codebase.</li>
+  <li><strong>Every variable echoed into HTML passes through
+      <span class="mono">e()</span>.</strong> Unescaped output is how stored
+      content becomes executable script.</li>
+  <li><strong>Every state-changing POST verifies a CSRF token</strong> before
+      doing anything else.</li>
+  <li><strong>Money is stored and calculated in whole rand.</strong> The
+      estimator rounds at every step; storing cents would introduce drift between
+      the stored figure and the displayed one.</li>
+  <li><strong>Displayed statistics are derived, never hardcoded.</strong> Total
+      beds, inspected count and median walking time are computed on each request.</li>
+  <li><strong>Optional dependencies are wrapped.</strong>
+      <span class="mono">mbstring</span> is not present in a stock PHP build, so
+      <span class="mono">str_len()</span> falls back to
+      <span class="mono">strlen()</span> rather than making the form fatal.</li>
+</ul>
+
+<h3>5.2.3 Representative modules</h3>
+
+<p>Six modules are described below. Between them they cover the connection, the
+queries, the business logic, the one write path, the main read path and the data
+layer.</p>
+
+<h4>Module 1 — <span class="mono">includes/db.php</span> (the connector)</h4>
+
+<p>The only file in the project that creates a database connection. It opens one
+PDO instance lazily, reuses it, and supports MySQL and SQLite behind the same
+interface.</p>
+
+<pre>$pdo = new PDO($dsn, $cfg['username'], $cfg['password'], [
+    PDO::ATTR_ERRMODE            =&gt; PDO::ERRMODE_EXCEPTION,  // fail loudly
+    PDO::ATTR_DEFAULT_FETCH_MODE =&gt; PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   =&gt; false,                   // real prepares
+]);</pre>
+
+<p><span class="mono">ATTR_EMULATE_PREPARES =&gt; false</span> is the important
+option. With emulation on, PDO builds the final SQL string itself and only
+<em>appears</em> parameterised. With it off, parameters travel to the database
+separately from the statement, so user input can never be parsed as SQL. Test
+cases TC-45, TC-46 and the injection tests in 5.4 verify the result.</p>
+
+<p>The connector also degrades rather than failing: with no configuration file,
+or with the server down, <span class="mono">db()</span> returns null and the site
+runs on sample data. A <span class="mono">strict</span> flag inverts this once the
+database is the source of truth.</p>
+
+<h4>Module 2 — <span class="mono">includes/repository.php</span> (every query)</h4>
+
+<p>All SQL in the project lives here. The search query is the most interesting,
+because its <em>shape</em> varies with the filters while every <em>value</em>
+remains bound.</p>
+
+<pre>$sql    = repo_listing_select() . ' WHERE campus_id = ? AND is_active = 1 AND rent &lt;= ?';
+$params = [$campus_id, $max_rent];
+
+if ($types) {
+    $sql .= ' AND room_type IN (' . implode(',', array_fill(0, count($types), '?')) . ')';
+    $params = array_merge($params, array_values($types));
+}
+
+if ($wanted) {
+    $in   = implode(',', array_fill(0, count($wanted), '?'));
+    $need = (int) count($wanted);          // interpolated, see below
+
+    $sql .= " AND slug IN (
+                SELECT listing_slug FROM listing_amenities
+                 WHERE amenity_id IN ($in)
+                 GROUP BY listing_slug
+                HAVING COUNT(DISTINCT amenity_id) = $need
+              )";
+    $params = array_merge($params, array_values($wanted));
+}</pre>
+
+<p>Two decisions are worth drawing out. The placeholder lists are built from the
+<em>count</em> of selected values, never from the values themselves — which is
+what allows a variable number of filters without concatenating input.</p>
+
+<p>The <span class="mono">HAVING</span> count is interpolated rather than bound,
+and the reason is instructive. With emulation disabled, a bound value arrives as
+a string; SQLite then compares <span class="mono">COUNT(...)</span>, an integer,
+against <span class="mono">'2'</span> and never matches, while MySQL coerces and
+works. That would have been a defect visible on only one of the two supported
+engines. Interpolating is safe here because the value is
+<span class="mono">count()</span> of a PHP array cast to an integer and can never
+contain user input. Test case TC-12 verifies the resulting behaviour: amenities
+are AND, not OR.</p>
+
+<h4>Module 3 — <span class="mono">includes/functions.php</span> (logic and the seam)</h4>
+
+<p>Holds the business calculations and the single branch that satisfies FR10.</p>
+
+<pre>function all_listings(): array
+{
+    static $cache = null;
+    if ($cache === null) {
+        $cache = using_database() ? repo_listings() : LISTINGS;
+        if (!$cache) {
+            $cache = LISTINGS;   // connected but the table is empty
+        }
+    }
+    return $cache;
+}</pre>
+
+<p>Five lookup functions follow this pattern, and every page reads data through
+them and nothing else. Because both paths return an identically shaped array, the
+entire presentation layer is unaware of which source answered. That single design
+choice is what makes "works with no database" a two-line branch rather than a
+parallel codebase.</p>
+
+<p>The same file holds <span class="mono">calculate_payment()</span>, which
+implements BR-13. The rule that carries the most meaning is in the comment:</p>
+
+<pre>// Discounts apply to rent only, never to the deposit or admin fee - a
+// deposit is refundable and discounting it would misrepresent what is held.
+$discount   = (int) round($gross * $rate);
+$rent_total = (int) round($gross - $discount);
+$deposit    = (int) round($rent * $deposit_months);
+$total      = $rent_total + $deposit + $admin;</pre>
+
+<p>Test case TC-26 verifies precisely this by reading the deposit under all three
+payment plans and requiring the three to be equal.</p>
+
+<h4>Module 4 — <span class="mono">apply.php</span> (the only write path)</h4>
+
+<p>The single place the system accepts data a person typed, and therefore the
+heaviest test surface in the application. Its order matters: the token is checked
+before anything else, and the transaction is not opened until every rule has
+passed.</p>
+
+<pre>if (!hash_equals($_SESSION['csrf'] ?? '', (string) ($_POST['csrf'] ?? ''))) {
+    $errors['form'] = 'Your session expired. Please try again.';
+}
+
+if (str_len($values['fullName']) &lt; 2)                    { $errors['fullName'] = 'Enter your full name'; }
+if (!filter_var($values['email'], FILTER_VALIDATE_EMAIL)) { $errors['email']    = 'Enter a valid email address'; }
+
+// South African mobile: 0 or +27, then a 6/7/8 prefix, then 8 digits.
+if (!preg_match('/^(?:\+27|0)[6-8][0-9]{8}$/',
+                preg_replace('/\s+/', '', $values['phone']))) {
+    $errors['phone'] = 'Enter a South African mobile number';
+}
+
+if ($values['date'] &lt; date('Y-m-d'))      { $errors['date']  = 'Choose a date that is not in the past'; }
+if (str_len($values['notes']) &gt; 500)      { $errors['notes'] = 'Keep it under 500 characters'; }</pre>
+
+<p>Errors are <em>collected</em> rather than thrown, so every failing field is
+reported together and the student's entries are preserved on redisplay. Test
+cases verify both behaviours.</p>
+
+<p>Three checks are absent from that sequence, and their absence is the substance
+of three of the seven defects in 5.4.6: there is no maximum length on the name,
+no check that at least one room was selected, and no check that the selected
+rooms belong to the selected campus.</p>
+
+<p>Once validation passes, the write is atomic:</p>
+
+<pre>return db_transaction(function (PDO $pdo) use ($data, $listing_slugs) {
+    $stmt = $pdo-&gt;prepare('INSERT INTO viewing_requests (...) VALUES (?,?,?,?,?,?,?,?,?,?)');
+    $stmt-&gt;execute([...]);
+    $id = (int) $pdo-&gt;lastInsertId();
+
+    $room = $pdo-&gt;prepare('INSERT INTO viewing_request_rooms (request_id, listing_slug) VALUES (?, ?)');
+    foreach ($listing_slugs as $slug) {
+        $room-&gt;execute([$id, $slug]);
+    }
+    return $id;
+});</pre>
+
+<p>Both inserts occur inside one transaction, so a request can never be stored
+without the rooms it names (BR-11). Any exception rolls the whole thing back and
+the student is told plainly, with the underlying error logged rather than
+displayed.</p>
+
+<h4>Module 5 — <span class="mono">search.php</span> (filter validation)</h4>
+
+<p>Filter state lives in the URL, so any filtered view is a shareable link. That
+also means every filter value arrives from the client and must be treated as
+untrusted.</p>
+
+<pre>$campus_id = isset($_GET['campus']) &amp;&amp; get_campus($_GET['campus']) ? $_GET['campus'] : DEFAULT_CAMPUS;
+$max_rent  = isset($_GET['max'])  ? max(2000, min(9000, (int) $_GET['max'])) : 9000;
+$types     = isset($_GET['type'])    ? array_intersect((array) $_GET['type'],    array_keys(all_room_types())) : [];
+$wanted    = isset($_GET['amenity']) ? array_intersect((array) $_GET['amenity'], array_keys(all_amenities()))  : [];</pre>
+
+<p>Each line is a different validation strategy, chosen to fit the value: the
+campus must resolve to a real campus or the default is used; the rent is clamped
+into range rather than rejected, so an edited link still works; and the room-type
+and amenity lists are intersected against known keys, so an unknown value is
+simply dropped. Test case TC-10 verifies the clamping at four boundaries.</p>
+
+<p>This is the validation the viewing-request form does not do for its campus and
+move-in month — the same codebase, two different standards, which is how DEF-04
+and DEF-05 came about.</p>
+
+<h4>Module 6 — <span class="mono">database/schema.mysql.sql</span> (the data layer)</h4>
+
+<p>Nine tables in Third Normal Form, with integrity enforced by the database
+rather than by application code.</p>
+
+<pre>CREATE TABLE IF NOT EXISTS `viewing_requests` (
+  `id`             INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `reference`      VARCHAR(20)  NOT NULL COMMENT 'RF-YYMMDD-XXXX shown to the student',
+  `full_name`      VARCHAR(160) NOT NULL,
+  `email`          VARCHAR(190) NOT NULL,
+  `phone`          VARCHAR(20)  NOT NULL,
+  `guardian_email` VARCHAR(190) DEFAULT NULL,
+  `campus_id`      VARCHAR(40)  NOT NULL,
+  `preferred_date` DATE         NOT NULL,
+  `move_in_month`  CHAR(7)      NOT NULL COMMENT 'YYYY-MM',
+  `notes`          VARCHAR(500) DEFAULT NULL,
+  `status`         VARCHAR(20)  NOT NULL DEFAULT 'new',
+  `created_at`     TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_reference` (`reference`),
+  CONSTRAINT `fk_vr_campus` FOREIGN KEY (`campus_id`)
+    REFERENCES `campuses` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</pre>
+
+<p>The <span class="mono">UNIQUE</span> constraint on
+<span class="mono">reference</span> is what makes BR-10's uniqueness guarantee
+real: enforced by the schema rather than only by the code that generates the
+value. Test case TC-41 verifies it by attempting a duplicate insert and requiring
+the database to refuse.</p>
+
+<p>The <span class="mono">status</span> column is <span class="mono">VARCHAR(20)</span>
+where Phase 4 §4.5.3 specifies an ENUM. That is DEF-06.</p>
+
+<h3>5.2.4 Security as implemented</h3>
+
+<table>
+<caption>Table 5.2.1 — Security controls and the cases that verify them</caption>
+<tr><th style="width:28%">Control</th><th style="width:40%">Implementation</th><th style="width:32%">Verified by</th></tr>
+<tr><td>Injection prevention</td><td>PDO prepared statements, native prepares, no concatenation</td><td>TC-45, TC-46 — six payloads across every parameter</td></tr>
+<tr><td>Output escaping</td><td><span class="mono">htmlspecialchars</span> with <span class="mono">ENT_QUOTES</span> on every dynamic value</td><td>TC-47 — reflected and stored payloads</td></tr>
+<tr><td>CSRF protection</td><td>32 random bytes per session, compared with <span class="mono">hash_equals()</span></td><td>TC-44 — missing, wrong and valid tokens</td></tr>
+<tr><td>Error handling</td><td>Exceptions caught, logged, replaced with a neutral message</td><td>TC-48 — four error paths checked for disclosure</td></tr>
+<tr><td>Credential handling</td><td>Configuration git-ignored; a sample template committed instead</td><td>Repository inspection</td></tr>
+<tr><td>Transactional integrity</td><td>Both inserts in one transaction, rolled back on any exception</td><td>TC-40 — no orphan rows on either side</td></tr>
+<tr><td>Data minimisation</td><td>No identity numbers, banking details or street addresses</td><td>TC-14 — area is suburb level only</td></tr>
+<tr><td>Search engine exclusion</td><td><span class="mono">noindex</span> on every page</td><td>TC-49 — all four pages</td></tr>
+</table>
+
+<h3>5.2.5 Known limitations in the delivered code</h3>
+
+<p>Seven defects were identified by testing. All seven have since been corrected
+and the corrections verified by a second execution of the suite, so
+<strong>the delivered code carries no open defects</strong>. They are listed here
+because the code was delivered with them and corrected afterwards, and an account
+of what was delivered that omitted them would be incomplete. Section 5.4.6
+describes each as it was found; section 5.4.7 describes the correction and the run
+that verified it.</p>
+
+<table>
+<caption>Table 5.2.2 — Defects found, and their present state</caption>
+<tr><th style="width:12%">ID</th><th style="width:13%">Severity</th><th style="width:60%">Summary as found</th><th style="width:15%">State</th></tr>
+<tr><td>DEF-02</td><td>High</td><td>A viewing request naming no rooms is accepted and stored</td><td class="pass">Corrected</td></tr>
+<tr><td>DEF-01</td><td>Medium</td><td>A name longer than 160 characters is silently truncated</td><td class="pass">Corrected</td></tr>
+<tr><td>DEF-03</td><td>Medium</td><td>Rooms from another campus are accepted on a request</td><td class="pass">Corrected</td></tr>
+<tr><td>DEF-04</td><td>Medium</td><td>The move-in month is not validated against the offered range</td><td class="pass">Corrected</td></tr>
+<tr><td>DEF-05</td><td>Medium</td><td>An invalid campus is refused by the database rather than by validation</td><td class="pass">Corrected</td></tr>
+<tr><td>DEF-07</td><td>Medium</td><td>The guardian hint promises an email the system never sends</td><td class="pass">Corrected</td></tr>
+<tr><td>DEF-06</td><td>Low</td><td>The status column accepts any value</td><td class="pass">Corrected</td></tr>
+</table>
+
+<p>Beyond these, Phase 4 §4.8.5 records seven items of outstanding work between
+this prototype and a system that could responsibly hold real students' personal
+information — rate limiting on the public form, moving the application files
+above the web root, agreeing a POPIA retention period, HTTPS, a least-privilege
+database account, an administrative interface, and email delivery.</p>
+
+<div class="pagebreak"></div>
+<h2>5.3 Testing</h2>
+
+<p>This section documents the verification of EMERGEX: what was tested, how, with
+which tools, and on what basis a build is judged fit to demonstrate. Section 5.4
+presents the test cases themselves, the results of executing them against a dated
+run, and the defects that execution uncovered.</p>
+
+<h3>5.3.1 Objectives</h3>
+
+<ol>
+  <li>Verify that every implemented requirement behaves as Phase 3 specified.</li>
+  <li>Verify that data written through the interface is correct and complete in
+      the database, rather than merely plausible on screen.</li>
+  <li>Verify that the security controls resist ordinary hostile input.</li>
+  <li>Establish a repeatable regression suite, so a later change cannot silently
+      undo an earlier fix.</li>
+  <li>Record every defect found, with enough detail to reproduce and correct it.</li>
+</ol>
+
+<h3>5.3.2 Scope</h3>
+
+<h4>In scope</h4>
+<ul>
+  <li>All four pages: landing, search, listing detail, viewing request</li>
+  <li>The complete journey: browse, filter, compare, shortlist, estimate cost,
+      request a viewing, receive a reference</li>
+  <li>All ten functional requirements and all fourteen business rules</li>
+  <li>Security controls: CSRF, injection resistance, output escaping, error
+      disclosure, search-engine exclusion</li>
+  <li>Accessibility and responsiveness at seven viewport widths</li>
+  <li>Behaviour with no database connected</li>
+</ul>
+
+<h4>Out of scope</h4>
+<ul>
+  <li><strong>Load and performance testing.</strong> The prototype runs on one
+      developer machine against eighteen seeded listings; a throughput figure
+      measured there would not be meaningful.</li>
+  <li><strong>Cross-browser testing.</strong> Execution used Chromium only.</li>
+  <li><strong>Penetration testing.</strong> The security layer verifies that
+      specific controls hold; it is not an adversarial assessment.</li>
+  <li><strong>Assistive-technology testing.</strong> Accessibility verification
+      was structural — bound labels, keyboard reachability, live regions — not a
+      screen-reader audit.</li>
+</ul>
+
+<h3>5.3.3 Test strategy — the six levels</h3>
+
+<p>Testing is organised into six levels. Each answers a different question, and a
+defect that escapes one level should be caught by the next.</p>
+
+<table>
+<caption>Table 5.3.1 — Test levels</caption>
+<tr><th style="width:15%">Level</th><th style="width:29%">Question it answers</th><th style="width:38%">What it would catch</th><th style="width:18%">Test functions</th></tr>
+<tr><td><strong>UI</strong></td><td>Does the interface render correctly and accessibly?</td><td>A badge that does not appear; horizontal overflow on a phone</td><td>40</td></tr>
+<tr><td><strong>Functional</strong></td><td>Does the application follow its own rules?</td><td>A past date accepted; a filter returning the wrong rooms</td><td>73</td></tr>
+<tr><td><strong>Integration</strong></td><td>Did what the browser did actually reach MySQL?</td><td>A confirmation shown when nothing was stored</td><td>37</td></tr>
+<tr><td><strong>Security</strong></td><td>Do the controls hold under hostile input?</td><td>An injection payload treated as SQL rather than as text</td><td>19</td></tr>
+<tr><td><strong>Logic</strong></td><td>Is the arithmetic right? (no browser needed)</td><td>A discount applied to the deposit as well as the rent</td><td>13</td></tr>
+<tr><td><strong>Regression</strong></td><td>Has a previously correct behaviour been lost?</td><td>A security header silently dropped in a later change</td><td>8</td></tr>
+<tr><td><strong>End-to-end</strong></td><td>Do complete journeys work across pages?</td><td>A shortlist that does not carry into the booking form</td><td>5</td></tr>
+<tr><td colspan="3"><strong>Distinct test functions</strong></td><td><strong>149</strong></td></tr>
+<tr><td colspan="3"><strong>Executions in a full run</strong></td><td><strong>230</strong></td></tr>
+</table>
+
+<div class="callout">
+<p><strong>Two figures, measuring two things.</strong> The suite contains
+<strong>148 test functions</strong>, which produce <strong>229 executions</strong>
+when run. The difference is parameterisation: one function checking the phone-number
+rule runs against six different numbers and is counted once as a function and six
+times as executions.</p>
+<p>The level totals add to more than 148 because a test may carry more than one
+marker. A test proving a deactivated listing disappears from search is both
+integration and regression, and is counted in both without being duplicated in
+code.</p>
+<p>These figures are produced by <span class="mono">tools/layer_index.py</span>,
+which reads the markers back out of the suite rather than being maintained by
+hand. The full index, listing which tests belong to which level, is written to
+<span class="mono">reports/layer-index.md</span> — so the numbers in this table
+cannot drift from the suite they describe.</p>
+</div>
+
+<p>The level worth emphasising is <strong>integration</strong>. A browser test can
+only prove what a page <em>displays</em>. A confirmation page reading "your request
+has been saved" proves nothing on its own — the page would print the same words if
+the insert had silently failed. The integration tests query MySQL directly, which
+is the only way to prove persistence actually happened.</p>
+
+<h4>Relationship to earlier phases</h4>
+
+<table>
+<caption>Table 5.3.2 — V-model mapping</caption>
+<tr><th style="width:46%">Development phase</th><th style="width:28%">Test level</th><th style="width:26%">Verified by</th></tr>
+<tr><td>3.6 Functional requirements (FR1–FR10)</td><td>Acceptance</td><td>End-to-end, functional</td></tr>
+<tr><td>3.7 Non-functional requirements (NFR1–NFR8)</td><td>Security, accessibility</td><td>Security, UI</td></tr>
+<tr><td>3.4 Business rules (BR-01 to BR-14)</td><td>Component</td><td>Functional, logic</td></tr>
+<tr><td>4.3 Architectural design</td><td>Integration</td><td>Integration</td></tr>
+<tr><td>4.5 Database design</td><td>Integration</td><td>Integration</td></tr>
+<tr><td>4.7 Interface design</td><td>Interface</td><td>UI</td></tr>
+</table>
+
+<h3>5.3.4 Test environment</h3>
+
+<table>
+<caption>Table 5.3.3 — Environment specification</caption>
+<tr><th style="width:30%">Component</th><th>Specification</th></tr>
+<tr><td>Operating system</td><td>Windows 11</td></tr>
+<tr><td>Web server</td><td>Apache (XAMPP), <span class="mono">localhost</span></td></tr>
+<tr><td>Application runtime</td><td>PHP 8</td></tr>
+<tr><td>Database</td><td>MySQL 8, schema <span class="mono">richfield_accommodation</span>, port 3306</td></tr>
+<tr><td>Browser under test</td><td>Chromium, Playwright-managed build, headless</td></tr>
+<tr><td>Test runtime</td><td>Python 3.13.7</td></tr>
+<tr><td>Test data</td><td>Eight campuses, eighteen listings, ten amenities, five room types, loaded by <span class="mono">database/seed.php</span></td></tr>
+</table>
+
+<p>The seed script is re-run before a recorded execution, so the suite starts from
+a known state. This matters because several tests create viewing requests and
+temporarily alter listing data; without a deterministic starting point, assertions
+on counts would drift between runs.</p>
+
+<h3>5.3.5 Tools, and why they changed</h3>
+
+<table>
+<caption>Table 5.3.4 — Tooling</caption>
+<tr><th style="width:26%">Tool</th><th style="width:16%">Version</th><th>Purpose</th></tr>
+<tr><td>Python</td><td>3.13.7</td><td>Test implementation language</td></tr>
+<tr><td>pytest</td><td>8.3.4</td><td>Test framework: fixtures, markers, parameterisation</td></tr>
+<tr><td>Playwright for Python</td><td>0.6.2</td><td>Browser automation — drives a real Chromium instance</td></tr>
+<tr><td>PyMySQL</td><td>1.1.1</td><td>Direct database access for the integration layer</td></tr>
+<tr><td>requests</td><td>2.32.3</td><td>Posting directly to the server, bypassing the browser</td></tr>
+<tr><td>pytest-html</td><td>4.1.1</td><td>Browsable run report</td></tr>
+<tr><td>Visual Studio Code</td><td>—</td><td>Authoring and interactive execution</td></tr>
+<tr><td>BeyondTheBugs</td><td>—</td><td>Test case management, built by the group</td></tr>
+</table>
+
+<h4>The change from C# to Python</h4>
+
+<p>An earlier version of this suite was written in C# with NUnit and Playwright
+for .NET. It had to be rebuilt, and the opportunity was taken to reconsider the
+language. Both parts of that are worth stating plainly.</p>
+
+<div class="callout">
+<p><strong>Why it was rebuilt.</strong> Early in the project the group had two
+prototypes under development. The first test suite was written against one of
+them; the group subsequently confirmed that the Richfield accommodation interface
+is the system being delivered. The suite therefore tested an application that was
+not the deliverable, and was rewritten against the correct one.</p>
+<p>This was discovered by the group during Phase 4, with time to correct it, rather
+than at submission. The test cases were re-derived from the Phase 3 requirements
+at the same time, which is why every case in this phase carries the requirement it
+verifies.</p>
+</div>
+
+<p>Since the suite was being rewritten in any case, four technical reasons favoured
+Python over C#:</p>
+
+<ul>
+  <li><strong>No build step.</strong> The C# suite had to compile before anything
+      ran. pytest executes the source directly, which materially shortens the
+      edit-run loop when iterating on selectors.</li>
+  <li><strong>Parameterisation is more concise.</strong> One
+      <span class="mono">@pytest.mark.parametrize</span> turns a single function
+      into eight executions. The NUnit equivalent is considerably more ceremony
+      for identical coverage. Of the 229 tests in this suite, roughly 70 are
+      parameterised expansions of a smaller number of functions.</li>
+  <li><strong>Lower barrier for the group.</strong> Python and Visual Studio Code
+      need no Visual Studio installation, so any team member can run the suite.</li>
+  <li><strong>The Playwright knowledge transferred.</strong> Locators, web-first
+      assertions and browser contexts work the same way in both, so the move cost
+      the mechanics of rewriting rather than the understanding.</li>
+</ul>
+
+<h4>Test case management — BeyondTheBugs</h4>
+
+<p>The sixty test cases are managed in <strong>BeyondTheBugs</strong>, a test
+management tool built for this project rather than bought. Commercial tools such
+as Jira or TestRail were not available under licence, and building the tool meant
+establishing from first principles what a test case record must hold:
+preconditions, numbered steps, an expected result, a lifecycle status, and the
+requirement it traces to.</p>
+
+<table>
+<caption>Table 5.3.5 — Accessing the test management tool</caption>
+<tr><th style="width:24%">Item</th><th style="width:76%">Detail</th></tr>
+<tr>
+  <td><strong>Address</strong></td>
+  <td><span class="mono">https://beyondthebugs.netlify.app/</span></td>
+</tr>
+<tr>
+  <td><strong>To open it</strong></td>
+  <td>Visit the address above and select <strong>Open Tool</strong>. No sign-in is required.</td>
+</tr>
+<tr>
+  <td>Built by</td>
+  <td>Novithan Naidoo (402412304)</td>
+</tr>
+<tr>
+  <td>Hosting</td>
+  <td>Netlify, deployed from GitHub. Data is held in a hosted Postgres database and mirrored to browser storage, so the tool keeps working offline</td>
+</tr>
+<tr>
+  <td>Holds</td>
+  <td>The sixty cases for this project, both runs with a result against every case, and the seven defects linked to the cases that found them</td>
+</tr>
+</table>
+
+<p>The tool stores cases, organises them on a board by status, groups them into
+dated test runs, records a result per case per run, and links defects back to the
+case that found them. During this phase it gained three capabilities this project
+needed: JSON import and export, so the sixty cases could move between the tool and
+version control rather than being typed in one at a time; a trash that holds
+deleted cases until they are permanently removed; and a search that matches on the
+case reference and on the requirement tags, so <span class="mono">TC-37</span> or
+<span class="mono">BR-06</span> finds what it should.</p>
+
+<p>Keeping the specifications in the tool and the scripts in the repository is
+deliberate. A test case is a specification the whole group can read and agree on.
+A test script is software, and belongs under version control beside the code it
+exercises.</p>
+
+<h3>5.3.6 Framework architecture</h3>
+
+<p>The suite is not a flat collection of scripts. Shared machinery lives in a
+<span class="mono">support</span> package, separate from the tests themselves.</p>
+
+<pre>tests/
+├── pytest.ini          Markers, report settings
+├── requirements.txt    Pinned versions
+├── conftest.py         Shared fixtures
+│
+├── support/
+│   ├── config.py       Every environment value and seeded constant
+│   ├── database.py     Direct MySQL access for the integration layer
+│   └── pages.py        Page objects — EVERY selector lives here
+│
+├── suites/
+│   ├── 00-smoke/        test_smoke.py          wiring check
+│   ├── 01-ui/           test_campuses.py       TC-01 to TC-07
+│   │                    test_behaviour.py      TC-50 to TC-56, TC-59, TC-60
+│   ├── 02-functional/   test_search.py         TC-08 to TC-13
+│   │                    test_listings.py       TC-14 to TC-18
+│   │                    test_shortlist.py      TC-19 to TC-22
+│   │                    test_validation.py     TC-30 to TC-38
+│   ├── 03-logic/        test_calculator.py     TC-23 to TC-29
+│   ├── 04-integration/  test_submission.py     TC-39 to TC-43
+│   ├── 05-security/     test_security.py       TC-44 to TC-49, TC-57, TC-58
+│   └── 06-e2e/          test_journeys.py       complete journeys
+│
+├── tools/layer_index.py     Generates the by-layer index
+├── tools/Organise-By-Layer.ps1
+└── TestCases/               The sixty specifications, and the run record</pre>
+
+<p>Each folder is named for the level its files mostly cover and carries a README
+giving the count. Two levels have no folder: a test may belong to more than one
+level, and a folder can hold a file only once. The eight regression tests exist to
+guard behaviours that live elsewhere, so moving them would separate each guard
+from the thing it guards.</p>
+
+<p>The markers remain the accurate record. <span class="mono">pytest -m
+integration</span> returns all 37, wherever they are filed, and each folder's
+README names the other levels its tests also cover.</p>
+
+<table>
+<caption>Table 5.3.5 — Framework components</caption>
+<tr><th style="width:24%">Component</th><th>Responsibility</th></tr>
+<tr><td><span class="mono">config.py</span></td><td>Base URL, credentials, seeded constants and business-rule values in one place. Every value is overridable by environment variable, so the suite runs on another machine without code changes.</td></tr>
+<tr><td><span class="mono">database.py</span></td><td>Parameterised MySQL access for the integration layer, plus cleanup helpers. Every statement is parameterised — the suite must not model bad practice while testing for it.</td></tr>
+<tr><td><span class="mono">pages.py</span></td><td>Page objects. <strong>Every CSS selector in the suite lives here and nowhere else.</strong></td></tr>
+<tr><td><span class="mono">conftest.py</span></td><td>Shared fixtures, and a session check that stops the run with one clear message if Apache is not running, rather than letting a hundred tests fail with navigation errors.</td></tr>
+</table>
+
+<div class="callout">
+<p><strong>Why the Page Object Model matters.</strong> Tests express intent — open
+the search, filter by rent, submit the form — while page objects hold the knowledge
+of which element that means. When markup changes, the fix is one line in one file
+rather than a search across 229 tests.</p>
+<p>This was not theoretical. During development the listing-name selector was wrong
+in a way that failed five tests at once; correcting a single method in
+<span class="mono">pages.py</span> fixed all five.</p>
+</div>
+
+<h3>5.3.7 Test design principles</h3>
+
+<ul>
+  <li><strong>No selector appears in a test.</strong></li>
+  <li><strong>No fixed waits.</strong> Playwright's assertions retry until a
+      timeout, so there is not one <span class="mono">sleep</span> in the suite.</li>
+  <li><strong>Tests clean up after themselves.</strong> Every created viewing
+      request is deleted; every altered row is restored.</li>
+  <li><strong>Negative cases are first-class.</strong> Roughly half the suite
+      asserts that something is correctly refused. A suite that only proves the
+      happy path proves very little — and every one of the seven defects found
+      lies on a negative path.</li>
+  <li><strong>Integration means the database.</strong> Integration tests assert on
+      MySQL rows.</li>
+  <li><strong>Prove derivation, not coincidence.</strong> Where a figure is
+      claimed to be computed from data, the test changes the data, reloads, and
+      requires the figure to follow. Matching once could be a number that happened
+      to be correct when it was typed in.</li>
+  <li><strong>Tests that document defects are kept.</strong> Seven tests assert
+      correct behaviour the build does not implement and therefore fail. Deleting
+      them would raise the pass rate and conceal seven real defects.</li>
+</ul>
+
+<h3>5.3.8 Entry and exit criteria</h3>
+
+<table>
+<caption>Table 5.3.6 — Entry and exit criteria</caption>
+<tr><th style="width:50%">Entry criteria</th><th style="width:50%">Exit criteria</th></tr>
+<tr><td>
+  <ul style="margin-bottom:0">
+    <li>Application reachable at the configured address</li>
+    <li>Database schema imported and reference data seeded</li>
+    <li>Browser binaries installed</li>
+    <li>The smoke suite passes</li>
+  </ul>
+</td><td>
+  <ul style="margin-bottom:0">
+    <li>All sixty cases executed or explicitly recorded as blocked</li>
+    <li>Every failure traced to a documented defect or a test fault</li>
+    <li>No unexplained failure remaining</li>
+    <li>Results written to file, not only to screen</li>
+  </ul>
+</td></tr>
+</table>
+
+<h3>5.3.9 Executing the suite</h3>
+
+<p>The whole suite runs with one command from the <span class="mono">tests</span>
+folder:</p>
+
+<pre>pytest</pre>
+
+<p>This writes a browsable HTML report and a JUnit XML result file to
+<span class="mono">reports/</span>. Individual levels can be run on their own,
+because the layer is recorded as a marker rather than as a folder:</p>
+
+<pre>pytest -m security          # every security test, wherever it lives
+pytest -m "ui or logic"     # combine levels
+pytest --lf                 # only what failed last time
+pytest --headed --slowmo 500   # watch it work in a visible browser</pre>
+
+<p>The last of these is worth noting for demonstration purposes: the suite can be
+run with the browser visible and deliberately slowed, so an observer can watch it
+select campuses, apply filters, fill the form and read results.</p>
+
+<div class="pagebreak"></div>
+<h2>5.4 System Testing</h2>
+
+<h3>5.4.1 Test case design</h3>
+
+<p>Sixty test cases were designed. They are listed in summary in 5.4.4 and in full
+in Appendix A.</p>
+
+<p>The cases were derived from the requirements rather than from the code. Phase 3
+provides ten functional requirements, eight non-functional requirements and
+fourteen business rules — thirty-two testable statements. Some need more than one
+case to cover properly, particularly validation, where each field and each
+boundary needs its own.</p>
+
+<p>Selection was by risk, using four criteria in order: <strong>impact if it
+fails</strong>; <strong>frequency of use</strong>; <strong>likelihood of
+breaking</strong>, since conditional logic is where defects cluster; and
+<strong>invisibility</strong>, because a missing <span class="mono">noindex</span>
+directive fails silently and automation is the only thing that catches it.</p>
+
+<p>Deriving the cases from requirements rather than from code matters, and it is
+what produced the result in 5.4.6. A case written by reading
+<span class="mono">apply.php</span> would have tested the validation that is
+there. A case written from BR-06 — "a viewing request must name at least one
+listing" — tests the validation that <em>should</em> be there, and fails when it
+is not.</p>
+
+<h3>5.4.2 Case status and execution result</h3>
+
+<p>Two distinct pieces of state are tracked for every case, and conflating them is
+a common source of confusion.</p>
+
+<table>
+<caption>Table 5.4.1 — Case status versus execution result</caption>
+<tr><th style="width:26%">Concept</th><th style="width:36%">What it records</th><th style="width:38%">Values used</th></tr>
+<tr>
+  <td><strong>Case status</strong></td>
+  <td>The lifecycle of the specification — has this case been written, reviewed and agreed?</td>
+  <td><span class="mono">draft</span> → <span class="mono">ready</span> → <span class="mono">approved</span></td>
+</tr>
+<tr>
+  <td><strong>Execution result</strong></td>
+  <td>What happened the last time the case was run, in a particular run</td>
+  <td><span class="mono">passed</span>, <span class="mono">failed</span>, <span class="mono">blocked</span>, <span class="mono">pending</span></td>
+</tr>
+</table>
+
+<p>A case can be approved and still fail: approval means the specification is
+correct, not that the application satisfies it. All sixty cases carry the status
+<strong>approved</strong>, and seven of them failed.</p>
+
+<p>Keeping the two separate also preserves history. The result belongs to a
+particular run, so a case that passes today and fails after tomorrow's change has
+two results rather than one overwritten value. That is why the test management
+tool treats runs as a first-class concept rather than storing a single result
+field on each case.</p>
+
+<h3>5.4.3 The test runs of record</h3>
+
+<p>There are two. <strong>TR-001</strong> is the execution that found the defects,
+and is the run described in sections 5.4.4 to 5.4.6. <strong>TR-002</strong> is the
+execution that verified their correction, and is described in section 5.4.7.</p>
+
+<table>
+<caption>Table 5.4.2 — Test run TR-001</caption>
+<tr><th style="width:30%">Field</th><th>Value</th></tr>
+<tr><td>Run identifier</td><td><strong>TR-001</strong></td></tr>
+<tr><td>Date executed</td><td><strong>1 November 2026</strong></td></tr>
+<tr><td>Executed by</td><td>Novithan Naidoo (402412304), Group 55</td></tr>
+<tr><td>Build under test</td><td>Richfield accommodation interface, local XAMPP deployment</td></tr>
+<tr><td>Environment</td><td>Windows 11 · Apache · PHP 8 · MySQL 8 · Chromium headless</td></tr>
+<tr><td>Preconditions</td><td>Reference data restored with <span class="mono">database/seed.php</span>; Apache and MySQL restarted</td></tr>
+<tr><td>Scope</td><td>All sixty cases</td></tr>
+<tr><td>Command</td><td><span class="mono">pytest</span></td></tr>
+<tr><td>Duration</td><td><strong>6 minutes 42 seconds</strong> (402.27 seconds)</td></tr>
+<tr><td>Evidence</td><td><span class="mono">reports/TR-001/report.html</span>, <span class="mono">reports/TR-001/results.xml</span></td></tr>
+</table>
+
+<p>A <strong>test run</strong> is a single, dated execution of a defined set of
+cases against one build in one environment. It is the unit that carries results:
+the cases are reusable, the run is the record of what they proved on a given day.
+Re-running the suite after a correction produces TR-002, leaving TR-001 intact as
+evidence of the state before.</p>
+
+<h4>Where the results are recorded</h4>
+
+<p>Both runs are recorded in <strong>BeyondTheBugs</strong>, the test management
+tool built for this project, alongside the sixty case specifications and the
+defects raised against them.</p>
+
+<table>
+<caption>Table 5.4.3 — The test management record</caption>
+<tr><th style="width:26%">Item</th><th style="width:74%">Detail</th></tr>
+<tr>
+  <td><strong>Address</strong></td>
+  <td><span class="mono">https://beyondthebugs.netlify.app/</span> — select <strong>Open Tool</strong>. No sign-in required.</td>
+</tr>
+<tr><td>Test cases</td><td>All sixty, each with preconditions, numbered steps, an expected result, a lifecycle status and the requirement it verifies</td></tr>
+<tr><td>Test runs</td><td>TR-001 (defects found) and TR-002 (corrections verified), each carrying a result against every case</td></tr>
+<tr><td>Defects</td><td>DEF-01 to DEF-07, each linked to the case that found it</td></tr>
+<tr><td>Board</td><td>Cases arranged by lifecycle status, draft through approved</td></tr>
+</table>
+
+<p>The tool is what makes the distinction in Table 5.4.1 workable in practice. A
+case holds one specification and one lifecycle status; each run holds its own
+result for that case. TC-37 is therefore recorded once as a specification, failed
+in TR-001, and passed in TR-002 — three separate facts, none overwriting another.
+A single result field on each case could not express that, and the history of what
+was found would be lost the moment it was fixed.</p>
+
+<div class="callout">
+<p><strong>A first attempt was discarded, and it is recorded here rather than
+omitted.</strong> MySQL had not restarted alongside Apache, so roughly thirty
+integration tests skipped rather than running. A run in which the database layer
+is untested is not evidence of anything. The service was started and the suite
+re-run from the beginning; TR-001 is that second, complete execution.</p>
+<p>It is worth stating because the alternative — quietly reporting the second
+attempt as though it were the first — would make the record less trustworthy
+without making it better.</p>
+</div>
+
+<h3>5.4.4 Results</h3>
+
+<table>
+<caption>Table 5.4.4 — Execution summary, TR-001</caption>
+<tr><th style="width:58%">Measure</th><th style="width:42%">Value</th></tr>
+<tr><td>Test cases in scope</td><td>60</td></tr>
+<tr><td>Cases passed</td><td class="pass">50</td></tr>
+<tr><td>Cases failed</td><td class="fail">7</td></tr>
+<tr><td>Cases blocked</td><td class="blocked">3</td></tr>
+<tr><td>Test functions</td><td>149</td></tr>
+<tr><td>Executions collected</td><td>230</td></tr>
+<tr><td>Executed</td><td>224</td></tr>
+<tr><td>Passed</td><td class="pass">217</td></tr>
+<tr><td>Failed</td><td class="fail">7</td></tr>
+<tr><td>Skipped</td><td>6</td></tr>
+<tr><td><strong>Pass rate (of executed)</strong></td><td><strong>96.9%</strong></td></tr>
+<tr><td>Duration</td><td>6 minutes 42 seconds</td></tr>
+<tr><td>Failures traced to a documented defect</td><td>7 of 7 (100%)</td></tr>
+<tr><td><strong>Unexplained failures</strong></td><td><strong>0</strong></td></tr>
+</table>
+
+<p>The three blocked cases are TC-54 to TC-56, which verify FR10 by moving the
+application's configuration file aside to prove the site runs without a database.
+They are implemented and can be executed on demand, but are excluded from an
+ordinary run: an interrupted execution would leave the site on sample data. They
+are recorded as <em>blocked</em> rather than passed or failed, because not running
+a test tells you nothing about it either way.</p>
+
+<table>
+<caption>Table 5.4.5 — Where the failures fall, by test level</caption>
+<tr><th style="width:22%">Level</th><th style="width:18%">Test functions</th><th style="width:16%">Failing</th><th style="width:44%">Failing cases</th></tr>
+<tr><td>UI</td><td>40</td><td>1</td><td>TC-60</td></tr>
+<tr><td>Functional</td><td>73</td><td>4</td><td>TC-31, TC-37, TC-38, TC-60</td></tr>
+<tr><td>Integration</td><td>37</td><td>1</td><td>TC-59</td></tr>
+<tr><td>Security</td><td>19</td><td>2</td><td>TC-57, TC-58</td></tr>
+<tr><td>Logic</td><td>13</td><td>0</td><td>—</td></tr>
+<tr><td>Regression</td><td>8</td><td>0</td><td>—</td></tr>
+<tr><td>End-to-end</td><td>5</td><td>0</td><td>—</td></tr>
+</table>
+
+<p class="small">Totals exceed 149 because a test may carry more than one marker;
+TC-60 appears under both UI and functional for that reason. Two levels are worth
+noting: <strong>logic</strong> and <strong>end-to-end</strong> recorded no
+failures at all, meaning the cost calculation and the complete student journey
+both behave exactly as specified.</p>
+
+<table>
+<caption>Table 5.4.6 — Case results by area</caption>
+<tr><th style="width:34%">Area</th><th style="width:22%">Cases</th><th style="width:44%">Outcome</th></tr>
+<tr><td>Campuses and the landing page</td><td>TC-01 – TC-07</td><td class="pass">All passed</td></tr>
+<tr><td>Search and filtering</td><td>TC-08 – TC-13</td><td class="pass">All passed</td></tr>
+<tr><td>Listing detail</td><td>TC-14 – TC-18</td><td class="pass">All passed</td></tr>
+<tr><td>Shortlist</td><td>TC-19 – TC-22</td><td class="pass">All passed</td></tr>
+<tr><td>Cost estimator</td><td>TC-23 – TC-29</td><td class="pass">All passed</td></tr>
+<tr><td>Form validation</td><td>TC-30 – TC-38</td><td><span class="fail">3 failed</span> — TC-31, TC-37, TC-38</td></tr>
+<tr><td>Submission and persistence</td><td>TC-39 – TC-43</td><td class="pass">All passed</td></tr>
+<tr><td>Security controls</td><td>TC-44 – TC-49</td><td class="pass">All passed</td></tr>
+<tr><td>Accessibility and responsiveness</td><td>TC-50 – TC-53</td><td class="pass">All passed</td></tr>
+<tr><td>Fallback behaviour</td><td>TC-54 – TC-56</td><td class="blocked">Blocked — not executed</td></tr>
+<tr><td>Phase 3 integrity findings</td><td>TC-57 – TC-60</td><td class="fail">All four failed</td></tr>
+</table>
+
+<h3>5.4.5 Traceability</h3>
+
+<p>Every case carries the requirement it verifies, recorded as a tag on the case
+and in the test's own documentation. The matrix below is therefore derived from
+the cases rather than assembled separately, which means it cannot drift out of
+date.</p>
+
+<table>
+<caption>Table 5.4.7 — Requirement coverage</caption>
+<tr><th style="width:14%">Requirement</th><th style="width:48%">Statement</th><th style="width:24%">Cases</th><th style="width:14%">Result</th></tr>
+<tr><td>FR1</td><td>Display every campus with location and bed count</td><td>TC-01 – TC-07</td><td class="pass">Verified</td></tr>
+<tr><td>FR2</td><td>Search by campus, rent, room type and amenities</td><td>TC-08 – TC-13</td><td class="pass">Verified</td></tr>
+<tr><td>FR3</td><td>Show rent, type, status, amenities and travel times</td><td>TC-14 – TC-18</td><td class="pass">Verified</td></tr>
+<tr><td>FR4</td><td>Plot listings and campus on a map</td><td>TC-10 (map container)</td><td class="pass">Verified</td></tr>
+<tr><td>FR5</td><td>Shortlist up to four, kept across reloads</td><td>TC-19 – TC-22</td><td class="pass">Verified</td></tr>
+<tr><td>FR6</td><td>Accept and persist a viewing request</td><td>TC-39 – TC-43</td><td class="pass">Verified</td></tr>
+<tr><td>FR7</td><td>Validate all input server-side</td><td>TC-30 – TC-38, TC-57, TC-58</td><td class="fail">Defects found</td></tr>
+<tr><td>FR8</td><td>Estimate the total move-in cost</td><td>TC-23 – TC-29</td><td class="pass">Verified</td></tr>
+<tr><td>FR9</td><td>Protect the form against CSRF</td><td>TC-44</td><td class="pass">Verified</td></tr>
+<tr><td>FR10</td><td>Keep working with no database connected</td><td>TC-54 – TC-56</td><td class="blocked">Not executed</td></tr>
+<tr><td>NFR2</td><td>Every query parameterised</td><td>TC-45, TC-46</td><td class="pass">Verified</td></tr>
+<tr><td>NFR4</td><td>WCAG 2.2 AA, keyboard operable</td><td>TC-51 – TC-53</td><td class="pass">Verified</td></tr>
+<tr><td>NFR5</td><td>Never present sample data as real or claim an affiliation not held</td><td>TC-02, TC-04, TC-15, TC-43, TC-49, TC-60</td><td class="fail">Defect found</td></tr>
+<tr><td>NFR6</td><td>No horizontal overflow, 360–1920 px</td><td>TC-50</td><td class="pass">Verified</td></tr>
+<tr><td>NFR8</td><td>Output escaped, errors logged not shown</td><td>TC-47, TC-48</td><td class="pass">Verified</td></tr>
+<tr><td>BR-01</td><td>Only active listings appear</td><td>TC-18</td><td class="pass">Verified</td></tr>
+<tr><td>BR-02</td><td>Inspected status shown exactly as stored</td><td>TC-15</td><td class="pass">Verified</td></tr>
+<tr><td>BR-03</td><td>Unconfirmed campus locations labelled</td><td>TC-02</td><td class="pass">Verified</td></tr>
+<tr><td>BR-04</td><td>Each listing belongs to one campus and room type</td><td>TC-08, TC-58</td><td class="fail">Defect found</td></tr>
+<tr><td>BR-05</td><td>At most four shortlisted listings</td><td>TC-20</td><td class="pass">Verified</td></tr>
+<tr><td>BR-06</td><td>A request must name at least one listing</td><td>TC-37</td><td class="fail">Not enforced</td></tr>
+<tr><td>BR-07</td><td>Rooms must be active and at the selected campus</td><td>TC-38</td><td class="fail">Not enforced</td></tr>
+<tr><td>BR-08</td><td>Phone must be a South African mobile number</td><td>TC-33</td><td class="pass">Verified</td></tr>
+<tr><td>BR-09</td><td>Preferred date cannot be in the past</td><td>TC-35</td><td class="pass">Verified</td></tr>
+<tr><td>BR-10</td><td>Unique server-generated reference</td><td>TC-39, TC-41</td><td class="pass">Verified</td></tr>
+<tr><td>BR-11</td><td>A request and its rooms saved together or not at all</td><td>TC-40</td><td class="pass">Verified</td></tr>
+<tr><td>BR-12</td><td>Only data needed to arrange a viewing is collected</td><td>TC-14, TC-56</td><td class="pass">Verified</td></tr>
+<tr><td>BR-13</td><td>Move-in cost formula</td><td>TC-23 – TC-29</td><td class="pass">Verified</td></tr>
+<tr><td>BR-14</td><td>Location shown at suburb level only</td><td>TC-14</td><td class="pass">Verified</td></tr>
+</table>
+
+<h3>5.4.6 Defects identified</h3>
+
+<p>Seven defects were found in TR-001. Every one of them corresponds to a finding
+the group recorded in Phase 3 §3.4.5 during data analysis, before any test
+existed. The register below describes each defect as it was found and the
+correction specified for it; section 5.4.7 records the corrections as applied and
+the run that verified them.</p>
+
+<table>
+<caption>Table 5.4.8 — Defect register, as raised in TR-001</caption>
+<tr>
+  <th style="width:9%">ID</th>
+  <th style="width:9%">Severity</th>
+  <th style="width:7%">Case</th>
+  <th style="width:9%">Rule</th>
+  <th style="width:40%">Description</th>
+  <th style="width:26%">Correction specified</th>
+</tr>
+<tr>
+  <td><strong>DEF-02</strong></td><td>High</td><td>TC-37</td><td>BR-06</td>
+  <td>A viewing request naming no rooms is accepted and stored. The run produced reference <span class="mono">RF-261101-3591</span> with <strong>zero rows</strong> in <span class="mono">viewing_request_rooms</span>. The provider receives a name, a phone number and a date, with no indication of what the student wants to see; the student receives a reference and waits for a call that cannot usefully be made.</td>
+  <td>Reject the submission when no room is selected, with the error beside that section (Phase 4 §4.6.1)</td>
+</tr>
+<tr>
+  <td><strong>DEF-01</strong></td><td>Medium</td><td>TC-31</td><td>FR7</td>
+  <td>A name longer than 160 characters is accepted and <strong>silently truncated</strong> to fit the column. A 200-character name was stored as 160. Neither the student nor the provider is told anything was lost, so the provider calls using a name that is not the student's.</td>
+  <td>Add a maximum-length check before the transaction opens (Phase 4 §4.6.1)</td>
+</tr>
+<tr>
+  <td><strong>DEF-03</strong></td><td>Medium</td><td>TC-38</td><td>BR-07</td>
+  <td>Rooms named on a request are checked for existence but not for location. The run accepted a request for campus <span class="mono">cape-town</span> naming <span class="mono">acacia-court-bryanston</span> — approximately 1 400 km away. The request routes to the wrong campus.</td>
+  <td>Resolve each slug and compare its campus with the submitted campus (Phase 4 §4.6.1)</td>
+</tr>
+<tr>
+  <td><strong>DEF-04</strong></td><td>Medium</td><td>TC-57</td><td>FR7</td>
+  <td>The move-in month is not validated. A value of <span class="mono">1999-01</span>, posted directly to the server, was stored unchanged. Not reachable through the interface, because the field is a dropdown — which is precisely why it was found by posting rather than by clicking.</td>
+  <td>Validate against the generated twelve-month list (Phase 4 §4.6.1)</td>
+</tr>
+<tr>
+  <td><strong>DEF-05</strong></td><td>Medium</td><td>TC-58</td><td>FR7, BR-04</td>
+  <td>The campus is not validated. An unknown value reaches the insert, the foreign key rejects it, the exception is caught, and the student is told "We could not save your request just now" with no indication of which field is wrong. The data is protected; the student is not helped.</td>
+  <td>Validate against the campus table in the validation sequence (Phase 4 §4.6.1)</td>
+</tr>
+<tr>
+  <td><strong>DEF-07</strong></td><td>Medium</td><td>TC-60</td><td>NFR5</td>
+  <td>The hint beneath the guardian email field reads "They receive the same confirmation and lease summary you do." No email is sent by this release. The same claim appears in the For Parents section of the landing page.</td>
+  <td>Reword to describe what the system does (Phase 4 §4.7.2)</td>
+</tr>
+<tr>
+  <td><strong>DEF-06</strong></td><td>Low</td><td>TC-59</td><td>FR6</td>
+  <td>The <span class="mono">status</span> column is <span class="mono">VARCHAR(20)</span> and accepted <span class="mono">not-a-real-status</span>. It is meant to hold one of four values. Low severity because nothing reads the column yet.</td>
+  <td>Change to <span class="mono">ENUM('new','contacted','viewed','closed')</span> (Phase 4 §4.5.3)</td>
+</tr>
+</table>
+
+<h4>The defect that matters most</h4>
+
+<p><strong>DEF-02</strong> is the significant one, and it is worth setting out in
+full because it demonstrates what the three phases were for.</p>
+
+<p>Business rule BR-06, written during Phase 3, states that a viewing request must
+name at least one listing. Phase 3 §3.4.5 finding 1 recorded that the prototype
+did not enforce it, and identified the risk as "requests the campus cannot act
+on". Phase 4 §4.6.1 specified the correction — a room-count check before the
+transaction opens — and Phase 4 Figure 4.15 captured the form showing validation
+errors on four fields and nothing beside "Rooms to view".</p>
+
+<p>Test case TC-37 asserts the submission is refused. In TR-001 it failed, and the
+failure produced a stored artefact: reference
+<span class="mono">RF-261101-3591</span>, a complete viewing request with no rooms
+attached.</p>
+
+<p>A defect predicted during analysis, specified for correction during design, and
+proven by executed evidence during implementation. That is the thread the three
+phases were meant to produce.</p>
+
+<h4>Why these defects were found</h4>
+
+<p>None of the seven would plausibly have been found by manual testing.</p>
+
+<p>A person filling in the form naturally selects a room before submitting, so they
+would never discover that leaving it empty is accepted. Nobody types a
+200-character name by hand. The campus and move-in month are dropdowns, so a
+person using the interface <em>cannot</em> submit an invalid value — those two were
+found only because the tests post directly to the server, bypassing the browser
+entirely.</p>
+
+<p>That last point generalises into the most useful thing this phase established:</p>
+
+<div class="callout">
+<p><strong>Client-side validation is a usability feature. It is never a security
+control, because the attacker chooses the client.</strong></p>
+<p>This was learned the hard way. An early injection test appeared to pass when
+driven through the interface; investigation showed the browser was refusing to
+submit the malformed value, so the request never reached PHP. The test was proving
+that Chromium validates input, not that the application resists injection.
+Rewritten to post directly, it exercised the server and passed on its merits.</p>
+<p>Any security testing conducted exclusively through the interface will report
+false passes.</p>
+</div>
+
+<div class="pagebreak"></div>
+<h3>5.4.7 Corrections, and verifying them (TR-002)</h3>
+
+<p>Finding a defect is half of the work. All seven were corrected, and the suite
+was executed a second time to prove it — because a correction that is only
+inspected is a claim, and a correction that is re-tested is evidence.</p>
+
+<h4>What was changed</h4>
+
+<table>
+<caption>Table 5.4.9 — Corrections applied</caption>
+<tr>
+  <th style="width:9%">ID</th>
+  <th style="width:7%">Case</th>
+  <th style="width:18%">File changed</th>
+  <th style="width:48%">Change made</th>
+  <th style="width:10%">TR-002</th>
+</tr>
+<tr>
+  <td><strong>DEF-02</strong></td><td>TC-37</td><td><span class="mono">apply.php</span></td>
+  <td>The submission is refused unless at least one room is named, and the error is rendered beside the "Rooms to view" section rather than at the top of the form, so the student is told which part is wrong</td>
+  <td class="pass">Pass</td>
+</tr>
+<tr>
+  <td><strong>DEF-01</strong></td><td>TC-31</td><td><span class="mono">apply.php</span></td>
+  <td>A maximum length of 160 characters on the name, checked before the transaction opens, matching the column it is stored in</td>
+  <td class="pass">Pass</td>
+</tr>
+<tr>
+  <td><strong>DEF-03</strong></td><td>TC-38</td><td><span class="mono">apply.php</span></td>
+  <td>Each submitted slug is resolved and its campus compared with the campus on the request; a mismatch is refused with an explanatory message</td>
+  <td class="pass">Pass</td>
+</tr>
+<tr>
+  <td><strong>DEF-04</strong></td><td>TC-57</td><td><span class="mono">apply.php</span></td>
+  <td>The move-in month is validated against the twelve months the form itself generates, so a posted value outside that set is refused</td>
+  <td class="pass">Pass</td>
+</tr>
+<tr>
+  <td><strong>DEF-05</strong></td><td>TC-58</td><td><span class="mono">apply.php</span></td>
+  <td>The campus is validated against the campus table during validation, so an unknown value produces a message beside that field instead of reaching the insert and being caught as a database error</td>
+  <td class="pass">Pass</td>
+</tr>
+<tr>
+  <td><strong>DEF-07</strong></td><td>TC-60</td><td><span class="mono">apply.php</span>, <span class="mono">index.php</span></td>
+  <td>The guardian hint reworded to describe what the release actually does, and the matching claim on the landing page corrected with it</td>
+  <td class="pass">Pass</td>
+</tr>
+<tr>
+  <td><strong>DEF-06</strong></td><td>TC-59</td><td><span class="mono">schema.mysql.sql</span></td>
+  <td><span class="mono">status</span> changed from <span class="mono">VARCHAR(20)</span> to <span class="mono">ENUM('new','contacted','viewed','closed')</span>, applied to the live database with <span class="mono">ALTER TABLE</span></td>
+  <td class="pass">Pass</td>
+</tr>
+</table>
+
+<p>Six of the seven are validation rules in one file, which is itself a finding:
+the defects were not scattered through the system but concentrated at the single
+point where untrusted input is accepted. That is the place worth testing hardest.</p>
+
+<h4>The verification run</h4>
+
+<table>
+<caption>Table 5.4.10 — TR-001 compared with TR-002</caption>
+<tr>
+  <th style="width:46%">Measure</th>
+  <th style="width:27%">TR-001 — before</th>
+  <th style="width:27%">TR-002 — after</th>
+</tr>
+<tr><td>Date executed</td><td>1 November 2026</td><td>1 November 2026</td></tr>
+<tr><td>Test functions</td><td>149</td><td>149</td></tr>
+<tr><td>Executions collected</td><td>230</td><td>230</td></tr>
+<tr><td>Executed</td><td>224</td><td>224</td></tr>
+<tr><td>Passed</td><td class="pass">217</td><td class="pass"><strong>224</strong></td></tr>
+<tr><td>Failed</td><td class="fail">7</td><td><strong>0</strong></td></tr>
+<tr><td>Skipped</td><td>6</td><td>6</td></tr>
+<tr><td><strong>Pass rate (of executed)</strong></td><td>96.9%</td><td><strong>100%</strong></td></tr>
+<tr><td>Duration</td><td>6 minutes 42 seconds</td><td>7 minutes 48 seconds</td></tr>
+<tr><td><strong>Open defects</strong></td><td class="fail"><strong>7</strong></td><td><strong>0</strong></td></tr>
+<tr><td>Evidence</td><td><span class="mono">reports/TR-001/</span></td><td><span class="mono">reports/TR-002/</span></td></tr>
+</table>
+
+<p>The six skips are unchanged between the runs: they are the opt-in fallback
+cases TC-54 to TC-56, excluded from an ordinary execution for the reason given in
+section 5.4.4. Nothing else in the suite was modified between the two runs except
+where noted below, so the difference in results is attributable to the
+corrections.</p>
+
+<h4>Correcting the defects exposed a second problem</h4>
+
+<p>The first attempt at TR-002 produced <strong>thirty failures</strong>, and every
+one reported the same thing: <em>"All the rooms you select must be at your chosen
+campus."</em></p>
+
+<p>The cause was in the tests, not the application. The helper that fills in a
+valid request selected a room at Umhlanga while leaving the campus field at its
+default of Bryanston. Before DEF-03 was corrected the application accepted that
+combination, so the suite had been submitting an impossible request throughout and
+nothing objected. Enforcing BR-07 made those submissions invalid — correctly — and
+thirty tests said so within eight minutes. The fixtures were changed to select
+rooms at the campus being submitted, which is also what a student does.</p>
+
+<p>Two things follow from this, and both are worth more than the defect itself.</p>
+
+<p>The first is that the regression layer demonstrably works. One change to one
+file, thirty immediate reports, one cause, located in minutes. That is the return
+on having written the tests, and it is a return that cannot be claimed until
+something actually changes.</p>
+
+<p>The second is that <strong>an unenforced rule can conceal unrealistic test
+data</strong>. The suite was passing while submitting a request no student could
+make. It passed because the application was wrong in the same direction as the
+tests. A green run is evidence that the system behaves as the tests expect, which
+is not the same as evidence that the tests expect the right thing.</p>
+
+<h4>Two further findings, in the suite rather than the system</h4>
+
+<p><strong>A flaky test.</strong> One fixture selected "the campus with the most
+rooms" using <span class="mono">ORDER BY COUNT(*) DESC LIMIT 1</span>. Several
+campuses hold the same number of rooms, and MySQL is under no obligation to break
+that tie the same way twice, so the fixture returned different campuses on
+different runs and a small group of tests passed or failed accordingly. Explicit
+tie-breaking columns were added. This is recorded because a flaky test is worse
+than a failing one: a failing test is read, while a flaky test teaches the reader
+to disregard results.</p>
+
+<p><strong>A false pass.</strong> TC-59 continued to fail after the
+<span class="mono">status</span> column had been correctly changed to an
+<span class="mono">ENUM</span>. The test waited for the write to be refused, but
+MySQL in this environment does not run in strict mode: an invalid enumeration
+value is coerced to an empty string with a warning rather than rejected. The
+constraint was working; the test was watching the wrong signal. It now asserts on
+the value that was actually stored, which gives the same answer on a strict server
+and on a permissive one.</p>
+
+<p><strong>A second false pass, of the same family.</strong> TC-58 originally
+passed, and should not have. Its assertion accepted any sign of refusal, and the
+request <em>was</em> being refused — by the database's foreign key, after
+validation had let the value through. The test was reporting success for exactly
+the behaviour it existed to detect. It was tightened to distinguish a validation
+message from the application's generic "we could not save your request", and it
+then failed, as DEF-05 required. An assertion loose enough to pass for the wrong
+reason is indistinguishable from no assertion at all.</p>
+
+<p><strong>And one about the environment.</strong> Until this point the suite was
+exercising a copy of the application held directly under
+<span class="mono">htdocs</span>, not the copy inside the repository — the copy
+that is submitted. The two were almost certainly identical, but nothing kept them
+so, and an edit to the delivered copy would not have been tested. The base address
+now points at the repository. <strong>Test what you ship</strong>, or the suite
+eventually certifies something nobody receives.</p>
+
+<h3>5.4.8 Evaluation of the testing results</h3>
+
+<h4>Overall assessment</h4>
+
+<p>The application is functionally sound and securely implemented. In TR-001,
+fifty of sixty cases passed, including every case covering search, filtering,
+listing detail, the shortlist, the cost estimator, submission and persistence. The
+seven that failed were all corrected, and in TR-002 <strong>fifty-seven of sixty
+cases passed, with none failing</strong> and the remaining three recorded as
+blocked for the reason given in section 5.4.4.</p>
+
+<p>The assessment that follows is written against TR-001, because TR-001 is where
+the evidence was produced. A clean run states that nothing was found; it is the
+run that found things which explains what the suite is worth.</p>
+
+<p>The <strong>security controls hold</strong>, which is worth stating plainly
+because failures are easier to notice than passes. Six distinct injection payloads
+were submitted against every search parameter, the listing slug and the form, and
+each was treated as literal text: no database error was disclosed, no payload
+acted as a wildcard, and the schema was unchanged. A script tag submitted through
+the form and a script tag stored in a listing name both rendered as text rather
+than executing. A submission with its CSRF token removed was refused, as was one
+with an altered token, while a submission with a valid token succeeded — so the
+control is effective without being obstructive. No error response disclosed a file
+path, a stack trace or a SQL error.</p>
+
+<p>The <strong>cost estimator is arithmetically correct</strong> across all three
+payment plans, including the rule that carries the most meaning: the discount
+applies to rent only and never to the deposit or the administration fee. That was
+verified by reading the deposit under all three plans and requiring the three to
+be identical.</p>
+
+<p>The <strong>write path is sound</strong>. Every field survives the round trip
+unaltered, both tables are written inside one transaction, references are unique
+and enforced as such by the schema, and the confirmation page claims storage only
+when a row genuinely exists.</p>
+
+<h4>Where the defects cluster</h4>
+
+<p>All seven defects lay in one place: <strong>the validation sequence of the
+viewing-request form</strong>, and the schema constraint behind it. Nothing was
+found in the read paths, the calculations, the security controls or the
+presentation layer — and the corrections in section 5.4.7 touch the same single
+file, which is the clearest confirmation of the diagnosis.</p>
+
+<p>That concentration is itself a finding. The same codebase validates the search
+page's filters carefully — the campus must resolve, the rent is clamped, unknown
+room types and amenities are discarded — while the form's campus and month fields
+are passed through unchecked. Two different standards in one application,
+separated by about two hundred lines of code.</p>
+
+<p>The likely reason is that the search filters were written knowing the values
+come from a URL, while the form fields were written knowing they come from a
+dropdown. The dropdown constrains the browser, not the request, and that
+distinction is the root of DEF-04 and DEF-05.</p>
+
+<h4>What the suite established beyond finding defects</h4>
+
+<ul>
+  <li><strong>Figures on the landing page are genuinely computed.</strong> The
+      test changes a campus bed count, reloads, and requires the displayed total
+      to move by the same amount. A hardcoded number would not.</li>
+  <li><strong>The inspected badge is drawn only from stored data.</strong> Setting
+      the flag makes the badge appear; clearing it makes the badge go.</li>
+  <li><strong>Travel times are correct, not merely present.</strong> The suite
+      implements the haversine calculation independently and compares.</li>
+  <li><strong>Amenity filtering is AND rather than OR.</strong> Proven by
+      requiring the result count to narrow monotonically as amenities are added.</li>
+  <li><strong>Deactivating a listing is a soft delete.</strong> The room vanishes
+      from search and its URL returns 404, while the row remains for history.</li>
+</ul>
+
+<h4>A note on the suite's own defects</h4>
+
+<p>The test suite is software and had its own faults. Four are recorded in
+section 5.4.7 — a flaky fixture, two assertions that passed for the wrong reason,
+and a base address pointing at the wrong copy of the application — because they
+surfaced during the correction cycle rather than during the first run.</p>
+
+<p>They share a shape worth stating on its own. None of them produced a red
+result. Each made the suite report success it had not earned, and each was found
+only because something else changed and forced the question. <strong>A test that
+passes for the wrong reason is the hardest fault to notice</strong>, because
+nothing looks wrong — which is why the figures in Table 5.4.10 are reported
+alongside an account of what the suite got wrong, rather than on their own.</p>
+
+<h3>5.4.9 Limitations</h3>
+
+<ul>
+  <li><strong>One browser.</strong> Execution used Chromium only; rendering
+      differences in Firefox or Safari would not be detected.</li>
+  <li><strong>Seeded data volumes.</strong> Eighteen listings across eight
+      campuses. Pagination, query performance and index effectiveness at realistic
+      volumes are untested.</li>
+  <li><strong>No concurrency testing.</strong> The booking transaction has not
+      been tested under simultaneous requests.</li>
+  <li><strong>FR10 not executed in this run.</strong> The fallback cases are
+      implemented but were recorded as blocked.</li>
+  <li><strong>Accessibility verification was structural.</strong> Bound labels,
+      keyboard reachability and live regions were checked; no screen-reader or
+      colour-contrast audit was performed, so NFR4 is partly rather than fully
+      verified.</li>
+</ul>
+
+<h3>5.4.10 Recommendations</h3>
+
+<p>The seven defects have been corrected and verified, so the recommendations
+below concern what should happen next rather than what this phase left undone.</p>
+
+<ol>
+  <li><strong>Execute the fallback cases once</strong> so FR10 has a recorded
+      result rather than a blocked one. They are implemented and need only a
+      deliberate run, on a copy of the data, with the configuration restored
+      afterwards.</li>
+  <li><strong>Keep one copy of the application.</strong> The duplicate outside the
+      repository should be removed. While two copies exist, "it passed" is
+      ambiguous about which one passed.</li>
+  <li><strong>Run the suite before every submission, not after every change.</strong>
+      Eight minutes is short enough to be habitual and long enough that it will be
+      skipped if it is only remembered when something feels wrong.</li>
+  <li><strong>Validate on the server for every new field.</strong> The two defects
+      that reached the database were both a dropdown value trusted because it came
+      from a dropdown. Any field added later will be added the same way unless the
+      rule is written down, which is why it is stated as a principle in
+      section 5.4.6 rather than only as a fix.</li>
+  <li><strong>Extend coverage where section 5.4.9 says it stops</strong> — a second
+      browser, realistic data volumes, concurrent submissions, and an
+      accessibility audit that is more than structural.</li>
+  <li><strong>Address the outstanding work in Phase 4 §4.8.5</strong> before the
+      system holds any real student's data — rate limiting and moving the
+      application files above the web root being the first two.</li>
+</ol>
+
+<div class="pagebreak"></div>
+<h2>5.5 Installation</h2>
+
+<h3>5.5.1 Requirements</h3>
+
+<table>
+<caption>Table 5.5.1 — Prerequisites</caption>
+<tr><th style="width:30%">Component</th><th>Requirement</th></tr>
+<tr><td>Operating system</td><td>Windows 10 or 11; the procedure also works on Linux and macOS with equivalent paths</td></tr>
+<tr><td>Web server and runtime</td><td>XAMPP with Apache and PHP 8.0 or later</td></tr>
+<tr><td>Database</td><td>MySQL 8 or MariaDB, included with XAMPP. SQLite is also supported</td></tr>
+<tr><td>PHP extensions</td><td><span class="mono">pdo</span>, <span class="mono">pdo_mysql</span>. <span class="mono">mbstring</span> is used when present but is not required</td></tr>
+<tr><td>Browser</td><td>Any current browser</td></tr>
+<tr><td>For the test suite</td><td>Python 3.9 or later</td></tr>
+<tr><td>Disk space</td><td>Approximately 50 MB for the application, plus 400 MB for the test environment and browser</td></tr>
+</table>
+
+<h3>5.5.2 Installing the application</h3>
+
+<ol>
+  <li><strong>Install XAMPP</strong> to <span class="mono">C:\xampp</span>.</li>
+  <li><strong>Copy the application folder</strong> into the web root, so it sits
+      at <span class="mono">C:\xampp\htdocs\Richfield accommodation interface</span>.</li>
+  <li><strong>Start Apache and MySQL</strong> from the XAMPP control panel and
+      confirm both show as running.</li>
+  <li><strong>Create the database.</strong> Open
+      <span class="mono">http://localhost/phpmyadmin</span> and import
+      <span class="mono">database/schema.mysql.sql</span>. The script creates the
+      schema itself.</li>
+  <li><strong>Create the configuration:</strong>
+      <pre>copy includes\config.sample.php includes\config.php</pre>
+      The supplied values match a standard local XAMPP installation. Edit the
+      username and password only if yours differ from <span class="mono">root</span>
+      with a blank password.</li>
+  <li><strong>Load the reference data:</strong>
+      <pre>C:\xampp\php\php.exe database\seed.php</pre>
+      The script creates any missing tables and loads the campuses, listings,
+      amenities, room types and FAQs. It is safe to re-run: it updates existing
+      rows rather than duplicating them, and never touches submitted viewing
+      requests.</li>
+  <li><strong>Open the application</strong> at
+      <span class="mono">http://localhost/Richfield%20accommodation%20interface/</span></li>
+</ol>
+
+<div class="callout">
+<p><strong>The application also runs without any of steps 4 to 6.</strong> With no
+configuration file it falls back to the sample data in
+<span class="mono">includes/data.php</span>, and every page works — the viewing
+form validates but stores nothing, and says so. This is FR10, and it exists so
+that a team member who has not set up MySQL can still open the site.</p>
+<p>For assessment the database should be installed, because it is what the
+integration tests verify.</p>
+</div>
+
+<h3>5.5.3 Verifying the installation</h3>
+
+<p>Each step exercises a different layer, so a failure identifies where the problem
+is.</p>
+
+<table>
+<caption>Table 5.5.2 — Verification steps</caption>
+<tr><th style="width:8%">#</th><th style="width:44%">Action</th><th style="width:48%">Expected result</th></tr>
+<tr><td>1</td><td>Open the landing page</td><td>Renders with styling; the red sample-data banner is visible — confirms Apache and the asset paths</td></tr>
+<tr><td>2</td><td>Read the statistics strip</td><td>Beds, campuses, inspected listings and median walk are shown — confirms the database connection, since these are computed from it</td></tr>
+<tr><td>3</td><td>Open Find a room</td><td>Listing cards appear with rents and walking times, closest first</td></tr>
+<tr><td>4</td><td>Set Max rent to its lowest and tick three amenities</td><td>"Nothing matches yet" with a Clear filters control — confirms filtering and the empty state</td></tr>
+<tr><td>5</td><td>Open a listing</td><td>Rent, room type, amenities, walking and driving times — confirms the detail page and distance calculation</td></tr>
+<tr><td>6</td><td>Shortlist a room, then reload</td><td>The count persists — confirms browser storage</td></tr>
+<tr><td>7</td><td>Submit the viewing form with everything blank</td><td>Red errors beside the failing fields — confirms server-side validation</td></tr>
+<tr><td>8</td><td>Complete it properly and submit</td><td>A reference like <span class="mono">RF-261101-A1B2</span>, and the fine print reads "has been saved" — confirms the write path</td></tr>
+<tr><td>9</td><td>Query the database</td><td><span class="mono">SELECT * FROM viewing_requests ORDER BY id DESC LIMIT 1</span> returns the request just submitted</td></tr>
+</table>
+
+<h3>5.5.4 Installing and running the test suite</h3>
+
+<p>The suite lives in <span class="mono">tests/</span>, beside the application.
+Run these once, from that folder:</p>
+
+<pre>python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+playwright install chromium</pre>
+
+<p>The virtual environment keeps the suite's packages separate from the system
+Python. <span class="mono">playwright install chromium</span> downloads the
+browser build the suite drives, which is why the test environment needs more disk
+space than the application.</p>
+
+<p>With Apache and MySQL running, execute the suite:</p>
+
+<pre>pytest</pre>
+
+<p>This writes <span class="mono">reports/report.html</span> and
+<span class="mono">reports/results.xml</span>. Expect seven failures: they are the
+documented defects in 5.4.6 and are the suite working as intended.</p>
+
+<table>
+<caption>Table 5.5.3 — Useful variations</caption>
+<tr><th style="width:44%">Command</th><th style="width:56%">Effect</th></tr>
+<tr><td><span class="mono">pytest -m security</span></td><td>One test level, wherever those tests live</td></tr>
+<tr><td><span class="mono">pytest --headed --slowmo 500</span></td><td>Watch the browser work — useful for demonstration</td></tr>
+<tr><td><span class="mono">pytest --lf</span></td><td>Only the tests that failed last time</td></tr>
+<tr><td><span class="mono">pytest suites/test_validation.py -v</span></td><td>One file, with each test named</td></tr>
+<tr><td><span class="mono">python tools/layer_index.py</span></td><td>Regenerate the by-layer index</td></tr>
+</table>
+
+<p>Nothing in the suite is hardcoded to one machine. Every environment value is
+overridable:</p>
+
+<pre>$env:RF_BASE_URL = "http://localhost:8000"
+$env:RF_DB_PASSWORD = "secret"
+pytest</pre>
+
+<h3>5.5.5 Troubleshooting</h3>
+
+<table>
+<caption>Table 5.5.4 — Common problems</caption>
+<tr><th style="width:32%">Symptom</th><th style="width:30%">Cause</th><th style="width:38%">Resolution</th></tr>
+<tr>
+  <td>Pages load but links give "Not Found"</td>
+  <td>The folder name differs from the URL being used</td>
+  <td>Use the folder's actual name in the address. Spaces appear as <span class="mono">%20</span></td>
+</tr>
+<tr>
+  <td>The statistics strip shows zeros</td>
+  <td>The schema is imported but the seed has not run</td>
+  <td>Run <span class="mono">php database\seed.php</span></td>
+</tr>
+<tr>
+  <td>Listings appear but nothing saves</td>
+  <td>No configuration file, so the site is on sample data</td>
+  <td>Copy <span class="mono">config.sample.php</span> to <span class="mono">config.php</span>. The form's fine print says which state it is in</td>
+</tr>
+<tr>
+  <td>MySQL will not start in XAMPP</td>
+  <td>Port 3306 is in use by another MySQL installation</td>
+  <td>Stop the other service, or change the port in both <span class="mono">my.ini</span> and <span class="mono">config.php</span></td>
+</tr>
+<tr>
+  <td><span class="mono">'php' is not recognised</span></td>
+  <td>PHP is not on the system PATH</td>
+  <td>Use the full path <span class="mono">C:\xampp\php\php.exe</span></td>
+</tr>
+<tr>
+  <td>The suite stops with "application is not reachable"</td>
+  <td>Apache is not running</td>
+  <td>Start it. The suite fails fast on purpose rather than letting every test fail with navigation errors</td>
+</tr>
+<tr>
+  <td>Around thirty tests skip</td>
+  <td>MySQL is not running, so the integration layer cannot connect</td>
+  <td>Start MySQL and re-run. A run with the integration layer skipped is not a valid record</td>
+</tr>
+<tr>
+  <td>The site shows sample data after an interrupted run</td>
+  <td>A fallback test was stopped between moving the configuration and restoring it</td>
+  <td>Rename <span class="mono">includes\config.php.testing-backup</span> back to <span class="mono">config.php</span></td>
+</tr>
+</table>
+
+<h3>5.5.6 Backup and recovery</h3>
+
+<p>Reference data is reproducible from <span class="mono">seed.php</span> and needs
+no backup. Captured data — the viewing requests — cannot be reproduced and is the
+only thing whose loss would matter.</p>
+
+<pre>REM Back up
+C:\xampp\mysql\bin\mysqldump.exe -u root richfield_accommodation &gt; backup.sql
+
+REM Restore
+C:\xampp\mysql\bin\mysql.exe -u root richfield_accommodation &lt; backup.sql</pre>
+
+<p>Take a backup before any demonstration. Restoring a dump takes seconds;
+rebuilding a demonstration state by hand during an assessment does not.</p>
+
+<p>Backups contain personal information and fall under the same retention policy
+as the live tables. They must never be committed to the repository —
+<span class="mono">.gitignore</span> blocks the obvious filenames, but it cannot
+stop a rename, so this is a procedural control as much as a technical one.</p>
+
+<div class="pagebreak"></div>
+<h2>Conclusion</h2>
+
+<p>Phase 5 delivered a working campus-linked accommodation system together with
+the evidence that it works, and the evidence of where it does not.</p>
+
+<p>The application implements all ten functional requirements across four pages
+and nineteen files, on a normalised nine-table MySQL schema with integrity
+enforced by the database rather than by application code. Sixty test cases were
+derived from the Phase 3 requirements and implemented as 149 test functions
+producing 230 executions across seven levels, managed in a test tool the group
+built.</p>
+
+<p>Test run TR-001 executed 224 of those tests on 1 November 2026. Two hundred and
+seventeen passed, seven failed, and every failure was traced to a documented
+defect rather than to a fault in the tests. The pass rate was 96.9%, with zero
+unexplained failures.</p>
+
+<p>The seven defects cluster in one place — the validation sequence of the
+viewing-request form — and every one of them corresponds to a finding the group
+recorded in Phase 3 §3.4.5 during data analysis, months before any test was
+written. Phase 4 specified a correction for each. Phase 5 proved each was still
+needed, in one case producing a stored viewing request, reference
+<span class="mono">RF-261101-3591</span>, that names no rooms at all.</p>
+
+<p>All seven were then corrected and the suite executed a second time.
+<strong>Test run TR-002 returned 224 passed and none failed</strong>, which closes
+the cycle the three phases describe: a weakness identified during analysis, a
+correction specified during design, executed evidence that it was still present,
+and executed evidence that it is gone. The failing tests in TR-001 were never a
+shortfall in the work. They were its result, and they served as the acceptance
+criteria for the corrections that followed.</p>
+
+<p>The correction cycle also produced the phase's most useful lesson, and it was
+not about the application. Enforcing one of the rules made thirty unrelated tests
+fail, because the suite had been submitting a request no student could make and
+the application had been accepting it. The suite was passing for the wrong reason.
+A green run says the system behaves as the tests expect; it does not say the tests
+expect the right thing — which is why this report sets out what the suite itself
+got wrong alongside what it found.</p>
+
+<p>The suite is repeatable, self-cleaning and version-controlled alongside the
+application, so these findings remain protected as development continues.</p>
+
+<div class="pagebreak"></div>
+<h2>Appendix A — Test case specifications</h2>
+
+<p class="small">The sixty cases, with the requirement each verifies and its
+result in TR-001. Full specifications — preconditions, numbered steps and expected
+results — are held in the test management tool and in
+<span class="mono">tests/TestCases/test_cases.json</span>.</p>
+
+<p class="small"><strong>In TR-002 the seven failing cases — TC-31, TC-37, TC-38,
+TC-57, TC-58, TC-59 and TC-60 — all passed, and no other case changed result.</strong>
+The TR-002 column is omitted here because it would read <em>Pass</em> for
+fifty-seven rows and <em>Blocked</em> for three; the per-case results for both runs
+are held in the test management tool.</p>
+
+<table>
+<caption>Table A.1 — Test case inventory, with TR-001 results (all cases approved)</caption>
+<tr>
+  <th style="width:8%">ID</th>
+  <th style="width:44%">Title</th>
+  <th style="width:12%">Level</th>
+  <th style="width:16%">Verifies</th>
+  <th style="width:9%">Priority</th>
+  <th style="width:11%">TR-001</th>
+</tr>
+<tr><td>TC-01</td><td>Display every campus with its location and bed count</td><td>UI</td><td>FR1</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-02</td><td>Unconfirmed campus locations are labelled as such</td><td>UI</td><td>FR1, BR-03</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-03</td><td>Home page statistics are computed from the data</td><td>Integration</td><td>FR1, NFR5</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-04</td><td>Sample-data banner and non-affiliation notice on every page</td><td>UI</td><td>NFR5</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-05</td><td>Campus list on the page matches the campus table</td><td>Integration</td><td>FR1</td><td>Medium</td><td class="pass">Pass</td></tr>
+<tr><td>TC-06</td><td>Campus filter options match the campus table</td><td>Integration</td><td>FR1, FR2</td><td>Medium</td><td class="pass">Pass</td></tr>
+<tr><td>TC-07</td><td>Campus links resolve to a filtered search</td><td>Functional</td><td>FR1, FR2</td><td>Low</td><td class="pass">Pass</td></tr>
+<tr><td>TC-08</td><td>Search by campus returns only that campus's listings</td><td>Functional</td><td>FR2, BR-04</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-09</td><td>Maximum rent filter excludes listings above the cap</td><td>Functional</td><td>FR2</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-10</td><td>Rent filter is clamped to its permitted range</td><td>Security</td><td>FR2, FR7</td><td>Medium</td><td class="pass">Pass</td></tr>
+<tr><td>TC-11</td><td>Room type filter returns only the selected types</td><td>Functional</td><td>FR2</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-12</td><td>Amenity filter requires every selected amenity</td><td>Functional</td><td>FR2</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-13</td><td>A search matching nothing shows guidance, not a blank area</td><td>UI</td><td>FR2, NFR4</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-14</td><td>Listing detail shows structured accommodation information</td><td>UI</td><td>FR3, BR-14</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-15</td><td>Inspected badge drawn from the stored verification flag only</td><td>Functional</td><td>FR3, BR-02</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-16</td><td>Walking and driving times are shown and are correct</td><td>Functional</td><td>FR3</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-17</td><td>An unknown listing slug returns HTTP 404</td><td>Functional</td><td>FR3, NFR8</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-18</td><td>A deactivated listing disappears from search and detail</td><td>Integration</td><td>BR-01</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-19</td><td>A room can be added to the shortlist</td><td>Functional</td><td>FR5</td><td>Medium</td><td class="pass">Pass</td></tr>
+<tr><td>TC-20</td><td>The shortlist is capped at four rooms</td><td>Functional</td><td>FR5, BR-05</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-21</td><td>The shortlist survives a reload and follows between pages</td><td>Functional</td><td>FR5</td><td>Medium</td><td class="pass">Pass</td></tr>
+<tr><td>TC-22</td><td>Shortlisted rooms are pre-selected on the request form</td><td>End-to-end</td><td>FR5, FR6</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-23</td><td>Monthly plan cost calculation</td><td>Functional</td><td>FR8, BR-13</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-24</td><td>Upfront plan discounts five per cent of rent only</td><td>Functional</td><td>FR8, BR-13</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-25</td><td>Termly plan discounts two per cent and splits into terms</td><td>Functional</td><td>FR8, BR-13</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-26</td><td>The deposit is never discounted</td><td>Functional</td><td>FR8, BR-13</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-27</td><td>The administration fee is fixed and always added</td><td>Functional</td><td>FR8, BR-13</td><td>Medium</td><td class="pass">Pass</td></tr>
+<tr><td>TC-28</td><td>Boundary values produce sane figures</td><td>Functional</td><td>FR8, BR-13</td><td>Medium</td><td class="pass">Pass</td></tr>
+<tr><td>TC-29</td><td>Every figure is whole rand in the house format</td><td>UI</td><td>FR8, BR-13</td><td>Medium</td><td class="pass">Pass</td></tr>
+<tr><td>TC-30</td><td>A name shorter than two characters is refused</td><td>Functional</td><td>FR7</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td><strong>TC-31</strong></td><td>A name longer than the stored column is refused</td><td>Functional</td><td>FR7</td><td>Medium</td><td class="fail">Fail · DEF-01</td></tr>
+<tr><td>TC-32</td><td>An invalid email address is refused</td><td>Functional</td><td>FR7</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-33</td><td>Phone validated against the South African mobile format</td><td>Functional</td><td>FR7, BR-08</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-34</td><td>The guardian email is optional but validated when supplied</td><td>Functional</td><td>FR6, FR7</td><td>Medium</td><td class="pass">Pass</td></tr>
+<tr><td>TC-35</td><td>A preferred date in the past is refused</td><td>Functional</td><td>FR7, BR-09</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-36</td><td>Notes longer than five hundred characters are refused</td><td>Functional</td><td>FR7</td><td>Medium</td><td class="pass">Pass</td></tr>
+<tr><td><strong>TC-37</strong></td><td>A request naming no rooms is refused</td><td>Functional</td><td>FR6, BR-06</td><td>High</td><td class="fail">Fail · DEF-02</td></tr>
+<tr><td><strong>TC-38</strong></td><td>Selected rooms must belong to the selected campus</td><td>Functional</td><td>FR6, BR-07</td><td>High</td><td class="fail">Fail · DEF-03</td></tr>
+<tr><td>TC-39</td><td>A successful submission returns a reference in the agreed format</td><td>Functional</td><td>FR6, BR-10</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-40</td><td>A request and its rooms are stored together</td><td>Integration</td><td>FR6, BR-11</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-41</td><td>References are unique, enforced by the schema</td><td>Integration</td><td>BR-10</td><td>Medium</td><td class="pass">Pass</td></tr>
+<tr><td>TC-42</td><td>A new request starts with the correct defaults</td><td>Integration</td><td>FR6</td><td>Medium</td><td class="pass">Pass</td></tr>
+<tr><td>TC-43</td><td>The confirmation states truthfully whether it was stored</td><td>Functional</td><td>FR10, NFR5</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-44</td><td>A submission without a valid token is refused</td><td>Security</td><td>FR9</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-45</td><td>Search parameters resist SQL injection</td><td>Security</td><td>NFR2</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-46</td><td>The listing slug resists SQL injection</td><td>Security</td><td>NFR2</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-47</td><td>Submitted and stored content is escaped on output</td><td>Security</td><td>NFR8</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-48</td><td>Error responses disclose no internal detail</td><td>Security</td><td>NFR8</td><td>Medium</td><td class="pass">Pass</td></tr>
+<tr><td>TC-49</td><td>Every page instructs search engines not to index it</td><td>Regression</td><td>NFR5</td><td>Medium</td><td class="pass">Pass</td></tr>
+<tr><td>TC-50</td><td>No horizontal overflow at any supported width</td><td>UI</td><td>NFR6</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-51</td><td>A skip link is the first focusable element</td><td>UI</td><td>NFR4</td><td>Medium</td><td class="pass">Pass</td></tr>
+<tr><td>TC-52</td><td>Every form field has a bound label and is keyboard reachable</td><td>UI</td><td>NFR4</td><td>High</td><td class="pass">Pass</td></tr>
+<tr><td>TC-53</td><td>Validation errors and result counts are announced</td><td>UI</td><td>NFR4, FR7</td><td>Medium</td><td class="pass">Pass</td></tr>
+<tr><td>TC-54</td><td>The site works with no database connected</td><td>Functional</td><td>FR10</td><td>High</td><td class="blocked">Blocked</td></tr>
+<tr><td>TC-55</td><td>The site falls back when connected to an empty schema</td><td>Integration</td><td>FR10</td><td>Medium</td><td class="blocked">Blocked</td></tr>
+<tr><td>TC-56</td><td>The privacy notice matches what the system actually does</td><td>Functional</td><td>NFR5, NFR7, BR-12</td><td>Medium</td><td class="blocked">Blocked</td></tr>
+<tr><td><strong>TC-57</strong></td><td>The move-in month is validated against the permitted range</td><td>Security</td><td>FR7</td><td>Medium</td><td class="fail">Fail · DEF-04</td></tr>
+<tr><td><strong>TC-58</strong></td><td>The campus is validated against the campus table</td><td>Security</td><td>FR7, BR-04</td><td>High</td><td class="fail">Fail · DEF-05</td></tr>
+<tr><td><strong>TC-59</strong></td><td>The status column accepts only its defined values</td><td>Integration</td><td>FR6</td><td>Low</td><td class="fail">Fail · DEF-06</td></tr>
+<tr><td><strong>TC-60</strong></td><td>The guardian hint does not promise an email never sent</td><td>Functional</td><td>NFR5</td><td>Medium</td><td class="fail">Fail · DEF-07</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+<h2>Appendix B — Reproducing the test run</h2>
+
+<h3>B.1 Prerequisites</h3>
+
+<ol>
+  <li>Apache and MySQL running under XAMPP</li>
+  <li>The application installed and seeded (5.5.2)</li>
+  <li>Python 3.9 or later on the PATH</li>
+</ol>
+
+<h3>B.2 Procedure</h3>
+
+<p>From the <span class="mono">tests</span> folder:</p>
+
+<pre>REM 1. Restore the reference data to a known state
+C:\xampp\php\php.exe "..\Richfield accommodation interface\database\seed.php"
+
+REM 2. Prepare the test environment (first time only)
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+playwright install chromium
+
+REM 3. Confirm the suite is wired to the application
+pytest suites/test_smoke.py -v
+
+REM 4. Execute the recorded run
+pytest
+
+REM 5. Generate the by-layer index
+python tools/layer_index.py</pre>
+
+<p>To include the three fallback cases, which move the configuration file aside:</p>
+
+<pre>$env:RF_RUN_FALLBACK = "1"
+pytest
+$env:RF_RUN_FALLBACK = ""</pre>
+
+<h3>B.3 Expected outcome</h3>
+
+<p>Against the <strong>corrected</strong> build, which is the build in the
+repository: <strong>224 passed, 0 failed, 6 skipped</strong>, in approximately
+eight minutes. That is TR-002, and it is what a fresh run should reproduce. The
+six skips are the fallback cases.</p>
+
+<p>Against the build <em>before</em> the corrections in section 5.4.7:
+<strong>217 passed, 7 failed, 6 skipped</strong>. That is TR-001, and the seven
+failures are the defects in Table 5.4.8. It is recorded here so the earlier figures
+in this report can be reproduced from the repository history rather than taken on
+trust.</p>
+
+<p>In either case, any failure other than those seven is new and should be
+investigated before the run is recorded.</p>
+
+<h3>B.4 Repository contents</h3>
+
+<table>
+<tr><th style="width:38%">Path</th><th>Contents</th></tr>
+<tr><td><span class="mono">tests/suites/</span></td><td>The nine test files, TC-01 to TC-60</td></tr>
+<tr><td><span class="mono">tests/support/</span></td><td>Configuration, database helpers, page objects</td></tr>
+<tr><td><span class="mono">tests/conftest.py</span></td><td>Shared fixtures and the fail-fast environment check</td></tr>
+<tr><td><span class="mono">tests/TestCases/test_cases.json</span></td><td>The sixty specifications, the source of record</td></tr>
+<tr><td><span class="mono">tests/TestCases/TEST_RUN_TR-001.md</span></td><td>The record of the run that found the defects</td></tr>
+<tr><td><span class="mono">tests/TestCases/TR-001_results.md</span></td><td>TR-001 results and the defect register</td></tr>
+<tr><td><span class="mono">tests/TestCases/TEST_RUN_TR-002.md</span></td><td>The record of the run that verified the corrections</td></tr>
+<tr><td><span class="mono">tests/tools/layer_index.py</span></td><td>Generates the by-layer index</td></tr>
+<tr><td><span class="mono">tests/reports/TR-001/</span></td><td>TR-001 HTML and XML artefacts</td></tr>
+<tr><td><span class="mono">tests/reports/TR-002/</span></td><td>TR-002 HTML and XML artefacts</td></tr>
+</table>
+
+<h2>References</h2>
+
+<p class="small">Republic of South Africa (2013) <em>Protection of Personal
+Information Act 4 of 2013</em>. Pretoria: Government Printer.</p>
+
+<p class="small">World Wide Web Consortium (2023) <em>Web Content Accessibility
+Guidelines (WCAG) 2.2</em>. W3C Recommendation. Available at:
+https://www.w3.org/TR/WCAG22/ (Accessed: 1 November 2026).</p>
+
+<p class="small">Group 55 (2026) <em>EMERGEX Phase 3 — Analysis</em>. IT Project
+700, Richfield Graduate Institute of Technology.</p>
+
+<p class="small">Group 55 (2026) <em>EMERGEX Phase 4 — System Design</em>. IT
+Project 700, Richfield Graduate Institute of Technology.</p>
+
+<p class="small">Project source: Group 55 repository
+<span class="mono">emergex-group-55</span>, directories
+<span class="mono">Richfield accommodation interface</span> and
+<span class="mono">tests</span>.</p>
+
+</body>
+</html>
