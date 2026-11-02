@@ -21,7 +21,7 @@ comes from this execution.
 | Measure | Value |
 | --- | ---: |
 | Test cases executed | 60 of 60 |
-| Test functions | 149 |
+| Test functions | 152 |
 | Executions collected | 230 |
 | Executed | 224 |
 | **Passed** | **217** |

@@ -18,7 +18,7 @@ all seven are corrected and that correcting them broke nothing else.
 
 | Measure | TR-001 | TR-002 |
 | --- | ---: | ---: |
-| Test functions | 149 | 149 |
+| Test functions | 152 | 152 |
 | Executions collected | 230 | 230 |
 | Executed | 224 | 224 |
 | **Passed** | 217 | **224** |
