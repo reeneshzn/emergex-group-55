@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/includes/functions.php';
 
-$page_title = 'Find a room | Richfield Student Accommodation';
+$page_title = 'Find a room | EMERGEX Student Accommodation';
 $page_desc  = "Search inspected student accommodation near your Richfield campus by budget, room type and what's included.";
 $needs_map  = true;
 

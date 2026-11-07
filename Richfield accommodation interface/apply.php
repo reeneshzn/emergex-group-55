@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/includes/functions.php';
 
-$page_title = 'Book a viewing | Richfield Student Accommodation';
+$page_title = 'Book a viewing | EMERGEX Student Accommodation';
 $page_desc  = 'Request viewings at inspected rooms near your Richfield campus. Free, and it commits you to nothing.';
 
 $months = upcoming_months();

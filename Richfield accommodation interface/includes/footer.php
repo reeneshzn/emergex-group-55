@@ -5,13 +5,18 @@
     <div class="footer-grid">
 
       <div>
-        <span class="wordmark">
-          <span class="rf-display wordmark__name wordmark__name--light">Richfield</span>
-          <span class="rf-eyebrow wordmark__sub wordmark__sub--light">Accommodation</span>
+        <span class="wordmark wordmark--stacked">
+          <img class="wordmark__logo" src="assets/img/accommodation.png"
+               alt="" width="512" height="512" aria-hidden="true">
+          <span class="wordmark__text">
+            <span class="rf-display wordmark__name wordmark__name--light">EMERGEX</span>
+            <span class="rf-eyebrow wordmark__sub wordmark__sub--light">Since 2026</span>
+          </span>
         </span>
         <p class="footer-blurb">
-          Inspected student accommodation within reach of every Richfield campus.
-          Compare rooms, save your favourites, and book viewings in one place.
+          EMERGEX lists inspected student accommodation within reach of every
+          Richfield campus. Compare rooms, save your favourites, and book
+          viewings in one place.
         </p>
       </div>
 
@@ -61,6 +66,9 @@
         Map data &copy;
         <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a>
         contributors.
+      </p>
+      <p class="footer-built">
+        Built with <span class="footer-heart" aria-hidden="true">&#128153;</span><span class="sr-only">love</span> by EMERGEX developers
       </p>
     </div>
   </div>
@@ -132,6 +140,11 @@ window.RF = {
 <?php if (!empty($needs_map)): ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <?php endif; ?>
-<script src="assets/js/app.js"></script>
+<?php
+/* Same cache-bust as the stylesheet, for the same reason. */
+$js_path = __DIR__ . '/../assets/js/app.js';
+$js_ver  = is_file($js_path) ? filemtime($js_path) : '1';
+?>
+<script src="assets/js/app.js?v=<?= e((string) $js_ver) ?>"></script>
 </body>
 </html>

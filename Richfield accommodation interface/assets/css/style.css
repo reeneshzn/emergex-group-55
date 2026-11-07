@@ -200,6 +200,13 @@ li { list-style: none; }
   padding: 6px 16px;
 }
 
+/* One source of truth for the header band. The hero runs its navy up behind
+   the sticky header using a negative margin of exactly this value, so the
+   two must never be edited apart - hence the variable rather than a number
+   repeated in three places. */
+:root { --rf-header-h: 80px; }
+@media (max-width: 639px) { :root { --rf-header-h: 64px; } }
+
 .site-header {
   position: sticky;
   top: 0;
@@ -220,16 +227,71 @@ li { list-style: none; }
   display: flex;
   align-items: center;
   gap: 16px;
-  height: 64px;
+  height: var(--rf-header-h);
 }
 
-.wordmark { display: inline-flex; align-items: baseline; gap: 8px; }
-.wordmark__name { font-size: 1.35rem; line-height: 1; color: var(--rf-blue-dark); }
+/* Mark on the left, name over year on the right. The header and the footer
+   use the same lockup at the same size, so the brand reads identically top
+   and bottom. */
+.wordmark { display: inline-flex; align-items: stretch; gap: 10px; }
+
+/* The mark's height is derived from the two text lines beside it, so the
+   three stay matched if the type is ever resized - change --wm-name and
+   everything follows. align-self: stretch cannot be used here: the image
+   has an intrinsic 720px height, and stretching drives the flex line to
+   that size rather than the other way round. */
+.wordmark {
+  --wm-name: 1.5rem;
+  --wm-sub: .72rem;
+  --wm-gap: 2px;
+}
+.wordmark__logo {
+  height: calc(var(--wm-name) * 1.05 + var(--wm-gap) + var(--wm-sub));
+  width: auto;
+  flex: none;
+  object-fit: contain;
+  /* Line art drawn in black. invert(1) turns it into a white outline for
+     the dark hero and the dark footer; on the white inner header it stays
+     black, because a white outline on white is nothing at all. */
+  filter: brightness(0) invert(1);
+}
+.site-header.is-solid .wordmark__logo { filter: none; }
+
+/* The column is only as wide as its widest child, which is the name. The
+   year then stretches to that exact width (see below), so the two lines
+   share an edge on the left and the right. */
+.wordmark__text { display: inline-flex; flex-direction: column; align-items: stretch; justify-content: center; gap: var(--wm-gap); }
+
+.wordmark__name { font-size: var(--wm-name); line-height: 1.05; color: var(--rf-blue-dark); letter-spacing: .07em; }
+
 /* Hidden under 640px: with the shortlist trigger and menu button beside it,
-   the full lockup pushes the header past a 360px viewport. */
-.wordmark__sub { display: none; font-size: .6rem; line-height: 1; color: var(--rf-ink-muted); }
-@media (min-width: 640px) { .wordmark__sub { display: inline; } }
-.site-footer .wordmark__sub { display: inline; }
+   the full lockup pushes the header past a 360px viewport.
+   text-align-last justifies the final (and only) line, spreading the gap
+   between "SINCE" and "2026" until the line measures exactly as wide as
+   the name above it - rather than guessing at a letter-spacing value that
+   would only line up at one font size. */
+.wordmark__sub {
+  display: none;
+  font-size: var(--wm-sub);
+  line-height: 1;
+  letter-spacing: .04em;
+  color: var(--rf-ink-muted);
+  text-align: justify;
+  text-align-last: justify;
+}
+@media (min-width: 640px) { .wordmark__sub { display: block; } }
+.site-footer .wordmark__sub { display: block; }
+
+/* The footer lockup is the header lockup - same sizes, same spacing. The
+   class is kept only so the footer can be targeted if that ever changes. */
+
+/* Under 640px the year is hidden and the name shrinks, so the lockup clears
+   the shortlist trigger and menu button at 360px. */
+/* The year is hidden below 640px, so the mark matches the single remaining
+   line and the whole lockup clears the shortlist and menu buttons at 360px. */
+@media (max-width: 639px) {
+  .site-header .wordmark { --wm-name: 1.2rem; --wm-sub: 0rem; --wm-gap: 0px; }
+}
 .site-header:not(.is-solid) .wordmark__name { color: #fff; }
 .site-header:not(.is-solid) .wordmark__sub { color: rgb(255 255 255 / .6); }
 .wordmark__name--light { color: #fff; }
@@ -290,8 +352,8 @@ li { list-style: none; }
 .hero {
   position: relative;
   overflow: hidden;
-  margin-top: -64px;   /* run the navy up behind the sticky header */
-  padding-top: 64px;
+  margin-top: calc(var(--rf-header-h) * -1);   /* run the navy up behind the sticky header */
+  padding-top: var(--rf-header-h);
   background: var(--rf-hero-gradient);
 }
 .hero__rule {
@@ -740,6 +802,17 @@ input[type="range"] { width: 100%; accent-color: var(--rf-blue-dark); height: 30
 .footer-legal p { font-size: .75rem; color: rgb(255 255 255 / .5); }
 .footer-attrib { margin-top: 12px !important; color: rgb(255 255 255 / .4) !important; }
 .footer-attrib a { text-decoration: underline; }
+
+.footer-built {
+  margin-top: 14px !important;
+  color: rgb(255 255 255 / .55) !important;
+  font-size: .85rem;
+  letter-spacing: .02em;
+}
+/* The heart is decorative and hidden from assistive technology, which reads
+   the adjacent "love" instead - an emoji announced by its full Unicode name
+   mid-sentence is noise. */
+.footer-heart { color: var(--rf-red); font-style: normal; }
 
 /* ==========================================================================
    Shortlist drawer

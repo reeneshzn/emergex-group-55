@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/includes/functions.php';
 
-$page_title = 'Richfield Student Accommodation | Start Here. Stay Close.';
+$page_title = 'EMERGEX Student Accommodation | Start Here. Stay Close.';
 $page_desc  = 'Inspected, campus-linked student accommodation within walking distance of every Richfield campus. Compare rooms and book a viewing online.';
 $is_home    = true;
 $needs_map  = true;

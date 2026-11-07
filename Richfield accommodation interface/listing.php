@@ -6,7 +6,7 @@ $listing = get_listing($slug);
 
 if (!$listing) {
     http_response_code(404);
-    $page_title = 'Room not found | Richfield Student Accommodation';
+    $page_title = 'Room not found | EMERGEX Student Accommodation';
     require __DIR__ . '/includes/header.php';
     ?>
     <div class="wrap" style="padding-block:112px;text-align:center;max-width:640px">
@@ -23,7 +23,7 @@ if (!$listing) {
     exit;
 }
 
-$page_title = $listing['name'] . ', ' . $listing['area'] . ' | Richfield Student Accommodation';
+$page_title = $listing['name'] . ', ' . $listing['area'] . ' | EMERGEX Student Accommodation';
 $page_desc  = $listing['blurb'];
 $needs_map  = true;
 

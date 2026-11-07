@@ -11,7 +11,7 @@ require_once __DIR__ . '/functions.php';
  *                        text on near-white and is invisible until scrolled.
  *   $needs_map   bool    load Leaflet CSS/JS
  */
-$page_title = $page_title ?? 'Richfield Student Accommodation';
+$page_title = $page_title ?? 'EMERGEX Student Accommodation';
 $page_desc  = $page_desc ?? 'Inspected, campus-linked student accommodation within walking distance of every Richfield campus.';
 $is_home    = $is_home ?? false;
 $needs_map  = $needs_map ?? false;
@@ -26,13 +26,27 @@ $needs_map  = $needs_map ?? false;
 <!-- Unapproved prototype carrying a real institution's identity. Never index it. -->
 <meta name="robots" content="noindex, nofollow">
 
+<!-- SVG favicon: one file, sharp at every size, and it carries its own
+     background so it reads on a light or a dark browser theme. -->
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="apple-touch-icon" href="assets/img/favicon.svg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 <?php if ($needs_map): ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <?php endif; ?>
-<link rel="stylesheet" href="assets/css/style.css">
+<?php
+/* Cache-bust on the file's own modification time. Browsers hold a
+   stylesheet for a long time, and during development that means an edit
+   silently does nothing until someone thinks to hard-reload - which looks
+   exactly like a bug that isn't there. The timestamp changes only when the
+   file does, so the cache still works normally between edits. */
+$css_path = __DIR__ . '/../assets/css/style.css';
+$css_ver  = is_file($css_path) ? filemtime($css_path) : '1';
+?>
+<link rel="stylesheet" href="assets/css/style.css?v=<?= e((string) $css_ver) ?>">
 </head>
 <body<?= $is_home ? '' : ' class="page--inner"' ?>>
 
@@ -47,12 +61,16 @@ $needs_map  = $needs_map ?? false;
 <header class="site-header<?= $is_home ? '' : ' is-solid' ?>" id="siteHeader">
   <div class="wrap site-header__inner">
 
-    <a class="wordmark" href="index.php" aria-label="Richfield Accommodation, home">
-      <!-- LOGO SWAP POINT. Richfield's official logo is served from their
-           Sanity CDN and remains their property. Replace this typographic
-           wordmark when they supply the asset — nothing else references it. -->
-      <span class="rf-display wordmark__name">Richfield</span>
-      <span class="rf-eyebrow wordmark__sub">Accommodation</span>
+    <a class="wordmark" href="index.php" aria-label="EMERGEX, home">
+      <!-- Typographic wordmark. It replaces the earlier "Richfield"
+           lockup, which used a brand this project has no licence to carry:
+           the campuses are Richfield's, the service is not. -->
+      <img class="wordmark__logo" src="assets/img/accommodation.png"
+           alt="" width="512" height="512" aria-hidden="true">
+      <span class="wordmark__text">
+        <span class="rf-display wordmark__name">EMERGEX</span>
+        <span class="rf-eyebrow wordmark__sub">Since 2026</span>
+      </span>
     </a>
 
     <nav class="site-nav" aria-label="Primary">

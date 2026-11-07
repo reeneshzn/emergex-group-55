@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="EMERGEX">
+  <!--
+    EMERGEX favicon.
+
+    A tab icon is read at 16px, so this is deliberately not the header mark
+    shrunk down. The line-art version loses its strokes at that size and
+    turns into grey mush, which is why the house here is a solid white
+    silhouette instead of an outline: one shape, maximum contrast.
+
+    The tick is cut out in the background colour rather than drawn on top,
+    so it stays crisp however the icon is scaled.
+  -->
+  <rect width="64" height="64" rx="14" fill="#043171"/>
+  <path d="M32 12 L57 34 H48.5 V53 H15.5 V34 H7 Z" fill="#ffffff"/>
+  <path d="M23 41.5 L29.5 48 L42 34.5"
+        fill="none" stroke="#043171" stroke-width="5.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
