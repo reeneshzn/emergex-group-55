@@ -144,6 +144,23 @@ NOTES_MAX = 500
 #: How long a web-first assertion retries before failing, milliseconds.
 TIMEOUT_MS = int(_env("RF_TIMEOUT_MS", "7000"))
 
+#: When a navigation is considered finished.
+#:
+#: Playwright's default is "load", which waits for EVERY resource on the
+#: page - including the Google Fonts stylesheet and the font files behind
+#: it. Each test starts with a fresh browser context and an empty cache,
+#: so those are re-fetched every single time, and a slow first connection
+#: to a font server was enough to exceed the navigation timeout and error
+#: three calculator tests that had not yet checked anything.
+#:
+#: A test that fails because a font CDN was slow is not testing this
+#: application. "domcontentloaded" waits for the HTML to be parsed and the
+#: scripts to be available, which is everything the suite actually needs:
+#: every assertion after this point is a web-first expect() that retries
+#: until the condition holds, so anything still arriving is waited for
+#: where it matters rather than globally.
+WAIT_UNTIL = _env("RF_WAIT_UNTIL", "domcontentloaded")
+
 #: The application's own folder, used by the fallback tests, which move
 #: the configuration aside to prove the site works without a database.
 #: Set RF_APP_DIR if the application lives somewhere else.

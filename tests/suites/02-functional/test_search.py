@@ -240,7 +240,8 @@ def test_a_non_numeric_rent_does_not_break_the_page(page):
     than producing a PHP warning or a blank screen.
     """
     page.goto(
-        config.url(config.SEARCH) + f"?campus={config.CONFIRMED_CAMPUS}&max=abc"
+        config.url(config.SEARCH) + f"?campus={config.CONFIRMED_CAMPUS}&max=abc",
+        wait_until=config.WAIT_UNTIL,
     )
 
     body = page.content()
@@ -494,7 +495,9 @@ def test_an_empty_result_is_a_normal_page_not_an_error(page):
     params = f"?campus={f['campus']}&max={f['max_rent']}" + "".join(
         f"&amenity[]={a}" for a in f["amenities"]
     )
-    response = page.goto(config.url(config.SEARCH) + params)
+    response = page.goto(
+        config.url(config.SEARCH) + params, wait_until=config.WAIT_UNTIL
+    )
 
     assert response.status == 200
     body = page.content()

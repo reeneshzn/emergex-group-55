@@ -69,7 +69,7 @@ def test_no_horizontal_overflow_at_any_width(page, path, width):
     from support.pages import BasePage
 
     page.set_viewport_size({"width": width, "height": 900})
-    page.goto(config.url(path))
+    page.goto(config.url(path), wait_until=config.WAIT_UNTIL)
 
     overflow = BasePage(page).has_horizontal_overflow()
     if overflow:

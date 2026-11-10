@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<title>EMERGEX — Phase 5 Appendix C</title>
+<style>
+@page { size: A4; margin: 2.2cm 2cm 2.4cm; }
+body {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 12pt;
+  line-height: 1.5;
+  color: #000;
+}
+h2 { font-size: 16pt; margin: 24pt 0 8pt; page-break-after: avoid; border-bottom: 1.5pt solid #333; padding-bottom: 3pt; line-height: 1.25; }
+h3 { font-size: 13.5pt; margin: 18pt 0 5pt; page-break-after: avoid; line-height: 1.3; }
+p { margin: 0 0 10pt; text-align: justify; }
+.small { font-size: 10.5pt; }
+/* 12.5cm against a 17cm text column - noticeably smaller than full
+   width, while still large enough that zoomed-in code stays readable in
+   print. Below about 11cm the code screenshots stop being evidence. */
+img { width: 12.5cm; height: auto; display: block; margin: 12pt auto 0; }
+.cap { font-style: italic; font-size: 10.5pt; text-align: center; margin: 5pt 0 20pt; }
+table { border-collapse: collapse; width: 100%; margin: 10pt 0 16pt; font-size: 10.5pt; line-height: 1.3; page-break-inside: avoid; }
+th, td { border: 0.75pt solid #666; padding: 5pt 6pt; text-align: left; vertical-align: top; }
+th { background: #e8e8e8; font-weight: bold; }
+caption { font-weight: bold; text-align: left; padding-bottom: 4pt; font-size: 11pt; }
+.mono { font-family: Consolas, "Courier New", monospace; font-size: 10.5pt; }
+.pagebreak { page-break-before: always; }
+</style>
+</head>
+<body>
+
+<h2>Appendix C — Evidence of implementation and testing</h2>
+
+<p>This appendix records the test suite as it exists in the repository and as it
+behaves when executed. Figures C.1 to C.3 show the shared framework; C.4 to C.14
+show each of the eleven suite files in turn; C.15 to C.19 show the two runs and
+their results; C.20 to C.23 show the test management tool; C.24 shows the
+published repository.</p>
+
+<p>The complete source is published at
+<span class="mono">https://github.com/reeneshzn/emergex-group-55</span>.</p>
+
+<table>
+<caption>Table C.1 — What each figure evidences</caption>
+<tr><th style="width:18%">Figures</th><th style="width:34%">Subject</th><th style="width:48%">What it demonstrates</th></tr>
+<tr><td>C.1 – C.3</td><td>Framework</td><td>Structure, the Page Object Model, shared fixtures</td></tr>
+<tr><td>C.4 – C.14</td><td>The eleven suite files</td><td>152 test functions across seven levels</td></tr>
+<tr><td>C.15 – C.19</td><td>Execution</td><td>TR-001 and TR-002, and running one level alone</td></tr>
+<tr><td>C.20 – C.23</td><td>BeyondTheBugs</td><td>Cases, runs, per-run results</td></tr>
+<tr><td>C.24</td><td>Repository</td><td>Everything version-controlled together</td></tr>
+</table>
+
+<h3>C.1 – C.3 · The framework</h3>
+
+<p class="small">Playwright and pytest are the tools. The framework is the
+structure built on top of them: the three files below contain no tests
+themselves, and everything in C.4 to C.14 depends on them.</p>
+
+<img src="appendix-c/C01-Test%20suites.png" alt="">
+<img src="appendix-c/C01-Support.png" alt="">
+<img src="appendix-c/C01-Test%20cases.png" alt="">
+<p class="cap">Figure C.1 — The test suite in the repository. The seven layer
+folders correspond to the test levels in Table 5.3.1; <span class="mono">support</span>
+holds the framework; <span class="mono">TestCases</span> holds the sixty case
+specifications and both run records.</p>
+
+<img src="appendix-c/C02-Pages..png" alt="">
+<p class="cap">Figure C.2 — The Page Object Model. Every CSS selector in the
+suite is declared in this one file, and each was read from the named application
+source rather than guessed, so a markup change is one edit here instead of a
+search across eleven test files.</p>
+
+<img src="appendix-c/C03-Conftest.png" alt="">
+<p class="cap">Figure C.3 — Shared fixtures. The session check stops the whole
+run with one clear message when the application is unreachable, rather than
+letting the browser tests fail individually with a confusing navigation error
+and the real cause buried a hundred lines down.</p>
+
+<div class="pagebreak"></div>
+<h3>C.4 – C.14 · The eleven suite files</h3>
+
+<img src="appendix-c/C04-Smoke%20test.png" alt="">
+<p class="cap">Figure C.4 — <span class="mono">00-smoke/test_smoke.py</span>, 15
+functions. Runs before anything else: every page must return 200, the expected
+tables must exist, and the seed must have loaded. About ten seconds, so a dead
+environment is found immediately rather than after six minutes of misleading
+skips.</p>
+
+<img src="appendix-c/C05-test_campuses.png" alt="">
+<p class="cap">Figure C.5 — <span class="mono">01-ui/test_campuses.py</span>, 15
+functions (TC-01 to TC-07). Includes the test that changes a bed count and
+requires the displayed total to move, which distinguishes a computed figure from
+a hardcoded one that happens to be correct.</p>
+
+<img src="appendix-c/C06-test_behaviour.png" alt="">
+<p class="cap">Figure C.6 — <span class="mono">01-ui/test_behaviour.py</span>, 13
+functions. Overflow is checked at seven viewport widths by comparing
+<span class="mono">scrollWidth</span> against <span class="mono">clientWidth</span>,
+which is a measurement rather than a judgement about a screenshot.</p>
+
+<img src="appendix-c/C07-test_search.png" alt="">
+<p class="cap">Figure C.7 — <span class="mono">02-functional/test_search.py</span>,
+17 functions (TC-08 to TC-13). Filtering is verified in both directions: every
+result belongs to the chosen campus, and every row that should appear does
+appear.</p>
+
+<img src="appendix-c/C08-test_listings.png" alt="">
+<p class="cap">Figure C.8 — <span class="mono">02-functional/test_listings.py</span>,
+14 functions (TC-14 to TC-18). The suite implements the haversine calculation
+independently and compares its own answer with the page's, rather than trusting
+the application's arithmetic by reading it back.</p>
+
+<img src="appendix-c/C09-test_shortlist.png" alt="">
+<p class="cap">Figure C.9 — <span class="mono">02-functional/test_shortlist.py</span>,
+10 functions (TC-19 to TC-21). The four-room limit is asserted as the application
+implements it: the control is disabled and explains why, rather than the click
+being refused.</p>
+
+<img src="appendix-c/C10-test_validation.png" alt="">
+<p class="cap">Figure C.10 — <span class="mono">02-functional/test_validation.py</span>,
+21 functions (TC-30 to TC-38). The largest file, and the one that found DEF-01,
+DEF-02 and DEF-03. Every rule is tested from both sides, since a suite that only
+tests refusals would pass against a form that refuses everything.</p>
+
+<img src="appendix-c/C11-test_calculator.png" alt="">
+<p class="cap">Figure C.11 — <span class="mono">03-logic/test_calculator.py</span>,
+13 functions (TC-23 to TC-29). The deposit is read under all three payment plans
+and required to be identical, which proves the discount never reaches it
+whatever the rent is.</p>
+
+<img src="appendix-c/C12-test_submission.png" alt="">
+<p class="cap">Figure C.12 — <span class="mono">04-integration/test_submission.py</span>,
+14 functions (TC-39 to TC-43). Assertions run against MySQL rows, not screen
+text: a confirmation page would print the same words whether or not the insert
+succeeded.</p>
+
+<img src="appendix-c/C13-test_security.png" alt="">
+<p class="cap">Figure C.13 — <span class="mono">05-security/test_security.py</span>,
+15 functions (TC-44 to TC-49, TC-57, TC-58). These post directly with
+<span class="mono">requests</span> rather than driving the browser, which is how
+DEF-04 and DEF-05 were found: both fields are dropdowns, so no amount of
+clicking could have reached them.</p>
+
+<img src="appendix-c/C14-test_journeys.png" alt="">
+<p class="cap">Figure C.14 — <span class="mono">06-e2e/test_journeys.py</span>, 5
+functions. Every step is covered individually elsewhere; these exist because
+covering each step does not prove the path works, and the path is what a student
+uses.</p>
+
+<div class="pagebreak"></div>
+<h3>C.15 – C.19 · Execution</h3>
+
+<img src="appendix-c/C15-test%20names.png" alt="">
+<p class="cap">Figure C.15 — Execution in progress. Each line is one of the 230
+executions produced by the suite's 152 test functions.</p>
+
+<img src="appendix-c/C16-The%20final%20line_224%20passed.png" alt="">
+<p class="cap">Figure C.16 — The closing summary: 224 passed, 6 skipped, none
+failed. The six skips are the fallback cases TC-54 to TC-56, which move the
+application's configuration file aside and are therefore opt-in rather than part
+of an ordinary run.</p>
+
+<img src="appendix-c/C17-report.png" alt="">
+<p class="cap">Figure C.17 — The archived TR-002 report, generated by pytest on
+1 November 2026: 224 passed, 0 failed, 6 skipped in 7 minutes 48 seconds. The
+title reads "Richfield Student Accommodation" because that was the application's
+name when the run was executed; it was renamed to EMERGEX afterwards, and the
+archived report has deliberately not been edited.</p>
+
+<img src="appendix-c/C18-Failures.png" alt="">
+<p class="cap">Figure C.18 — The TR-001 record: 50 passed, 7 failed, 3 blocked,
+with each failure mapped to the defect raised against it. TR-001's own generated
+HTML report is not reproduced here because the artefacts archived under that
+name were written by the aborted first attempt described in section 5.4.3, which
+collected no tests; this record, written at the time of the run, is the
+authoritative evidence for it.</p>
+
+<img src="appendix-c/C19-Security.png" alt="">
+<p class="cap">Figure C.19 — One test level executed alone:
+<span class="mono">230 collected, 188 deselected, 42 selected</span>. The
+selected tests come from four different files, because the level is a marker on
+each test rather than a folder — a security test living in the search file is
+still run as part of the security layer. The 42 here are executions of the 19
+security test functions in Table 5.3.1, the difference being parameterisation.</p>
+
+<div class="pagebreak"></div>
+<h3>C.20 – C.23 · BeyondTheBugs, the test management tool</h3>
+
+<p class="small">Available at <span class="mono">https://beyondthebugs.netlify.app/</span>
+— select <strong>Open Tool</strong>. No sign-in required.</p>
+
+<img src="appendix-c/C20-Beyondthebugs_dashboard.png" alt="">
+<p class="cap">Figure C.20 — The dashboard. The outcome figures are read from the
+most recent run rather than from the cases, because pass, fail and blocked belong
+to a run and not to a specification.</p>
+
+<img src="appendix-c/C21-beyondthebugs-testcase_list.png" alt="">
+<p class="cap">Figure C.21 — The sixty test cases, each carrying the requirement
+it verifies.</p>
+
+<img src="appendix-c/C22-Beyondthebugs-One%20test%20case%20.png" alt="">
+<p class="cap">Figure C.22 — A single case specification, with its preconditions,
+numbered steps and expected result. The case holds one lifecycle status; the
+result of running it belongs to a run.</p>
+
+<img src="appendix-c/C23-Beyondthebugs-test%20run.png" alt="">
+<p class="cap">Figure C.23 — Both runs recorded separately. TC-37 is held once as
+a specification, failed in TR-001 and passed in TR-002 — three separate facts,
+none overwriting another.</p>
+
+<h3>C.24 · The repository</h3>
+
+<img src="appendix-c/C25-Github%20repository.png" alt="">
+<p class="cap">Figure C.24 — The published repository at
+<span class="mono">https://github.com/reeneshzn/emergex-group-55</span>. The
+application, the automated test suite and all documentation are version-controlled
+together.</p>
+
+</body>
+</html>

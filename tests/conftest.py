@@ -231,7 +231,7 @@ def submitted_references() -> list[str]:
 
 
 def pytest_html_report_title(report):
-    report.title = "Richfield Student Accommodation - automated test report"
+    report.title = "EMERGEX Student Accommodation - automated test report"
 
 
 @pytest.hookimpl(hookwrapper=True)

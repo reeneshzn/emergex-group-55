@@ -3,11 +3,6 @@ Page objects.
 
 EVERY CSS SELECTOR IN THE SUITE LIVES IN THIS FILE.
 
-Tests say what they want to do - open the search page, filter by rent,
-submit the viewing form. These classes know which element that means. When
-the markup changes, the fix is one line here instead of a search across
-every test.
-
 Every selector below was read from the application source rather than
 guessed:
     includes/header.php        shortlist trigger and count
@@ -39,7 +34,7 @@ class BasePage:
     # --- navigation ---
 
     def open(self, query: str = "") -> "BasePage":
-        self.page.goto(config.url(self.path) + query)
+        self.page.goto(config.url(self.path) + query, wait_until=config.WAIT_UNTIL)
         return self
 
     # --- chrome present on every page ---
@@ -438,7 +433,7 @@ class SearchPage(BasePage):
             params.append(("amenity[]", a))
 
         query = ("?" + urlencode(params)) if params else ""
-        self.page.goto(config.url(self.path) + query)
+        self.page.goto(config.url(self.path) + query, wait_until=config.WAIT_UNTIL)
         return self
 
     def search_via_controls(self, campus: str | None = None) -> "SearchPage":
@@ -461,7 +456,9 @@ class ListingPage(BasePage):
     path = config.LISTING
 
     def open_slug(self, slug: str) -> "ListingPage":
-        self.page.goto(config.url(f"{self.path}?slug={slug}"))
+        self.page.goto(
+            config.url(f"{self.path}?slug={slug}"), wait_until=config.WAIT_UNTIL
+        )
         return self
 
     @property

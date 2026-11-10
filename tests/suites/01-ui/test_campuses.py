@@ -253,7 +253,7 @@ def test_sample_data_banner_appears_on_every_page(page, path):
     """
     from support.pages import BasePage
 
-    page.goto(config.url(path))
+    page.goto(config.url(path), wait_until=config.WAIT_UNTIL)
     expect(BasePage(page).sample_data_banner).to_be_visible()
 
 
@@ -274,7 +274,7 @@ def test_non_affiliation_notice_appears_on_every_page(page, path):
     """
     from support.pages import BasePage
 
-    page.goto(config.url(path))
+    page.goto(config.url(path), wait_until=config.WAIT_UNTIL)
     expect(BasePage(page).not_affiliated_notice).to_be_visible()
 
 

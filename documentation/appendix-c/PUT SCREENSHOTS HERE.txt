@@ -1,0 +1,34 @@
+Save your Appendix C screenshots in this folder.
+
+Name them exactly:
+
+  C01.png   File explorer, tests folder with suites expanded
+  C02.png   tests\support\pages.py
+  C03.png   tests\conftest.py
+  C04.png   suites\00-smoke\test_smoke.py
+  C05.png   suites\01-ui\test_campuses.py
+  C06.png   suites\01-ui\test_behaviour.py
+  C07.png   suites\02-functional\test_search.py
+  C08.png   suites\02-functional\test_listings.py
+  C09.png   suites\02-functional\test_shortlist.py
+  C10.png   suites\02-functional\test_validation.py
+  C11.png   suites\03-logic\test_calculator.py
+  C12.png   suites\04-integration\test_submission.py
+  C13.png   suites\05-security\test_security.py
+  C14.png   suites\06-e2e\test_journeys.py
+  C15.png   pytest running, test names scrolling past
+  C16.png   the final line, 224 passed, 6 skipped
+  C17.png   reports\TR-002\report.html in a browser
+  C18.png   reports\TR-001\report.html showing the 7 failures
+  C19.png   pytest -m security and its result
+  C20.png   BeyondTheBugs dashboard
+  C21.png   BeyondTheBugs test case list
+  C22.png   BeyondTheBugs, one case opened
+  C23.png   BeyondTheBugs test runs, TR-001 and TR-002
+  C24.png   BeyondTheBugs defects, DEF-01 to DEF-07
+  C25.png   The GitHub repository page
+
+.jpg is fine too - just keep the C01, C02 naming.
+
+You do not need all 25 before Claude builds the appendix. Save what you
+have and say so; the rest can be added afterwards.
